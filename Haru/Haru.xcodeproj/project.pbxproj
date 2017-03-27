@@ -101,6 +101,8 @@
 		018DF1DD1E86225100DE51EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				01DE68721E891C48004678FA /* DataCenter */,
+				01DE68731E891C66004678FA /* NetworkManger */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -166,6 +168,20 @@
 				01DE68701E8919D7004678FA /* HRSignupViewController.m */,
 			);
 			name = Signup;
+			sourceTree = "<group>";
+		};
+		01DE68721E891C48004678FA /* DataCenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataCenter;
+			sourceTree = "<group>";
+		};
+		01DE68731E891C66004678FA /* NetworkManger */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NetworkManger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
