@@ -6,8 +6,9 @@
 
 ## - Team members
 
-|iOS Developer|조백진|bjjo6457@gmail.com|
+|분야|이름|이메일|
 |:--:|:--:|:--:|
-|iOS Developer|최원석|projectlife724@gmail.com|
-|iOS Developer|여상민|devssgg@gmail.com|
+|iOS|조백진|bjjo6457@gmail.com|
+|iOS|최원석|projectlife724@gmail.com|
+|iOS|여상민|devssgg@gmail.com|
 
