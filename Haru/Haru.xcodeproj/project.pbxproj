@@ -16,9 +16,6 @@
 		018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1E51E8623E700DE51EA /* HRLogin.storyboard */; };
 		018DF1E81E8623F500DE51EA /* HRSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1E71E8623F500DE51EA /* HRSignup.storyboard */; };
 		018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */; };
-		01DE68661E88D542004678FA /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01DE68631E88D542004678FA /* 10.jpg */; };
-		01DE68671E88D542004678FA /* 11.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01DE68641E88D542004678FA /* 11.jpeg */; };
-		01DE68681E88D542004678FA /* background2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 01DE68651E88D542004678FA /* background2.jpeg */; };
 		01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DE686C1E89190F004678FA /* HRMainView.storyboard */; };
 		01DE68711E8919D7004678FA /* HRSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE68701E8919D7004678FA /* HRSignupViewController.m */; };
 /* End PBXBuildFile section */
@@ -37,9 +34,6 @@
 		018DF1E51E8623E700DE51EA /* HRLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRLogin.storyboard; sourceTree = "<group>"; };
 		018DF1E71E8623F500DE51EA /* HRSignup.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRSignup.storyboard; sourceTree = "<group>"; };
 		018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRTutorial.storyboard; sourceTree = "<group>"; };
-		01DE68631E88D542004678FA /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
-		01DE68641E88D542004678FA /* 11.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpeg; sourceTree = "<group>"; };
-		01DE68651E88D542004678FA /* background2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background2.jpeg; sourceTree = "<group>"; };
 		01DE686C1E89190F004678FA /* HRMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMainView.storyboard; sourceTree = "<group>"; };
 		01DE686F1E8919D7004678FA /* HRSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSignupViewController.h; sourceTree = "<group>"; };
 		01DE68701E8919D7004678FA /* HRSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSignupViewController.m; sourceTree = "<group>"; };
@@ -80,9 +74,6 @@
 				018DF1DE1E86225D00DE51EA /* View */,
 				018DF1DF1E86226800DE51EA /* Controller */,
 				018DF1D11E86221D00DE51EA /* Assets.xcassets */,
-				01DE68631E88D542004678FA /* 10.jpg */,
-				01DE68641E88D542004678FA /* 11.jpeg */,
-				01DE68651E88D542004678FA /* background2.jpeg */,
 				018DF1D31E86221D00DE51EA /* LaunchScreen.storyboard */,
 				018DF1D61E86221D00DE51EA /* Info.plist */,
 				018DF1C51E86221D00DE51EA /* Supporting Files */,
@@ -236,13 +227,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				018DF1D51E86221D00DE51EA /* LaunchScreen.storyboard in Resources */,
-				01DE68681E88D542004678FA /* background2.jpeg in Resources */,
-				01DE68661E88D542004678FA /* 10.jpg in Resources */,
 				018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */,
 				018DF1D21E86221D00DE51EA /* Assets.xcassets in Resources */,
 				018DF1D01E86221D00DE51EA /* Main.storyboard in Resources */,
 				01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */,
-				01DE68671E88D542004678FA /* 11.jpeg in Resources */,
 				018DF1E81E8623F500DE51EA /* HRSignup.storyboard in Resources */,
 				018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */,
 			);
