@@ -61,11 +61,13 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
     [self.networkManager loginRequestToServer:userID
                                      password:password
                                    completion:^(BOOL isSuccess, id response) {
-        if (isSuccess) {
-            self.userToken = [response objectForKey:ACCOUNT_KEY_OF_SERVER];
-            [[NSUserDefaults standardUserDefaults] setObject:self.userToken forKey:TOKEN_KEY_OF_USERDEFAULTS];
-        }
-    }];
+                                       if (isSuccess) {
+                                           self.userToken = [response objectForKey:ACCOUNT_KEY_OF_SERVER];
+                                           [[NSUserDefaults standardUserDefaults] setObject:self.userToken forKey:TOKEN_KEY_OF_USERDEFAULTS];
+                                       }
+                                       
+                                       completion(isSuccess, response);
+                                   }];
 }
 
 
@@ -78,10 +80,15 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
                                       password:password
                                      password2:password2
                                     completion:^(BOOL isSuccess, id response) {
-        if (isSuccess) {
-            self.userToken = [response objectForKey:ACCOUNT_KEY_OF_SERVER];
-            [self saveToken:self.userToken];
-        }
+                                        
+                                        if (isSuccess) {
+                                            
+                                            self.userToken = [response objectForKey:ACCOUNT_KEY_OF_SERVER];
+                                            [self saveToken:self.userToken];
+                                        }
+                                        
+                                        completion(isSuccess, response);
+                                        
     }];
 }
 
