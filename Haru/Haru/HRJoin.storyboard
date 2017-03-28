@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Signup View Controller-->
+        <!--Join View Controller-->
         <scene sceneID="FJ4-kG-rH9">
             <objects>
-                <viewController storyboardIdentifier="HRSignupViewController" id="oTz-2u-e7X" customClass="HRSignupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HRJoinViewController" id="oTz-2u-e7X" customClass="HRJoinViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sik-hq-Om1"/>
                         <viewControllerLayoutGuide type="bottom" id="gap-GW-Fxm"/>
@@ -43,7 +43,7 @@
                                                             <constraint firstAttribute="height" constant="120" id="bNL-CZ-W0V"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-qm-H3g">
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-qm-H3g">
                                                         <rect key="frame" x="72" y="273" width="230" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="230" id="ACy-Vb-DXW"/>
@@ -56,7 +56,14 @@
                                                             <outlet property="delegate" destination="oTz-2u-e7X" id="3FO-vC-JFg"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJa-ri-7rU">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc3-mY-qPR" userLabel="SignupIDView">
+                                                        <rect key="frame" x="72" y="304" width="230" height="1"/>
+                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="u3A-Bv-uSh"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJa-ri-7rU">
                                                         <rect key="frame" x="72" y="323" width="230" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -65,7 +72,14 @@
                                                             <outlet property="delegate" destination="oTz-2u-e7X" id="gE5-Yy-k6Y"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="One More Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-Ye-c7R">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guq-uz-NjI" userLabel="SignupPasswordView">
+                                                        <rect key="frame" x="72" y="354" width="230" height="1"/>
+                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="BzK-f6-l9e"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="One More Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-Ye-c7R">
                                                         <rect key="frame" x="72" y="373" width="230" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -74,6 +88,13 @@
                                                             <outlet property="delegate" destination="oTz-2u-e7X" id="EDR-DF-tE8"/>
                                                         </connections>
                                                     </textField>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngH-zI-ZwW" userLabel="SignupPasswordCheckView">
+                                                        <rect key="frame" x="72" y="404" width="230" height="1"/>
+                                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="bDV-k7-fgI"/>
+                                                        </constraints>
+                                                    </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-mP-7a4">
                                                         <rect key="frame" x="72" y="423" width="230" height="30"/>
                                                         <state key="normal" title="회원가입"/>
@@ -87,6 +108,9 @@
                                                     <constraint firstItem="aJa-ri-7rU" firstAttribute="width" secondItem="kxo-qm-H3g" secondAttribute="width" id="1sK-WG-gfp"/>
                                                     <constraint firstItem="ARQ-Ye-c7R" firstAttribute="top" secondItem="aJa-ri-7rU" secondAttribute="bottom" constant="20" id="2HF-Dj-CYo"/>
                                                     <constraint firstItem="8pP-IV-w5A" firstAttribute="centerX" secondItem="Ud3-MR-KdF" secondAttribute="centerX" id="4Mm-L7-Y3A"/>
+                                                    <constraint firstItem="Guq-uz-NjI" firstAttribute="width" secondItem="aJa-ri-7rU" secondAttribute="width" id="5Ma-bO-0uf"/>
+                                                    <constraint firstItem="ngH-zI-ZwW" firstAttribute="width" secondItem="ARQ-Ye-c7R" secondAttribute="width" id="5Xx-is-Gu4"/>
+                                                    <constraint firstItem="ngH-zI-ZwW" firstAttribute="centerX" secondItem="ARQ-Ye-c7R" secondAttribute="centerX" id="7MN-2E-7Jd"/>
                                                     <constraint firstItem="aJa-ri-7rU" firstAttribute="centerX" secondItem="kxo-qm-H3g" secondAttribute="centerX" id="C4b-fG-L1I"/>
                                                     <constraint firstAttribute="height" constant="600" id="Dc9-rx-vAi"/>
                                                     <constraint firstItem="kxo-qm-H3g" firstAttribute="centerY" secondItem="8pP-IV-w5A" secondAttribute="centerY" multiplier="1.6" id="Fcw-39-Vsu"/>
@@ -94,6 +118,8 @@
                                                     <constraint firstItem="aJa-ri-7rU" firstAttribute="top" secondItem="kxo-qm-H3g" secondAttribute="bottom" constant="20" id="IEt-eA-02I"/>
                                                     <constraint firstItem="ARQ-Ye-c7R" firstAttribute="height" secondItem="aJa-ri-7rU" secondAttribute="height" id="Ktw-Nb-oaL"/>
                                                     <constraint firstItem="aJa-ri-7rU" firstAttribute="height" secondItem="kxo-qm-H3g" secondAttribute="height" id="MS8-Bw-YSX"/>
+                                                    <constraint firstItem="Wc3-mY-qPR" firstAttribute="width" secondItem="kxo-qm-H3g" secondAttribute="width" id="Ml8-On-Xiv"/>
+                                                    <constraint firstItem="Guq-uz-NjI" firstAttribute="top" secondItem="aJa-ri-7rU" secondAttribute="bottom" constant="1" id="Vxx-GR-acx"/>
                                                     <constraint firstItem="iAU-mP-7a4" firstAttribute="width" secondItem="ARQ-Ye-c7R" secondAttribute="width" id="X53-W8-NbM"/>
                                                     <constraint firstItem="iAU-mP-7a4" firstAttribute="centerX" secondItem="ARQ-Ye-c7R" secondAttribute="centerX" id="YRL-6y-6mz"/>
                                                     <constraint firstItem="kxo-qm-H3g" firstAttribute="centerX" secondItem="8pP-IV-w5A" secondAttribute="centerX" id="aI0-Zq-RN8"/>
@@ -101,6 +127,10 @@
                                                     <constraint firstItem="iAU-mP-7a4" firstAttribute="height" secondItem="ARQ-Ye-c7R" secondAttribute="height" id="bZ9-os-Es0"/>
                                                     <constraint firstItem="8pP-IV-w5A" firstAttribute="centerY" secondItem="Ud3-MR-KdF" secondAttribute="centerY" multiplier="0.6" id="mNq-IX-kCI"/>
                                                     <constraint firstItem="ARQ-Ye-c7R" firstAttribute="width" secondItem="aJa-ri-7rU" secondAttribute="width" id="n5X-dP-hsf"/>
+                                                    <constraint firstItem="Wc3-mY-qPR" firstAttribute="top" secondItem="kxo-qm-H3g" secondAttribute="bottom" constant="1" id="pHB-2M-7vy"/>
+                                                    <constraint firstItem="Guq-uz-NjI" firstAttribute="centerX" secondItem="aJa-ri-7rU" secondAttribute="centerX" id="qlw-fG-Lup"/>
+                                                    <constraint firstItem="ngH-zI-ZwW" firstAttribute="top" secondItem="ARQ-Ye-c7R" secondAttribute="bottom" constant="1" id="uFL-eG-qg5"/>
+                                                    <constraint firstItem="Wc3-mY-qPR" firstAttribute="centerX" secondItem="kxo-qm-H3g" secondAttribute="centerX" id="zr4-55-7ez"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

@@ -6,10 +6,10 @@
 //  Copyright © 2017년 jcy. All rights reserved.
 //
 
-#import "HRSignupViewController.h"
+#import "HRJoinViewController.h"
 #import "HRDataCenter.h"
 
-@interface HRSignupViewController ()
+@interface HRJoinViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *signupContentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *signupScrollView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation HRSignupViewController
+@implementation HRJoinViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -7,7 +7,7 @@
 //
 
 #import "HRTutorialViewController.h"
-#import "HRSignupViewController.h"
+#import "HRJoinViewController.h"
 #import "HRLoginViewController.h"
 
 @interface HRTutorialViewController ()
@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage1;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage2;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage3;
-
 
 @end
 
@@ -71,8 +70,8 @@
 //회원가입 버튼 클릭했을 때, 행동하는 Method
 #pragma mark- tutorialViewController Signup Button Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
-    UIStoryboard *signupStoryboard = [UIStoryboard storyboardWithName:@"HRSignup" bundle:nil];
-    HRSignupViewController *signupView = [signupStoryboard instantiateViewControllerWithIdentifier:@"HRSignupViewController"];
+    UIStoryboard *signupStoryboard = [UIStoryboard storyboardWithName:@"HRJoin" bundle:nil];
+    HRJoinViewController *signupView = [signupStoryboard instantiateViewControllerWithIdentifier:@"HRJoinViewController"];
     [self.navigationController pushViewController:signupView animated:YES];
     
 }

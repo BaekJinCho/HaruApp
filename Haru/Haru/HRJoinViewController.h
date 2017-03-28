@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRSignupViewController : UIViewController
+@interface HRJoinViewController : UIViewController
 
 @end
