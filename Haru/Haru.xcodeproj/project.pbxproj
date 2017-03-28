@@ -22,6 +22,7 @@
 		185978941E88D42B00172475 /* HRDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978931E88D42B00172475 /* HRDataCenter.m */; };
 		185978971E88D43900172475 /* HRNetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978961E88D43900172475 /* HRNetworkModule.m */; };
 		1859789A1E88D46C00172475 /* HRPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978991E88D46C00172475 /* HRPostModel.m */; };
+		47FE0AA600A1CFE3BAE31B0F /* libPods-Haru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC463534BD897007F9825E26 /* libPods-Haru.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,12 +44,15 @@
 		01DE686C1E89190F004678FA /* HRMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMainView.storyboard; sourceTree = "<group>"; };
 		01DE686F1E8919D7004678FA /* HRJoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRJoinViewController.h; sourceTree = "<group>"; };
 		01DE68701E8919D7004678FA /* HRJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRJoinViewController.m; sourceTree = "<group>"; };
+		1477AF446334381C2D55699B /* Pods-Haru.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Haru.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Haru/Pods-Haru.debug.xcconfig"; sourceTree = "<group>"; };
 		185978921E88D42B00172475 /* HRDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDataCenter.h; sourceTree = "<group>"; };
 		185978931E88D42B00172475 /* HRDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDataCenter.m; sourceTree = "<group>"; };
 		185978951E88D43900172475 /* HRNetworkModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRNetworkModule.h; sourceTree = "<group>"; };
 		185978961E88D43900172475 /* HRNetworkModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRNetworkModule.m; sourceTree = "<group>"; };
 		185978981E88D46C00172475 /* HRPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPostModel.h; sourceTree = "<group>"; };
 		185978991E88D46C00172475 /* HRPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPostModel.m; sourceTree = "<group>"; };
+		658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Haru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Haru/Pods-Haru.release.xcconfig"; sourceTree = "<group>"; };
+		BC463534BD897007F9825E26 /* libPods-Haru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Haru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47FE0AA600A1CFE3BAE31B0F /* libPods-Haru.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,8 @@
 			children = (
 				018DF1C41E86221D00DE51EA /* Haru */,
 				018DF1C31E86221D00DE51EA /* Products */,
+				72AD185B01F78AC6F41D728F /* Pods */,
+				70D62008E53D276FA3FB1A87 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -196,6 +203,23 @@
 			name = Join;
 			sourceTree = "<group>";
 		};
+		70D62008E53D276FA3FB1A87 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC463534BD897007F9825E26 /* libPods-Haru.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72AD185B01F78AC6F41D728F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1477AF446334381C2D55699B /* Pods-Haru.debug.xcconfig */,
+				658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -203,9 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 018DF1D91E86221D00DE51EA /* Build configuration list for PBXNativeTarget "Haru" */;
 			buildPhases = (
+				BB2DDD020D2433A19F52A7A1 /* [CP] Check Pods Manifest.lock */,
 				018DF1BE1E86221D00DE51EA /* Sources */,
 				018DF1BF1E86221D00DE51EA /* Frameworks */,
 				018DF1C01E86221D00DE51EA /* Resources */,
+				7D75B3E407ECCD1A90C42BC6 /* [CP] Embed Pods Frameworks */,
+				3B82F0535D726E7D557AB557 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,6 +292,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B82F0535D726E7D557AB557 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Haru/Pods-Haru-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D75B3E407ECCD1A90C42BC6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Haru/Pods-Haru-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB2DDD020D2433A19F52A7A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		018DF1BE1E86221D00DE51EA /* Sources */ = {
@@ -394,6 +469,7 @@
 		};
 		018DF1DA1E86221D00DE51EA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1477AF446334381C2D55699B /* Pods-Haru.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Haru/Info.plist;
@@ -405,6 +481,7 @@
 		};
 		018DF1DB1E86221D00DE51EA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Haru/Info.plist;
