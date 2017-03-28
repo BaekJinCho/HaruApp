@@ -13,7 +13,7 @@ static NSString * const TOKEN_KEY = @"Authorization";
 
 static NSInteger const STATUSCODE_LOGIN_SUCCESS = 200;
 static NSInteger const STATUSCODE_SIGNUP_SUCCESS = 201;
-static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 201;
+static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
 
 
 @implementation HRNetworkModule
@@ -72,16 +72,16 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 201;
     NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
                                                          fromData:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
-                                                                     options:NSJSONReadingMutableLeaves
-                                                                       error:&error];
-        if (httpResponse.statusCode == STATUSCODE_SIGNUP_SUCCESS) {
-            completion (YES, responseData);
-        } else {
-            completion (NO, responseData);
-        }
-    }];
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                                 options:NSJSONReadingMutableLeaves
+                                                                                                                   error:&error];
+                                                    if (httpResponse.statusCode == STATUSCODE_SIGNUP_SUCCESS) {
+                                                        completion (YES, responseData);
+                                                    } else {
+                                                        completion (NO, responseData);
+                                                    }
+                                                }];
     [task resume];
 }
 
@@ -144,7 +144,7 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 201;
                     password:(NSString *)password
                    password2:(NSString *)password2 {
     
-    return [NSString stringWithFormat:@"username=%@&password=%@&password2=%@", userName, password, password2];
+    return [NSString stringWithFormat:@"username=%@&password1=%@&password2=%@", userName, password, password2];
 }
 
 @end

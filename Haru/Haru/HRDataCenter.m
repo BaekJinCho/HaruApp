@@ -41,7 +41,6 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
     self = [super init];
     if (self) {
         self.networkManager = [[HRNetworkModule alloc] init];
-        self.userToken = [[NSUserDefaults standardUserDefaults] stringForKey:TOKEN_KEY_OF_USERDEFAULTS];
     }
     return self;
 }
@@ -50,7 +49,7 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 - (NSString *)getUserToken
 {
     if (_userToken == nil) {
-        _userToken = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
+        _userToken = [[NSUserDefaults standardUserDefaults] stringForKey:TOKEN_KEY_OF_USERDEFAULTS];
     }
     return _userToken;
 }
@@ -61,11 +60,10 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
     [self.networkManager loginRequestToServer:userID
                                      password:password
                                    completion:^(BOOL isSuccess, id response) {
-                                       if (isSuccess) {
-                                           self.userToken = [response objectForKey:ACCOUNT_KEY_OF_SERVER];
-                                           [[NSUserDefaults standardUserDefaults] setObject:self.userToken forKey:TOKEN_KEY_OF_USERDEFAULTS];
+                                       if (isSuccess == YES) {
+                                           NSString *token = [(NSDictionary *)response objectForKey:ACCOUNT_KEY_OF_SERVER];
+                                           [self saveToken:token];
                                        }
-                                       
                                        completion(isSuccess, response);
                                    }];
 }
@@ -81,14 +79,12 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
                                      password2:password2
                                     completion:^(BOOL isSuccess, id response) {
                                         
-                                        if (isSuccess) {
-                                            
-                                            self.userToken = [response objectForKey:ACCOUNT_KEY_OF_SERVER];
-                                            [self saveToken:self.userToken];
+                                        if (isSuccess == YES) {
+                    
+                                            NSString *token = [(NSDictionary *)response objectForKey:ACCOUNT_KEY_OF_SERVER];
+                                            [self saveToken:token];
                                         }
-                                        
                                         completion(isSuccess, response);
-                                        
     }];
 }
 
