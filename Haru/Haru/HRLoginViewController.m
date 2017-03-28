@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *loginContentView;
 @property (weak, nonatomic) IBOutlet UITextField *loginIDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *LoginPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginIndicator;
 
 @end
 
@@ -73,9 +74,13 @@
     }
     return YES;
 }
-
+//로그인 버튼을 눌렀을 때, 불리는 Method
+#pragma mark- loginView loginButtonClick Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
+    [self.loginIndicator startAnimating];
+    
 }
+
 
 /*
 #pragma mark - Navigation

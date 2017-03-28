@@ -112,6 +112,10 @@
                                     <constraint firstItem="CzW-Fb-2jS" firstAttribute="width" secondItem="RHn-Is-IB0" secondAttribute="width" id="rel-Ap-YSX"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2Cy-fw-CXg">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -125,6 +129,7 @@
                         <outlet property="LoginPasswordTextField" destination="uj5-Ob-G5V" id="WKL-BQ-lnn"/>
                         <outlet property="loginContentView" destination="6w0-Lw-WDs" id="1L8-Pl-OfV"/>
                         <outlet property="loginIDTextField" destination="UMC-Dv-tWQ" id="noQ-EK-h5N"/>
+                        <outlet property="loginIndicator" destination="2Cy-fw-CXg" id="jiV-U6-hQ7"/>
                         <outlet property="loginScrollView" destination="CzW-Fb-2jS" id="ReJ-4Y-bd5"/>
                     </connections>
                 </viewController>

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage2;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage3;
 
+
 @end
 
 @implementation HRTutorialViewController

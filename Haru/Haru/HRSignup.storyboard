@@ -125,6 +125,10 @@
                                     <constraint firstItem="SeS-ud-Lrg" firstAttribute="centerY" secondItem="skT-43-KML" secondAttribute="centerY" id="yDK-oH-uZx"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="N3Q-2C-sX5">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -137,6 +141,7 @@
                     <connections>
                         <outlet property="signupContentView" destination="Ud3-MR-KdF" id="qcB-3a-zuP"/>
                         <outlet property="signupIDTextField" destination="kxo-qm-H3g" id="iPc-Vf-tUo"/>
+                        <outlet property="signupIndicator" destination="N3Q-2C-sX5" id="3c9-ad-1tM"/>
                         <outlet property="signupPasswordCheckTextField" destination="ARQ-Ye-c7R" id="TuK-fj-pdn"/>
                         <outlet property="signupPasswordTextField" destination="aJa-ri-7rU" id="Q19-Bv-aZq"/>
                         <outlet property="signupScrollView" destination="SeS-ud-Lrg" id="SGn-NJ-YA2"/>

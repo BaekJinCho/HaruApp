@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,26 +19,26 @@
                         <viewControllerLayoutGuide type="bottom" id="XP9-6b-2Nr"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WGJ-kX-hKE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmM-2u-MfJ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZmM-2u-MfJ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-Sn-IhA" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="960" height="480"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="960" height="568"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="evv-1M-IjA">
-                                                <rect key="frame" x="0.0" y="0.0" width="960" height="480"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="960" height="568"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AAl-Jh-IWv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-Tl-d8p">
-                                                        <rect key="frame" x="320" y="0.0" width="320" height="480"/>
+                                                        <rect key="frame" x="320" y="0.0" width="320" height="568"/>
                                                     </imageView>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="baL-74-ORO">
-                                                        <rect key="frame" x="640" y="0.0" width="320" height="480"/>
+                                                        <rect key="frame" x="640" y="0.0" width="320" height="568"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -65,13 +65,13 @@
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hpY-Qh-y9X">
-                                <rect key="frame" x="140.5" y="443" width="39" height="37"/>
+                                <rect key="frame" x="140.5" y="531" width="39" height="37"/>
                                 <connections>
                                     <action selector="changePage:" destination="0ev-2O-LNe" eventType="valueChanged" id="afD-AS-POw"/>
                                 </connections>
                             </pageControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbK-Mg-iUe">
-                                <rect key="frame" x="40" y="84" width="240" height="120"/>
+                                <rect key="frame" x="40" y="110.5" width="240" height="120"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4Yc-NP-L7P"/>
@@ -79,7 +79,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFP-dS-RqV">
-                                <rect key="frame" x="140.5" y="303" width="39" height="30"/>
+                                <rect key="frame" x="140.5" y="391" width="39" height="30"/>
                                 <state key="normal" title="로그인">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -88,7 +88,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br5-NH-bpA">
-                                <rect key="frame" x="134" y="379" width="52" height="30"/>
+                                <rect key="frame" x="134" y="467" width="52" height="30"/>
                                 <state key="normal" title="회원가입">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>

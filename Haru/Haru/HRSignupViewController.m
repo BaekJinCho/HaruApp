@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *signupIDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *signupPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *signupPasswordCheckTextField;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *signupIndicator;
 
 @end
 
@@ -75,6 +76,7 @@
 //회원가입 버튼을 눌렀을 때, 불리는 Method
 #pragma mark- signupView signupButtonClick Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
+    [self.signupIndicator startAnimating];
 }
 
 /*
