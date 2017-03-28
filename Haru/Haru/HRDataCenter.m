@@ -56,7 +56,7 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 }
 
 
-- (void) loginRequestWithUserID:(NSString *)userID password:(NSString *)password {
+- (void)loginRequestWithUserID:(NSString *)userID password:(NSString *)password completion:(BlockOnCompletion)completion {
     
     [self.networkManager loginRequestToServer:userID
                                      password:password
@@ -69,9 +69,10 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 }
 
 
-- (void) signupRequestWithUserID:(NSString *)userID
+- (void)signupRequestWithUserID:(NSString *)userID
                         password:(NSString *)password
-                       password2:(NSString *)password2 {
+                       password2:(NSString *)password2
+                     completion:(BlockOnCompletion)completion {
     
     [self.networkManager signupRequestToServer:userID
                                       password:password
@@ -85,7 +86,7 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 }
 
 
-- (void)signoutRequestWithUserID {
+- (void)logoutRequestWithUserID {
     
     [self removeToken];
 }

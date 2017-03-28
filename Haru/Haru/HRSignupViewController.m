@@ -7,6 +7,7 @@
 //
 
 #import "HRSignupViewController.h"
+#import "HRDataCenter.h"
 
 @interface HRSignupViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
@@ -77,6 +78,18 @@
 #pragma mark- signupView signupButtonClick Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
     [self.signupIndicator startAnimating];
+    NSString *signUpIDText = self.signupIDTextField.text;
+    NSString *signUpPasswordText = self.signupPasswordTextField.text;
+    NSString *signUpPasswordCheckText = self.signupPasswordCheckTextField.text;
+    
+    [[HRDataCenter sharedInstance]signupRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
+        if (isSuccess) {
+            NSLog(@"로그인 성공 / token:::%@",response);
+        } else {
+            NSLog(@"로그인 실패! token 따위는 없다.");
+        }
+    }];
+    
 }
 
 /*

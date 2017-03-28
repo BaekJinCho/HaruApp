@@ -11,7 +11,7 @@
 
 static NSString * const TOKEN_KEY = @"Authorization";
 
-static NSInteger const STATUSCODE_LOGIN_SUCCESS = 201;
+static NSInteger const STATUSCODE_LOGIN_SUCCESS = 200;
 static NSInteger const STATUSCODE_SIGNUP_SUCCESS = 201;
 static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 201;
 

@@ -13,8 +13,14 @@
 
 @property NSString *userToken;
 
-+ (instancetype) sharedInstance;
++ (instancetype)sharedInstance;
 
 - (NSString *)getUserToken;
 
+- (void)signupRequestWithUserID:(NSString *)userID
+                       password:(NSString *)password
+                      password2:(NSString *)password2
+                     completion:(BlockOnCompletion)completion;
+
+- (void)loginRequestWithUserID:(NSString *)userID password:(NSString *)password completion:(BlockOnCompletion)completion;
 @end
