@@ -19,6 +19,9 @@
 		01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CB50B11E8A28810024CC4C /* HRLoginViewController.m */; };
 		01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DE686C1E89190F004678FA /* HRMainView.storyboard */; };
 		01DE68711E8919D7004678FA /* HRSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE68701E8919D7004678FA /* HRSignupViewController.m */; };
+		185978941E88D42B00172475 /* HRDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978931E88D42B00172475 /* HRDataCenter.m */; };
+		185978971E88D43900172475 /* HRNetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978961E88D43900172475 /* HRNetworkModule.m */; };
+		1859789A1E88D46C00172475 /* HRPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978991E88D46C00172475 /* HRPostModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,12 @@
 		01DE686C1E89190F004678FA /* HRMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMainView.storyboard; sourceTree = "<group>"; };
 		01DE686F1E8919D7004678FA /* HRSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRSignupViewController.h; sourceTree = "<group>"; };
 		01DE68701E8919D7004678FA /* HRSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRSignupViewController.m; sourceTree = "<group>"; };
+		185978921E88D42B00172475 /* HRDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDataCenter.h; sourceTree = "<group>"; };
+		185978931E88D42B00172475 /* HRDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDataCenter.m; sourceTree = "<group>"; };
+		185978951E88D43900172475 /* HRNetworkModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRNetworkModule.h; sourceTree = "<group>"; };
+		185978961E88D43900172475 /* HRNetworkModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRNetworkModule.m; sourceTree = "<group>"; };
+		185978981E88D46C00172475 /* HRPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPostModel.h; sourceTree = "<group>"; };
+		185978991E88D46C00172475 /* HRPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPostModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +113,12 @@
 		018DF1DD1E86225100DE51EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				185978921E88D42B00172475 /* HRDataCenter.h */,
+				185978931E88D42B00172475 /* HRDataCenter.m */,
+				185978951E88D43900172475 /* HRNetworkModule.h */,
+				185978961E88D43900172475 /* HRNetworkModule.m */,
+				185978981E88D46C00172475 /* HRPostModel.h */,
+				185978991E88D46C00172475 /* HRPostModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -260,6 +275,9 @@
 				018DF1CA1E86221D00DE51EA /* AppDelegate.m in Sources */,
 				01DE68711E8919D7004678FA /* HRSignupViewController.m in Sources */,
 				01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */,
+				185978971E88D43900172475 /* HRNetworkModule.m in Sources */,
+				1859789A1E88D46C00172475 /* HRPostModel.m in Sources */,
+				185978941E88D42B00172475 /* HRDataCenter.m in Sources */,
 				018DF1C71E86221D00DE51EA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
