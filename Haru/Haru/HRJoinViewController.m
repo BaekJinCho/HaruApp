@@ -83,7 +83,7 @@
     NSString *signUpPasswordCheckText = self.signupPasswordCheckTextField.text;
     
     [[HRDataCenter sharedInstance]signupRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
-        if (isSuccess) {
+        if (isSuccess == YES) {
             NSLog(@"로그인 성공 / token:::%@",response);
         } else {
             NSLog(@"로그인 실패! token 따위는 없다.");
