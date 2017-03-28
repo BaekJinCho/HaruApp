@@ -8,7 +8,7 @@
 
 #import "HRTutorialViewController.h"
 #import "HRSignupViewController.h"
-//#import "HRLoginViewController.h"
+#import "HRLoginViewController.h"
 
 @interface HRTutorialViewController ()
 <UIScrollViewDelegate>
@@ -78,11 +78,11 @@
 //로그인 버튼 클릭했을 때, 행동하는 Method
 #pragma mark- tutorialViewController Login Button Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
-    /*
+    
     UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"HRLogin" bundle:nil];
     HRLoginViewController *loginView = [loginStoryboard instantiateViewControllerWithIdentifier:@"HRLoginViewController"];
     [self.navigationController pushViewController:loginView animated:YES];
-     */
+    
 }
 
 - (void)didReceiveMemoryWarning {

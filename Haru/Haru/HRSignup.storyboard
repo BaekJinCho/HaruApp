@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oTz-2u-e7X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,16 +33,22 @@
                                         <rect key="frame" x="0.0" y="33" width="375" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ud3-MR-KdF" userLabel="Content View">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                                 <subviews>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-IV-w5A">
-                                                        <rect key="frame" x="67" y="62" width="240" height="128"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-IV-w5A">
+                                                        <rect key="frame" x="67" y="120" width="240" height="120"/>
                                                         <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="240" id="8fD-pQ-z21"/>
+                                                            <constraint firstAttribute="height" constant="120" id="bNL-CZ-W0V"/>
+                                                        </constraints>
                                                     </imageView>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-qm-H3g">
-                                                        <rect key="frame" x="75" y="294" width="232" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kxo-qm-H3g">
+                                                        <rect key="frame" x="72" y="273" width="230" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="230" id="ACy-Vb-DXW"/>
+                                                            <constraint firstAttribute="height" constant="30" id="ff3-mW-mf5"/>
+                                                        </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -49,9 +56,8 @@
                                                             <outlet property="delegate" destination="oTz-2u-e7X" id="3FO-vC-JFg"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJa-ri-7rU">
-                                                        <rect key="frame" x="71" y="349" width="232" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJa-ri-7rU">
+                                                        <rect key="frame" x="72" y="323" width="230" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -59,9 +65,8 @@
                                                             <outlet property="delegate" destination="oTz-2u-e7X" id="gE5-Yy-k6Y"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="One More Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-Ye-c7R">
-                                                        <rect key="frame" x="71" y="412" width="232" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="One More Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ARQ-Ye-c7R">
+                                                        <rect key="frame" x="72" y="373" width="230" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -69,15 +74,33 @@
                                                             <outlet property="delegate" destination="oTz-2u-e7X" id="EDR-DF-tE8"/>
                                                         </connections>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-mP-7a4">
-                                                        <rect key="frame" x="164" y="502" width="46" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Button"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-mP-7a4">
+                                                        <rect key="frame" x="72" y="423" width="230" height="30"/>
+                                                        <state key="normal" title="회원가입"/>
+                                                        <connections>
+                                                            <action selector="clickSignupButton:" destination="oTz-2u-e7X" eventType="touchUpInside" id="cdV-Y5-bEw"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="800" id="Dc9-rx-vAi"/>
+                                                    <constraint firstItem="aJa-ri-7rU" firstAttribute="width" secondItem="kxo-qm-H3g" secondAttribute="width" id="1sK-WG-gfp"/>
+                                                    <constraint firstItem="ARQ-Ye-c7R" firstAttribute="top" secondItem="aJa-ri-7rU" secondAttribute="bottom" constant="20" id="2HF-Dj-CYo"/>
+                                                    <constraint firstItem="8pP-IV-w5A" firstAttribute="centerX" secondItem="Ud3-MR-KdF" secondAttribute="centerX" id="4Mm-L7-Y3A"/>
+                                                    <constraint firstItem="aJa-ri-7rU" firstAttribute="centerX" secondItem="kxo-qm-H3g" secondAttribute="centerX" id="C4b-fG-L1I"/>
+                                                    <constraint firstAttribute="height" constant="600" id="Dc9-rx-vAi"/>
+                                                    <constraint firstItem="kxo-qm-H3g" firstAttribute="centerY" secondItem="8pP-IV-w5A" secondAttribute="centerY" multiplier="1.6" id="Fcw-39-Vsu"/>
+                                                    <constraint firstItem="iAU-mP-7a4" firstAttribute="top" secondItem="ARQ-Ye-c7R" secondAttribute="bottom" constant="20" id="Fgv-WW-ZMq"/>
+                                                    <constraint firstItem="aJa-ri-7rU" firstAttribute="top" secondItem="kxo-qm-H3g" secondAttribute="bottom" constant="20" id="IEt-eA-02I"/>
+                                                    <constraint firstItem="ARQ-Ye-c7R" firstAttribute="height" secondItem="aJa-ri-7rU" secondAttribute="height" id="Ktw-Nb-oaL"/>
+                                                    <constraint firstItem="aJa-ri-7rU" firstAttribute="height" secondItem="kxo-qm-H3g" secondAttribute="height" id="MS8-Bw-YSX"/>
+                                                    <constraint firstItem="iAU-mP-7a4" firstAttribute="width" secondItem="ARQ-Ye-c7R" secondAttribute="width" id="X53-W8-NbM"/>
+                                                    <constraint firstItem="iAU-mP-7a4" firstAttribute="centerX" secondItem="ARQ-Ye-c7R" secondAttribute="centerX" id="YRL-6y-6mz"/>
+                                                    <constraint firstItem="kxo-qm-H3g" firstAttribute="centerX" secondItem="8pP-IV-w5A" secondAttribute="centerX" id="aI0-Zq-RN8"/>
+                                                    <constraint firstItem="ARQ-Ye-c7R" firstAttribute="centerX" secondItem="aJa-ri-7rU" secondAttribute="centerX" id="bBU-4u-VFt"/>
+                                                    <constraint firstItem="iAU-mP-7a4" firstAttribute="height" secondItem="ARQ-Ye-c7R" secondAttribute="height" id="bZ9-os-Es0"/>
+                                                    <constraint firstItem="8pP-IV-w5A" firstAttribute="centerY" secondItem="Ud3-MR-KdF" secondAttribute="centerY" multiplier="0.6" id="mNq-IX-kCI"/>
+                                                    <constraint firstItem="ARQ-Ye-c7R" firstAttribute="width" secondItem="aJa-ri-7rU" secondAttribute="width" id="n5X-dP-hsf"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -116,6 +139,7 @@
                         <outlet property="signupIDTextField" destination="kxo-qm-H3g" id="iPc-Vf-tUo"/>
                         <outlet property="signupPasswordCheckTextField" destination="ARQ-Ye-c7R" id="TuK-fj-pdn"/>
                         <outlet property="signupPasswordTextField" destination="aJa-ri-7rU" id="Q19-Bv-aZq"/>
+                        <outlet property="signupScrollView" destination="SeS-ud-Lrg" id="SGn-NJ-YA2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9HF-YZ-0g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
