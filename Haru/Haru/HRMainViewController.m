@@ -59,7 +59,7 @@
 #pragma mark- mainViewController heightForRowAtIndexPath Method
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 100;
+    return self.view.frame.size.width * 0.8;
 }
 //mainView의 cell을 클릭했을 때, 불리는 Method
 #pragma mark- mainViewController didSelectRowAtIndexPath Method
