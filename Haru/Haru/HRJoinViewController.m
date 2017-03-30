@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *signupIDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *signupPasswordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *signupPasswordCheckTextField;
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *signupIndicator;
 
 @end
@@ -28,6 +29,16 @@
     //signupPasswordTextField *로 표시
     self.signupPasswordTextField.secureTextEntry = YES;
     self.signupPasswordCheckTextField.secureTextEntry = YES;
+    
+    // 텍스트 필드 placeholder 컬러
+    UIColor *color = [UIColor lightGrayColor];
+    self.signupIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
+    self.signupPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
+    self.signupPasswordCheckTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호 확인" attributes:@{NSForegroundColorAttributeName:color}];
+    
+    //회원가입 버튼 background color
+    self.joinButton.layer.backgroundColor = [UIColor blueColor].CGColor;
+    self.joinButton.layer.borderColor = [UIColor blueColor].CGColor;
     
     //UIView 투명 만들어주기!
     self.signupContentView.opaque = NO;
@@ -49,7 +60,7 @@
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
-        [self.signupScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-170) animated:YES];
+        [self.signupScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-195) animated:YES];
         
     } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
         

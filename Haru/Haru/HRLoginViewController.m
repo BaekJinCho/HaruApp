@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *loginContentView;
 @property (weak, nonatomic) IBOutlet UITextField *loginIDTextField;
 @property (weak, nonatomic) IBOutlet UITextField *LoginPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginIndicator;
 
 @end
@@ -25,6 +26,16 @@
     // Do any additional setup after loading the view.
     //loginPasswordTextField *로 표시
     self.LoginPasswordTextField.secureTextEntry = YES;
+    
+    //회원가입 버튼 background color
+    self.loginButton.layer.backgroundColor = [UIColor blueColor].CGColor;
+    self.loginButton.layer.borderColor = [UIColor blueColor].CGColor;
+    
+    // 텍스트 필드 placeholder 컬러
+    UIColor *color = [UIColor lightGrayColor];
+    self.loginIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
+    self.LoginPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
+    
     
     //UIView 투명 만들어주기!
     self.loginContentView.opaque = NO;
