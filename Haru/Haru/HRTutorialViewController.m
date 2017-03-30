@@ -28,6 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
 
     for (NSInteger i=0; i<=3; i++) {
         if (i==0)  {
@@ -39,12 +40,14 @@
         }
         
     }
- 
-//    self.tutorialJoinButton setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>
-//    self.tutorialLoginButton setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>
     
+//    .setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+//    navigationController?.navigationBar.shadowImage = UIImage()
     
-    [self.tutorialPageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
+//    [self.tutorialPageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     
     
 }
@@ -76,24 +79,33 @@
 //회원가입 버튼 클릭했을 때, 행동하는 Method
 #pragma mark- tutorialViewController Signup Button Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
-    UIStoryboard *signupStoryboard = [UIStoryboard storyboardWithName:@"HRJoin" bundle:nil];
-    HRJoinViewController *signupView = [signupStoryboard instantiateViewControllerWithIdentifier:@"HRJoinViewController"];
-    [self.navigationController pushViewController:signupView animated:YES];
+    
+//    UIStoryboard *signupStoryboard = [UIStoryboard storyboardWithName:@"HRJoin" bundle:nil];
+//    HRJoinViewController *signupView = [signupStoryboard instantiateViewControllerWithIdentifier:@"HRJoinViewController"];
+//    [self.navigationController pushViewController:signupView animated:YES];
     
 }
 //로그인 버튼 클릭했을 때, 행동하는 Method
 #pragma mark- tutorialViewController Login Button Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
     
+    /*
     UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"HRLogin" bundle:nil];
     HRLoginViewController *loginView = [loginStoryboard instantiateViewControllerWithIdentifier:@"HRLoginViewController"];
     [self.navigationController pushViewController:loginView animated:YES];
+     */
+    
+//    [self performSegueWithIdentifier:@"LoginSegue" sender:nil];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)unwindTutorialSegue:(UIStoryboardSegue *)sender {
+    
 }
 
 

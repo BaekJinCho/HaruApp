@@ -31,14 +31,10 @@
     self.joinPasswordCheckTextField.secureTextEntry = YES;
     
     // 텍스트 필드 placeholder 컬러
-    UIColor *color = [UIColor lightGrayColor];
+    UIColor *color = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:0.7];
     self.joinIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
     self.joinPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
     self.joinPasswordCheckTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호 확인" attributes:@{NSForegroundColorAttributeName:color}];
-    
-    //회원가입 버튼 background color
-    self.joinButton.layer.backgroundColor = [UIColor blueColor].CGColor;
-    self.joinButton.layer.borderColor = [UIColor blueColor].CGColor;
     
     //UIView 투명 만들어주기!
     self.joinContentView.opaque = NO;
@@ -55,12 +51,12 @@
     // Dispose of any resources that can be recreated.
 }
 //notification으로 signupScrollView 올리는 Method
-#pragma mark- signupView notification Method
+#pragma mark- joinView notification Method
 - (void)didChaneSignupScrollView:(NSNotification *) notification {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
-        [self.joinScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-195) animated:YES];
+        [self.joinScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-120) animated:YES];
         
     } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
         
@@ -74,7 +70,7 @@
 - (void)dealloc {
 }
 //signup storyboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
-#pragma mark- signupView TextField ShouldReturn Method
+#pragma mark- joinView TextField ShouldReturn Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if (textField.tag == 1) {
@@ -86,7 +82,7 @@
     return YES;
 }
 //회원가입 버튼을 눌렀을 때, 불리는 Method
-#pragma mark- signupView signupButtonClick Method
+#pragma mark- joinView signupButtonClick Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
     [self.joinIndicator startAnimating];
     NSString *signUpIDText = self.joinIDTextField.text;
@@ -101,6 +97,11 @@
         }
     }];
     
+}
+//회원가입 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
+#pragma mark- joinTabGesture Method
+- (IBAction)joinViewTabGesture:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
 }
 
 /*

@@ -27,12 +27,8 @@
     //loginPasswordTextField *로 표시
     self.LoginPasswordTextField.secureTextEntry = YES;
     
-    //회원가입 버튼 background color
-    self.loginButton.layer.backgroundColor = [UIColor blueColor].CGColor;
-    self.loginButton.layer.borderColor = [UIColor blueColor].CGColor;
-    
     // 텍스트 필드 placeholder 컬러
-    UIColor *color = [UIColor lightGrayColor];
+    UIColor *color = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:0.7];
     self.loginIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
     self.LoginPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
     
@@ -55,7 +51,7 @@
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
-        [self.loginScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-170) animated:YES];
+        [self.loginScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-145) animated:YES];
         
     } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
         
@@ -91,7 +87,11 @@
     [self.loginIndicator startAnimating];
     
 }
-
+//로그인 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
+#pragma mark- loginVeiwTabGesture Method
+- (IBAction)loginViewTabGesture:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
 
 /*
 #pragma mark - Navigation
