@@ -14,18 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FSCalendar (2.7.3)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - FSCalendar (~> 2.7)
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FSCalendar: 574388d70778c22719eed9341653e1743b345573
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 7b8ece2751f421e68a54aac142d38544360d0df7
+PODFILE CHECKSUM: 2d9c91cab8dd224f9586b1be19f07c51c859b00d
 
 COCOAPODS: 1.1.1
