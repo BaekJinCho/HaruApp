@@ -58,9 +58,9 @@
                                                         </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="oTz-2u-e7X" id="3FO-vC-JFg"/>
+                                                            <outlet property="delegate" destination="oTz-2u-e7X" id="I1r-bF-cDa"/>
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc3-mY-qPR" userLabel="SignupIDView">
@@ -74,9 +74,9 @@
                                                         <rect key="frame" x="129" y="335" width="230" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="oTz-2u-e7X" id="gE5-Yy-k6Y"/>
+                                                            <outlet property="delegate" destination="oTz-2u-e7X" id="c1X-Mm-ds4"/>
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guq-uz-NjI" userLabel="SignupPasswordView">
@@ -90,9 +90,9 @@
                                                         <rect key="frame" x="129" y="385" width="230" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
-                                                            <outlet property="delegate" destination="oTz-2u-e7X" id="EDR-DF-tE8"/>
+                                                            <outlet property="delegate" destination="oTz-2u-e7X" id="jD7-ai-GxM"/>
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ngH-zI-ZwW" userLabel="SignupPasswordCheckView">
@@ -217,12 +217,12 @@
                     </view>
                     <connections>
                         <outlet property="joinButton" destination="iAU-mP-7a4" id="7Yr-7v-C3r"/>
-                        <outlet property="signupContentView" destination="Ud3-MR-KdF" id="qcB-3a-zuP"/>
-                        <outlet property="signupIDTextField" destination="kxo-qm-H3g" id="iPc-Vf-tUo"/>
-                        <outlet property="signupIndicator" destination="N3Q-2C-sX5" id="3c9-ad-1tM"/>
-                        <outlet property="signupPasswordCheckTextField" destination="ARQ-Ye-c7R" id="TuK-fj-pdn"/>
-                        <outlet property="signupPasswordTextField" destination="aJa-ri-7rU" id="Q19-Bv-aZq"/>
-                        <outlet property="signupScrollView" destination="SeS-ud-Lrg" id="SGn-NJ-YA2"/>
+                        <outlet property="joinContentView" destination="Ud3-MR-KdF" id="Pbu-t9-M9h"/>
+                        <outlet property="joinIDTextField" destination="kxo-qm-H3g" id="yyz-iX-3Eo"/>
+                        <outlet property="joinIndicator" destination="N3Q-2C-sX5" id="SxK-pU-BEl"/>
+                        <outlet property="joinPasswordCheckTextField" destination="ARQ-Ye-c7R" id="2kR-Pc-fQb"/>
+                        <outlet property="joinPasswordTextField" destination="aJa-ri-7rU" id="LQ7-uv-hb6"/>
+                        <outlet property="joinScrollView" destination="SeS-ud-Lrg" id="B4U-yX-hdx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9HF-YZ-0g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
