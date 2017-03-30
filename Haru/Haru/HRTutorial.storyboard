@@ -71,7 +71,7 @@
                                 </connections>
                             </pageControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fbK-Mg-iUe">
-                                <rect key="frame" x="40" y="110.5" width="240" height="120"/>
+                                <rect key="frame" x="40" y="167" width="240" height="120"/>
                                 <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4Yc-NP-L7P"/>
@@ -79,7 +79,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFP-dS-RqV">
-                                <rect key="frame" x="140.5" y="391" width="39" height="30"/>
+                                <rect key="frame" x="32" y="376" width="256" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="rSx-I4-EPc"/>
+                                </constraints>
                                 <state key="normal" title="로그인">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -88,7 +91,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br5-NH-bpA">
-                                <rect key="frame" x="134" y="467" width="52" height="30"/>
+                                <rect key="frame" x="32" y="452" width="256" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="suX-wy-XwF"/>
+                                </constraints>
                                 <state key="normal" title="회원가입">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -101,7 +107,8 @@
                         <constraints>
                             <constraint firstItem="ZmM-2u-MfJ" firstAttribute="centerY" secondItem="WGJ-kX-hKE" secondAttribute="centerY" id="0kh-Ue-gX6"/>
                             <constraint firstItem="hpY-Qh-y9X" firstAttribute="centerX" secondItem="WGJ-kX-hKE" secondAttribute="centerX" id="912-W0-pg7"/>
-                            <constraint firstItem="fbK-Mg-iUe" firstAttribute="centerY" secondItem="WGJ-kX-hKE" secondAttribute="centerY" multiplier="0.6" id="IGW-Ps-huG"/>
+                            <constraint firstItem="fbK-Mg-iUe" firstAttribute="centerY" secondItem="WGJ-kX-hKE" secondAttribute="centerY" multiplier="0.8" id="IGW-Ps-huG"/>
+                            <constraint firstItem="Br5-NH-bpA" firstAttribute="width" secondItem="WGJ-kX-hKE" secondAttribute="width" multiplier="0.8" id="J6x-24-mHQ"/>
                             <constraint firstItem="fbK-Mg-iUe" firstAttribute="centerX" secondItem="WGJ-kX-hKE" secondAttribute="centerX" id="KGL-q0-xmN"/>
                             <constraint firstItem="ZmM-2u-MfJ" firstAttribute="centerX" secondItem="WGJ-kX-hKE" secondAttribute="centerX" id="QuP-A8-At4"/>
                             <constraint firstItem="XP9-6b-2Nr" firstAttribute="top" secondItem="Br5-NH-bpA" secondAttribute="bottom" constant="71" id="RbY-bH-Slv"/>
@@ -109,6 +116,7 @@
                             <constraint firstItem="WFP-dS-RqV" firstAttribute="centerX" secondItem="WGJ-kX-hKE" secondAttribute="centerX" id="cho-Iz-YII"/>
                             <constraint firstItem="XP9-6b-2Nr" firstAttribute="top" secondItem="hpY-Qh-y9X" secondAttribute="bottom" id="dBo-Sz-Dwy"/>
                             <constraint firstItem="Br5-NH-bpA" firstAttribute="centerX" secondItem="WGJ-kX-hKE" secondAttribute="centerX" id="e7p-gr-9Gy"/>
+                            <constraint firstItem="WFP-dS-RqV" firstAttribute="width" secondItem="WGJ-kX-hKE" secondAttribute="width" multiplier="0.8" id="uI0-B8-Gmd"/>
                             <constraint firstItem="ZmM-2u-MfJ" firstAttribute="width" secondItem="WGJ-kX-hKE" secondAttribute="width" id="wn9-P9-sMR"/>
                             <constraint firstItem="ZmM-2u-MfJ" firstAttribute="height" secondItem="WGJ-kX-hKE" secondAttribute="height" id="xDb-f6-9gJ"/>
                         </constraints>

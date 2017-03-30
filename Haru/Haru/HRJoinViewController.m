@@ -11,12 +11,13 @@
 
 @interface HRJoinViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *signupContentView;
-@property (weak, nonatomic) IBOutlet UIScrollView *signupScrollView;
-@property (weak, nonatomic) IBOutlet UITextField *signupIDTextField;
-@property (weak, nonatomic) IBOutlet UITextField *signupPasswordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *signupPasswordCheckTextField;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *signupIndicator;
+@property (weak, nonatomic) IBOutlet UIView *joinContentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *joinScrollView;
+@property (weak, nonatomic) IBOutlet UITextField *joinIDTextField;
+@property (weak, nonatomic) IBOutlet UITextField *joinPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField *joinPasswordCheckTextField;
+@property (weak, nonatomic) IBOutlet UIButton *joinButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *joinIndicator;
 
 @end
 
@@ -26,12 +27,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     //signupPasswordTextField *로 표시
-    self.signupPasswordTextField.secureTextEntry = YES;
-    self.signupPasswordCheckTextField.secureTextEntry = YES;
+    self.joinPasswordTextField.secureTextEntry = YES;
+    self.joinPasswordCheckTextField.secureTextEntry = YES;
+    
+    // 텍스트 필드 placeholder 컬러
+    UIColor *color = [UIColor lightGrayColor];
+    self.joinIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
+    self.joinPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
+    self.joinPasswordCheckTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호 확인" attributes:@{NSForegroundColorAttributeName:color}];
+    
+    //회원가입 버튼 background color
+    self.joinButton.layer.backgroundColor = [UIColor blueColor].CGColor;
+    self.joinButton.layer.borderColor = [UIColor blueColor].CGColor;
     
     //UIView 투명 만들어주기!
-    self.signupContentView.opaque = NO;
-    self.signupContentView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    self.joinContentView.opaque = NO;
+    self.joinContentView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
     //notification으로 signupScrollView 올리기!
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChaneSignupScrollView:) name:UIKeyboardWillHideNotification object:nil];
@@ -49,11 +60,11 @@
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
-        [self.signupScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-170) animated:YES];
+        [self.joinScrollView setContentOffset:CGPointMake(0, keyboardRect.size.height-195) animated:YES];
         
     } else if([notification.name isEqualToString:UIKeyboardWillHideNotification]) {
         
-        [self.signupScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [self.joinScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     }
     NSLog(@"%lf", keyboardRect.size.width);
 
@@ -67,20 +78,20 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if (textField.tag == 1) {
-        [self.signupPasswordTextField becomeFirstResponder];
+        [self.joinPasswordTextField becomeFirstResponder];
     } else if (textField.tag == 2) {
-        [self.signupPasswordCheckTextField becomeFirstResponder];
+        [self.joinPasswordCheckTextField becomeFirstResponder];
     } else
-        [self.signupPasswordCheckTextField resignFirstResponder];
+        [self.joinPasswordCheckTextField resignFirstResponder];
     return YES;
 }
 //회원가입 버튼을 눌렀을 때, 불리는 Method
 #pragma mark- signupView signupButtonClick Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
-    [self.signupIndicator startAnimating];
-    NSString *signUpIDText = self.signupIDTextField.text;
-    NSString *signUpPasswordText = self.signupPasswordTextField.text;
-    NSString *signUpPasswordCheckText = self.signupPasswordCheckTextField.text;
+    [self.joinIndicator startAnimating];
+    NSString *signUpIDText = self.joinIDTextField.text;
+    NSString *signUpPasswordText = self.joinPasswordTextField.text;
+    NSString *signUpPasswordCheckText = self.joinPasswordCheckTextField.text;
     
     [[HRDataCenter sharedInstance]signupRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
         if (isSuccess == YES) {

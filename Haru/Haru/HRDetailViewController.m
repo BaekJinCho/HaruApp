@@ -1,18 +1,18 @@
 //
-//  HRUserViewController.m
+//  HRDetailViewController.m
 //  Haru
 //
-//  Created by SSangGA on 2017. 3. 30..
+//  Created by 조백진 on 2017. 3. 29..
 //  Copyright © 2017년 jcy. All rights reserved.
 //
 
-#import "HRUserViewController.h"
+#import "HRDetailViewController.h"
 
-@interface HRUserViewController ()
+@interface HRDetailViewController ()
 
 @end
 
-@implementation HRUserViewController
+@implementation HRDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,7 +23,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 /*
 #pragma mark - Navigation
