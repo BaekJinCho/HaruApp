@@ -18,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage1;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage2;
 @property (weak, nonatomic) IBOutlet UIImageView *tutorialImage3;
+@property (weak, nonatomic) IBOutlet UIButton *tutorialLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton *tutorialJoinButton;
 
 @end
 
@@ -37,6 +39,10 @@
         }
         
     }
+ 
+//    self.tutorialJoinButton setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>
+//    self.tutorialLoginButton setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>
+    
     
     [self.tutorialPageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
     

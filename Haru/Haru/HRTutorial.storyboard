@@ -127,6 +127,8 @@
                         <outlet property="tutorialImage1" destination="AAl-Jh-IWv" id="YGi-4X-17Y"/>
                         <outlet property="tutorialImage2" destination="tKs-Tl-d8p" id="YYT-Gf-6RI"/>
                         <outlet property="tutorialImage3" destination="baL-74-ORO" id="wVT-M4-CXB"/>
+                        <outlet property="tutorialJoinButton" destination="Br5-NH-bpA" id="Ygp-O2-K2C"/>
+                        <outlet property="tutorialLoginButton" destination="WFP-dS-RqV" id="JBY-ve-fjB"/>
                         <outlet property="tutorialPageControl" destination="hpY-Qh-y9X" id="9a6-iA-fKR"/>
                         <outlet property="tutorialScrollView" destination="ZmM-2u-MfJ" id="Hv2-Sz-hum"/>
                     </connections>
