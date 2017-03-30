@@ -23,6 +23,9 @@
 		01DE68711E8919D7004678FA /* HRJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE68701E8919D7004678FA /* HRJoinViewController.m */; };
 		01F97D781E8B78270059414C /* HRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97D771E8B78270059414C /* HRMainViewController.m */; };
 		01F97D7B1E8B94FC0059414C /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */; };
+		18448FD81E8CEF9700332CFA /* HRCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18448FD71E8CEF9700332CFA /* HRCollectionView.storyboard */; };
+		18448FDB1E8CEFBC00332CFA /* HRCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */; };
+		18448FDE1E8CEFF700332CFA /* HRCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */; };
 		185978941E88D42B00172475 /* HRDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978931E88D42B00172475 /* HRDataCenter.m */; };
 		185978971E88D43900172475 /* HRNetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978961E88D43900172475 /* HRNetworkModule.m */; };
 		1859789A1E88D46C00172475 /* HRPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978991E88D46C00172475 /* HRPostModel.m */; };
@@ -58,6 +61,11 @@
 		01F97D791E8B94FC0059414C /* HRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDetailViewController.h; sourceTree = "<group>"; };
 		01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDetailViewController.m; sourceTree = "<group>"; };
 		1477AF446334381C2D55699B /* Pods-Haru.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Haru.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Haru/Pods-Haru.debug.xcconfig"; sourceTree = "<group>"; };
+		18448FD71E8CEF9700332CFA /* HRCollectionView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRCollectionView.storyboard; sourceTree = "<group>"; };
+		18448FD91E8CEFBC00332CFA /* HRCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCollectionViewController.h; sourceTree = "<group>"; };
+		18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCollectionViewController.m; sourceTree = "<group>"; };
+		18448FDC1E8CEFF700332CFA /* HRCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCollectionViewCell.h; sourceTree = "<group>"; };
+		18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCollectionViewCell.m; sourceTree = "<group>"; };
 		185978921E88D42B00172475 /* HRDataCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRDataCenter.h; sourceTree = "<group>"; };
 		185978931E88D42B00172475 /* HRDataCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRDataCenter.m; sourceTree = "<group>"; };
 		185978951E88D43900172475 /* HRNetworkModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRNetworkModule.h; sourceTree = "<group>"; };
@@ -153,6 +161,7 @@
 				018DF1E91E86240E00DE51EA /* Tutorial */,
 				018DF1E41E86237300DE51EA /* Members */,
 				01DE68691E8918A0004678FA /* Main */,
+				18448FD71E8CEF9700332CFA /* HRCollectionView.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -165,6 +174,10 @@
 				01CB50AF1E8A28430024CC4C /* Login */,
 				BA436C791E8CCEFC004A5564 /* HRUserViewController.h */,
 				BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */,
+				18448FD91E8CEFBC00332CFA /* HRCollectionViewController.h */,
+				18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */,
+				18448FDC1E8CEFF700332CFA /* HRCollectionViewCell.h */,
+				18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -317,6 +330,7 @@
 				01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */,
 				018DF1E81E8623F500DE51EA /* HRJoin.storyboard in Resources */,
 				018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */,
+				18448FD81E8CEF9700332CFA /* HRCollectionView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18448FDB1E8CEFBC00332CFA /* HRCollectionViewController.m in Sources */,
 				018DF1CD1E86221D00DE51EA /* HRTutorialViewController.m in Sources */,
 				018DF1CA1E86221D00DE51EA /* AppDelegate.m in Sources */,
 				01DE68711E8919D7004678FA /* HRJoinViewController.m in Sources */,
@@ -385,6 +400,7 @@
 				01F97D7B1E8B94FC0059414C /* HRDetailViewController.m in Sources */,
 				185978941E88D42B00172475 /* HRDataCenter.m in Sources */,
 				01045FE61E8BE4EC00407BD1 /* HRCustomTableViewCell.m in Sources */,
+				18448FDE1E8CEFF700332CFA /* HRCollectionViewCell.m in Sources */,
 				018DF1C71E86221D00DE51EA /* main.m in Sources */,
 				BA436C7B1E8CCEFC004A5564 /* HRUserViewController.m in Sources */,
 			);
