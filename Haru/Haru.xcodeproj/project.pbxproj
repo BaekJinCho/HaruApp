@@ -23,6 +23,30 @@
 		185978971E88D43900172475 /* HRNetworkModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978961E88D43900172475 /* HRNetworkModule.m */; };
 		1859789A1E88D46C00172475 /* HRPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978991E88D46C00172475 /* HRPostModel.m */; };
 		47FE0AA600A1CFE3BAE31B0F /* libPods-Haru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC463534BD897007F9825E26 /* libPods-Haru.a */; };
+		BA436C7B1E8CCEFC004A5564 /* HRUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */; };
+		BA436C7D1E8CCF75004A5564 /* HRUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */; };
+		BA436C8D1E8CD8A1004A5564 /* avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C7F1E8CD8A1004A5564 /* avatar.png */; };
+		BA436C8E1E8CD8A1004A5564 /* avatar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C801E8CD8A1004A5564 /* avatar@2x.png */; };
+		BA436C8F1E8CD8A1004A5564 /* avatar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C811E8CD8A1004A5564 /* avatar@3x.png */; };
+		BA436C901E8CD8A1004A5564 /* KakaoTalk_Photo_2017-03-29-18-00-12.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C821E8CD8A1004A5564 /* KakaoTalk_Photo_2017-03-29-18-00-12.png */; };
+		BA436C911E8CD8A1004A5564 /* messageCopy.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C831E8CD8A1004A5564 /* messageCopy.png */; };
+		BA436C921E8CD8A1004A5564 /* messageCopy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C841E8CD8A1004A5564 /* messageCopy@2x.png */; };
+		BA436C931E8CD8A1004A5564 /* messageCopy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C851E8CD8A1004A5564 /* messageCopy@3x.png */; };
+		BA436C941E8CD8A1004A5564 /* messagePerson.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C861E8CD8A1004A5564 /* messagePerson.png */; };
+		BA436C951E8CD8A1004A5564 /* messagePerson@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C871E8CD8A1004A5564 /* messagePerson@2x.png */; };
+		BA436C961E8CD8A1004A5564 /* messagePerson@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C881E8CD8A1004A5564 /* messagePerson@3x.png */; };
+		BA436C971E8CD8A1004A5564 /* pencilCopy.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C891E8CD8A1004A5564 /* pencilCopy.png */; };
+		BA436C981E8CD8A1004A5564 /* pencilCopy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C8A1E8CD8A1004A5564 /* pencilCopy@2x.png */; };
+		BA436C991E8CD8A1004A5564 /* pencilCopy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C8B1E8CD8A1004A5564 /* pencilCopy@3x.png */; };
+		BA436CA31E8CDE4E004A5564 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C9A1E8CDE4E004A5564 /* calendar.png */; };
+		BA436CA41E8CDE4E004A5564 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C9B1E8CDE4E004A5564 /* calendar@2x.png */; };
+		BA436CA51E8CDE4E004A5564 /* calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C9C1E8CDE4E004A5564 /* calendar@3x.png */; };
+		BA436CA61E8CDE4E004A5564 /* personeCopy.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C9D1E8CDE4E004A5564 /* personeCopy.png */; };
+		BA436CA71E8CDE4E004A5564 /* personeCopy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C9E1E8CDE4E004A5564 /* personeCopy@2x.png */; };
+		BA436CA81E8CDE4E004A5564 /* personeCopy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436C9F1E8CDE4E004A5564 /* personeCopy@3x.png */; };
+		BA436CA91E8CDE4E004A5564 /* photosCopy.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436CA01E8CDE4E004A5564 /* photosCopy.png */; };
+		BA436CAA1E8CDE4E004A5564 /* photosCopy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436CA11E8CDE4E004A5564 /* photosCopy@2x.png */; };
+		BA436CAB1E8CDE4E004A5564 /* photosCopy@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BA436CA21E8CDE4E004A5564 /* photosCopy@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +76,31 @@
 		185978981E88D46C00172475 /* HRPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPostModel.h; sourceTree = "<group>"; };
 		185978991E88D46C00172475 /* HRPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPostModel.m; sourceTree = "<group>"; };
 		658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Haru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Haru/Pods-Haru.release.xcconfig"; sourceTree = "<group>"; };
+		BA436C791E8CCEFC004A5564 /* HRUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRUserViewController.h; sourceTree = "<group>"; };
+		BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUserViewController.m; sourceTree = "<group>"; };
+		BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRUser.storyboard; sourceTree = "<group>"; };
+		BA436C7F1E8CD8A1004A5564 /* avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar.png; sourceTree = "<group>"; };
+		BA436C801E8CD8A1004A5564 /* avatar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@2x.png"; sourceTree = "<group>"; };
+		BA436C811E8CD8A1004A5564 /* avatar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar@3x.png"; sourceTree = "<group>"; };
+		BA436C821E8CD8A1004A5564 /* KakaoTalk_Photo_2017-03-29-18-00-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KakaoTalk_Photo_2017-03-29-18-00-12.png"; sourceTree = "<group>"; };
+		BA436C831E8CD8A1004A5564 /* messageCopy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messageCopy.png; sourceTree = "<group>"; };
+		BA436C841E8CD8A1004A5564 /* messageCopy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageCopy@2x.png"; sourceTree = "<group>"; };
+		BA436C851E8CD8A1004A5564 /* messageCopy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messageCopy@3x.png"; sourceTree = "<group>"; };
+		BA436C861E8CD8A1004A5564 /* messagePerson.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = messagePerson.png; sourceTree = "<group>"; };
+		BA436C871E8CD8A1004A5564 /* messagePerson@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagePerson@2x.png"; sourceTree = "<group>"; };
+		BA436C881E8CD8A1004A5564 /* messagePerson@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "messagePerson@3x.png"; sourceTree = "<group>"; };
+		BA436C891E8CD8A1004A5564 /* pencilCopy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pencilCopy.png; sourceTree = "<group>"; };
+		BA436C8A1E8CD8A1004A5564 /* pencilCopy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencilCopy@2x.png"; sourceTree = "<group>"; };
+		BA436C8B1E8CD8A1004A5564 /* pencilCopy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pencilCopy@3x.png"; sourceTree = "<group>"; };
+		BA436C9A1E8CDE4E004A5564 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		BA436C9B1E8CDE4E004A5564 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
+		BA436C9C1E8CDE4E004A5564 /* calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@3x.png"; sourceTree = "<group>"; };
+		BA436C9D1E8CDE4E004A5564 /* personeCopy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = personeCopy.png; sourceTree = "<group>"; };
+		BA436C9E1E8CDE4E004A5564 /* personeCopy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personeCopy@2x.png"; sourceTree = "<group>"; };
+		BA436C9F1E8CDE4E004A5564 /* personeCopy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personeCopy@3x.png"; sourceTree = "<group>"; };
+		BA436CA01E8CDE4E004A5564 /* photosCopy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photosCopy.png; sourceTree = "<group>"; };
+		BA436CA11E8CDE4E004A5564 /* photosCopy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photosCopy@2x.png"; sourceTree = "<group>"; };
+		BA436CA21E8CDE4E004A5564 /* photosCopy@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photosCopy@3x.png"; sourceTree = "<group>"; };
 		BC463534BD897007F9825E26 /* libPods-Haru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Haru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,6 +196,8 @@
 				01DE68621E88D13C004678FA /* Tutorial */,
 				01DE686E1E891977004678FA /* Join */,
 				01CB50AF1E8A28430024CC4C /* Login */,
+				BA436C791E8CCEFC004A5564 /* HRUserViewController.h */,
+				BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -190,6 +241,29 @@
 			isa = PBXGroup;
 			children = (
 				01DE686C1E89190F004678FA /* HRMainView.storyboard */,
+				BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */,
+				BA436C7F1E8CD8A1004A5564 /* avatar.png */,
+				BA436C801E8CD8A1004A5564 /* avatar@2x.png */,
+				BA436C811E8CD8A1004A5564 /* avatar@3x.png */,
+				BA436C821E8CD8A1004A5564 /* KakaoTalk_Photo_2017-03-29-18-00-12.png */,
+				BA436C831E8CD8A1004A5564 /* messageCopy.png */,
+				BA436C841E8CD8A1004A5564 /* messageCopy@2x.png */,
+				BA436C851E8CD8A1004A5564 /* messageCopy@3x.png */,
+				BA436C861E8CD8A1004A5564 /* messagePerson.png */,
+				BA436C871E8CD8A1004A5564 /* messagePerson@2x.png */,
+				BA436C881E8CD8A1004A5564 /* messagePerson@3x.png */,
+				BA436C891E8CD8A1004A5564 /* pencilCopy.png */,
+				BA436C8A1E8CD8A1004A5564 /* pencilCopy@2x.png */,
+				BA436C8B1E8CD8A1004A5564 /* pencilCopy@3x.png */,
+				BA436C9A1E8CDE4E004A5564 /* calendar.png */,
+				BA436C9B1E8CDE4E004A5564 /* calendar@2x.png */,
+				BA436C9C1E8CDE4E004A5564 /* calendar@3x.png */,
+				BA436C9D1E8CDE4E004A5564 /* personeCopy.png */,
+				BA436C9E1E8CDE4E004A5564 /* personeCopy@2x.png */,
+				BA436C9F1E8CDE4E004A5564 /* personeCopy@3x.png */,
+				BA436CA01E8CDE4E004A5564 /* photosCopy.png */,
+				BA436CA11E8CDE4E004A5564 /* photosCopy@2x.png */,
+				BA436CA21E8CDE4E004A5564 /* photosCopy@3x.png */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -254,6 +328,7 @@
 				TargetAttributes = {
 					018DF1C11E86221D00DE51EA = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = NN7QXHC8A3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -281,13 +356,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA436C931E8CD8A1004A5564 /* messageCopy@3x.png in Resources */,
 				018DF1D51E86221D00DE51EA /* LaunchScreen.storyboard in Resources */,
+				BA436C941E8CD8A1004A5564 /* messagePerson.png in Resources */,
+				BA436CAB1E8CDE4E004A5564 /* photosCopy@3x.png in Resources */,
+				BA436C7D1E8CCF75004A5564 /* HRUser.storyboard in Resources */,
+				BA436CA61E8CDE4E004A5564 /* personeCopy.png in Resources */,
+				BA436CA91E8CDE4E004A5564 /* photosCopy.png in Resources */,
+				BA436C961E8CD8A1004A5564 /* messagePerson@3x.png in Resources */,
+				BA436C991E8CD8A1004A5564 /* pencilCopy@3x.png in Resources */,
+				BA436C981E8CD8A1004A5564 /* pencilCopy@2x.png in Resources */,
+				BA436CA51E8CDE4E004A5564 /* calendar@3x.png in Resources */,
+				BA436CA41E8CDE4E004A5564 /* calendar@2x.png in Resources */,
+				BA436CA71E8CDE4E004A5564 /* personeCopy@2x.png in Resources */,
+				BA436CAA1E8CDE4E004A5564 /* photosCopy@2x.png in Resources */,
+				BA436C8E1E8CD8A1004A5564 /* avatar@2x.png in Resources */,
+				BA436C951E8CD8A1004A5564 /* messagePerson@2x.png in Resources */,
+				BA436C971E8CD8A1004A5564 /* pencilCopy.png in Resources */,
 				018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */,
+				BA436C911E8CD8A1004A5564 /* messageCopy.png in Resources */,
 				018DF1D21E86221D00DE51EA /* Assets.xcassets in Resources */,
+				BA436C8F1E8CD8A1004A5564 /* avatar@3x.png in Resources */,
+				BA436CA81E8CDE4E004A5564 /* personeCopy@3x.png in Resources */,
 				018DF1D01E86221D00DE51EA /* Main.storyboard in Resources */,
+				BA436C901E8CD8A1004A5564 /* KakaoTalk_Photo_2017-03-29-18-00-12.png in Resources */,
+				BA436C921E8CD8A1004A5564 /* messageCopy@2x.png in Resources */,
+				BA436C8D1E8CD8A1004A5564 /* avatar.png in Resources */,
 				01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */,
 				018DF1E81E8623F500DE51EA /* HRJoin.storyboard in Resources */,
 				018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */,
+				BA436CA31E8CDE4E004A5564 /* calendar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +452,7 @@
 				1859789A1E88D46C00172475 /* HRPostModel.m in Sources */,
 				185978941E88D42B00172475 /* HRDataCenter.m in Sources */,
 				018DF1C71E86221D00DE51EA /* main.m in Sources */,
+				BA436C7B1E8CCEFC004A5564 /* HRUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +571,7 @@
 			baseConfigurationReference = 1477AF446334381C2D55699B /* Pods-Haru.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NN7QXHC8A3;
 				INFOPLIST_FILE = Haru/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jcy.developer.Haru;
@@ -484,6 +584,7 @@
 			baseConfigurationReference = 658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = NN7QXHC8A3;
 				INFOPLIST_FILE = Haru/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jcy.developer.Haru;
