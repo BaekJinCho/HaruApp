@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -38,9 +38,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3A-ke-9BQ" userLabel="소박한 일상부터 특별한 경험까지  여러분의 하루를 기록하세요.">
-                                                                <rect key="frame" x="-49" y="298.5" width="418" height="29"/>
+                                                                <rect key="frame" x="-46.5" y="298.5" width="413.5" height="29"/>
                                                                 <attributedString key="attributedText">
-                                                                    <fragment content="소박한 일상부터 특별한 경험까지  여러분의 하루를 기록하세요.">
+                                                                    <fragment content="소박한 일상부터 특별한 경험까지 여러분의 하루를 기록하세요.">
                                                                         <attributes>
                                                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <font key="NSFont" size="17" name="AppleSDGothicNeo-Regular"/>
@@ -67,7 +67,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLW-aO-3aI">
-                                                                <rect key="frame" x="-15" y="298.5" width="351.5" height="27"/>
+                                                                <rect key="frame" x="-15.5" y="298.5" width="351.5" height="27"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="하루에 한 장씩 기록하여 평생 기억될 추억을 소장하세요.">
                                                                         <attributes>
@@ -96,9 +96,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxK-On-A5g">
-                                                                <rect key="frame" x="-19" y="298.5" width="359" height="27"/>
+                                                                <rect key="frame" x="-20.5" y="298.5" width="363" height="27"/>
                                                                 <attributedString key="attributedText">
-                                                                    <fragment content="과거, 공존하는 공간, 하루 한 장으로 여러분을 초대합니다.">
+                                                                    <fragment content="과거, 공존하는 공간, 하루 한 장으로  여러분을 초대합니다.">
                                                                         <attributes>
                                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <font key="NSFont" size="16" name="AppleSDGothicNeo-Regular"/>
@@ -450,7 +450,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1286" y="-149"/>
+            <point key="canvasLocation" x="1352" y="634"/>
         </scene>
         <!--Join-->
         <scene sceneID="Blt-Mm-2h6">
@@ -685,7 +685,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1284" y="640"/>
+            <point key="canvasLocation" x="491" y="634"/>
         </scene>
     </scenes>
     <resources>
