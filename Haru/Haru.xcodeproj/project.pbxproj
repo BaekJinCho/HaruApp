@@ -91,6 +91,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01045FEB1E8DE79B00407BD1 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				BA436C791E8CCEFC004A5564 /* HRUserViewController.h */,
+				BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */,
+			);
+			name = UserInfo;
+			sourceTree = "<group>";
+		};
+		01045FEC1E8DE7BA00407BD1 /* CollectionDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				18448FD91E8CEFBC00332CFA /* HRCollectionViewController.h */,
+				18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */,
+				18448FDC1E8CEFF700332CFA /* HRCollectionViewCell.h */,
+				18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */,
+			);
+			name = CollectionDisplay;
+			sourceTree = "<group>";
+		};
+		01045FED1E8DE82400407BD1 /* CollectionDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				18448FD71E8CEF9700332CFA /* HRCollectionView.storyboard */,
+			);
+			name = CollectionDisplay;
+			sourceTree = "<group>";
+		};
+		01045FEE1E8DE84300407BD1 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */,
+			);
+			name = UserInfo;
+			sourceTree = "<group>";
+		};
+		01045FF01E8DE92C00407BD1 /* MainDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				01045FE31E8BE4EC00407BD1 /* HRCustomTableViewCell.h */,
+				01045FE41E8BE4EC00407BD1 /* HRCustomTableViewCell.m */,
+				01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */,
+				01F97D761E8B78270059414C /* HRMainViewController.h */,
+				01F97D771E8B78270059414C /* HRMainViewController.m */,
+				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
+				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
+			);
+			name = MainDisplay;
+			sourceTree = "<group>";
+		};
 		018DF1B91E86221D00DE51EA = {
 			isa = PBXGroup;
 			children = (
@@ -158,10 +208,11 @@
 			isa = PBXGroup;
 			children = (
 				018DF1CE1E86221D00DE51EA /* Main.storyboard */,
+				01045FEE1E8DE84300407BD1 /* UserInfo */,
+				01045FED1E8DE82400407BD1 /* CollectionDisplay */,
 				018DF1E91E86240E00DE51EA /* Tutorial */,
 				018DF1E41E86237300DE51EA /* Members */,
-				01DE68691E8918A0004678FA /* Main */,
-				18448FD71E8CEF9700332CFA /* HRCollectionView.storyboard */,
+				01DE68691E8918A0004678FA /* MainDisplay */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -169,15 +220,12 @@
 		018DF1DF1E86226800DE51EA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				01045FF01E8DE92C00407BD1 /* MainDisplay */,
+				01045FEC1E8DE7BA00407BD1 /* CollectionDisplay */,
+				01045FEB1E8DE79B00407BD1 /* UserInfo */,
 				01DE68621E88D13C004678FA /* Tutorial */,
 				01DE686E1E891977004678FA /* Join */,
 				01CB50AF1E8A28430024CC4C /* Login */,
-				BA436C791E8CCEFC004A5564 /* HRUserViewController.h */,
-				BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */,
-				18448FD91E8CEFBC00332CFA /* HRCollectionViewController.h */,
-				18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */,
-				18448FDC1E8CEFF700332CFA /* HRCollectionViewCell.h */,
-				18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -204,10 +252,6 @@
 			children = (
 				01CB50B01E8A28810024CC4C /* HRLoginViewController.h */,
 				01CB50B11E8A28810024CC4C /* HRLoginViewController.m */,
-				01F97D761E8B78270059414C /* HRMainViewController.h */,
-				01F97D771E8B78270059414C /* HRMainViewController.m */,
-				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
-				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -221,13 +265,12 @@
 			name = Tutorial;
 			sourceTree = "<group>";
 		};
-		01DE68691E8918A0004678FA /* Main */ = {
+		01DE68691E8918A0004678FA /* MainDisplay */ = {
 			isa = PBXGroup;
 			children = (
 				01DE686C1E89190F004678FA /* HRMainView.storyboard */,
-				BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */,
 			);
-			name = Main;
+			name = MainDisplay;
 			sourceTree = "<group>";
 		};
 		01DE686E1E891977004678FA /* Join */ = {
@@ -235,9 +278,6 @@
 			children = (
 				01DE686F1E8919D7004678FA /* HRJoinViewController.h */,
 				01DE68701E8919D7004678FA /* HRJoinViewController.m */,
-				01045FE31E8BE4EC00407BD1 /* HRCustomTableViewCell.h */,
-				01045FE41E8BE4EC00407BD1 /* HRCustomTableViewCell.m */,
-				01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */,
 			);
 			name = Join;
 			sourceTree = "<group>";
