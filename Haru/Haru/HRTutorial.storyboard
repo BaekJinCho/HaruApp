@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,10 +38,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3A-ke-9BQ" userLabel="소박한 일상부터 특별한 경험까지  여러분의 하루를 기록하세요.">
-                                                                <rect key="frame" x="48" y="298.5" width="224" height="57.5"/>
+                                                                <rect key="frame" x="-49" y="298.5" width="418" height="29"/>
                                                                 <attributedString key="attributedText">
-                                                                    <fragment content="소박한 일상부터 특별한 경험까지 
-여러분의 하루를 기록하세요.">
+                                                                    <fragment content="소박한 일상부터 특별한 경험까지  여러분의 하루를 기록하세요.">
                                                                         <attributes>
                                                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <font key="NSFont" size="17" name="AppleSDGothicNeo-Regular"/>
@@ -68,10 +67,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLW-aO-3aI">
-                                                                <rect key="frame" x="46" y="298.5" width="229" height="54"/>
+                                                                <rect key="frame" x="-15" y="298.5" width="351.5" height="27"/>
                                                                 <attributedString key="attributedText">
-                                                                    <fragment content="하루에 한 장씩 기록하여 평생 기억될
-추억을 소장하세요.">
+                                                                    <fragment content="하루에 한 장씩 기록하여 평생 기억될 추억을 소장하세요.">
                                                                         <attributes>
                                                                             <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <font key="NSFont" size="16" name="AppleSDGothicNeo-Regular"/>
@@ -98,10 +96,9 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxK-On-A5g">
-                                                                <rect key="frame" x="46" y="298.5" width="228.5" height="54"/>
+                                                                <rect key="frame" x="-19" y="298.5" width="359" height="27"/>
                                                                 <attributedString key="attributedText">
-                                                                    <fragment content="과거, 공존하는 공간,
-하루 한 장으로 여러분을 초대합니다.">
+                                                                    <fragment content="과거, 공존하는 공간, 하루 한 장으로 여러분을 초대합니다.">
                                                                         <attributes>
                                                                             <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <font key="NSFont" size="16" name="AppleSDGothicNeo-Regular"/>
@@ -207,7 +204,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rQD-Ko-e0J">
-                        <barButtonItem key="leftBarButtonItem" image="Arrow" id="cpg-JB-2Pm"/>
+                        <barButtonItem key="leftBarButtonItem" image="Arrow" style="plain" id="cpg-JB-2Pm"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tutorialContentView" destination="tvR-Sn-IhA" id="tFh-X6-ZNw"/>
