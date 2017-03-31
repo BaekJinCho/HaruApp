@@ -41,9 +41,7 @@
         
     }
     
-//    .setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
-//    navigationController?.navigationBar.shadowImage = UIImage()
-    
+    //네이게이션 바 아래 bottom hight 1 없애기
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     
