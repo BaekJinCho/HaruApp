@@ -7,8 +7,12 @@
 //
 
 #import "HRDetailViewController.h"
+#import "HRCustomTableViewCell.h"
+#import "HRMainViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *detailViewRightBarButton;
 
 @end
 
@@ -17,11 +21,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    NSLog(@"%ld", self.indexPath.row);
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+    
+
+- (IBAction)buttonClick:(UIBarButtonItem *)sender {
+    
+    if ([[sender backgroundImageForState:UIControlStateNormal barMetrics:UIBarMetricsDefault] isEqual:[UIImage imageNamed:@"Pencil"]]) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"Streaks"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    } else {
+        [sender setBackgroundImage:[UIImage imageNamed:@"Pencil"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    }
 }
 
 /*

@@ -135,10 +135,18 @@
 				01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */,
 				01F97D761E8B78270059414C /* HRMainViewController.h */,
 				01F97D771E8B78270059414C /* HRMainViewController.m */,
+				01045FF11E8E29A500407BD1 /* DetailDisplay */,
+			);
+			name = MainDisplay;
+			sourceTree = "<group>";
+		};
+		01045FF11E8E29A500407BD1 /* DetailDisplay */ = {
+			isa = PBXGroup;
+			children = (
 				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
 				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
 			);
-			name = MainDisplay;
+			name = DetailDisplay;
 			sourceTree = "<group>";
 		};
 		018DF1B91E86221D00DE51EA = {

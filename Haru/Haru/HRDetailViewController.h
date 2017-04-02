@@ -10,4 +10,6 @@
 
 @interface HRDetailViewController : UIViewController
 
+@property (nonatomic) NSIndexPath *indexPath;
+
 @end

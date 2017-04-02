@@ -38,8 +38,8 @@
     self.loginContentView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
     //notification으로 loginScrollView 올리기!
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChaneLoginScrollView:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChaneLoginScrollView:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChanedLoginScrollView:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChanedLoginScrollView:) name:UIKeyboardWillShowNotification object:nil];
     
     
     
@@ -47,7 +47,7 @@
 }
 //notification으로 loginScrollView 올리는 Method
 #pragma mark- loginView notification Method
-- (void)didChaneLoginScrollView:(NSNotification *) notification {
+- (void)didChanedLoginScrollView:(NSNotification *) notification {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
