@@ -127,7 +127,7 @@
 
 #pragma mark- mainViewController PrepareForSegue Method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+//    HRDetailViewController *detailViewController = 
     if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
         
         //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
