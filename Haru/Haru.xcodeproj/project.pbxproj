@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		01045FE61E8BE4EC00407BD1 /* HRCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01045FE41E8BE4EC00407BD1 /* HRCustomTableViewCell.m */; };
 		01045FE71E8BE4EC00407BD1 /* HRCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */; };
+		01045FF61E9217D800407BD1 /* HRModifiedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01045FF51E9217D800407BD1 /* HRModifiedViewController.m */; };
 		018DF1C71E86221D00DE51EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 018DF1C61E86221D00DE51EA /* main.m */; };
 		018DF1CA1E86221D00DE51EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 018DF1C91E86221D00DE51EA /* AppDelegate.m */; };
 		018DF1CD1E86221D00DE51EA /* HRTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018DF1CC1E86221D00DE51EA /* HRTutorialViewController.m */; };
@@ -38,6 +39,8 @@
 		01045FE31E8BE4EC00407BD1 /* HRCustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRCustomTableViewCell.h; sourceTree = "<group>"; };
 		01045FE41E8BE4EC00407BD1 /* HRCustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRCustomTableViewCell.m; sourceTree = "<group>"; };
 		01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRCustomTableViewCell.xib; sourceTree = "<group>"; };
+		01045FF41E9217D800407BD1 /* HRModifiedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRModifiedViewController.h; sourceTree = "<group>"; };
+		01045FF51E9217D800407BD1 /* HRModifiedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRModifiedViewController.m; sourceTree = "<group>"; };
 		018DF1C21E86221D00DE51EA /* Haru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018DF1C61E86221D00DE51EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		018DF1C81E86221D00DE51EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -145,8 +148,18 @@
 			children = (
 				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
 				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
+				01045FF71E9217DF00407BD1 /* New Group */,
 			);
 			name = DetailDisplay;
+			sourceTree = "<group>";
+		};
+		01045FF71E9217DF00407BD1 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				01045FF41E9217D800407BD1 /* HRModifiedViewController.h */,
+				01045FF51E9217D800407BD1 /* HRModifiedViewController.m */,
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		018DF1B91E86221D00DE51EA = {
@@ -444,6 +457,7 @@
 				01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */,
 				01F97D781E8B78270059414C /* HRMainViewController.m in Sources */,
 				185978971E88D43900172475 /* HRNetworkModule.m in Sources */,
+				01045FF61E9217D800407BD1 /* HRModifiedViewController.m in Sources */,
 				1859789A1E88D46C00172475 /* HRPostModel.m in Sources */,
 				01F97D7B1E8B94FC0059414C /* HRDetailViewController.m in Sources */,
 				185978941E88D42B00172475 /* HRDataCenter.m in Sources */,

@@ -127,19 +127,23 @@
 
 #pragma mark- mainViewController PrepareForSegue Method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    HRDetailViewController *detailViewController = 
+    HRCustomTableViewCell *customCell = [HRDetailViewController new];
     if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
         
         //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
+//        customCell.mainTableViewCellYearMonthLabel.text =
+//        customCell.photoImageView.image =
+//        customCell.userStateImageView.image
+//        customCell.dateLabel.text =
+//        customCell.dayOfTheWeekLabel.text = 
         
         HRDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.indexPath = (NSIndexPath *)sender;
         
     }
 }
-
+#pragma mark- mainViewController unwindSegut Method
 - (IBAction)unwindMainViewSegue:(UIStoryboardSegue *)sender {
-    
     
 }
 
