@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,8 +67,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Cx-Sl3" userLabel="Content View">
                                 <rect key="frame" x="-0.5" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
+                                        <rect key="frame" x="0.0" y="-7" width="375" height="375.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5C9-K7-ZgH" secondAttribute="height" multiplier="1:1" id="tq4-s1-Xx4"/>
+                                        </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="muT-Av-sSr">
                                         <rect key="frame" x="19.5" y="0.0" width="337.5" height="60"/>
@@ -84,7 +88,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-EQ-BCx">
                                                         <rect key="frame" x="0.0" y="20.5" width="65" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -108,7 +112,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-jN-faP">
-                                        <rect key="frame" x="-0.5" y="422" width="375" height="180"/>
+                                        <rect key="frame" x="-0.5" y="372.5" width="375" height="220"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="무슨 말이 필요해 모두가 널 작품이라고 불러 yeah~  무슨 말이 필요해 모두가 널 작품이라고 불러 yeah~ 무슨 말이 필요해 모두가 널 작품이라고 불러 yeah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtG-WK-791">
                                                 <rect key="frame" x="14.5" y="45" width="346.5" height="61"/>
@@ -120,7 +124,7 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="180" id="39c-ao-Aql"/>
+                                            <constraint firstAttribute="height" constant="220" id="39c-ao-Aql"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -128,15 +132,14 @@
                                 <constraints>
                                     <constraint firstItem="muT-Av-sSr" firstAttribute="centerY" secondItem="DP3-Cx-Sl3" secondAttribute="centerY" multiplier="0.1" id="5Ts-M3-5g7"/>
                                     <constraint firstItem="wPI-jN-faP" firstAttribute="width" secondItem="DP3-Cx-Sl3" secondAttribute="width" id="EHS-Eg-SmY"/>
-                                    <constraint firstItem="5C9-K7-ZgH" firstAttribute="height" secondItem="DP3-Cx-Sl3" secondAttribute="height" id="EP4-xw-mwx"/>
                                     <constraint firstItem="5C9-K7-ZgH" firstAttribute="width" secondItem="DP3-Cx-Sl3" secondAttribute="width" id="NZK-jp-pAe"/>
                                     <constraint firstItem="5C9-K7-ZgH" firstAttribute="centerX" secondItem="DP3-Cx-Sl3" secondAttribute="centerX" id="QQh-c5-yXJ"/>
-                                    <constraint firstItem="wPI-jN-faP" firstAttribute="centerY" secondItem="DP3-Cx-Sl3" secondAttribute="centerY" multiplier="1.7" id="RRp-Gp-26C"/>
+                                    <constraint firstItem="wPI-jN-faP" firstAttribute="centerY" secondItem="DP3-Cx-Sl3" secondAttribute="centerY" multiplier="1.6" id="RRp-Gp-26C"/>
                                     <constraint firstItem="muT-Av-sSr" firstAttribute="width" secondItem="DP3-Cx-Sl3" secondAttribute="width" multiplier="0.9" id="SAY-CA-xzR"/>
                                     <constraint firstItem="muT-Av-sSr" firstAttribute="height" secondItem="DP3-Cx-Sl3" secondAttribute="height" multiplier="10/100" id="gYD-V2-g97"/>
                                     <constraint firstItem="wPI-jN-faP" firstAttribute="centerX" secondItem="DP3-Cx-Sl3" secondAttribute="centerX" id="ldR-x2-8TO"/>
                                     <constraint firstItem="muT-Av-sSr" firstAttribute="centerX" secondItem="DP3-Cx-Sl3" secondAttribute="centerX" id="qE1-2L-btl"/>
-                                    <constraint firstItem="5C9-K7-ZgH" firstAttribute="centerY" secondItem="DP3-Cx-Sl3" secondAttribute="centerY" id="ran-lJ-Pz4"/>
+                                    <constraint firstItem="5C9-K7-ZgH" firstAttribute="centerY" secondItem="DP3-Cx-Sl3" secondAttribute="centerY" multiplier="0.6" id="ran-lJ-Pz4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -174,10 +177,11 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7xc-TM-rJk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ilc-N7-IrJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Ilc-N7-IrJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.26576459407806396" green="0.28916773200035095" blue="0.3473065197467804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                             <color key="textColor" red="0.26576459407806396" green="0.28916773200035095" blue="0.3473065197467804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

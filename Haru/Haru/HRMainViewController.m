@@ -34,6 +34,7 @@
 
 //alert 알람 띄우기 클래스 메소드
 + (UIAlertController *)modalWithTitle:(NSString *)title andContent:(NSString *)content andHandler:(void (^)(void))handler {
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actions = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         
@@ -49,6 +50,7 @@
 
 #pragma mark- mainViewController numberOfSection Method
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
     return 5;
 }
 
@@ -113,7 +115,7 @@
 #pragma mark- mainViewController heightForRowAtIndexPath Method
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return self.view.frame.size.width * 0.8;
+    return self.view.frame.size.width;
 }
 
 //mainView의 cell을 클릭했을 때, 불리는 Method
@@ -130,8 +132,8 @@
         
         //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
         
-        HRDetailViewController *vc = [segue destinationViewController];
-        vc.indexPath = (NSIndexPath *)sender;
+        HRDetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.indexPath = (NSIndexPath *)sender;
         
     }
 }
