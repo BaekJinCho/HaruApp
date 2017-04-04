@@ -35,6 +35,35 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     [self.postTitleTextField addTarget:self action:@selector(fixPostTitleTextLenth:) forControlEvents:UIControlEventEditingChanged];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [self.modifiedTextView becomeFirstResponder];
+    
+    UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
+    
+    UIBarButtonItem *happyBarButton = [[UIBarButtonItem alloc]
+                                       initWithImage:[UIImage imageNamed:@"Happy"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon:)];
+    
+    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil action:nil];
+    
+    UIBarButtonItem *sadBarButton = [[UIBarButtonItem alloc]
+                                     initWithImage:[UIImage imageNamed:@"Sad"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon:)];
+    
+    UIBarButtonItem *angryBarButton = [[UIBarButtonItem alloc]
+                                       initWithImage:[UIImage imageNamed:@"Angry"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon:)];
+    
+    keyboardToolbar.items = @[happyBarButton, flexBarButton, sadBarButton, flexBarButton, angryBarButton];
+
+    self.modifiedTextView.inputAccessoryView = keyboardToolbar;
+}
+
+- (void)clickDiaryKeyboardDoneButton:(UIBarButtonItem *) sender{
+    
+}
+
 //ContentView의 Constraints를 키보드의 높이만큼 올리기 위한 Method
 #pragma mark- ModifiedViewController NSNotification Method
 - (void)keyboardDidShow:(NSNotification *)sender {
@@ -115,6 +144,13 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     }
 }
 
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    
+    if (self.modifiedTextView.tag == 2) {
+        [self.modifiedTextView endEditing:YES];
+    }
+}
+
 //수정화면에서 뒤로가기를 클릭했을 때, 불리는 Method
 #pragma mark- ModifiedViewController BackButton Method
 - (IBAction)backDetailViewButton:(UIBarButtonItem *)sender {
@@ -131,6 +167,13 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     [self presentViewController:alert animated:YES completion:nil];
 
 }
+
+//회원가입 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
+#pragma mark- modifiedViewTabGesture Method
+- (IBAction)modifiedViewTabGesture:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
+
 
 /*
 #pragma mark - Navigation
