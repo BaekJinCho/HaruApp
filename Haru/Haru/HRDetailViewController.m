@@ -35,38 +35,6 @@
 }
 
 
-    
-
-- (IBAction)buttonClick:(UIBarButtonItem *)sender {
-    
-    if ([[sender backgroundImageForState:UIControlStateNormal barMetrics:UIBarMetricsDefault] isEqual:[UIImage imageNamed:@"Pencil"]]) {
-        [sender setBackgroundImage:[UIImage imageNamed:@"Streaks"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    
-    } else {
-        [sender setBackgroundImage:[UIImage imageNamed:@"Pencil"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    }
-}
-- (IBAction)goModifiedViewButton:(UIBarButtonItem *)sender {
-    HRModifiedViewController *modifiedView = [HRModifiedViewController new];
-    [self.navigationController pushViewController:modifiedView animated:YES];
-    //[self performSegueWithIdentifier:@"goModifiedViewButton" sender:nil];
-}
-
-//- (IBAction)unwindDetailViewSegue:(UIStoryboardSegue *)sender {
-//    
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"test" message:@"test1" preferredStyle:UIAlertControllerStyleAlert];
-//    
-//    
-//    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"취소" style:UIAlertActionStyleDefault handler:nil];
-//    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:nil];
-//    
-//    [alert addAction:okAction];
-//    [alert addAction:cancelAction];
-//    
-//    [self presentViewController:alert animated:YES completion:nil];
-//    
-//}
 
 /*
 #pragma mark - Navigation

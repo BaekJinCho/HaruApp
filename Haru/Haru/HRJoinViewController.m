@@ -41,8 +41,8 @@
     self.joinContentView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
     //notification으로 signupScrollView 올리기!
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChaneSignupScrollView:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChaneSignupScrollView:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChanedSignupScrollView:) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChanedSignupScrollView:) name:UIKeyboardWillShowNotification object:nil];
 }
 
 
@@ -52,7 +52,7 @@
 }
 //notification으로 signupScrollView 올리는 Method
 #pragma mark- joinView notification Method
-- (void)didChaneSignupScrollView:(NSNotification *) notification {
+- (void)didChanedSignupScrollView:(NSNotification *) notification {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         

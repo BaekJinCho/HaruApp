@@ -65,7 +65,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Cx-Sl3" userLabel="Content View">
-                                <rect key="frame" x="-0.5" y="0.0" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
                                         <rect key="frame" x="0.0" y="-7" width="375" height="375.5"/>
@@ -159,14 +159,10 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Pencil" id="RMv-Gq-JGF">
                             <connections>
-                                <action selector="goModifiedViewButton:" destination="fTC-Wd-A6m" id="GbO-Oz-3RF"/>
                                 <segue destination="RJP-qt-fcN" kind="show" id="3UV-1b-Zw2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="detailViewRightBarButton" destination="RMv-Gq-JGF" id="H9p-oW-H7i"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnf-Ha-Bzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="vAV-Pz-FSU" userLabel="Exit" sceneMemberID="exit"/>
@@ -176,7 +172,6 @@
         <!--Modified-->
         <scene sceneID="2y2-zX-rGl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2im-61-UHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="HRModifiedViewController" id="RJP-qt-fcN" customClass="HRModifiedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4CX-Nj-aZA"/>
@@ -218,12 +213,15 @@
                                                     <constraint firstAttribute="width" constant="65" id="Hog-Ip-33e"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 프로젝트는 어디까지인가?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="778-N1-KiK">
-                                                <rect key="frame" x="65" y="20" width="252" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCA-AN-Mca">
+                                                <rect key="frame" x="65" y="20" width="252" height="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="RJP-qt-fcN" id="egI-fM-9oP"/>
+                                                </connections>
+                                            </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Happy" translatesAutoresizingMaskIntoConstraints="NO" id="hQF-Xu-A6h">
                                                 <rect key="frame" x="317" y="21" width="20" height="19"/>
                                                 <constraints>
@@ -233,20 +231,27 @@
                                             </imageView>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbD-W3-YMY">
-                                        <rect key="frame" x="-0.5" y="372.5" width="375" height="220"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zbD-W3-YMY" userLabel="Content View">
+                                        <rect key="frame" x="-0.5" y="423" width="375" height="180"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="무슨 말이 필요해 모두가 널 작품이라고 불러 yeah~  무슨 말이 필요해 모두가 널 작품이라고 불러 yeah~ 무슨 말이 필요해 모두가 널 작품이라고 불러 yeah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mz4-K1-OGz">
-                                                <rect key="frame" x="14.5" y="45" width="346.5" height="61"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Hv5-ui-7R9">
+                                                <rect key="frame" x="0.0" y="-9" width="375" height="144"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="RJP-qt-fcN" id="cfz-e8-pIr"/>
+                                                </connections>
+                                            </textView>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="220" id="2oU-Bm-Vgn"/>
+                                            <constraint firstAttribute="height" constant="180" id="2oU-Bm-Vgn"/>
+                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="centerX" secondItem="zbD-W3-YMY" secondAttribute="centerX" id="Vgb-iU-1bZ"/>
+                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="width" secondItem="zbD-W3-YMY" secondAttribute="width" id="YbO-M8-mgi"/>
+                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="centerY" secondItem="zbD-W3-YMY" secondAttribute="centerY" multiplier="0.7" id="fhV-ap-nba"/>
+                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="height" secondItem="zbD-W3-YMY" secondAttribute="height" multiplier="0.8" id="no5-pl-0JQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -256,32 +261,52 @@
                                     <constraint firstItem="26W-xE-Rgp" firstAttribute="centerY" secondItem="NAu-gg-b78" secondAttribute="centerY" multiplier="0.6" id="Dmo-E9-GkI"/>
                                     <constraint firstItem="26W-xE-Rgp" firstAttribute="width" secondItem="NAu-gg-b78" secondAttribute="width" id="FKU-7A-Qv8"/>
                                     <constraint firstItem="Q4c-sN-iz6" firstAttribute="centerY" secondItem="NAu-gg-b78" secondAttribute="centerY" multiplier="0.1" id="KFE-S2-5Dh"/>
+                                    <constraint firstAttribute="bottom" secondItem="zbD-W3-YMY" secondAttribute="bottom" id="ZQR-uB-Vea"/>
                                     <constraint firstItem="Q4c-sN-iz6" firstAttribute="width" secondItem="NAu-gg-b78" secondAttribute="width" multiplier="0.9" id="Zsp-6y-raa"/>
                                     <constraint firstItem="zbD-W3-YMY" firstAttribute="width" secondItem="NAu-gg-b78" secondAttribute="width" id="fdm-Uh-fGJ"/>
                                     <constraint firstItem="26W-xE-Rgp" firstAttribute="centerX" secondItem="NAu-gg-b78" secondAttribute="centerX" id="gJ2-dl-5AT"/>
                                     <constraint firstItem="zbD-W3-YMY" firstAttribute="centerX" secondItem="NAu-gg-b78" secondAttribute="centerX" id="hYt-Ah-rYV"/>
                                     <constraint firstItem="Q4c-sN-iz6" firstAttribute="height" secondItem="NAu-gg-b78" secondAttribute="height" multiplier="10/100" id="hzc-2g-7k7"/>
-                                    <constraint firstItem="zbD-W3-YMY" firstAttribute="centerY" secondItem="NAu-gg-b78" secondAttribute="centerY" multiplier="1.6" id="pOO-vb-xZz"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="NAu-gg-b78" firstAttribute="centerY" secondItem="TFw-sQ-g87" secondAttribute="centerY" id="0xm-Wi-FCf"/>
                             <constraint firstItem="NAu-gg-b78" firstAttribute="width" secondItem="TFw-sQ-g87" secondAttribute="width" id="9nu-K2-Twc"/>
                             <constraint firstItem="NAu-gg-b78" firstAttribute="centerX" secondItem="TFw-sQ-g87" secondAttribute="centerX" id="TGb-CV-Yz4"/>
                             <constraint firstItem="NAu-gg-b78" firstAttribute="height" secondItem="TFw-sQ-g87" secondAttribute="height" id="TtK-BJ-Vfv"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="yCI-o1-909" appends="YES" id="hfB-ON-QxJ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Modified" id="puW-oC-0mH">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Hdz-ph-IjV">
+                        <barButtonItem key="leftBarButtonItem" image="Arrow" id="Hdz-ph-IjV">
                             <connections>
                                 <action selector="backDetailViewButton:" destination="RJP-qt-fcN" id="lXw-ba-bxL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="저장" id="vSe-0O-pkG"/>
+                        <barButtonItem key="rightBarButtonItem" title="저장" id="vSe-0O-pkG">
+                            <connections>
+                                <segue destination="2zw-5D-Fjw" kind="unwind" unwindAction="unwindMainViewSegue:" id="dvM-yt-d8O"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="modifiedTextView" destination="Hv5-ui-7R9" id="wo3-sD-XyP"/>
+                        <outlet property="postTitleTextField" destination="QCA-AN-Mca" id="MDb-j2-S5M"/>
+                        <outlet property="postViewContentTextVIewBottomConstant" destination="ZQR-uB-Vea" id="NMo-bh-W2K"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2im-61-UHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2zw-5D-Fjw" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="yCI-o1-909">
+                    <connections>
+                        <action selector="modifiedViewTabGesture:" destination="RJP-qt-fcN" id="JKr-fQ-Clp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2770" y="-563"/>
         </scene>
@@ -312,9 +337,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Arrow" width="22" height="23"/>
-        <image name="Background1" width="750" height="1334"/>
-        <image name="Happy" width="40" height="36"/>
+        <image name="Arrow" width="11" height="11"/>
+        <image name="Background1" width="375" height="667"/>
+        <image name="Happy" width="20" height="18"/>
         <image name="Pencil" width="20" height="20"/>
     </resources>
 </document>
