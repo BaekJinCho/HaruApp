@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AddViewController : UIViewController
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewHeight;
 
 @end
