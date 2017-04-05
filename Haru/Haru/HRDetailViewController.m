@@ -13,7 +13,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRDetailViewController ()
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *detailViewRightBarButton;
+
+@property (weak, nonatomic) IBOutlet UIImageView *detailViewUserStateImageView;
 
 @end
 

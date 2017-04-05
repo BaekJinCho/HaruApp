@@ -160,18 +160,18 @@
 			children = (
 				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
 				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
-				01045FF71E9217DF00407BD1 /* ModifiedDisplay */,
+				01045FF71E9217DF00407BD1 /* UpdateDisplay */,
 			);
 			name = DetailDisplay;
 			sourceTree = "<group>";
 		};
-		01045FF71E9217DF00407BD1 /* ModifiedDisplay */ = {
+		01045FF71E9217DF00407BD1 /* UpdateDisplay */ = {
 			isa = PBXGroup;
 			children = (
 				01045FF41E9217D800407BD1 /* HRUpdateViewController.h */,
 				01045FF51E9217D800407BD1 /* HRUpdateViewController.m */,
 			);
-			name = ModifiedDisplay;
+			name = UpdateDisplay;
 			sourceTree = "<group>";
 		};
 		018DF1B91E86221D00DE51EA = {

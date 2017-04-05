@@ -18,6 +18,12 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
 @property (weak, nonatomic) IBOutlet UITextView *postUpdateTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *postViewContentTextVIewBottomConstant;
 @property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *updateViewUserStateImageView;
+@property (nonatomic) NSArray *userStateEmoticonArrays;
+@property (nonatomic) NSMutableArray *EmoticonArrays;
+
+@property (nonatomic) UIBarButtonItem *userStateEmoticonButton;
+@property (nonatomic) UIToolbar *keyboardToolbar;
 
 @end
 
@@ -34,8 +40,6 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     //textField의 내용을 변경해줄 때, 제한을 두기 위해 구현
     [self.postTitleTextField addTarget:self action:@selector(fixPostTitleTextLenth:) forControlEvents:UIControlEventEditingChanged];
     
-//    self.modifiedTextView.textContainer.maximumNumberOfLines = 1;
-//    self.modifiedTextView.textContainer.lineBreakMode = NSLineBreakByTruncatingHead;
 }
 
 //UIToolbar 생성 및 Item 넣어주는 작업
@@ -44,38 +48,50 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     
     [self.postUpdateTextView becomeFirstResponder];
 
-    UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
-    [keyboardToolbar sizeToFit];
+    self.keyboardToolbar = [[UIToolbar alloc] init];
+    [self.keyboardToolbar sizeToFit];
     
-
- 
-    NSArray *userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraButton", @"libraryButton"];
-    NSMutableArray *EmoticonArrays = [[NSMutableArray alloc] init];
+    self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraButton", @"libraryButton"];
     
-    for (NSString *userStateString in userStateEmoticonArrays) {
-        UIBarButtonItem *userStateEmoticonButton = [[UIBarButtonItem alloc]
+    self.EmoticonArrays = [[NSMutableArray alloc] init];
+    
+    for (NSString *userStateString in self.userStateEmoticonArrays) {
+        self.userStateEmoticonButton = [[UIBarButtonItem alloc]
                                            initWithImage:[UIImage imageNamed:userStateString]
                                            style:UIBarButtonItemStylePlain
-                                           target:nil action:@selector(addEmoticon:)];
+                                           target:self action:@selector(addEmoticon:)];
+        [self.userStateEmoticonButton setTintColor:[UIColor colorWithRed:107/255.0 green:108/255.0 blue:103/255.0 alpha:1]];
         UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                           target:nil action:nil];
         
-        [EmoticonArrays addObject:userStateEmoticonButton];
-        [EmoticonArrays addObject:flexBarButton];
-
-
+        [self.EmoticonArrays addObject:self.userStateEmoticonButton];
+        [self.EmoticonArrays addObject:flexBarButton];
+        
+        self.userStateEmoticonButton.tag = 3;
     }
-    [EmoticonArrays removeLastObject];
-    keyboardToolbar.items = EmoticonArrays;
-
-    self.postUpdateTextView.inputAccessoryView = keyboardToolbar;
+    [self.EmoticonArrays removeLastObject];
+    self.keyboardToolbar.items = self.EmoticonArrays;
+    
+    self.postUpdateTextView.inputAccessoryView = self.keyboardToolbar;
 }
 
-//UIBarButtonItem Selector Method
+//UIBarButtonItem Selector Method ****************************fail********************************
 #pragma mark- UIBarButtonItem Selector Method
-- (void)addEmoticon:(UIBarButtonItem *) sender{
+- (void)addEmoticon:(UIBarButtonItem *)clickUserStateBarButtonItem {
+    
+    if ([self.userStateEmoticonArrays objectAtIndex:0]) {
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Happy"]];
+        NSLog(@"%@", self.updateViewUserStateImageView.image);
+        
+    } else if ([self.userStateEmoticonArrays objectAtIndex:1]){
+        
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Sad"]];
+        NSLog(@"%@", self.updateViewUserStateImageView.image);
+    }
 }
+
+
 
 //ContentView의 Constraints를 키보드의 높이만큼 올리기 위한 Method
 #pragma mark- UpdateViewController NSNotification Method

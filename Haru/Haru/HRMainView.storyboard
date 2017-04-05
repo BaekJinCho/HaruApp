@@ -40,9 +40,7 @@
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="width" secondItem="zYp-2H-XtN" secondAttribute="width" id="uEj-Vv-Qr4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="HARU" id="Ufl-tf-35D">
-                        <barButtonItem key="rightBarButtonItem" systemItem="organize" id="AYI-Z4-or6"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="HARU" id="Ufl-tf-35D"/>
                     <connections>
                         <outlet property="mainTableView" destination="KdN-Yt-1tr" id="XNS-zP-oWv"/>
                         <segue destination="fTC-Wd-A6m" kind="show" identifier="DetailViewFromMainView" id="q7W-Z5-PeH"/>
@@ -106,7 +104,7 @@
                                                 <color key="textColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Happy" translatesAutoresizingMaskIntoConstraints="NO" id="zUx-tg-oj8">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zUx-tg-oj8">
                                                 <rect key="frame" x="317.5" y="20.5" width="20" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="Sco-ih-qDx"/>
@@ -171,6 +169,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="detailViewUserStateImageView" destination="zUx-tg-oj8" id="ZRO-da-QV5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnf-Ha-Bzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="vAV-Pz-FSU" userLabel="Exit" sceneMemberID="exit"/>
@@ -234,7 +235,7 @@
                                                     <outlet property="delegate" destination="RJP-qt-fcN" id="egI-fM-9oP"/>
                                                 </connections>
                                             </textField>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Happy" translatesAutoresizingMaskIntoConstraints="NO" id="hQF-Xu-A6h">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hQF-Xu-A6h">
                                                 <rect key="frame" x="317" y="21" width="20" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="19" id="JLh-Sx-E3o"/>
@@ -314,6 +315,7 @@
                         <outlet property="postTitleTextField" destination="QCA-AN-Mca" id="MDb-j2-S5M"/>
                         <outlet property="postUpdateTextView" destination="Hv5-ui-7R9" id="iVC-xw-XKK"/>
                         <outlet property="postViewContentTextVIewBottomConstant" destination="ZQR-uB-Vea" id="NMo-bh-W2K"/>
+                        <outlet property="updateViewUserStateImageView" destination="hQF-Xu-A6h" id="V0E-wC-3Zw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2im-61-UHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -355,7 +357,6 @@
     <resources>
         <image name="10.jpg" width="1087" height="723"/>
         <image name="Arrow" width="19" height="20"/>
-        <image name="Happy" width="20" height="18"/>
         <image name="Pencil" width="20" height="20"/>
         <image name="d.png" width="569" height="454"/>
     </resources>
