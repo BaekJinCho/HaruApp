@@ -9,7 +9,7 @@
 #import "HRDetailViewController.h"
 #import "HRCustomTableViewCell.h"
 #import "HRMainViewController.h"
-#import "HRModifiedViewController.h"
+#import "HRUpdateViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRDetailViewController ()

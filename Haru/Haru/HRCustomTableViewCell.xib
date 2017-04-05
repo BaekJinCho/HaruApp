@@ -20,13 +20,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="319.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="8Ej-8Y-IOK">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="d.png" translatesAutoresizingMaskIntoConstraints="NO" id="8Ej-8Y-IOK">
                         <rect key="frame" x="0.0" y="-0.5" width="320" height="320.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="8Ej-8Y-IOK" secondAttribute="height" multiplier="1:1" id="ToT-xh-jvb"/>
                         </constraints>
                     </imageView>
-                    <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bY2-hd-Rbd">
+                    <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bY2-hd-Rbd" userLabel="Content View">
                         <rect key="frame" x="15" y="234.5" width="290" height="70"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zqU-Fk-Lfr">
@@ -122,7 +122,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Background1" width="750" height="1334"/>
-        <image name="Happy" width="40" height="36"/>
+        <image name="Happy" width="20" height="18"/>
+        <image name="d.png" width="569" height="454"/>
     </resources>
 </document>

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HRModifiedViewController : UIViewController
+@interface HRUpdateViewController : UIViewController
 
 @end
