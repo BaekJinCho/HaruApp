@@ -9,10 +9,6 @@
 #import "HRUpdateViewController.h"
 #import "HRMainViewController.h"
 
-static NSUInteger MAX_POST_TITLE_CONTENT = 13; //일기 제목의 글자 제한 주기위한 변수
-static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주기위한 변수
-
-
 @interface HRUpdateViewController ()
 <UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *postUpdateTextView;
@@ -51,7 +47,7 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     
-    self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraButton", @"libraryButton"];
+    self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraBarButton", @"libraryBarButton"];
     
     self.EmoticonArrays = [[NSMutableArray alloc] init];
     
@@ -244,6 +240,13 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     
     [self presentViewController:alert animated:YES completion:nil];
 
+}
+
+//저장 버튼 클릭했을 때 불리는 Method
+#pragma mark- UpdateViewController clickSaveNavigationBarButton Method
+- (IBAction)clickSaveNavigationBarButton:(UIBarButtonItem *)sender {
+    
+    //수정한 내용을 서버에 보내주는 작업 필요 & Main, Detail View에도 적용하는 작업 필요
 }
 
 //수정하는 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method

@@ -10,7 +10,6 @@
 #import "HRCustomTableViewCell.h"
 #import "HRMainViewController.h"
 #import "HRUpdateViewController.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface HRDetailViewController ()
 

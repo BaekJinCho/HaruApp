@@ -47,6 +47,8 @@
 		01045FF51E9217D800407BD1 /* HRUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUpdateViewController.m; sourceTree = "<group>"; };
 		01045FFC1E9396CE00407BD1 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
 		01045FFE1E93988300407BD1 /* d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d.png; sourceTree = "<group>"; };
+		010460021E9654E500407BD1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		010460031E9655FC00407BD1 /* HRConstantKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRConstantKeys.h; sourceTree = "<group>"; };
 		018DF1C21E86221D00DE51EA /* Haru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018DF1C61E86221D00DE51EA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		018DF1C81E86221D00DE51EA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -174,6 +176,15 @@
 			name = UpdateDisplay;
 			sourceTree = "<group>";
 		};
+		010460011E9654A000407BD1 /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				010460021E9654E500407BD1 /* PrefixHeader.pch */,
+				010460031E9655FC00407BD1 /* HRConstantKeys.h */,
+			);
+			name = utility;
+			sourceTree = "<group>";
+		};
 		018DF1B91E86221D00DE51EA = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +296,7 @@
 			children = (
 				01CB50B01E8A28810024CC4C /* HRLoginViewController.h */,
 				01CB50B11E8A28810024CC4C /* HRLoginViewController.m */,
+				010460011E9654A000407BD1 /* utility */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -602,6 +614,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Haru/PrefixHeader.pch;
 				INFOPLIST_FILE = Haru/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jcy.developer.Haru;
@@ -615,6 +629,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = NN7QXHC8A3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Haru/PrefixHeader.pch;
 				INFOPLIST_FILE = Haru/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jcy.developer.Haru;

@@ -8,13 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-static NSString * const TITLE_KEY = @"Title";
-static NSString * const CONTENT_KEY = @"content";
-static NSString * const IMAGE_KEY = @"imageURL";
-static NSString * const USERSATE_KEY = @"userState";
-
-typedef NS_ENUM(NSUInteger, HRUserEmotionalState)
-{
+typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {
     HRUserEmotionalStateAngry,
     HRUserEmotionalStateHappy,
     HRUserEmotionalStateSad,
@@ -24,9 +18,10 @@ typedef NS_ENUM(NSUInteger, HRUserEmotionalState)
 
 @interface HRPostModel : NSObject
 
+@property NSDate *date;
 @property NSString *title;
 @property NSString *content;
-@property NSString *imageURL;
+@property NSString *image;
 @property HRUserEmotionalState userState;
 
 

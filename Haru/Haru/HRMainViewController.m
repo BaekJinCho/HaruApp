@@ -8,16 +8,14 @@
 
 #import "HRMainViewController.h"
 #import "HRCustomTableViewCell.h"
-#import "HRPostModel.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "HRDetailViewController.h"
 
 @interface HRMainViewController ()
 <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
-@property (nonatomic) NSMutableArray *cellData;
-@property (nonatomic) NSArray *dataArray;
+
+
 
 @end
 
@@ -30,10 +28,6 @@
     //custom cell nib 파일 가져오기
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
-    self.cellData = [[NSMutableArray alloc] initWithObjects:nib, nil];
-    
-    self.dataArray = @[@1,@1,@1,@1,@1,@1,@1,@1,@1,@1];
-
     
 }
 
@@ -64,7 +58,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"numberOfRowsInSection");
-    return self.dataArray.count;
+    return 10;
     
 }
 
@@ -103,7 +97,7 @@
 
 #pragma mark- mainViewController PrepareForSegue Method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    HRCustomTableViewCell *customCell = [HRDetailViewController new];
+//    HRCustomTableViewCell *customCell = [HRDetailViewController new];
     if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
         
         //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
@@ -132,10 +126,10 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
 //        [self.cellData removeObjectAtIndex:indexPath.row];
-        NSMutableArray *arrayForRemove = [self.dataArray mutableCopy];
-        [arrayForRemove removeObjectAtIndex:indexPath.row];
-        self.dataArray = [NSArray arrayWithArray:arrayForRemove];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//        NSMutableArray *arrayForRemove = [self.dataArray mutableCopy];
+//        [arrayForRemove removeObjectAtIndex:indexPath.row];
+//        self.dataArray = [NSArray arrayWithArray:arrayForRemove];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
     }
 

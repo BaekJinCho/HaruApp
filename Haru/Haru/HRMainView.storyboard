@@ -193,7 +193,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-gg-b78" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
                                         <rect key="frame" x="0.0" y="-6.5" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="26W-xE-Rgp" secondAttribute="height" multiplier="1:1" id="x4B-Oq-elx"/>
@@ -248,7 +248,7 @@
                                         <rect key="frame" x="-0.5" y="423" width="375" height="180"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Hv5-ui-7R9">
-                                                <rect key="frame" x="0.0" y="-9" width="375" height="144"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
@@ -263,8 +263,8 @@
                                             <constraint firstAttribute="height" constant="180" id="2oU-Bm-Vgn"/>
                                             <constraint firstItem="Hv5-ui-7R9" firstAttribute="centerX" secondItem="zbD-W3-YMY" secondAttribute="centerX" id="Vgb-iU-1bZ"/>
                                             <constraint firstItem="Hv5-ui-7R9" firstAttribute="width" secondItem="zbD-W3-YMY" secondAttribute="width" id="YbO-M8-mgi"/>
-                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="centerY" secondItem="zbD-W3-YMY" secondAttribute="centerY" multiplier="0.7" id="fhV-ap-nba"/>
-                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="height" secondItem="zbD-W3-YMY" secondAttribute="height" multiplier="0.8" id="no5-pl-0JQ"/>
+                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="centerY" secondItem="zbD-W3-YMY" secondAttribute="centerY" id="fhV-ap-nba"/>
+                                            <constraint firstItem="Hv5-ui-7R9" firstAttribute="height" secondItem="zbD-W3-YMY" secondAttribute="height" id="no5-pl-0JQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -307,6 +307,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="저장" id="vSe-0O-pkG">
                             <connections>
+                                <action selector="clickSaveNavigationBarButton:" destination="RJP-qt-fcN" id="WpW-Ng-jn8"/>
                                 <segue destination="2zw-5D-Fjw" kind="unwind" unwindAction="unwindMainViewSegue:" id="dvM-yt-d8O"/>
                             </connections>
                         </barButtonItem>
