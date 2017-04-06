@@ -14,16 +14,16 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
 
 
 @interface HRUpdateViewController ()
-<UITextViewDelegate, UITextFieldDelegate>
+<UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *postUpdateTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *postViewContentTextVIewBottomConstant;
 @property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *updateViewUserStateImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *updateViewBackgroundPhoto;
 @property (nonatomic) NSArray *userStateEmoticonArrays;
 @property (nonatomic) NSMutableArray *EmoticonArrays;
 
 @property (nonatomic) UIBarButtonItem *userStateEmoticonButton;
-@property (nonatomic) UIToolbar *keyboardToolbar;
 
 @end
 
@@ -48,16 +48,17 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     
     [self.postUpdateTextView becomeFirstResponder];
 
-    self.keyboardToolbar = [[UIToolbar alloc] init];
-    [self.keyboardToolbar sizeToFit];
+    UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+    [keyboardToolbar sizeToFit];
     
     self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraButton", @"libraryButton"];
     
     self.EmoticonArrays = [[NSMutableArray alloc] init];
     
-    for (NSString *userStateString in self.userStateEmoticonArrays) {
+    for (NSInteger i=0 ; i < self.userStateEmoticonArrays.count ; i++) {
+    
         self.userStateEmoticonButton = [[UIBarButtonItem alloc]
-                                           initWithImage:[UIImage imageNamed:userStateString]
+                                           initWithImage:[UIImage imageNamed:self.userStateEmoticonArrays[i]]
                                            style:UIBarButtonItemStylePlain
                                            target:self action:@selector(addEmoticon:)];
         [self.userStateEmoticonButton setTintColor:[UIColor colorWithRed:107/255.0 green:108/255.0 blue:103/255.0 alpha:1]];
@@ -67,30 +68,77 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
         
         [self.EmoticonArrays addObject:self.userStateEmoticonButton];
         [self.EmoticonArrays addObject:flexBarButton];
-        
-        self.userStateEmoticonButton.tag = 3;
+        self.userStateEmoticonButton.tag = i;
     }
     [self.EmoticonArrays removeLastObject];
-    self.keyboardToolbar.items = self.EmoticonArrays;
+    keyboardToolbar.items = self.EmoticonArrays;
     
-    self.postUpdateTextView.inputAccessoryView = self.keyboardToolbar;
+    self.postUpdateTextView.inputAccessoryView = keyboardToolbar;
 }
 
-//UIBarButtonItem Selector Method ****************************fail********************************
+
+//UIBarButtonItem Selector Method (barbutton item을 클릭할 때마다 이모티콘 및 행동이 바뀌는 로직 처리)
 #pragma mark- UIBarButtonItem Selector Method
 - (void)addEmoticon:(UIBarButtonItem *)clickUserStateBarButtonItem {
     
-    if ([self.userStateEmoticonArrays objectAtIndex:0]) {
+    if (clickUserStateBarButtonItem.tag == 0) {
+        
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Happy"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
         
-    } else if ([self.userStateEmoticonArrays objectAtIndex:1]){
+    } else if (clickUserStateBarButtonItem.tag == 1) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Sad"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+    
+    } else if (clickUserStateBarButtonItem.tag == 2) {
+        
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Angry"]];
+        NSLog(@"%@", self.updateViewUserStateImageView.image);
+    
+    } else if (clickUserStateBarButtonItem.tag == 3) {
+        
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Soso"]];
+        NSLog(@"%@", self.updateViewUserStateImageView.image);
+    
+    } else if (clickUserStateBarButtonItem.tag == 4) {
+        
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Upset"]];
+        NSLog(@"%@", self.updateViewUserStateImageView.image);
+    
+    } else if (clickUserStateBarButtonItem.tag == 5) {
+        
+        UIImagePickerController *cameraController = [[UIImagePickerController alloc] init];
+        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraController.allowsEditing = YES;
+        cameraController.delegate = self;
+        [self presentViewController:cameraController animated:YES completion:nil];
+        
+    } else if (clickUserStateBarButtonItem.tag == 6) {
+        
+        UIImagePickerController *photoLibraryController = [[UIImagePickerController alloc] init];
+        photoLibraryController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        photoLibraryController.allowsEditing = YES;
+        photoLibraryController.delegate = self;
+        [self presentViewController:photoLibraryController animated:YES completion:nil];
+       
     }
 }
 
+//Image의 선택이 끝났을 때, 불리는 Method
+#pragma mark- UpdateViewController didFinishPickingMediaWithInfo Delegate Method
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    NSLog(@"info %@", info);
+    self.updateViewBackgroundPhoto.image = [info objectForKey:UIImagePickerControllerEditedImage];;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+//UIImage Scale 처리
+//- (UIImage *)category_imageWithData:(NSData *)data {
+//    UIImage *image = [[UIImage alloc] initWithData:data];
+//    return [[UIImage alloc] initWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:image.imageOrientation];
+//}
 
 
 //ContentView의 Constraints를 키보드의 높이만큼 올리기 위한 Method
@@ -159,8 +207,6 @@ static NSUInteger MAX_POST_CONTENT = 110; //일기 내용의 글자 제한 주�
     //alert 띄어줄까? 고민중...
     return !([textView.text length] > MAX_POST_CONTENT && [text length] > range.length);
 }
-
- 
 
 
 //글 내용을 복사한 내용을 변경했을 때, 불리는 Method

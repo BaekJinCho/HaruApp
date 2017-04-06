@@ -193,7 +193,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-gg-b78" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="d.png" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
                                         <rect key="frame" x="0.0" y="-6.5" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="26W-xE-Rgp" secondAttribute="height" multiplier="1:1" id="x4B-Oq-elx"/>
@@ -315,6 +315,7 @@
                         <outlet property="postTitleTextField" destination="QCA-AN-Mca" id="MDb-j2-S5M"/>
                         <outlet property="postUpdateTextView" destination="Hv5-ui-7R9" id="iVC-xw-XKK"/>
                         <outlet property="postViewContentTextVIewBottomConstant" destination="ZQR-uB-Vea" id="NMo-bh-W2K"/>
+                        <outlet property="updateViewBackgroundPhoto" destination="26W-xE-Rgp" id="rh7-rR-71e"/>
                         <outlet property="updateViewUserStateImageView" destination="hQF-Xu-A6h" id="V0E-wC-3Zw"/>
                     </connections>
                 </viewController>
@@ -358,6 +359,5 @@
         <image name="10.jpg" width="1087" height="723"/>
         <image name="Arrow" width="19" height="20"/>
         <image name="Pencil" width="20" height="20"/>
-        <image name="d.png" width="569" height="454"/>
     </resources>
 </document>

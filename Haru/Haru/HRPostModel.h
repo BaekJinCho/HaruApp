@@ -8,10 +8,26 @@
 
 #import <Foundation/Foundation.h>
 
+static NSString * const TITLE_KEY = @"Title";
+static NSString * const CONTENT_KEY = @"content";
+static NSString * const IMAGE_KEY = @"imageURL";
+static NSString * const USERSATE_KEY = @"userState";
+
+typedef NS_ENUM(NSUInteger, HRUserEmotionalState)
+{
+    HRUserEmotionalStateAngry,
+    HRUserEmotionalStateHappy,
+    HRUserEmotionalStateSad,
+    HRUserEmotionalStateSoso,
+    HRUserEmotionalStateUpset
+};
+
 @interface HRPostModel : NSObject
 
 @property NSString *title;
-@property NSString *context;
-@property NSString *image;
+@property NSString *content;
+@property NSString *imageURL;
+@property HRUserEmotionalState userState;
+
 
 @end

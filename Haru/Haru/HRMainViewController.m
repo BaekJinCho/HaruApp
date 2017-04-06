@@ -10,13 +10,14 @@
 #import "HRCustomTableViewCell.h"
 #import "HRPostModel.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-
 #import "HRDetailViewController.h"
 
 @interface HRMainViewController ()
 <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
+@property (nonatomic) NSMutableArray *cellData;
+@property (nonatomic) NSArray *dataArray;
 
 @end
 
@@ -29,6 +30,10 @@
     //custom cell nib 파일 가져오기
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
+    self.cellData = [[NSMutableArray alloc] initWithObjects:nib, nil];
+    
+    self.dataArray = @[@1,@1,@1,@1,@1,@1,@1,@1,@1,@1];
+
     
 }
 
@@ -59,7 +64,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"numberOfRowsInSection");
-    return 2;
+    return self.dataArray.count;
+    
 }
 
 //mainView의 cell을 생성하는 Method
@@ -80,36 +86,6 @@
 
     return mainViewCell;
 }
-
-//mainView header Section Method
-#pragma mark- mainViewController titleForHeaderInSection Method
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//
-//    NSString *headerTitle = [NSString stringWithFormat:@"2017년 %ld월", section];
-//    return headerTitle;
-//}
-
-////mainView header Section Custom 하기 위한 Method
-//#pragma mark- mainViewController viewForHeaderInSection Method
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    
-//    UIView *mainHeaderTitleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 20)];
-//    UILabel *mainHeaderTitleLabel = [[UILabel alloc] initWithFrame:mainHeaderTitleView.bounds];
-//    NSString *headerTitle = [NSString stringWithFormat:@"2017년 %ld월", section];
-//    
-//    mainHeaderTitleLabel.text= headerTitle;
-//    [mainHeaderTitleLabel setFont:[UIFont fontWithName:@"Apple SD Gothic Neo" size:17]];
-//    mainHeaderTitleLabel.textColor = [UIColor colorWithWhite:255/255.0 alpha:0.8];
-//    mainHeaderTitleLabel.textAlignment = NSTextAlignmentCenter;
-//    [mainHeaderTitleView addSubview:mainHeaderTitleLabel];
-//    return mainHeaderTitleView;
-//}
-
-////heightForHeader Method (header를 custom 하게 만들고 header의 높이를 꼭 줘야한다. View의 height와 같은 값을 줘야 header의 가운데의 온다.)
-//#pragma mark- mainViewController heightForHeaderInSection Method
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    return 20;
-//}
 
 //mainView의 cell의 높이를 지정해주는 메소드
 #pragma mark- mainViewController heightForRowAtIndexPath Method
@@ -142,6 +118,30 @@
         
     }
 }
+
+//tableview를 edit 할 수 있게 해주는 Method
+#pragma mark- mainVeiwController canEditRowAtIndexPath Method
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+//tableview를 edit style를 정해주는 Method
+#pragma mark- mainVeiwController commitEditing Method
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [self.cellData removeObjectAtIndex:indexPath.row];
+        NSMutableArray *arrayForRemove = [self.dataArray mutableCopy];
+        [arrayForRemove removeObjectAtIndex:indexPath.row];
+        self.dataArray = [NSArray arrayWithArray:arrayForRemove];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+
+}
+
+
 #pragma mark- mainViewController unwindSegut Method
 - (IBAction)unwindMainViewSegue:(UIStoryboardSegue *)sender {
     
