@@ -8,16 +8,16 @@
 
 #import "AddViewController.h"
 
-static NSInteger TITLE_MAXLENGTH = 10;
-static NSUInteger CONTENT_MAXLENGTH = 120;
+static NSInteger TITLE_MAXLENGTH = 20;
+static NSUInteger CONTENT_MAXLENGTH = 150;
 
 @interface AddViewController ()
-<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate>
+<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
-@property (weak, nonatomic) IBOutlet UITextView *contextTextView;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *emoticonImageView;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
@@ -39,28 +39,15 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
 
+    
+    self.contentTextView.textContainer.maximumNumberOfLines = 4;
+    self.contentTextView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+    
+
     self.emoticonArray = @[@"Happy", @"Sad", @"Angry", @"Upset", @"Soso"];
     
     self.titleTextView.tag = 1;
-    self.contextTextView.tag = 2;
-    
-    self.dayLabel.numberOfLines = 1;
-    self.dayLabel.minimumScaleFactor = 20;
-    self.dayLabel.adjustsFontSizeToFitWidth = YES;
-    
-    self.weekOfDayLabel.numberOfLines = 1;
-    self.weekOfDayLabel.minimumScaleFactor = 10;
-    self.weekOfDayLabel.adjustsFontSizeToFitWidth = YES;
-    
-    
-    
-}
-
-
-
-- (void)viewDidAppear:(BOOL)animated {
-    
-    [self.titleTextView becomeFirstResponder];
+    self.contentTextView.tag = 2;
     
     UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
@@ -80,24 +67,37 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
     UIBarButtonItem *angryBarButton = [[UIBarButtonItem alloc]
                                        initWithImage:[UIImage imageNamed:@"Angry"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
     flexBarButton.tag = 33;
-
+    
     
     UIBarButtonItem *upsetBarButton = [[UIBarButtonItem alloc]
                                        initWithImage:[UIImage imageNamed:@"Upset"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
     flexBarButton.tag = 44;
-
+    
     
     UIBarButtonItem *sosoBarButton = [[UIBarButtonItem alloc]
                                       initWithImage:[UIImage imageNamed:@"Soso"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
     flexBarButton.tag = 55;
-
+    
     
     
     keyboardToolbar.items = @[happyBarButton, flexBarButton, sadBarButton, flexBarButton, angryBarButton, flexBarButton, upsetBarButton, flexBarButton, sosoBarButton];
     
     
     [self.titleTextView setInputAccessoryView:keyboardToolbar];
-    [self.contextTextView setInputAccessoryView:keyboardToolbar];
+    [self.contentTextView setInputAccessoryView:keyboardToolbar];
+
+    
+    [self.titleTextView becomeFirstResponder];
+
+    
+//    self.dayLabel.numberOfLines = 1;
+//    self.dayLabel.minimumScaleFactor = 20;
+//    self.dayLabel.adjustsFontSizeToFitWidth = YES;
+//    
+//    self.weekOfDayLabel.numberOfLines = 1;
+//    self.weekOfDayLabel.minimumScaleFactor = 10;
+//    self.weekOfDayLabel.adjustsFontSizeToFitWidth = YES;
+    
 }
 
 
@@ -128,12 +128,9 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
 
 - (void)keyboardWillHide:(NSNotification *)notification {
     NSDictionary *info = [notification userInfo];
-    NSValue *keyboardFrameValue = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
     NSTimeInterval timeInterval = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    CGRect keyboardFrame = [keyboardFrameValue CGRectValue];
-    CGFloat height = keyboardFrame.size.height;
-    
-    self.keyboardHeight.constant = height;
+
+    [self.keyboardHeight setConstant:100];
     self.buttonViewHeight.constant = 0;
     [self.backgroundView setNeedsUpdateConstraints];
     [self.buttonView setNeedsUpdateConstraints];
@@ -144,6 +141,10 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
     }];
 }
 
+- (IBAction)tapToRemoveKeyboard:(UITapGestureRecognizer *)tapGesture {
+    
+    [self.view endEditing:YES];
+}
 
 // 데이터를 realm에 저장하는 메소드
 //- (IBAction)clickedSaveButton:(id)sender {
@@ -189,10 +190,12 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     self.mainImageView.image = image;
     
-
-//    UIImageWriteToSavedPhotosAlbum(self.mainImageView.image, self, @selector(didFinishSavingWithError), nil);
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    });
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 
 }
 
@@ -206,21 +209,27 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
 
 #pragma mark - text related methods
 
+// 텍스트 뷰가 수정될 때마
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     switch (textView.tag) {
         case 1: {
             NSString *newText = [textView.text stringByReplacingCharactersInRange: range withString: text];
+
             if( [newText length] <= TITLE_MAXLENGTH){
+                
                 return YES;
             }
-            // case where text length > MAX_LENGTH
+            // 타이틀 텍스트 길이가 최대수치 이상일 때 불릴 때 no를 반환해준다. 
             textView.text = [newText substringToIndex: TITLE_MAXLENGTH];
+
             return NO;
             break;
         }
         default: {
             NSString *newText = [textView.text stringByReplacingCharactersInRange: range withString: text];
+            textView.textContainer.maximumNumberOfLines = 4;
+            textView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
             if( [newText length] <= CONTENT_MAXLENGTH){
                 return YES;
             }
@@ -230,6 +239,13 @@ static NSUInteger CONTENT_MAXLENGTH = 120;
             break;
         }
     }
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 
