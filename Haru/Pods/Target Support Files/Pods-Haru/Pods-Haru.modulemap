@@ -1,0 +1,6 @@
+framework module Pods_Haru {
+  umbrella header "Pods-Haru-umbrella.h"
+
+  export *
+  module * { export * }
+}

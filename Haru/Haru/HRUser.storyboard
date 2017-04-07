@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -181,11 +182,19 @@
                                     <constraint firstAttribute="bottom" secondItem="7at-az-tYS" secondAttribute="bottom" constant="13" id="zoR-Fk-PMV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDi-rl-J5f" customClass="FSCalendar">
+                                <rect key="frame" x="16" y="306" width="288" height="213"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="top" secondItem="gxt-Wy-hAh" secondAttribute="bottom" id="8HX-GG-QIs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TDi-rl-J5f" secondAttribute="trailing" id="D0G-Qb-e0b"/>
+                            <constraint firstItem="TDi-rl-J5f" firstAttribute="top" secondItem="KB3-cg-EhA" secondAttribute="bottom" constant="36" id="Nhb-f0-ZS6"/>
+                            <constraint firstItem="TDi-rl-J5f" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leadingMargin" id="WL1-hN-bue"/>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="height" secondItem="Say-SF-2J3" secondAttribute="height" multiplier="0.44" id="ekU-O0-cSq"/>
+                            <constraint firstItem="iKN-l4-i0Z" firstAttribute="top" secondItem="TDi-rl-J5f" secondAttribute="bottom" constant="49" id="ocD-S9-WMn"/>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="rG1-8G-zXY"/>
                             <constraint firstAttribute="trailing" secondItem="KB3-cg-EhA" secondAttribute="trailing" id="thk-4w-IBo"/>
                         </constraints>

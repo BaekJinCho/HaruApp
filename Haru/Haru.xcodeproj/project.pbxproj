@@ -32,7 +32,7 @@
 		1859789A1E88D46C00172475 /* HRPostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185978991E88D46C00172475 /* HRPostModel.m */; };
 		1878DE8E1E9248FC00501825 /* HRAddView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1878DE8D1E9248FC00501825 /* HRAddView.storyboard */; };
 		1878DE911E92491700501825 /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DE901E92491700501825 /* AddViewController.m */; };
-		47FE0AA600A1CFE3BAE31B0F /* libPods-Haru.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC463534BD897007F9825E26 /* libPods-Haru.a */; };
+		8B421EB16B4080AD790E31B6 /* Pods_Haru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64AC1E4EA904E4F4A536C24 /* Pods_Haru.framework */; };
 		BA436C7B1E8CCEFC004A5564 /* HRUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */; };
 		BA436C7D1E8CCF75004A5564 /* HRUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */; };
 /* End PBXBuildFile section */
@@ -83,10 +83,10 @@
 		1878DE8F1E92491700501825 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		1878DE901E92491700501825 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Haru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Haru/Pods-Haru.release.xcconfig"; sourceTree = "<group>"; };
+		A64AC1E4EA904E4F4A536C24 /* Pods_Haru.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Haru.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA436C791E8CCEFC004A5564 /* HRUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRUserViewController.h; sourceTree = "<group>"; };
 		BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUserViewController.m; sourceTree = "<group>"; };
 		BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRUser.storyboard; sourceTree = "<group>"; };
-		BC463534BD897007F9825E26 /* libPods-Haru.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Haru.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47FE0AA600A1CFE3BAE31B0F /* libPods-Haru.a in Frameworks */,
+				8B421EB16B4080AD790E31B6 /* Pods_Haru.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +326,7 @@
 		70D62008E53D276FA3FB1A87 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BC463534BD897007F9825E26 /* libPods-Haru.a */,
+				A64AC1E4EA904E4F4A536C24 /* Pods_Haru.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
