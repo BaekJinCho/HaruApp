@@ -126,7 +126,7 @@
                     password:(NSString *)password
                    password2:(NSString *)password2 {
     
-    return [NSString stringWithFormat:@"Email=%@&Password=%@&password2=%@", email, password, password2];
+    return [NSString stringWithFormat:@"Email=%@&Password=%@&Password2=%@", email, password, password2];
 }
 
 

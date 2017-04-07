@@ -12,7 +12,6 @@ typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
 
 @interface HRNetworkModule : NSObject
 
-
 - (void)loginRequestToServer:(NSString *)userID
                    password:(NSString *)password
                  completion:(BlockOnCompletion)completion;

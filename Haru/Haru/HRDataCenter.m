@@ -17,7 +17,7 @@
 @implementation HRDataCenter
 
 
-// 싱글턴
+//싱글턴
 + (instancetype) sharedInstance {
     
     static HRDataCenter *center;
@@ -29,7 +29,7 @@
 }
 
 
-// 초기화 메소드
+//초기화 메소드
 - (instancetype) init {
     self = [super init];
     if (self) {
@@ -38,7 +38,7 @@
     return self;
 }
 
-
+//유저의 token 값 저장
 - (NSString *)getUserToken
 {
     if (self.userToken == nil) {
@@ -59,7 +59,7 @@
     
 }
 
-
+//로그인 Method
 - (void)loginRequestWithUserID:(NSString *)userID
                       password:(NSString *)password
                     completion:(BlockOnCompletion)completion {
@@ -75,7 +75,7 @@
                                    }];
 }
 
-
+//회원가입 Method
 - (void)joinRequestWithUserID:(NSString *)userID
                         password:(NSString *)password
                        password2:(NSString *)password2
