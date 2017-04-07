@@ -39,11 +39,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="171"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-TS-tas">
-                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="171"/>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0ie-TS-tas">
+                                                    <rect key="frame" x="0.0" y="1" width="172" height="171"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i3S-YN-yjN">
-                                                            <rect key="frame" x="17" y="20.5" width="138" height="20"/>
+                                                            <rect key="frame" x="17" y="21" width="138" height="20"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="vgf-9I-hwx"/>
@@ -53,7 +53,7 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rbj-T4-d0f">
-                                                            <rect key="frame" x="19" y="40.5" width="134" height="40.5"/>
+                                                            <rect key="frame" x="19" y="41" width="134" height="40"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40.700000000000003" id="htZ-MD-6xf"/>
@@ -67,15 +67,15 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="qtV-XP-K7A" firstAttribute="leading" secondItem="0ie-TS-tas" secondAttribute="leading" id="2ww-bV-hGm"/>
-                                                        <constraint firstAttribute="bottom" secondItem="qtV-XP-K7A" secondAttribute="bottom" id="8nJ-kx-w3o"/>
-                                                        <constraint firstItem="qtV-XP-K7A" firstAttribute="top" secondItem="0ie-TS-tas" secondAttribute="top" id="AQw-ME-qRc"/>
+                                                        <constraint firstItem="qtV-XP-K7A" firstAttribute="top" secondItem="0ie-TS-tas" secondAttribute="top" id="8xr-db-mul"/>
                                                         <constraint firstAttribute="trailing" secondItem="Rbj-T4-d0f" secondAttribute="trailing" constant="19" id="GGz-oW-YjH"/>
                                                         <constraint firstItem="Rbj-T4-d0f" firstAttribute="leading" secondItem="0ie-TS-tas" secondAttribute="leading" constant="19" id="H7p-wD-Acc"/>
+                                                        <constraint firstAttribute="bottom" secondItem="qtV-XP-K7A" secondAttribute="bottom" id="LzR-CM-wXV"/>
+                                                        <constraint firstItem="qtV-XP-K7A" firstAttribute="leading" secondItem="0ie-TS-tas" secondAttribute="leading" id="Nf6-HH-fUH"/>
                                                         <constraint firstItem="Rbj-T4-d0f" firstAttribute="top" secondItem="i3S-YN-yjN" secondAttribute="bottom" id="Yxb-4h-sbt"/>
                                                         <constraint firstItem="i3S-YN-yjN" firstAttribute="leading" secondItem="0ie-TS-tas" secondAttribute="leading" constant="17" id="bHx-uI-vrN"/>
                                                         <constraint firstAttribute="trailing" secondItem="i3S-YN-yjN" secondAttribute="trailing" constant="17" id="dA9-DU-P8m"/>
-                                                        <constraint firstAttribute="trailing" secondItem="qtV-XP-K7A" secondAttribute="trailing" id="ioV-ty-vos"/>
+                                                        <constraint firstAttribute="trailing" secondItem="qtV-XP-K7A" secondAttribute="trailing" id="pKZ-8g-TqM"/>
                                                         <constraint firstItem="i3S-YN-yjN" firstAttribute="top" secondItem="0ie-TS-tas" secondAttribute="top" constant="20.5" id="tQV-8z-LWh"/>
                                                     </constraints>
                                                 </view>
@@ -96,6 +96,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJt-Nj-prC">
+                                <rect key="frame" x="330" y="573" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="AddButton"/>
+                                <connections>
+                                    <segue destination="SIC-af-Hzk" kind="popoverPresentation" popoverAnchorView="tJt-Nj-prC" id="Jwh-sU-ckL">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -104,6 +114,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WN-sg-b2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2074.4000000000001" y="156.97151424287858"/>
+        </scene>
+        <!--HRAddView-->
+        <scene sceneID="tIL-Rp-0MX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HRAddView" id="SIC-af-Hzk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j6O-43-CST" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2794" y="157"/>
         </scene>
         <!--Item-->
         <scene sceneID="bBZ-I8-AWe">
@@ -143,4 +161,7 @@
             <point key="canvasLocation" x="196" y="156.97151424287858"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="AddButton" width="39" height="39"/>
+    </resources>
 </document>
