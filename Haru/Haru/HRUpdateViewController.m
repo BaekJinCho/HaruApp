@@ -36,14 +36,18 @@
     //textField의 내용을 변경해줄 때, 제한을 두기 위해 구현
     [self.postTitleTextField addTarget:self action:@selector(fixPostTitleTextLenth:) forControlEvents:UIControlEventEditingChanged];
     
+    
+    //UIToolbar 생성 및 Item 넣어주는 작업
+    [self inputEmoticonAccessoryView];
+    
+    
 }
 
 //UIToolbar 생성 및 Item 넣어주는 작업
-#pragma mark- ViewDidAppear
-- (void)viewDidAppear:(BOOL)animated {
+- (void)inputEmoticonAccessoryView {
     
     [self.postUpdateTextView becomeFirstResponder];
-
+    
     UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     
@@ -52,17 +56,22 @@
     self.EmoticonArrays = [[NSMutableArray alloc] init];
     
     for (NSInteger i=0 ; i < self.userStateEmoticonArrays.count ; i++) {
-    
+        
         self.userStateEmoticonButton = [[UIBarButtonItem alloc]
-                                           initWithImage:[UIImage imageNamed:self.userStateEmoticonArrays[i]]
-                                           style:UIBarButtonItemStylePlain
-                                           target:self action:@selector(addEmoticon:)];
+                                        initWithImage:[UIImage imageNamed:self.userStateEmoticonArrays[i]]
+                                        style:UIBarButtonItemStylePlain
+                                        target:self action:@selector(addEmoticon:)];
         [self.userStateEmoticonButton setTintColor:[UIColor colorWithRed:107/255.0 green:108/255.0 blue:103/255.0 alpha:1]];
         UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                           target:nil action:nil];
         
         [self.EmoticonArrays addObject:self.userStateEmoticonButton];
+        if (i==4) {
+            [self.EmoticonArrays addObject:flexBarButton];
+            
+        }
+        
         [self.EmoticonArrays addObject:flexBarButton];
         self.userStateEmoticonButton.tag = i;
     }
@@ -70,6 +79,7 @@
     keyboardToolbar.items = self.EmoticonArrays;
     
     self.postUpdateTextView.inputAccessoryView = keyboardToolbar;
+
 }
 
 

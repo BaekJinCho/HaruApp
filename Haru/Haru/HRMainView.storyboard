@@ -65,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Cx-Sl3" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
                                         <rect key="frame" x="0.0" y="-7" width="375" height="375.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5C9-K7-ZgH" secondAttribute="height" multiplier="1:1" id="tq4-s1-Xx4"/>
@@ -193,7 +193,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-gg-b78" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
                                         <rect key="frame" x="0.0" y="-6.5" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="26W-xE-Rgp" secondAttribute="height" multiplier="1:1" id="x4B-Oq-elx"/>
@@ -226,7 +226,7 @@
                                                     <constraint firstAttribute="width" constant="65" id="Hog-Ip-33e"/>
                                                 </constraints>
                                             </stackView>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="제목을 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCA-AN-Mca">
+                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCA-AN-Mca">
                                                 <rect key="frame" x="65" y="20" width="252" height="21"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
@@ -357,8 +357,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="10.jpg" width="1087" height="723"/>
         <image name="Arrow" width="19" height="20"/>
+        <image name="Background1" width="375" height="667"/>
         <image name="Pencil" width="20" height="20"/>
     </resources>
 </document>

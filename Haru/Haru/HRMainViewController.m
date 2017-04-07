@@ -15,8 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 
-
-
 @end
 
 @implementation HRMainViewController
@@ -115,10 +113,10 @@
 
 //tableview를 edit 할 수 있게 해주는 Method
 #pragma mark- mainVeiwController canEditRowAtIndexPath Method
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return YES if you want the specified item to be editable.
-    return YES;
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    // Return YES if you want the specified item to be editable.
+//    return YES;
+//}
 
 //tableview를 edit style를 정해주는 Method
 #pragma mark- mainVeiwController commitEditing Method

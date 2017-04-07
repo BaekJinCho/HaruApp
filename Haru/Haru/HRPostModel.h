@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+//유저 감정상태 정의
 typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {
     HRUserEmotionalStateAngry,
     HRUserEmotionalStateHappy,
@@ -19,6 +20,7 @@ typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {
 @interface HRPostModel : NSObject
 
 @property NSDate *date;
+@property NSDateComponents *dateComponents;
 @property NSString *title;
 @property NSString *content;
 @property NSString *image;

@@ -10,8 +10,6 @@
 		01045FE61E8BE4EC00407BD1 /* HRCustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01045FE41E8BE4EC00407BD1 /* HRCustomTableViewCell.m */; };
 		01045FE71E8BE4EC00407BD1 /* HRCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */; };
 		01045FF61E9217D800407BD1 /* HRUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01045FF51E9217D800407BD1 /* HRUpdateViewController.m */; };
-		01045FFD1E9396CE00407BD1 /* 10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01045FFC1E9396CE00407BD1 /* 10.jpg */; };
-		01045FFF1E93988300407BD1 /* d.png in Resources */ = {isa = PBXBuildFile; fileRef = 01045FFE1E93988300407BD1 /* d.png */; };
 		018DF1C71E86221D00DE51EA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 018DF1C61E86221D00DE51EA /* main.m */; };
 		018DF1CA1E86221D00DE51EA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 018DF1C91E86221D00DE51EA /* AppDelegate.m */; };
 		018DF1CD1E86221D00DE51EA /* HRTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018DF1CC1E86221D00DE51EA /* HRTutorialViewController.m */; };
@@ -45,8 +43,6 @@
 		01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HRCustomTableViewCell.xib; sourceTree = "<group>"; };
 		01045FF41E9217D800407BD1 /* HRUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRUpdateViewController.h; sourceTree = "<group>"; };
 		01045FF51E9217D800407BD1 /* HRUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUpdateViewController.m; sourceTree = "<group>"; };
-		01045FFC1E9396CE00407BD1 /* 10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 10.jpg; sourceTree = "<group>"; };
-		01045FFE1E93988300407BD1 /* d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d.png; sourceTree = "<group>"; };
 		010460021E9654E500407BD1 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		010460031E9655FC00407BD1 /* HRConstantKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HRConstantKeys.h; sourceTree = "<group>"; };
 		018DF1C21E86221D00DE51EA /* Haru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haru.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -314,8 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				01DE686C1E89190F004678FA /* HRMainView.storyboard */,
-				01045FFC1E9396CE00407BD1 /* 10.jpg */,
-				01045FFE1E93988300407BD1 /* d.png */,
 			);
 			name = MainDisplay;
 			sourceTree = "<group>";
@@ -418,8 +412,6 @@
 				01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */,
 				018DF1E81E8623F500DE51EA /* HRJoin.storyboard in Resources */,
 				018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */,
-				01045FFF1E93988300407BD1 /* d.png in Resources */,
-				01045FFD1E9396CE00407BD1 /* 10.jpg in Resources */,
 				18448FD81E8CEF9700332CFA /* HRCollectionView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
