@@ -85,6 +85,8 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     
     [self.titleTextView setInputAccessoryView:keyboardToolbar];
     [self.contentTextView setInputAccessoryView:keyboardToolbar];
+    keyboardToolbar.tintColor = [UIColor grayColor];
+    
 
     
     [self.titleTextView becomeFirstResponder];
