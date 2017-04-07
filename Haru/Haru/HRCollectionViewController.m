@@ -9,6 +9,7 @@
 #import "HRCollectionViewController.h"
 
 @interface HRCollectionViewController ()
+<UICollectionViewDelegate, UICollectionViewDelegate>
 
 @end
 
