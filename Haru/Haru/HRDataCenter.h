@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HRNetworkModule.h"
 
 @interface HRDataCenter : NSObject
 
@@ -17,10 +16,15 @@
 
 - (NSString *)getUserToken;
 
-- (void)signupRequestWithUserID:(NSString *)userID
+- (BOOL)isAutoLogin;
+
+//회원가입 & 로그인 메소드
+- (void)joinRequestWithUserID:(NSString *)userID
                        password:(NSString *)password
                       password2:(NSString *)password2
                      completion:(BlockOnCompletion)completion;
 
-- (void)loginRequestWithUserID:(NSString *)userID password:(NSString *)password completion:(BlockOnCompletion)completion;
+- (void)loginRequestWithUserID:(NSString *)userID
+                      password:(NSString *)password
+                    completion:(BlockOnCompletion)completion;
 @end

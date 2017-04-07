@@ -34,7 +34,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
     
     //textField의 내용을 변경해줄 때, 제한을 두기 위해 구현
-    [self.postTitleTextField addTarget:self action:@selector(fixPostTitleTextLenth:) forControlEvents:UIControlEventEditingChanged];
+    [self.postTitleTextField addTarget:self action:@selector(fixPostTitleTextLength:) forControlEvents:UIControlEventEditingChanged];
     
     
     //UIToolbar 생성 및 Item 넣어주는 작업
@@ -195,7 +195,7 @@
 
 ////TextField의 Content를 변경하고자 할 때, Method
 #pragma mark- UpdateViewController fixPostTitleTextLenth Method
-- (void)fixPostTitleTextLenth:(UITextField *)titleTextField {
+- (void)fixPostTitleTextLength:(UITextField *)titleTextField {
     
     NSString *textFieldContentText = titleTextField.text;
     NSInteger textFieldContentLength = titleTextField.text.length;
@@ -228,7 +228,7 @@
     }
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView{
+- (void)textViewDidEndEditing:(UITextView *)textView {
     
     if (self.postUpdateTextView.tag == 2) {
         [self.postUpdateTextView endEditing:YES];
@@ -257,12 +257,19 @@
 - (IBAction)clickSaveNavigationBarButton:(UIBarButtonItem *)sender {
     
     //수정한 내용을 서버에 보내주는 작업 필요 & Main, Detail View에도 적용하는 작업 필요
+    [self performSegueWithIdentifier:@"clickSaveButton" sender:self];
 }
 
 //수정하는 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
 #pragma mark- UpdateViewController Method
 - (IBAction)modifiedViewTabGesture:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
+}
+
+//notification dealloc
+#pragma mark- signupView notification dealloc Method
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

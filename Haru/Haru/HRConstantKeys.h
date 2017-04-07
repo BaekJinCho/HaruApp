@@ -10,18 +10,34 @@
 #define HRConstantKeys_h
 
 //API 주소
-static NSString * const BASE_URL = @"";
-//static NSString * const LOGIN_URL = @"";
-static NSString * const JOIN_URL = @"";
+static NSString * const BASIC_URL = @"https://fc-ios.lhy.kr/api";
+static NSString * const JOIN_URL = @"/member/signup/";
+static NSString * const LOGIN_URL = @"/member/login/";
+static NSString * const LOGOUT_URL = @"/member/logout/";
 
+//Method 방식
+static NSString * const POST_METHOD = @"POST";
+static NSString * const GET_METHOD = @"GET";
+
+//Token KEY
+static NSString * const TOKEN_KEY = @"Authorization";
+// 서버에서 받은 키 값
+static NSString * const ACCOUNT_KEY_OF_SERVER = @"key";
+// 서버에서 받은 키값을 토큰으로 저장
+static NSString * const TOKEN_KEY_OF_USERDEFAULTS = @"Token";
+
+//API STATUSCODE
+static NSInteger const STATUSCODE_LOGIN_SUCCESS = 200;
+static NSInteger const STATUSCODE_JOIN_SUCCESS = 201;
+static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
 
 
 //Data Modeling에 필요한 것
-static NSString * const DATE_KEY = @"date";
+static NSString * const DATE_KEY = @"Date";
 static NSString * const TITLE_KEY = @"Title";
-static NSString * const CONTENT_KEY = @"content";
-static NSString * const IMAGE_KEY = @"image";
-static NSString * const USERSTATE_KEY = @"userState";
+static NSString * const CONTENT_KEY = @"Content";
+static NSString * const IMAGE_KEY = @"Photo";
+static NSString * const USERSTATE_KEY = @"State";
 
 
 //추가 화면 및 수정 화면에서 title & content 글자 수 제한에 필요한 것

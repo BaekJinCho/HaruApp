@@ -7,27 +7,19 @@
 //
 
 #import "HRNetworkModule.h"
-#import "HRDataCenter.h"
-
-static NSString * const TOKEN_KEY = @"Authorization";
-
-static NSInteger const STATUSCODE_LOGIN_SUCCESS = 200;
-static NSInteger const STATUSCODE_SIGNUP_SUCCESS = 201;
-static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
-
 
 @implementation HRNetworkModule
 
 #pragma mark - Account Request
 
 // 로그인 요청
--(void)loginRequestToServer:(NSString *)userID
+- (void)loginRequestToServer:(NSString *)userID
                    password:(NSString *)password
                  completion:(BlockOnCompletion)completion {
     
     // session 생성
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
+
     // request 생성
     NSMutableURLRequest *request = [self mutableURLRequest:LOGIN_URL];
     request.HTTPMethod = POST_METHOD;
@@ -40,30 +32,27 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
     NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
                                                          fromData:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                    
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
+                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
                                                                      options:NSJSONReadingMutableLeaves
                                                                        error:&error];
-        if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
-            completion(YES, responseData);
-        } else {
-            completion(NO, responseData);
-        }
-    }];
-    
+                                                    if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
+                                                        completion(YES, responseData);
+                                                    } else {
+                                                        completion(NO, responseData);
+                                                    }
+                                                }];
     [task resume];
 }
 
 // 회원가입 요청
--(void)signupRequestToServer:(NSString *)userID
+- (void)joinRequestToServer:(NSString *)userID
                     password:(NSString *)password
                    password2:(NSString *)password2
                   completion:(BlockOnCompletion)completion {
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    NSMutableURLRequest *request = [self mutableURLRequest:SIGNUP_URL];
+    NSMutableURLRequest *request = [self mutableURLRequest:JOIN_URL];
     request.HTTPMethod = POST_METHOD;
     
     NSString *requestData = [self makeSignupBody:userID password:password password2:password2];
@@ -73,10 +62,9 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
                                                          fromData:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                                    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
-                                                                                                                 options:NSJSONReadingMutableLeaves
-                                                                                                                   error:&error];
-                                                    if (httpResponse.statusCode == STATUSCODE_SIGNUP_SUCCESS) {
+                                                    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+                                                    
+                                                    if (httpResponse.statusCode == STATUSCODE_JOIN_SUCCESS) {
                                                         completion (YES, responseData);
                                                     } else {
                                                         completion (NO, responseData);
@@ -85,8 +73,7 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
     [task resume];
 }
 
-
--(void)logoutRequestToServer:(BlockOnCompletion)completion {
+- (void)logoutRequestToServer:(BlockOnCompletion)completion {
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
@@ -98,24 +85,21 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
     NSURLSessionUploadTask *logoutTask = [session uploadTaskWithRequest:request
                                                                fromData:nil
                                                       completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-        NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
-                                                                     options:NSJSONReadingMutableLeaves
+                                                          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves
                                                                        error:&error];
-          if (httpResponse.statusCode == STATUSCODE_LOGOUT_SUCCESS) {
-              completion (YES, responseData);
-          } else {
-              completion (NO, responseData);
-          }
-      }];
+                                                          
+                                                          if (httpResponse.statusCode == STATUSCODE_LOGOUT_SUCCESS) {
+                                                              completion (YES, responseData);
+                                                          } else {
+                                                              completion (NO, responseData);
+                                                          }
+                                                      }];
     [logoutTask resume];
 }
 
+#pragma mark- Private Method
 
-#pragma mark - Private Method
-
-// URL 관련 메소드화
+//URL 관련 메소드화
 - (NSMutableURLRequest *)mutableURLRequest:(NSString *)urlStr {
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", BASIC_URL, urlStr]];
@@ -124,27 +108,44 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
     return request;
 }
 
-
-- (NSString *) tokenValue {
+//token 값 메소드화
+- (NSString *)tokenValue {
     
     return [NSString stringWithFormat:@"Token %@", [[HRDataCenter sharedInstance] getUserToken]];
 }
 
-
-// 로그인 form data 메소드화
-- (NSString *)makeLoginBody:(NSString *)userName
+//로그인 form data 메소드화
+- (NSString *)makeLoginBody:(NSString *)email
                    password:(NSString *)password {
     
-    return [NSString stringWithFormat:@"username=%@&password=%@", userName, password];
+    return [NSString stringWithFormat:@"Email=%@&Password=%@", email, password];
 }
 
-
-// 회원가입 form data 메소드화
-- (NSString *)makeSignupBody:(NSString *)userName
+//회원가입 form data 메소드화
+- (NSString *)makeSignupBody:(NSString *)email
                     password:(NSString *)password
                    password2:(NSString *)password2 {
     
-    return [NSString stringWithFormat:@"username=%@&password1=%@&password2=%@", userName, password, password2];
+    return [NSString stringWithFormat:@"Email=%@&Password=%@&password2=%@", email, password, password2];
+}
+
+
+//Post form 메소드화
+- (void)postRequestTilte:(NSString *)title
+                 content:(NSString *)content
+                   image:(NSData *)image
+                    date:(NSDate *)date
+               userState:(NSUInteger)userState
+              completion:(BlockOnCompletion)completion {
+    
+    
+}
+
+//Server에서 page 단위로 받는것 메소드화
+- (void)postListRequestWithPage:(NSNumber *)requestPage
+                     completion:(BlockOnCompletion)completion{
+
+
 }
 
 @end
