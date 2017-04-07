@@ -27,6 +27,26 @@
             </objects>
             <point key="canvasLocation" x="1632" y="-221"/>
         </scene>
+        <!--HRCollectionView-->
+        <scene sceneID="mb9-gC-2L0">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="HRCollectionView" storyboardName="HRCollectionView" id="6o9-8N-pg6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="XFk-zD-S29"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4R-OO-1Nk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1632" y="-27"/>
+        </scene>
+        <!--HRUser-->
+        <scene sceneID="C1c-bx-pAX">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="HRUser" storyboardName="HRUser" id="UaL-UO-e7R" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="r6P-dx-pQP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yet-ck-YPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1633" y="132"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xd5-LF-92M">
             <objects>
@@ -40,6 +60,8 @@
                     <connections>
                         <segue destination="FVA-5U-xnL" kind="presentation" id="SSJ-5H-sJ9"/>
                         <segue destination="0uP-AT-HB2" kind="relationship" relationship="viewControllers" id="ayx-8h-tx2"/>
+                        <segue destination="6o9-8N-pg6" kind="relationship" relationship="viewControllers" id="ovt-1w-1nd"/>
+                        <segue destination="UaL-UO-e7R" kind="relationship" relationship="viewControllers" id="fnq-0L-1Y0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1uF-yX-xgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
