@@ -41,7 +41,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Main" selectedImage="MainSelected" id="rVk-Cx-PFv">
-                        <inset key="imageInsets" minX="0.0" minY="7.5" maxX="0.0" maxY="-7.5"/>
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="HARU" id="Ufl-tf-35D"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
