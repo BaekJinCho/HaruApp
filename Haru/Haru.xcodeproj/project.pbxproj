@@ -35,6 +35,7 @@
 		8B421EB16B4080AD790E31B6 /* Pods_Haru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A64AC1E4EA904E4F4A536C24 /* Pods_Haru.framework */; };
 		BA436C7B1E8CCEFC004A5564 /* HRUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */; };
 		BA436C7D1E8CCF75004A5564 /* HRUser.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */; };
+		BACB7F8E1E979C2C0020C708 /* HRUserAFNetworkingModule.m in Sources */ = {isa = PBXBuildFile; fileRef = BACB7F8D1E979C2C0020C708 /* HRUserAFNetworkingModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,8 @@
 		BA436C791E8CCEFC004A5564 /* HRUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRUserViewController.h; sourceTree = "<group>"; };
 		BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUserViewController.m; sourceTree = "<group>"; };
 		BA436C7C1E8CCF75004A5564 /* HRUser.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRUser.storyboard; sourceTree = "<group>"; };
+		BACB7F8C1E979C2C0020C708 /* HRUserAFNetworkingModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRUserAFNetworkingModule.h; sourceTree = "<group>"; };
+		BACB7F8D1E979C2C0020C708 /* HRUserAFNetworkingModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRUserAFNetworkingModule.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +109,8 @@
 			children = (
 				BA436C791E8CCEFC004A5564 /* HRUserViewController.h */,
 				BA436C7A1E8CCEFC004A5564 /* HRUserViewController.m */,
+				BACB7F8C1E979C2C0020C708 /* HRUserAFNetworkingModule.h */,
+				BACB7F8D1E979C2C0020C708 /* HRUserAFNetworkingModule.m */,
 			);
 			name = UserInfo;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 			files = (
 				18448FDB1E8CEFBC00332CFA /* HRCollectionViewController.m in Sources */,
 				018DF1CD1E86221D00DE51EA /* HRTutorialViewController.m in Sources */,
+				BACB7F8E1E979C2C0020C708 /* HRUserAFNetworkingModule.m in Sources */,
 				018DF1CA1E86221D00DE51EA /* AppDelegate.m in Sources */,
 				01DE68711E8919D7004678FA /* HRJoinViewController.m in Sources */,
 				01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */,

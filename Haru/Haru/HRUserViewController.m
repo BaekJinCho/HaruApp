@@ -7,8 +7,13 @@
 //
 
 #import "HRUserViewController.h"
+#import "HRUserAFNetworkingModule.h"
+
 
 @interface HRUserViewController ()
+<UITextFieldDelegate>
+@property HRUserAFNetworkingModule *networkManager;
+@property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 
 @end
 
@@ -17,6 +22,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+
+- (IBAction)didClickedLogoutBtn:(UIButton *)sender
+{
+    [self.networkManager logoutRequest:^(BOOL Sucess, NSDictionary *ResponseData) {
+        UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            NSLog(@"Logout Alert");
+        }];
+        [logoutAlert addAction:okBtn];
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
