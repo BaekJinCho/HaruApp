@@ -694,7 +694,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Arrow" width="11" height="11"/>
+        <image name="Arrow" width="19" height="20"/>
         <image name="Background1" width="375" height="667"/>
         <image name="Background2" width="375" height="667"/>
         <image name="Background3" width="375" height="667"/>

@@ -160,10 +160,15 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="글쓰기" id="MZx-IO-W9L">
-                        <barButtonItem key="leftBarButtonItem" image="Arrow" id="5UF-9N-fYX"/>
+                        <barButtonItem key="leftBarButtonItem" image="Arrow" id="5UF-9N-fYX">
+                            <connections>
+                                <action selector="clickedBackButton:" destination="z6T-aH-9N2" id="69D-8B-7xf"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="저장" style="plain" id="7Za-zO-OkZ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="5UF-9N-fYX" id="vk6-yg-aPG"/>
                         <outlet property="backgroundView" destination="YZK-wV-pcz" id="QqF-zw-70d"/>
                         <outlet property="buttonView" destination="qw1-YB-6t8" id="21k-Ll-QCl"/>
                         <outlet property="buttonViewHeight" destination="Ibd-mi-uUh" id="zNF-aM-RqZ"/>

@@ -20,6 +20,7 @@
 		018DF1E81E8623F500DE51EA /* HRJoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1E71E8623F500DE51EA /* HRJoin.storyboard */; };
 		018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */; };
 		01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CB50B11E8A28810024CC4C /* HRLoginViewController.m */; };
+		01DC47681E9780E300CC858F /* HRTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DC47671E9780E300CC858F /* HRTabBarViewController.m */; };
 		01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DE686C1E89190F004678FA /* HRMainView.storyboard */; };
 		01DE68711E8919D7004678FA /* HRJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE68701E8919D7004678FA /* HRJoinViewController.m */; };
 		01F97D781E8B78270059414C /* HRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97D771E8B78270059414C /* HRMainViewController.m */; };
@@ -61,6 +62,8 @@
 		018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRTutorial.storyboard; sourceTree = "<group>"; };
 		01CB50B01E8A28810024CC4C /* HRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRLoginViewController.h; sourceTree = "<group>"; };
 		01CB50B11E8A28810024CC4C /* HRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRLoginViewController.m; sourceTree = "<group>"; };
+		01DC47661E9780E300CC858F /* HRTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTabBarViewController.h; sourceTree = "<group>"; };
+		01DC47671E9780E300CC858F /* HRTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTabBarViewController.m; sourceTree = "<group>"; };
 		01DE686C1E89190F004678FA /* HRMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMainView.storyboard; sourceTree = "<group>"; };
 		01DE686F1E8919D7004678FA /* HRJoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRJoinViewController.h; sourceTree = "<group>"; };
 		01DE68701E8919D7004678FA /* HRJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRJoinViewController.m; sourceTree = "<group>"; };
@@ -153,7 +156,6 @@
 				01045FE51E8BE4EC00407BD1 /* HRCustomTableViewCell.xib */,
 				01F97D761E8B78270059414C /* HRMainViewController.h */,
 				01F97D771E8B78270059414C /* HRMainViewController.m */,
-				01045FF11E8E29A500407BD1 /* DetailDisplay */,
 			);
 			name = MainDisplay;
 			sourceTree = "<group>";
@@ -177,13 +179,13 @@
 			name = UpdateDisplay;
 			sourceTree = "<group>";
 		};
-		010460011E9654A000407BD1 /* utility */ = {
+		010460011E9654A000407BD1 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				010460021E9654E500407BD1 /* PrefixHeader.pch */,
 				010460031E9655FC00407BD1 /* HRConstantKeys.h */,
 			);
-			name = utility;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		018DF1B91E86221D00DE51EA = {
@@ -239,6 +241,7 @@
 		018DF1DD1E86225100DE51EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				010460011E9654A000407BD1 /* Common */,
 				185978921E88D42B00172475 /* HRDataCenter.h */,
 				185978931E88D42B00172475 /* HRDataCenter.m */,
 				185978951E88D43900172475 /* HRNetworkModule.h */,
@@ -265,7 +268,9 @@
 		018DF1DF1E86226800DE51EA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				01DC47691E97906C00CC858F /* MainTabBar */,
 				01045FF01E8DE92C00407BD1 /* MainDisplay */,
+				01045FF11E8E29A500407BD1 /* DetailDisplay */,
 				01045FEC1E8DE7BA00407BD1 /* CollectionDisplay */,
 				01045FEB1E8DE79B00407BD1 /* UserInfo */,
 				01DE68621E88D13C004678FA /* Tutorial */,
@@ -297,9 +302,17 @@
 			children = (
 				01CB50B01E8A28810024CC4C /* HRLoginViewController.h */,
 				01CB50B11E8A28810024CC4C /* HRLoginViewController.m */,
-				010460011E9654A000407BD1 /* utility */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		01DC47691E97906C00CC858F /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				01DC47661E9780E300CC858F /* HRTabBarViewController.h */,
+				01DC47671E9780E300CC858F /* HRTabBarViewController.m */,
+			);
+			name = MainTabBar;
 			sourceTree = "<group>";
 		};
 		01DE68621E88D13C004678FA /* Tutorial */ = {
@@ -491,6 +504,7 @@
 				185978941E88D42B00172475 /* HRDataCenter.m in Sources */,
 				01045FE61E8BE4EC00407BD1 /* HRCustomTableViewCell.m in Sources */,
 				18448FDE1E8CEFF700332CFA /* HRCollectionViewCell.m in Sources */,
+				01DC47681E9780E300CC858F /* HRTabBarViewController.m in Sources */,
 				018DF1C71E86221D00DE51EA /* main.m in Sources */,
 				BA436C7B1E8CCEFC004A5564 /* HRUserViewController.m in Sources */,
 			);

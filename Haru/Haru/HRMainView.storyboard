@@ -40,7 +40,11 @@
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="width" secondItem="zYp-2H-XtN" secondAttribute="width" id="uEj-Vv-Qr4"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="Main" selectedImage="MainSelected" id="rVk-Cx-PFv">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" title="HARU" id="Ufl-tf-35D"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mainTableView" destination="KdN-Yt-1tr" id="XNS-zP-oWv"/>
                         <segue destination="fTC-Wd-A6m" kind="show" identifier="DetailViewFromMainView" id="q7W-Z5-PeH"/>
@@ -308,7 +312,6 @@
                         <barButtonItem key="rightBarButtonItem" title="저장" id="vSe-0O-pkG">
                             <connections>
                                 <action selector="clickSaveNavigationBarButton:" destination="RJP-qt-fcN" id="WpW-Ng-jn8"/>
-                                <segue destination="2zw-5D-Fjw" kind="unwind" unwindAction="unwindMainViewSegue:" id="dvM-yt-d8O"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -318,6 +321,7 @@
                         <outlet property="postViewContentTextVIewBottomConstant" destination="ZQR-uB-Vea" id="NMo-bh-W2K"/>
                         <outlet property="updateViewBackgroundPhoto" destination="26W-xE-Rgp" id="rh7-rR-71e"/>
                         <outlet property="updateViewUserStateImageView" destination="hQF-Xu-A6h" id="V0E-wC-3Zw"/>
+                        <segue destination="2zw-5D-Fjw" kind="unwind" identifier="clickSaveButton" unwindAction="unwindMainViewSegue:" id="Kpw-LJ-ghy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2im-61-UHg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -359,6 +363,8 @@
     <resources>
         <image name="Arrow" width="19" height="20"/>
         <image name="Background1" width="375" height="667"/>
+        <image name="Main" width="19" height="18"/>
+        <image name="MainSelected" width="19" height="18"/>
         <image name="Pencil" width="20" height="20"/>
     </resources>
 </document>

@@ -2,25 +2,22 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Collection.png",
+      "filename" : "cameraDirectButtonSelected.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Collection@2x.png",
+      "filename" : "cameraDirectButtonSelected@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Collection@3x.png",
+      "filename" : "cameraDirectButtonSelected@3x.png",
       "scale" : "3x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "original"
   }
 }
