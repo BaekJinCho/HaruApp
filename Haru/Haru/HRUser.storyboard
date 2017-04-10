@@ -216,7 +216,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDi-rl-J5f" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="306" width="320" height="213"/>
+                                <rect key="frame" x="0.0" y="306" width="320" height="164"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -232,7 +232,14 @@
                             <constraint firstAttribute="trailing" secondItem="KB3-cg-EhA" secondAttribute="trailing" id="thk-4w-IBo"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="User" selectedImage="UserSelected" id="nJd-iR-bxr">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="count_post" destination="8Od-b9-w2H" id="Vb5-Bx-TPA"/>
+                        <outlet property="count_streaks" destination="ohH-TR-fRc" id="LWo-Uu-6Aa"/>
+                        <outlet property="date_join" destination="vnk-It-fOo" id="VEB-eO-Gf1"/>
                         <outlet property="logOutBtn" destination="7at-az-tYS" id="ZYI-Df-NMj"/>
                     </connections>
                 </viewController>
@@ -246,5 +253,6 @@
         <image name="Pencil" width="20" height="20"/>
         <image name="Streaks" width="19" height="21"/>
         <image name="User" width="18" height="18"/>
+        <image name="UserSelected" width="18" height="18"/>
     </resources>
 </document>
