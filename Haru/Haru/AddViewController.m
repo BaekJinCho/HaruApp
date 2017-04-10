@@ -14,6 +14,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 @interface AddViewController ()
 <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
@@ -102,6 +103,9 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     
 }
 
+- (IBAction)clickedBackButton:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (void)addEmoticon {
     
