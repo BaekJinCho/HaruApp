@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "HRPostModel.h"
+
 @interface HRDataCenter : NSObject
 
 @property NSString *userToken;
@@ -27,4 +29,19 @@
 - (void)loginRequestWithUserID:(NSString *)userID
                       password:(NSString *)password
                     completion:(BlockOnCompletion)completion;
+
+- (void)logoutRequestToServer:(BlockOnCompletion)completion;
+
+
+- (void)testList:(BlockOnCompletion)completion;
+
+
+
+- (void)readDictionaryFromWithFilepath:(NSString *)filePathString andHandler:(BlockOnCompletion)completionHandler;
+
+- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString andHandler:(BlockOnCompletion)completionHandler;
+
+- (HRPostModel *)diaryDataAtIndexPath:(NSIndexPath *)indexPath;
+
+
 @end

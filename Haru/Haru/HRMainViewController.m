@@ -29,6 +29,14 @@
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
     
+    
+    [[HRDataCenter sharedInstance] testList:^(BOOL isSuccess, id response) {
+        
+        if(isSuccess) {
+            
+            [self.mainTableView reloadData];
+        }
+    }];
 }
 
 //alert 알람 띄우기 클래스 메소드
@@ -58,8 +66,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"numberOfRowsInSection");
-    return 10;
+//    return [[HRDataCenter sharedInstance] diaryD];
     
+    return 0;
 }
 
 //mainView의 cell을 생성하는 Method
@@ -68,6 +77,17 @@
     //storyboard를 사용할 떈, forIndexPath를 사용!!!
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
                                                                           forIndexPath:indexPath];
+    
+//    HRPostModel *haruData = [[HRDataCenter sharedInstance] diaryDataAtIndexPath:indexPath];
+    
+//    mainViewCell.postTitle.text = haruData.title;
+//    mainViewCell.mainTableViewCellYearMonthLabel.text = haruData.date;
+//    mainViewCell.dateLabel.text = haruData.date;
+//    mainViewCell.dayOfTheWeekLabel.text = haruData.date;
+//    
+//    mainViewCell.userStateImageView.image;
+//    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+    
     
     //arc4random()는 자동으로 초기화 작업을 하여 별도의 초기화 하는 불필요한 작업이 필요없다.
     //default를 랜덤하게 넣어주기 위한 작업
@@ -97,20 +117,22 @@
 
 #pragma mark- mainViewController PrepareForSegue Method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    HRCustomTableViewCell *customCell = [HRDetailViewController new];
-    if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
-        
-        //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
-//        customCell.mainTableViewCellYearMonthLabel.text =
-//        customCell.photoImageView.image =
-//        customCell.userStateImageView.image
-//        customCell.dateLabel.text =
-//        customCell.dayOfTheWeekLabel.text = 
-        
+    HRDetailViewController *detailViewContent = [HRDetailViewController new];
+//    if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
+//        
         HRDetailViewController *detailViewController = [segue destinationViewController];
-        detailViewController.indexPath = (NSIndexPath *)sender;
-        
-    }
+//        detailViewController.indexPath = (NSIndexPath *)sender;
+//        
+        HRPostModel *haruData = [[HRDataCenter sharedInstance] diaryDataAtIndexPath:detailViewController.indexPath];
+//        //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
+//        
+        [detailViewContent.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+        detailViewContent.detailViewPostTitle.text = haruData.title;
+        detailViewContent.detailViewContentLabel.text = haruData.content;
+    
+    
+       
+//    }
 }
 
 //tableview를 edit 할 수 있게 해주는 Method
@@ -134,6 +156,8 @@
     }
 
 }
+
+
 
 
 #pragma mark- mainViewController unwindSegut Method

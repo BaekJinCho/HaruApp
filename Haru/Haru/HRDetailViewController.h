@@ -11,5 +11,12 @@
 @interface HRDetailViewController : UIViewController
 
 @property (nonatomic) NSIndexPath *indexPath;
+@property (weak, nonatomic) IBOutlet UIImageView *detailViewUserStateImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *detailViewBackgroundPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *detailViewDayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailViewDayOfWeekLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailViewPostTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *detailViewUserState;
+@property (weak, nonatomic) IBOutlet UILabel *detailViewContentLabel;
 
 @end
