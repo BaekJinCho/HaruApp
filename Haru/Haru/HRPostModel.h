@@ -26,5 +26,6 @@ typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {
 @property NSString *image;
 @property HRUserEmotionalState userState;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

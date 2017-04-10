@@ -13,7 +13,7 @@
 
 @interface HRDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *detailViewUserStateImageView;
+
 
 @end
 

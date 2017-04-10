@@ -21,6 +21,8 @@
 		018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */; };
 		01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CB50B11E8A28810024CC4C /* HRLoginViewController.m */; };
 		01DC47681E9780E300CC858F /* HRTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DC47671E9780E300CC858F /* HRTabBarViewController.m */; };
+		01DC476B1E9A006F00CC858F /* inHaru.json in Resources */ = {isa = PBXBuildFile; fileRef = 01DC476A1E9A006F00CC858F /* inHaru.json */; };
+		01DC476D1E9A1AB200CC858F /* outHaru.json in Resources */ = {isa = PBXBuildFile; fileRef = 01DC476C1E9A1AB200CC858F /* outHaru.json */; };
 		01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01DE686C1E89190F004678FA /* HRMainView.storyboard */; };
 		01DE68711E8919D7004678FA /* HRJoinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DE68701E8919D7004678FA /* HRJoinViewController.m */; };
 		01F97D781E8B78270059414C /* HRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97D771E8B78270059414C /* HRMainViewController.m */; };
@@ -63,6 +65,8 @@
 		01CB50B11E8A28810024CC4C /* HRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRLoginViewController.m; sourceTree = "<group>"; };
 		01DC47661E9780E300CC858F /* HRTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRTabBarViewController.h; sourceTree = "<group>"; };
 		01DC47671E9780E300CC858F /* HRTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRTabBarViewController.m; sourceTree = "<group>"; };
+		01DC476A1E9A006F00CC858F /* inHaru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = inHaru.json; sourceTree = "<group>"; };
+		01DC476C1E9A1AB200CC858F /* outHaru.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = outHaru.json; sourceTree = "<group>"; };
 		01DE686C1E89190F004678FA /* HRMainView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRMainView.storyboard; sourceTree = "<group>"; };
 		01DE686F1E8919D7004678FA /* HRJoinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRJoinViewController.h; sourceTree = "<group>"; };
 		01DE68701E8919D7004678FA /* HRJoinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRJoinViewController.m; sourceTree = "<group>"; };
@@ -211,6 +215,8 @@
 				018DF1D11E86221D00DE51EA /* Assets.xcassets */,
 				018DF1D31E86221D00DE51EA /* LaunchScreen.storyboard */,
 				018DF1D61E86221D00DE51EA /* Info.plist */,
+				01DC476C1E9A1AB200CC858F /* outHaru.json */,
+				01DC476A1E9A006F00CC858F /* inHaru.json */,
 				018DF1C51E86221D00DE51EA /* Supporting Files */,
 			);
 			path = Haru;
@@ -415,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DC476D1E9A1AB200CC858F /* outHaru.json in Resources */,
 				018DF1D51E86221D00DE51EA /* LaunchScreen.storyboard in Resources */,
 				BA436C7D1E8CCF75004A5564 /* HRUser.storyboard in Resources */,
 				018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */,
@@ -425,6 +432,7 @@
 				01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */,
 				018DF1E81E8623F500DE51EA /* HRJoin.storyboard in Resources */,
 				018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */,
+				01DC476B1E9A006F00CC858F /* inHaru.json in Resources */,
 				18448FD81E8CEF9700332CFA /* HRCollectionView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
