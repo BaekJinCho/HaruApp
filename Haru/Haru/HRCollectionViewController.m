@@ -9,7 +9,7 @@
 #import "HRCollectionViewController.h"
 
 @interface HRCollectionViewController ()
-<UICollectionViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+<UICollectionViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIButton *writeButton;
@@ -20,6 +20,9 @@
 @property CGPoint writeButtonCenter;
 @property CGPoint libraryDirectButtonCenter;
 @property CGPoint cameraDirectButtonCenter;
+
+@property UISearchController *searchController;
+@property NSString *searchText;
 
 @end
 
@@ -146,6 +149,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self resignFirstResponder];
+    self.searchText = searchBar.text;
+    self.navigationItem.title = self.searchText.uppercaseString;
 }
 
 /*

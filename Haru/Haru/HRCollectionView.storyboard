@@ -133,7 +133,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="Collection" selectedImage="CollectionSelected" id="qCr-go-pNM">
+                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="4f7-np-4oS"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addButton" destination="tJt-Nj-prC" id="lMI-FK-iEq"/>
                         <outlet property="cameraDirectButton" destination="ic2-FB-AkM" id="GDv-CR-Cqt"/>
@@ -175,6 +179,8 @@
     </scenes>
     <resources>
         <image name="AddButton" width="37" height="37"/>
+        <image name="Collection" width="19" height="18"/>
+        <image name="CollectionSelected" width="19" height="18"/>
         <image name="addViewButton" width="37" height="37"/>
         <image name="cameraDirectButton" width="37" height="37"/>
         <image name="libraryDirectButton" width="37" height="37"/>
