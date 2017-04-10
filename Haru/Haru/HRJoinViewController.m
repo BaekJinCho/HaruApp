@@ -68,6 +68,7 @@
 //notification dealloc
 #pragma mark- signupView notification dealloc Method
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 //signup storyboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
 #pragma mark- joinView TextField ShouldReturn Method
@@ -89,7 +90,7 @@
     NSString *signUpPasswordText = self.joinPasswordTextField.text;
     NSString *signUpPasswordCheckText = self.joinPasswordCheckTextField.text;
     
-    [[HRDataCenter sharedInstance]signupRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
+    [[HRDataCenter sharedInstance]joinRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
         if (isSuccess == YES) {
             NSLog(@"로그인 성공 / token:::%@",response);
         } else {

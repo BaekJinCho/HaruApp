@@ -23,6 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //기존의 로그인이 되어있는지 확인 후 로그인이 되어 있다면 메인페이지 보여주기 / 로그인 기록이 없다면 Tutorial 페이지 보여주기 로직 처리
+    
     //custom cell nib 파일 가져오기
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
@@ -136,6 +138,8 @@
 
 #pragma mark- mainViewController unwindSegut Method
 - (IBAction)unwindMainViewSegue:(UIStoryboardSegue *)sender {
+    
+    //변경된 데이터 조회
     
 }
 

@@ -63,6 +63,7 @@
 //notification dealloc
 #pragma mark- signupView notification dealloc Method
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

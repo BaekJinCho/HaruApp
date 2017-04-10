@@ -7,12 +7,6 @@
 //
 
 #import "HRDataCenter.h"
-#import "HRNetworkModule.h"
-
-// 서버에서 받은 키값을 변수에 저장
-static NSString *const ACCOUNT_KEY_OF_SERVER  = @"key";
-// 서버에서 받은 키값을 
-static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 
 @interface HRDataCenter ()
 
@@ -23,11 +17,10 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 @implementation HRDataCenter
 
 
-// 싱글턴
+//싱글턴
 + (instancetype) sharedInstance {
     
     static HRDataCenter *center;
-    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         center = [[HRDataCenter alloc] init];
@@ -36,7 +29,7 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 }
 
 
-// 초기화 메소드
+//초기화 메소드
 - (instancetype) init {
     self = [super init];
     if (self) {
@@ -45,17 +38,31 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
     return self;
 }
 
-
+//유저의 token 값 저장
 - (NSString *)getUserToken
 {
-    if (_userToken == nil) {
-        _userToken = [[NSUserDefaults standardUserDefaults] stringForKey:TOKEN_KEY_OF_USERDEFAULTS];
+    if (self.userToken == nil) {
+        self.userToken = [[NSUserDefaults standardUserDefaults] stringForKey:TOKEN_KEY_OF_USERDEFAULTS];
     }
-    return _userToken;
+    return self.userToken;
 }
 
+//자동 로그인 체크하는 Method
+- (BOOL)isAutoLogin {
+    
+    NSString *loginNewToken = [[NSUserDefaults standardUserDefaults] stringForKey:TOKEN_KEY_OF_USERDEFAULTS];
+    if (loginNewToken != nil) {
+        self.userToken = loginNewToken;
+        return YES;
+    }
+    return NO;
+    
+}
 
-- (void)loginRequestWithUserID:(NSString *)userID password:(NSString *)password completion:(BlockOnCompletion)completion {
+//로그인 Method
+- (void)loginRequestWithUserID:(NSString *)userID
+                      password:(NSString *)password
+                    completion:(BlockOnCompletion)completion {
     
     [self.networkManager loginRequestToServer:userID
                                      password:password
@@ -68,13 +75,13 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
                                    }];
 }
 
-
-- (void)signupRequestWithUserID:(NSString *)userID
+//회원가입 Method
+- (void)joinRequestWithUserID:(NSString *)userID
                         password:(NSString *)password
                        password2:(NSString *)password2
                      completion:(BlockOnCompletion)completion {
     
-    [self.networkManager signupRequestToServer:userID
+    [self.networkManager joinRequestToServer:userID
                                       password:password
                                      password2:password2
                                     completion:^(BOOL isSuccess, id response) {
@@ -97,7 +104,7 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
 
 #pragma mark - Private Method
 
-- (void) saveToken:(NSString *)token {
+- (void)saveToken:(NSString *)token {
     
     self.userToken = token;
     [[NSUserDefaults standardUserDefaults] setValue:token forKey:TOKEN_KEY_OF_USERDEFAULTS];
@@ -108,6 +115,10 @@ static NSString *const TOKEN_KEY_OF_USERDEFAULTS = @"token";
     
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
 }
+
+
+//Post 관련 Method
+
 
 
 
