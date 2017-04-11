@@ -37,11 +37,13 @@
 
 
 
-- (void)readDictionaryFromWithFilepath:(NSString *)filePathString andHandler:(BlockOnCompletion)completionHandler;
+- (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
 
-- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString andHandler:(BlockOnCompletion)completionHandler;
+- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
 
-- (HRPostModel *)diaryDataAtIndexPath:(NSIndexPath *)indexPath;
+- (HRPostModel *)contentDataAtIndexPath:(NSIndexPath *)indexPath;
+
+- (NSUInteger)numberOfItem;
 
 
 @end

@@ -11,10 +11,10 @@
     "inDiaryResults":
     [
      {
-     "date" : "Seoul",
-     "title"   : "title 진짜 들어갔따",
+     "date"     : "Seoul",
+     "title"    : "title 진짜 들어갔따",
      "content"  : "content도 진짜 들어갔따",
-     "image"      : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",
+     "image"    : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",
      
      }
     ]

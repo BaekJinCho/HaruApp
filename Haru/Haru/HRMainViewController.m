@@ -55,20 +55,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark- mainViewController numberOfSection Method
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return 5;
-}
 
 //mainView의 row의 갯수를 생성하는 Method
 #pragma mark- mainViewController numberOfRowsInSection Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"numberOfRowsInSection");
-//    return [[HRDataCenter sharedInstance] diaryD];
+    NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
     
-    return 0;
+    return [[HRDataCenter sharedInstance] numberOfItem];
 }
 
 //mainView의 cell을 생성하는 Method
@@ -123,12 +117,11 @@
         HRDetailViewController *detailViewController = [segue destinationViewController];
 //        detailViewController.indexPath = (NSIndexPath *)sender;
 //        
-        HRPostModel *haruData = [[HRDataCenter sharedInstance] diaryDataAtIndexPath:detailViewController.indexPath];
 //        //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
 //        
-        [detailViewContent.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
-        detailViewContent.detailViewPostTitle.text = haruData.title;
-        detailViewContent.detailViewContentLabel.text = haruData.content;
+//        [detailViewContent.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+//        detailViewContent.detailViewPostTitle.text = haruData.title;
+//        detailViewContent.detailViewContentLabel.text = haruData.content;
     
     
        
