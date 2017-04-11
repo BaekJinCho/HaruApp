@@ -8,6 +8,7 @@
 
 #import "HRNetworkModule.h"
 
+
 @implementation HRNetworkModule
 
 #pragma mark - Account Request
@@ -139,6 +140,8 @@
               completion:(BlockOnCompletion)completion {
     
     
+    
+    
 }
 
 //Server에서 page 단위로 받는것 메소드화
@@ -147,5 +150,8 @@
 
 
 }
+
+
+
 
 @end

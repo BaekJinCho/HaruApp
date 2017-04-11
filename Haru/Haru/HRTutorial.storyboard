@@ -206,7 +206,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rQD-Ko-e0J">
-                        <barButtonItem key="leftBarButtonItem" image="Arrow" style="plain" id="cpg-JB-2Pm"/>
+                        <barButtonItem key="leftBarButtonItem" image="Arrow" style="done" id="cpg-JB-2Pm"/>
                     </navigationItem>
                     <connections>
                         <outlet property="tutorialContentView" destination="tvR-Sn-IhA" id="tFh-X6-ZNw"/>

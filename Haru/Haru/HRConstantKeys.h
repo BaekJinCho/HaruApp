@@ -39,6 +39,15 @@ static NSString * const CONTENT_KEY = @"Content";
 static NSString * const IMAGE_KEY = @"Photo";
 static NSString * const USERSTATE_KEY = @"State";
 
+////유저 감정상태 정의
+//typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {
+//    HRUserEmotionalStateAngry,
+//    HRUserEmotionalStateHappy,
+//    HRUserEmotionalStateSad,
+//    HRUserEmotionalStateSoso,
+//    HRUserEmotionalStateUpset
+//};
+
 
 //추가 화면 및 수정 화면에서 title & content 글자 수 제한에 필요한 것
 static NSUInteger MAX_POST_TITLE_CONTENT = 13; //일기 제목의 글자 제한 주기위한 변수

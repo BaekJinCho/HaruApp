@@ -174,6 +174,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="detailViewBackgroundPhoto" destination="5C9-K7-ZgH" id="iW8-1e-cbd"/>
+                        <outlet property="detailViewContentLabel" destination="QtG-WK-791" id="OUL-w6-OJw"/>
+                        <outlet property="detailViewDayLabel" destination="mOI-eu-sJt" id="WMB-MH-DNI"/>
+                        <outlet property="detailViewDayOfWeekLabel" destination="DHa-EQ-BCx" id="2BS-uS-t51"/>
+                        <outlet property="detailViewPostTitle" destination="jZh-3D-bF8" id="5QO-3X-77i"/>
+                        <outlet property="detailViewUserState" destination="zUx-tg-oj8" id="wua-af-LnP"/>
                         <outlet property="detailViewUserStateImageView" destination="zUx-tg-oj8" id="ZRO-da-QV5"/>
                     </connections>
                 </viewController>

@@ -12,6 +12,8 @@ typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
 
 @interface HRNetworkModule : NSObject
 
+@property (nonatomic) NSMutableArray * diaryDataArray;
+
 - (void)loginRequestToServer:(NSString *)userID
                    password:(NSString *)password
                  completion:(BlockOnCompletion)completion;
@@ -21,7 +23,7 @@ typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
                    password2:(NSString *)password2
                   completion:(BlockOnCompletion)completion;
 
--(void)logoutRequestToServer:(BlockOnCompletion)completion;
+- (void)logoutRequestToServer:(BlockOnCompletion)completion;
 
 
 @end

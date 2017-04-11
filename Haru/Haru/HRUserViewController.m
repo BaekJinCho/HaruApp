@@ -14,6 +14,9 @@
 <UITextFieldDelegate>
 @property HRUserAFNetworkingModule *networkManager;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
+@property (weak, nonatomic) IBOutlet UILabel *count_post;
+@property (weak, nonatomic) IBOutlet UILabel *count_streaks;
+@property (weak, nonatomic) IBOutlet UILabel *date_join;
 
 @end
 
@@ -25,17 +28,39 @@
 }
 
 
-- (IBAction)didClickedLogoutBtn:(UIButton *)sender
+- (IBAction)didClickedLogoutBtn:(id)sender
 {
-    [self.networkManager logoutRequest:^(BOOL Sucess, NSDictionary *ResponseData) {
-        UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            NSLog(@"Logout Alert");
+//    [self.networkManager logoutRequest:^(BOOL Sucess, NSDictionary *ResponseData)
+//    {
+//        if (Sucess == YES) {
+            UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSLog(@"Logout Alert");
+                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController];
         }];
-        [logoutAlert addAction:okBtn];
-        
-    }];
+    [logoutAlert addAction:okBtn];
+    [self presentViewController:logoutAlert animated:YES completion:nil];
 }
+
++ (UIViewController*)topMostViewController {
+    UIViewController *topMostViewController = nil;
+    
+    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController* navigationController = (UINavigationController*)rootViewController;
+        topMostViewController = navigationController.visibleViewController;
+    } else if (rootViewController.presentedViewController) {
+        topMostViewController = rootViewController.presentedViewController;
+    } else if ([rootViewController isKindOfClass:[UITabBarController class]]) {
+        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
+        topMostViewController = tabBarController.selectedViewController;
+    } else
+        topMostViewController = rootViewController;
+    
+    return topMostViewController;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
