@@ -23,6 +23,8 @@ typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
                    password2:(NSString *)password2
                   completion:(BlockOnCompletion)completion;
 
+- (NSString *)tokenValue;
+
 - (void)logoutRequestToServer:(BlockOnCompletion)completion;
 
 - (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
