@@ -73,10 +73,10 @@
     HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
     
     mainViewCell.postTitle.text = haruData.title;
-    mainViewCell.mainTableViewCellYearMonthLabel.text = haruData.dateFormatYearMonth;
+    mainViewCell.yearMonthLabel.text = haruData.dateFormatYearMonth;
     mainViewCell.dateLabel.text = haruData.dateFormatDay;
     mainViewCell.dayOfTheWeekLabel.text = haruData.dateFormatDayOfTheWeek;
-    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.photo]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
     
     
     //arc4random()는 자동으로 초기화 작업을 하여 별도의 초기화 하는 불필요한 작업이 필요없다.

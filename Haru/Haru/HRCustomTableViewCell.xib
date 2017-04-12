@@ -113,10 +113,10 @@
                 <outlet property="dateLabel" destination="Zfg-JP-iBi" id="qgW-do-Crn"/>
                 <outlet property="dayOfTheWeekLabel" destination="zHE-ja-L7Z" id="0kq-UP-e7K"/>
                 <outlet property="mainTableViewCellSectionView" destination="5SZ-ku-m4A" id="qjj-Ik-4s7"/>
-                <outlet property="mainTableViewCellYearMonthLabel" destination="Nii-zM-zYj" id="I8C-Rg-8X6"/>
                 <outlet property="photoImageView" destination="8Ej-8Y-IOK" id="SJO-kw-3h8"/>
                 <outlet property="postTitle" destination="QQ3-ff-Wc5" id="eyy-pk-tro"/>
                 <outlet property="userStateImageView" destination="R47-eE-ipE" id="6fp-Ef-q1A"/>
+                <outlet property="yearMonthLabel" destination="Nii-zM-zYj" id="Uwv-E3-eAy"/>
             </connections>
             <point key="canvasLocation" x="-201" y="-152"/>
         </tableViewCell>
