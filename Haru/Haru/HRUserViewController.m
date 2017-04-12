@@ -36,7 +36,7 @@
             UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSLog(@"Logout Alert");
-                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
                 self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController];
         }];
     [logoutAlert addAction:okBtn];

@@ -29,9 +29,8 @@
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
     
-    
     [[HRDataCenter sharedInstance] testList:^(BOOL isSuccess, id response) {
-        
+        NSLog(@"response %@", response);
         if(isSuccess) {
             
             [self.mainTableView reloadData];
@@ -55,20 +54,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark- mainViewController numberOfSection Method
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    return 5;
-}
 
 //mainView의 row의 갯수를 생성하는 Method
 #pragma mark- mainViewController numberOfRowsInSection Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"numberOfRowsInSection");
-//    return [[HRDataCenter sharedInstance] diaryD];
-    
-    return 0;
+    NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
+    return [[HRDataCenter sharedInstance] numberOfItem];
 }
 
 //mainView의 cell을 생성하는 Method
@@ -78,15 +70,13 @@
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
                                                                           forIndexPath:indexPath];
     
-//    HRPostModel *haruData = [[HRDataCenter sharedInstance] diaryDataAtIndexPath:indexPath];
+    HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
     
-//    mainViewCell.postTitle.text = haruData.title;
-//    mainViewCell.mainTableViewCellYearMonthLabel.text = haruData.date;
-//    mainViewCell.dateLabel.text = haruData.date;
-//    mainViewCell.dayOfTheWeekLabel.text = haruData.date;
-//    
-//    mainViewCell.userStateImageView.image;
-//    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+    mainViewCell.postTitle.text = haruData.title;
+    mainViewCell.mainTableViewCellYearMonthLabel.text = haruData.dateFormatYearMonth;
+    mainViewCell.dateLabel.text = haruData.dateFormatDay;
+    mainViewCell.dayOfTheWeekLabel.text = haruData.dateFormatDayOfTheWeek;
+    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
     
     
     //arc4random()는 자동으로 초기화 작업을 하여 별도의 초기화 하는 불필요한 작업이 필요없다.
@@ -123,12 +113,11 @@
         HRDetailViewController *detailViewController = [segue destinationViewController];
 //        detailViewController.indexPath = (NSIndexPath *)sender;
 //        
-        HRPostModel *haruData = [[HRDataCenter sharedInstance] diaryDataAtIndexPath:detailViewController.indexPath];
 //        //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
 //        
-        [detailViewContent.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
-        detailViewContent.detailViewPostTitle.text = haruData.title;
-        detailViewContent.detailViewContentLabel.text = haruData.content;
+//        [detailViewContent.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+//        detailViewContent.detailViewPostTitle.text = haruData.title;
+//        detailViewContent.detailViewContentLabel.text = haruData.content;
     
     
        

@@ -17,15 +17,33 @@ typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {
     HRUserEmotionalStateUpset
 };
 
+typedef NS_ENUM(NSUInteger, HRDateFormat) {
+    HRDateFormatYear,
+    HRDateFormatMonth,
+    HRDateFormatYearMonth,
+    HRDateFormatDay,
+    HRDateFormatDayOfTheWeek,
+    HRDateFormatTime
+};
+
+
 @interface HRPostModel : NSObject
 
-@property NSDate *date;
-@property NSDateComponents *dateComponents;
-@property NSString *title;
-@property NSString *content;
-@property NSString *image;
-@property HRUserEmotionalState userState;
+@property (nonatomic) HRUserEmotionalState userState;
+@property (nonatomic) NSDate          *totalDate;
+@property (nonatomic) NSString        *title;
+@property (nonatomic) NSString        *content;
+@property (nonatomic) NSString        *image;
+
+//totalDate 각각의 View의 보여줄 format으로 변환에 필요한 프로퍼티
+@property (nonatomic) NSString        *dateFormatYear;
+@property (nonatomic) NSString        *dateFormatMonth;
+@property (nonatomic) NSString        *dateFormatYearMonth;
+@property (nonatomic) NSString        *dateFormatDay;
+@property (nonatomic) NSString        *dateFormatDayOfTheWeek;
+@property (nonatomic) NSString        *dateFormatTime;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
 
 @end
