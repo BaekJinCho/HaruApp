@@ -151,6 +151,31 @@
 
 }
 
+// HR main list
+- (void)testList:(BlockOnCompletion)completion {
+    
+    [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
+        
+        completion(isSuccess, response);
+    }];
+}
+
+//json 파일 읽는 Method
+- (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"inHaru" ofType:@"json"];
+    
+    NSData *partyData = [[NSData alloc] initWithContentsOfFile:filePath];
+    
+    //convert JSON NSData to a usable NSDictionary
+    NSError *error;
+    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:partyData
+                                                                 options:0
+                                                                   error:&error];
+    
+    completionHandler(YES, responseData);
+}
+
 
 
 

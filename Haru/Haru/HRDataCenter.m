@@ -112,14 +112,7 @@
     
 }
 
-// HR main list
-- (void)testList:(BlockOnCompletion)completion {
-    
-    [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-        
-        completion(isSuccess, response);
-    }];
-}
+
 
 #pragma mark - Private Method
 //token 저장 Method
@@ -137,6 +130,15 @@
 
 
 //Post 관련 Method
+
+
+- (void)testList:(BlockOnCompletion)completion {
+    
+    [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
+        
+        completion(isSuccess, response);
+    }];
+}
 
 
 //일기의 관한 데이터들을 indexpath.row로 받게하는 Method
@@ -182,7 +184,7 @@
 //json 파일 읽는 Method
 - (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"inHaru" ofType:@"json"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
     
     NSData *partyData = [[NSData alloc] initWithContentsOfFile:filePath];
     
@@ -272,9 +274,7 @@
 //    
 //}
 
-
-
-
+//
 //- (void)requestInDiaryListWithCompletionHandler:(BlockOnCompletion)completionHandler {
 //    
 //    [self readDictionaryFromWithFilepath:@"inDiary" andHandler:^(BOOL isSuccess, id responseData) {

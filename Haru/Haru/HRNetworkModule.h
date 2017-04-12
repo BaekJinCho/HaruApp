@@ -25,5 +25,7 @@ typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
 
 - (void)logoutRequestToServer:(BlockOnCompletion)completion;
 
+- (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
+
 
 @end

@@ -14,6 +14,7 @@ static NSString * const BASIC_URL = @"https://fc-ios.lhy.kr/api";
 static NSString * const JOIN_URL = @"/member/signup/";
 static NSString * const LOGIN_URL = @"/member/login/";
 static NSString * const LOGOUT_URL = @"/member/logout/";
+static NSString * const POST_URL = @"/post/";
 
 //Method 방식
 static NSString * const POST_METHOD = @"POST";
