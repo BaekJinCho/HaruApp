@@ -44,11 +44,15 @@
     [formatter setDateStyle:NSDateFormatterShortStyle];
     
     switch (formattedData) {
+        
         case HRDateFormatYear:
             formatChangedString = @"yyyy";
         
         case HRDateFormatMonth:
             formatChangedString = @"MM";
+            
+        case HRDateFormatYearMonth:
+            formatChangedString = @"yyyy년 MM월";
             
         case HRDateFormatDay:
             formatChangedString = @"dd";

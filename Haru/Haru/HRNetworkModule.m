@@ -146,7 +146,7 @@
 
 //Server에서 page 단위로 받는것 메소드화
 - (void)postListRequestWithPage:(NSNumber *)requestPage
-                     completion:(BlockOnCompletion)completion{
+                     completion:(BlockOnCompletion)completion {
 
 
 }

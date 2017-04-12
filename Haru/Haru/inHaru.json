@@ -1,21 +1,13 @@
 {
     "count":"1",
     "diaryResult":
-    {
+    
+     [{
         "pk"      : "33",
-        "date"    : "",
+        "date"    : "2017-02-16 05:21:21.070167",
         "title"   : "Title 들어가다",
         "content" : "Content 들어가다",
         "image"   : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",        
-    },
-    "inDiaryResults":
-    [
-     {
-     "date"     : "Seoul",
-     "title"    : "title 진짜 들어갔따",
-     "content"  : "content도 진짜 들어갔따",
-     "image"    : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",
-     
-     }
-    ]
+    }]
+   
 }

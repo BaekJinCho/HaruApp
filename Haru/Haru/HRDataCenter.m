@@ -138,13 +138,6 @@
 
 //Post 관련 Method
 
-- (void)mutaleArraysInsertToArrays {
-    
-    self.inHaruContentArray = [self.haruDataArray mutableCopy];
-    
-    self.haruDataArray = self.inHaruContentArray;
-}
-
 
 //일기의 관한 데이터들을 indexpath.row로 받게하는 Method
 - (HRPostModel *)contentDataAtIndexPath:(NSIndexPath *)haruContentDataAtIndexPath {
@@ -189,7 +182,7 @@
 //json 파일 읽는 Method
 - (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"inHaru" ofType:@"json"];
     
     NSData *partyData = [[NSData alloc] initWithContentsOfFile:filePath];
     
@@ -202,82 +195,82 @@
     completionHandler(YES, responseData);
 }
 
-//json 파일 쓰는 Method
-- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-    
-    for (HRPostModel *diary in self.haruDataArray) {
-        
-        NSDictionary *dic = @{@"Date":diary.date, @"Title":diary.title
-                              , @"Content":diary.content, @"Image":@"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-                              };
-        
-        [self.inHaruContentArray addObject:dic];
-    }
-    
-    NSDictionary *temp = @{
-                           @"count":@"1",
-                           @"results":self.inHaruContentArray
-                           };
-    
-    NSData *data       = [NSJSONSerialization dataWithJSONObject:temp options:kNilOptions error:nil];
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
-    
-    [data writeToFile:filePath atomically:YES];
-    
-    completionHandler(YES, nil);
-}
-
-#pragma mark- Diary Add Method
-//다이어리 추가했을 때 Method
-- (void)insertDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-    
-    
-    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-        
-        [self readDictionaryFromWithFilepath:@"inHarun" completionHanlder:^(BOOL isSuccess, id response) {
-            
-            completionHandler(YES, response);
-        }];
-        
-    }];
-    
-}
-
-#pragma mark- Diary Update Method
-//json 파일 수정 Method
-- (void)updateDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-    
-    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-        
-        [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-            
-            completionHandler(YES, response);
-        
-        }];
-        
-    }];
-    
-    
-    
-}
-
-
-#pragma mark- Diary Delete Method
-//json 파일 삭제 Method
-- (void)deleteDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-    
-    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-        
-        [self readDictionaryFromWithFilepath:@"inHarun" completionHanlder:^(BOOL isSuccess, id response) {
-            
-            completionHandler(YES, response);
-        }];
-        
-    }];
-    
-    
-}
+////json 파일 쓰는 Method
+//- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
+//    
+//    for (HRPostModel *diary in self.haruDataArray) {
+//        
+//        NSDictionary *dic = @{@"Date":diary.totalDate, @"Title":diary.title
+//                              , @"Content":diary.content, @"Image":@"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
+//                              };
+//        
+//        [self.inHaruContentArray addObject:dic];
+//    }
+//    
+//    NSDictionary *temp = @{
+//                           @"count":@"1",
+//                           @"results":self.inHaruContentArray
+//                           };
+//    
+//    NSData *data       = [NSJSONSerialization dataWithJSONObject:temp options:kNilOptions error:nil];
+//    
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
+//    
+//    [data writeToFile:filePath atomically:YES];
+//    
+//    completionHandler(YES, nil);
+//}
+//
+//#pragma mark- Diary Add Method
+////다이어리 추가했을 때 Method
+//- (void)insertDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
+//    
+//    
+//    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
+//        
+//        [self readDictionaryFromWithFilepath:@"inHarun" completionHanlder:^(BOOL isSuccess, id response) {
+//            
+//            completionHandler(YES, response);
+//        }];
+//        
+//    }];
+//    
+//}
+//
+//#pragma mark- Diary Update Method
+////json 파일 수정 Method
+//- (void)updateDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
+//    
+//    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
+//        
+//        [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
+//            
+//            completionHandler(YES, response);
+//        
+//        }];
+//        
+//    }];
+//    
+//    
+//    
+//}
+//
+//
+//#pragma mark- Diary Delete Method
+////json 파일 삭제 Method
+//- (void)deleteDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
+//    
+//    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
+//        
+//        [self readDictionaryFromWithFilepath:@"inHarun" completionHanlder:^(BOOL isSuccess, id response) {
+//            
+//            completionHandler(YES, response);
+//        }];
+//        
+//    }];
+//    
+//    
+//}
 
 
 

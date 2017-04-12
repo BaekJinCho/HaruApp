@@ -29,9 +29,8 @@
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
     
-    
     [[HRDataCenter sharedInstance] testList:^(BOOL isSuccess, id response) {
-        
+        NSLog(@"response %@", response);
         if(isSuccess) {
             
             [self.mainTableView reloadData];
@@ -61,7 +60,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
-    
     return [[HRDataCenter sharedInstance] numberOfItem];
 }
 
@@ -72,15 +70,13 @@
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
                                                                           forIndexPath:indexPath];
     
-//    HRPostModel *haruData = [[HRDataCenter sharedInstance] diaryDataAtIndexPath:indexPath];
+    HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
     
-//    mainViewCell.postTitle.text = haruData.title;
-//    mainViewCell.mainTableViewCellYearMonthLabel.text = haruData.date;
-//    mainViewCell.dateLabel.text = haruData.date;
-//    mainViewCell.dayOfTheWeekLabel.text = haruData.date;
-//    
-//    mainViewCell.userStateImageView.image;
-//    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
+    mainViewCell.postTitle.text = haruData.title;
+    mainViewCell.mainTableViewCellYearMonthLabel.text = haruData.dateFormatYearMonth;
+    mainViewCell.dateLabel.text = haruData.dateFormatDay;
+    mainViewCell.dayOfTheWeekLabel.text = haruData.dateFormatDayOfTheWeek;
+    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
     
     
     //arc4random()는 자동으로 초기화 작업을 하여 별도의 초기화 하는 불필요한 작업이 필요없다.
