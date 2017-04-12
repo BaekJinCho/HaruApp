@@ -15,11 +15,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *writeButton;
 @property (weak, nonatomic) IBOutlet UIButton *libraryDirectButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraDirectButton;
+@property (weak, nonatomic) IBOutlet UIButton *backgroundButton;
 
-@property CGPoint addButtonCenter;
-@property CGPoint writeButtonCenter;
-@property CGPoint libraryDirectButtonCenter;
-@property CGPoint cameraDirectButtonCenter;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *writeButtonBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *libraryButtonBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *libraryButtonTrailing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonTrailing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraButtonTrailing;
 
 @property UISearchController *searchController;
 @property NSString *searchText;
@@ -30,51 +33,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.addButtonCenter = self.addButton.center;
-    self.writeButtonCenter = self.writeButton.center;
-    self.libraryDirectButtonCenter = self.libraryDirectButton.center;
-    self.cameraDirectButtonCenter = self.cameraDirectButton.center;
-    
-    self.writeButton.center = self.addButton.center;
-    self.libraryDirectButton.center = self.addButton.center;
-    self.cameraDirectButton.center = self.addButton.center;
-    
+
 }
 
+# pragma mark - Button Animation
 
 - (IBAction)clickedAddButton:(UIButton *)sender {
     
     if(self.addButton.isSelected) {
         [UIView animateWithDuration:0.3 animations:^{
             
-            self.writeButton.alpha = 0;
-            self.libraryDirectButton.alpha = 0;
-            self.cameraDirectButton.alpha = 0;
-            
-            self.writeButton.center = self.addButton.center;
-            self.libraryDirectButton.center = self.addButton.center;
-            self.cameraDirectButton.center = self.addButton.center;
-            
+            [self settingAlphaForButtonAnimation:0 writeBtnAlpha:0 libraryBtnAlpha:0 cameraBtnAlpha:0];
+            [self settingConstantForButtonAnimation:20 cameraBtnTrailing:20 libraryBtnBottom:self.addButtonBottom.constant libraryBtnTrailing:self.addButtonTrailing.constant];
+
             [self.addButton setSelected:NO];
+            [self.view layoutIfNeeded];
         }];
     } else {
         [UIView animateWithDuration:0.3 animations:^{
             
-            self.writeButton.alpha = 1;
-            self.libraryDirectButton.alpha = 1;
-            self.cameraDirectButton.alpha = 1;
+            NSUInteger buttonSize = self.addButton.frame.size.width;
             
-            self.writeButton.center = self.writeButtonCenter;
-            self.libraryDirectButton.center = self.libraryDirectButtonCenter;
-            self.cameraDirectButton.center = self.cameraDirectButtonCenter;
+            [self settingAlphaForButtonAnimation:0.3 writeBtnAlpha:1 libraryBtnAlpha:1 cameraBtnAlpha:1];
+            [self settingConstantForButtonAnimation:buttonSize * 2.5 cameraBtnTrailing:buttonSize * 2.5 libraryBtnBottom:buttonSize * 1.8 libraryBtnTrailing:buttonSize * 1.8];
             
             [self.addButton setSelected:YES];
+            [self.view layoutIfNeeded];
         }];
     }
-    [self toggleButton:sender normalImage:[UIImage imageNamed:@"AddButton"] selectedImage:[UIImage imageNamed:@"addButtonSelected"]];
+    [self toggleButton:sender normalImage:[UIImage imageNamed:@"addButton"] selectedImage:[UIImage imageNamed:@"addButtonSelected"]];
 };
 
+
+- (IBAction)clickedBackgroundButton:(id)sender {
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        [self settingAlphaForButtonAnimation:0 writeBtnAlpha:0 libraryBtnAlpha:0 cameraBtnAlpha:0];
+        [self settingConstantForButtonAnimation:20 cameraBtnTrailing:20 libraryBtnBottom:self.addButtonBottom.constant libraryBtnTrailing:self.addButtonTrailing.constant];
+        
+        [self.addButton setSelected:NO];
+        [self.view layoutIfNeeded];
+    }];
+}
+
+
+# pragma mark - Supplementary Button Action
 
 - (IBAction)clickedLibraryDirectButton:(id)sender {
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary == YES]) {
@@ -134,6 +138,38 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma  mark - Search Bar
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self resignFirstResponder];
+    self.searchText = searchBar.text;
+    self.navigationItem.title = self.searchText.uppercaseString;
+}
+
+
+#pragma mark - SUPPORTING METHODS
+
+#pragma mark - Supporting button animation methods
+
+- (void) settingAlphaForButtonAnimation:(CGFloat)backgroundAlpha
+                          writeBtnAlpha:(CGFloat)writeAlpha
+                        libraryBtnAlpha:(CGFloat)libraryAlpha
+                         cameraBtnAlpha:(CGFloat)cameraAlpha {
+    
+    self.backgroundButton.alpha = backgroundAlpha;
+    self.writeButton.alpha = writeAlpha;
+    self.libraryDirectButton.alpha = libraryAlpha;
+    self.cameraDirectButton.alpha = cameraAlpha;
+}
+
+
+- (void) settingConstantForButtonAnimation:(CGFloat)writeBtnConstant cameraBtnTrailing:(CGFloat)cameraBtnConstant libraryBtnBottom:(CGFloat)libraryBtnBottomConstant libraryBtnTrailing:(CGFloat)libraryBtnTrailingConstant {
+    
+    self.writeButtonBottom.constant = writeBtnConstant;
+    self.cameraButtonTrailing.constant = cameraBtnConstant;
+    self.libraryButtonBottom.constant = libraryBtnBottomConstant;
+    self.libraryButtonTrailing.constant = libraryBtnTrailingConstant;
+}
 
 - (void)toggleButton:(UIButton *)button normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage {
     
@@ -145,17 +181,9 @@
 };
 
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
--(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self resignFirstResponder];
-    self.searchText = searchBar.text;
-    self.navigationItem.title = self.searchText.uppercaseString;
 }
 
 /*
