@@ -17,12 +17,6 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
-@property (weak, nonatomic) IBOutlet UITextView *titleTextView;
-@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *emoticonImageView;
-@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *weekOfDayLabel;
 
 @property (nonatomic) UIBarButtonItem *happyBarButton;
 @property (nonatomic) NSArray *emoticonArray;

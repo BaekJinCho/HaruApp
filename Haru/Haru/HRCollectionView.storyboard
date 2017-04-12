@@ -183,6 +183,7 @@
                         <outlet property="libraryDirectButton" destination="SZr-82-gz4" id="auk-4l-XFS"/>
                         <outlet property="writeButton" destination="6L1-E3-e3R" id="Btn-uZ-end"/>
                         <outlet property="writeButtonBottom" destination="ABX-0Q-1zS" id="vqF-D5-Gbt"/>
+                        <segue destination="SIC-af-Hzk" kind="presentation" identifier="segueFromLibrary" id="3c0-Wj-TcB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WN-sg-b2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -192,10 +193,12 @@
         <!--HRAddView-->
         <scene sceneID="tIL-Rp-0MX">
             <objects>
-                <viewControllerPlaceholder storyboardName="HRAddView" id="SIC-af-Hzk" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="HRAddView" id="SIC-af-Hzk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uRi-rR-UFb"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6O-43-CST" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2794" y="157"/>
+            <point key="canvasLocation" x="2837" y="157"/>
         </scene>
         <!--Item-->
         <scene sceneID="bBZ-I8-AWe">
@@ -225,4 +228,7 @@
         <image name="cameraDirectButton" width="45" height="45"/>
         <image name="libraryDirectButton" width="45" height="45"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="3c0-Wj-TcB"/>
+    </inferredMetricsTieBreakers>
 </document>

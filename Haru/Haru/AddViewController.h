@@ -12,4 +12,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewHeight;
 
+@property (weak, nonatomic) IBOutlet UITextView *titleTextView;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *emoticonImageView;
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weekOfDayLabel;
+
 @end

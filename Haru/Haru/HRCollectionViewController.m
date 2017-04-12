@@ -7,6 +7,8 @@
 //
 
 #import "HRCollectionViewController.h"
+#import "HRCollectionViewCell.h"
+#import "AddViewController.h"
 
 @interface HRCollectionViewController ()
 <UICollectionViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate>
@@ -24,8 +26,10 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonTrailing;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraButtonTrailing;
 
+
 @property UISearchController *searchController;
 @property NSString *searchText;
+@property (strong, nonatomic) UIImage *pickedImage;
 
 @end
 
@@ -39,17 +43,29 @@
 # pragma mark - Button Animation
 
 - (IBAction)clickedAddButton:(UIButton *)sender {
+
+    [self buttonAnimationWhenClicked];
+};
+
+
+- (IBAction)clickedBackgroundButton:(UIButton *)sender {
     
-    if(self.addButton.isSelected) {
+    [self buttonAnimationWhenClicked];
+}
+
+- (void)buttonAnimationWhenClicked {
+    if (self.addButton.isSelected) {
+        [self.addButton setImage:[UIImage imageNamed:@"addButton"] forState:UIControlStateNormal];
         [UIView animateWithDuration:0.3 animations:^{
             
             [self settingAlphaForButtonAnimation:0 writeBtnAlpha:0 libraryBtnAlpha:0 cameraBtnAlpha:0];
             [self settingConstantForButtonAnimation:20 cameraBtnTrailing:20 libraryBtnBottom:self.addButtonBottom.constant libraryBtnTrailing:self.addButtonTrailing.constant];
-
+            
             [self.addButton setSelected:NO];
             [self.view layoutIfNeeded];
         }];
     } else {
+        [self.addButton setImage:[UIImage imageNamed:@"addButtonSelected"] forState:UIControlStateNormal];
         [UIView animateWithDuration:0.3 animations:^{
             
             NSUInteger buttonSize = self.addButton.frame.size.width;
@@ -61,21 +77,7 @@
             [self.view layoutIfNeeded];
         }];
     }
-    [self toggleButton:sender normalImage:[UIImage imageNamed:@"addButton"] selectedImage:[UIImage imageNamed:@"addButtonSelected"]];
 };
-
-
-- (IBAction)clickedBackgroundButton:(id)sender {
-    
-    [UIView animateWithDuration:0.3 animations:^{
-        
-        [self settingAlphaForButtonAnimation:0 writeBtnAlpha:0 libraryBtnAlpha:0 cameraBtnAlpha:0];
-        [self settingConstantForButtonAnimation:20 cameraBtnTrailing:20 libraryBtnBottom:self.addButtonBottom.constant libraryBtnTrailing:self.addButtonTrailing.constant];
-        
-        [self.addButton setSelected:NO];
-        [self.view layoutIfNeeded];
-    }];
-}
 
 
 # pragma mark - Supplementary Button Action
@@ -122,13 +124,25 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    self.pickedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        UIImageWriteToSavedPhotosAlbum(self.pickedImage, nil, nil, nil);
     });
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"segueFromLibrary" sender:self];
+
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"segueFromLibrary"]) {
+        UINavigationController *navi = (UINavigationController *)[segue destinationViewController];
+        AddViewController *addViewContent = (AddViewController *)[[navi viewControllers] objectAtIndex:0];
+        addViewContent.mainImageView.image = _pickedImage;
+    }
+    
+//    self.addViewContent.mainImageView.image = imageSelected;
 }
 
 
@@ -171,14 +185,7 @@
     self.libraryButtonTrailing.constant = libraryBtnTrailingConstant;
 }
 
-- (void)toggleButton:(UIButton *)button normalImage:(UIImage *)normalImage selectedImage:(UIImage *)selectedImage {
-    
-    if(self.addButton.isSelected) {
-        [button setImage:selectedImage forState:UIControlStateNormal];
-    } else {
-        [button setImage:normalImage forState:UIControlStateNormal];
-    }
-};
+
 
 
 - (void)didReceiveMemoryWarning {
