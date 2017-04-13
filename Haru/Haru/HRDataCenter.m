@@ -145,10 +145,10 @@
             for (NSDictionary *resultData in haruDataArrayToDictionaryTemp) {
                 HRPostModel *haruDataTemp = [[HRPostModel alloc] initWithDictionary:resultData];
                 
-                self.haruDataArray = [resultData allKeys];
-                self.inHaruContentArray = [self.haruDataArray mutableCopy];
+//                self.haruDataArray = [resultData allKeys];
+//                self.inHaruContentArray = [self.haruDataArray mutableCopy];
                 [self.inHaruContentArray addObject:haruDataTemp];
-                self.haruDataArray = self.inHaruContentArray;
+//                self.haruDataArray = self.inHaruContentArray;
             }
             completion(isSuccess, response);
             
@@ -163,7 +163,7 @@
 //일기의 관한 데이터들을 indexpath.row로 받게하는 Method
 - (HRPostModel *)contentDataAtIndexPath:(NSIndexPath *)haruContentDataAtIndexPath {
     
-    return self.haruDataArray[haruContentDataAtIndexPath.row];
+    return self.inHaruContentArray[haruContentDataAtIndexPath.row];
 }
 
 //일기(일기의 Content)를 추가하는 Method

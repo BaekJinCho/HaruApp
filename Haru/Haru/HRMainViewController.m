@@ -115,10 +115,6 @@
 //        
 //        //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
 //        
-//        [detailViewContent.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:haruData.image]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
-//        detailViewContent.detailViewPostTitle.text = haruData.title;
-//        detailViewContent.detailViewContentLabel.text = haruData.content;
-    
     
        
 //    }
