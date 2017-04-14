@@ -4,10 +4,11 @@
     
      [{
         "pk"      : "33",
-        "date"    : "2017-02-16 05:21:21.070167",
+        "date"    : "2011-10-20T01:10:50Z",
         "title"   : "Title 들어가다",
         "content" : "Content 들어가다",
-        "photo"   : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",        
+        "state"   : "1", 
+        "photo"   : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",
     }]
    
 }
