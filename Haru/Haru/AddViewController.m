@@ -8,7 +8,7 @@
 
 #import "AddViewController.h"
 
-static NSInteger TITLE_MAXLENGTH = 20;
+static NSInteger TITLE_MAXLENGTH = 30;
 static NSUInteger CONTENT_MAXLENGTH = 150;
 
 @interface AddViewController ()
@@ -20,6 +20,8 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 
 @property (nonatomic) UIBarButtonItem *happyBarButton;
 @property (nonatomic) NSArray *emoticonArray;
+@property (nonatomic) NSMutableArray *barButtonArray;
+@property (nonatomic) UIBarButtonItem *emoticonBarButton;
 
 
 @end
@@ -30,81 +32,95 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.mainImageView.image = self.image;
+        
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
-
+    self.emoticonArray = @[@"Happy", @"Sad", @"Angry", @"Upset", @"Soso"];
     
     self.contentTextView.textContainer.maximumNumberOfLines = 4;
     self.contentTextView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
     
-
-    self.emoticonArray = @[@"Happy", @"Sad", @"Angry", @"Upset", @"Soso"];
     
     self.titleTextView.tag = 1;
     self.contentTextView.tag = 2;
     
+
+    [self createToolBar];
+    [self.titleTextView becomeFirstResponder];
+}
+
+- (void) createToolBar {
+    
+    NSUInteger i;
+    
     UIToolbar* keyboardToolbar = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     
-    UIBarButtonItem *happyBarButton = [[UIBarButtonItem alloc]
-                                       initWithImage:[UIImage imageNamed:@"Happy"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
-    happyBarButton.tag = 11;
+    self.barButtonArray = [[NSMutableArray alloc] init];
     
-    UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
-                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                      target:nil action:nil];
+    for (i = 0; i < self.emoticonArray.count; i++) {
+
+        self.emoticonBarButton = [[UIBarButtonItem alloc]
+                                  initWithImage:[UIImage imageNamed:[self.emoticonArray objectAtIndex:i]] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon:)];
+        
+        UIBarButtonItem *flexBarButton = [[UIBarButtonItem alloc]
+                                          initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                          target:nil action:nil];
+        self.emoticonBarButton.tag = i;
+        
+        [self.barButtonArray addObject:self.emoticonBarButton];
+        [self.barButtonArray addObject:flexBarButton];
+    }
     
-    UIBarButtonItem *sadBarButton = [[UIBarButtonItem alloc]
-                                     initWithImage:[UIImage imageNamed:@"Sad"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
-    flexBarButton.tag = 22;
-    
-    UIBarButtonItem *angryBarButton = [[UIBarButtonItem alloc]
-                                       initWithImage:[UIImage imageNamed:@"Angry"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
-    flexBarButton.tag = 33;
-    
-    
-    UIBarButtonItem *upsetBarButton = [[UIBarButtonItem alloc]
-                                       initWithImage:[UIImage imageNamed:@"Upset"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
-    flexBarButton.tag = 44;
-    
-    
-    UIBarButtonItem *sosoBarButton = [[UIBarButtonItem alloc]
-                                      initWithImage:[UIImage imageNamed:@"Soso"] style:UIBarButtonItemStylePlain target:nil action:@selector(addEmoticon)];
-    flexBarButton.tag = 55;
-    
-    
-    
-    keyboardToolbar.items = @[happyBarButton, flexBarButton, sadBarButton, flexBarButton, angryBarButton, flexBarButton, upsetBarButton, flexBarButton, sosoBarButton];
-    
-    
+    [self.barButtonArray removeLastObject];
+    keyboardToolbar.items = self.barButtonArray;
     [self.titleTextView setInputAccessoryView:keyboardToolbar];
     [self.contentTextView setInputAccessoryView:keyboardToolbar];
     keyboardToolbar.tintColor = [UIColor grayColor];
-    
-
-    
-    [self.titleTextView becomeFirstResponder];
-
-    
-//    self.dayLabel.numberOfLines = 1;
-//    self.dayLabel.minimumScaleFactor = 20;
-//    self.dayLabel.adjustsFontSizeToFitWidth = YES;
-//    
-//    self.weekOfDayLabel.numberOfLines = 1;
-//    self.weekOfDayLabel.minimumScaleFactor = 10;
-//    self.weekOfDayLabel.adjustsFontSizeToFitWidth = YES;
-    
 }
 
+
+
 - (IBAction)clickedBackButton:(id)sender {
+    if ([self.titleTextView isFirstResponder]) {
+        [self.view endEditing:YES];
+    } else if ([self.contentTextView isFirstResponder]) {
+        [self.contentTextView resignFirstResponder];
+    };
+
+//    Resign all editing features including the keyboard
+//    [self.view endEditing:YES];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)addEmoticon {
+
+
+- (void)addEmoticon:(UIBarButtonItem *)emoticonBarButtonItem {
     
-    self.emoticonImageView.image = [UIImage imageNamed:[_emoticonArray objectAtIndex:1]];
+    switch (emoticonBarButtonItem.tag) {
+        case 0:
+            [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            break;
+        case 1:
+            [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            break;
+        case 2:
+            [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            break;
+        case 3:
+            [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            break;
+        case 4:
+            [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            break;
+        default:
+            break;
+    }
 }
+
 
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -161,14 +177,18 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 #pragma mark - camera/photo related methods
 
 // 카메라 버튼 눌렸을 때, 카메라 뷰를 실행시키는 메소드
-- (IBAction)touchedCameraButton:(id)sender {
+- (IBAction)touchedCameraButton:(UIImagePickerController *)picker {
     
-    UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
-    cameraPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    cameraPicker.delegate = self;
-    cameraPicker.allowsEditing = YES;
-    
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+        UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
+        cameraPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraPicker.delegate = self;
+        cameraPicker.allowsEditing = YES;
+        
     [self presentViewController:cameraPicker animated:YES completion:nil];
+    } else {
+        NSLog(@"Camera Not Available!!");
+    }
 }
 
 
@@ -190,13 +210,13 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     self.mainImageView.image = image;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-    });
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        });
+    };
 
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -215,6 +235,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     switch (textView.tag) {
         case 1: {
             NSString *newText = [textView.text stringByReplacingCharactersInRange: range withString: text];
+            [self adjustContentSizeOfTextView:textView];
 
             if( [newText length] <= TITLE_MAXLENGTH){
                 
@@ -230,6 +251,9 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
             NSString *newText = [textView.text stringByReplacingCharactersInRange: range withString: text];
             textView.textContainer.maximumNumberOfLines = 4;
             textView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+            
+            [self adjustContentSizeOfTextView:textView];
+
             if( [newText length] <= CONTENT_MAXLENGTH){
                 return YES;
             }
@@ -247,6 +271,31 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     
     return YES;
 }
+
+
+- (void)adjustContentSizeOfTextView:(UITextView*)textView {
+    CGFloat textViewSpace = ([textView bounds].size.height - [textView contentSize].height);
+    CGFloat inset = MAX(0, textViewSpace/2.0);
+    textView.contentInset = UIEdgeInsetsMake(inset, textView.contentInset.left, inset, textView.contentInset.right);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self adjustContentSizeOfTextView:self.titleTextView];
+    [self adjustContentSizeOfTextView:self.contentTextView];
+}
+
+//- (void)textViewDidBeginEditing:(UITextView *)textView {
+//    
+//    [self adjustContentSizeOfTextView:textView];
+//}
+//
+//- (void)textViewDidChange:(UITextView *)textView {
+//    [self adjustContentSizeOfTextView:textView];
+//}
+//
+//- (void)textViewDidEndEditing:(UITextView *)textView {
+//    [self adjustContentSizeOfTextView:textView];
+//}
 
 
 
