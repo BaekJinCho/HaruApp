@@ -102,8 +102,8 @@
     };
 };
 
-- (IBAction)clickedCameraDirectButton:(id)sender {
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera == YES]) {
+- (IBAction)clickedCameraDirectButton:(UIImagePickerController *)picker {
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
         
         UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
         cameraPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -116,22 +116,28 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"주의" message:@"카메라에 접근할 수 없습니다. 설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil]; 
         }];
         [alertController addAction:alertAction];
+        [self presentViewController:alertController animated:YES completion:nil];
     };
 };
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     
-    self.pickedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    UIImage *chosenImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    self.pickedImage = chosenImage;
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImageWriteToSavedPhotosAlbum(self.pickedImage, nil, nil, nil);
-    });
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(self.pickedImage, nil, nil, nil);
+        });
+    } else {
+        NSLog(@"라이브러리 진입");
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self performSegueWithIdentifier:@"segueFromLibrary" sender:self];
+    [self performSegueWithIdentifier:@"segueFromLibrary" sender:chosenImage];
 
 }
 
@@ -139,10 +145,11 @@
     if ([segue.identifier isEqualToString:@"segueFromLibrary"]) {
         UINavigationController *navi = (UINavigationController *)[segue destinationViewController];
         AddViewController *addViewContent = (AddViewController *)[[navi viewControllers] objectAtIndex:0];
-        addViewContent.mainImageView.image = _pickedImage;
+//        AddViewController *addViewContent = (AddViewController *)segue.destinationViewController;
+        UIImage *image = (UIImage *)sender;
+        
+        addViewContent.image = image;
     }
-    
-//    self.addViewContent.mainImageView.image = imageSelected;
 }
 
 
