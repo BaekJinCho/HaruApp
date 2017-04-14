@@ -136,7 +136,26 @@
     
     [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
         
-        completion(isSuccess, response);
+        if (isSuccess) {
+            
+            NSDictionary *haruDataTemp = (NSDictionary *)response;
+            
+            NSArray *haruDataArrayToDictionaryTemp = [haruDataTemp objectForKey:@"diaryResult"];
+            
+            for (NSDictionary *resultData in haruDataArrayToDictionaryTemp) {
+                HRPostModel *haruDataTemp = [[HRPostModel alloc] initWithDictionary:resultData];
+                
+//                self.haruDataArray = [resultData allKeys];
+//                self.inHaruContentArray = [self.haruDataArray mutableCopy];
+                [self.inHaruContentArray addObject:haruDataTemp];
+//                self.haruDataArray = self.inHaruContentArray;
+            }
+            completion(isSuccess, response);
+            
+        } else {
+            
+            completion(isSuccess, nil);
+        }
     }];
 }
 
@@ -144,7 +163,7 @@
 //일기의 관한 데이터들을 indexpath.row로 받게하는 Method
 - (HRPostModel *)contentDataAtIndexPath:(NSIndexPath *)haruContentDataAtIndexPath {
     
-    return self.haruDataArray[haruContentDataAtIndexPath.row];
+    return self.inHaruContentArray[haruContentDataAtIndexPath.row];
 }
 
 //일기(일기의 Content)를 추가하는 Method
@@ -175,7 +194,7 @@
 //tableview의 numberOfRowsInSection에 들어갈 수
 - (NSUInteger)numberOfItem {
     
-    return self.haruDataArray.count;
+    return self.inHaruContentArray.count;
     
 }
 
@@ -273,36 +292,6 @@
 //    
 //    
 //}
-
-//
-//- (void)requestInDiaryListWithCompletionHandler:(BlockOnCompletion)completionHandler {
-//    
-//    [self readDictionaryFromWithFilepath:@"inDiary" andHandler:^(BOOL isSuccess, id responseData) {
-//        
-//        if(isSuccess) {
-//            
-//            NSDictionary *resultInfo = (NSDictionary *)responseData;
-//            
-//            NSDictionary *inDiaryInfo   = [resultInfo objectForKey:@"diaryResult"];
-//            NSArray      *inDiaryArray  = [resultInfo objectForKey:@"inDiaryResults"];
-//            
-//            self.inDiaryInfo      = [inDiaryInfo mutableCopy];
-//            
-//            for (NSDictionary *diaryInfo in inDiaryArray) {
-//                
-//                HRPostModel *data = [[HRPostModel alloc] initWithDictionary:inDiaryInfo];
-//                [self.inDiaryDataArray addObject:data];
-//            }
-//            
-//            completionHandler(isSuccess, responseData);
-//        } else {
-//            
-//            completionHandler(isSuccess, nil);
-//        }
-//        
-//    }];
-//}
-
 
 
 

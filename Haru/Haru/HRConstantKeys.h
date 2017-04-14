@@ -34,11 +34,11 @@ static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
 
 
 //Data Modeling에 필요한 것
-static NSString * const DATE_KEY = @"Date";
-static NSString * const TITLE_KEY = @"Title";
-static NSString * const CONTENT_KEY = @"Content";
-static NSString * const IMAGE_KEY = @"Photo";
-static NSString * const USERSTATE_KEY = @"State";
+static NSString * const DATE_KEY = @"date";
+static NSString * const TITLE_KEY = @"title";
+static NSString * const CONTENT_KEY = @"content";
+static NSString * const PHOTO_KEY = @"photo";
+static NSString * const USERSTATE_KEY = @"state";
 
 ////유저 감정상태 정의
 //typedef NS_ENUM(NSUInteger, HRUserEmotionalState) {

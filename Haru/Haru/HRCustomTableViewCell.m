@@ -20,9 +20,9 @@
     self.mainTableViewCellSectionView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
     //mainTableViewCell 위에 년/월 표시해주는 label 설정
-    self.mainTableViewCellYearMonthLabel.text = [NSString stringWithFormat:@"2017년 4월"];
-    [self.mainTableViewCellYearMonthLabel setFont:[UIFont fontWithName:@"Apple SD Gothic Neo" size:17]];
-    self.mainTableViewCellYearMonthLabel.textColor = [UIColor colorWithWhite:255/255.0 alpha:0.8];
+//    self.yearMonthLabel.text = [NSString stringWithFormat:@"2017년 4월"];
+    [self.yearMonthLabel setFont:[UIFont fontWithName:@"Apple SD Gothic Neo" size:17]];
+    self.yearMonthLabel.textColor = [UIColor colorWithWhite:255/255.0 alpha:0.8];
     
 }
 

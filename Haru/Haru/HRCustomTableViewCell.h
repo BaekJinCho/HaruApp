@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *postTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *userStateImageView;
 @property (weak, nonatomic) IBOutlet UIView *mainTableViewCellSectionView;
-@property (weak, nonatomic) IBOutlet UILabel *mainTableViewCellYearMonthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *yearMonthLabel;
 
 
 @end

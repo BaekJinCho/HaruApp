@@ -21,7 +21,7 @@
         self.totalDate                 = [dictionary objectForKey:DATE_KEY];
         self.title                     = [dictionary objectForKey:TITLE_KEY];
         self.content                   = [dictionary objectForKey:CONTENT_KEY];
-        self.image                     = [dictionary objectForKey:IMAGE_KEY];
+        self.photo                     = [dictionary objectForKey:PHOTO_KEY];
         self.userState                 = [[dictionary objectForKey:USERSTATE_KEY] integerValue];
         
         //totalDate format set
