@@ -132,7 +132,7 @@
 //Post 관련 Method
 
 
-- (void)testList:(BlockOnCompletion)completion {
+- (void)mainViewList:(BlockOnCompletion)completion {
     
     [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
         
@@ -186,9 +186,9 @@
 
 //일기(일기의 Content)를 수정하는 Method
 - (void)updateDiaryContent:(NSIndexPath *)haruContentsAtIndexPath haruContentsData:(HRPostModel *)haruContentsData {
-    self.inHaruContentArray = [self.haruDataArray mutableCopy];
+//    self.inHaruContentArray = [self.haruDataArray mutableCopy];
     [self.inHaruContentArray replaceObjectAtIndex:haruContentsAtIndexPath.row withObject:haruContentsData];
-    self.haruDataArray = self.inHaruContentArray;
+//    self.haruDataArray = self.inHaruContentArray;
 }
 
 //tableview의 numberOfRowsInSection에 들어갈 수

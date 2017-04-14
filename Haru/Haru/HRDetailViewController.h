@@ -19,4 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *detailViewUserState;
 @property (weak, nonatomic) IBOutlet UILabel *detailViewContentLabel;
 
+@property (nonatomic) HRPostModel *postModel;
+
 @end

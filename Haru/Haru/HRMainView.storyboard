@@ -69,7 +69,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Cx-Sl3" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
                                         <rect key="frame" x="0.0" y="-7" width="375" height="375.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5C9-K7-ZgH" secondAttribute="height" multiplier="1:1" id="tq4-s1-Xx4"/>
@@ -83,16 +83,16 @@
                                         <rect key="frame" x="19.5" y="0.0" width="337.5" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="48b-wO-a0t">
-                                                <rect key="frame" x="0.0" y="9.5" width="65" height="41"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="65" height="60"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOI-eu-sJt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOI-eu-sJt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="화요일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-EQ-BCx">
-                                                        <rect key="frame" x="0.0" y="20.5" width="65" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHa-EQ-BCx">
+                                                        <rect key="frame" x="0.0" y="30" width="65" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -102,8 +102,8 @@
                                                     <constraint firstAttribute="width" constant="65" id="69L-hX-40D"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 프로젝트는 어디까지인가?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-3D-bF8">
-                                                <rect key="frame" x="65" y="20" width="252.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZh-3D-bF8">
+                                                <rect key="frame" x="65" y="0.0" width="252.5" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPI-jN-faP">
                                         <rect key="frame" x="-0.5" y="372.5" width="375" height="220"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="무슨 말이 필요해 모두가 널 작품이라고 불러 yeah~  무슨 말이 필요해 모두가 널 작품이라고 불러 yeah~ 무슨 말이 필요해 모두가 널 작품이라고 불러 yeah" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtG-WK-791">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QtG-WK-791">
                                                 <rect key="frame" x="14.5" y="45" width="346.5" height="61"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -169,7 +169,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Pencil" id="RMv-Gq-JGF">
                             <connections>
-                                <segue destination="RJP-qt-fcN" kind="show" id="3UV-1b-Zw2"/>
+                                <action selector="clickUpdateButton:" destination="fTC-Wd-A6m" id="8T7-e6-4eE"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -181,6 +181,7 @@
                         <outlet property="detailViewPostTitle" destination="jZh-3D-bF8" id="5QO-3X-77i"/>
                         <outlet property="detailViewUserState" destination="zUx-tg-oj8" id="wua-af-LnP"/>
                         <outlet property="detailViewUserStateImageView" destination="zUx-tg-oj8" id="ZRO-da-QV5"/>
+                        <segue destination="RJP-qt-fcN" kind="show" identifier="updateViewFromDetailView" id="O6C-0k-0QP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnf-Ha-Bzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -326,6 +327,8 @@
                         <outlet property="postUpdateTextView" destination="Hv5-ui-7R9" id="iVC-xw-XKK"/>
                         <outlet property="postViewContentTextVIewBottomConstant" destination="ZQR-uB-Vea" id="NMo-bh-W2K"/>
                         <outlet property="updateViewBackgroundPhoto" destination="26W-xE-Rgp" id="rh7-rR-71e"/>
+                        <outlet property="updateViewDayLabel" destination="G3g-Rx-HsU" id="QXC-Kx-7q9"/>
+                        <outlet property="updateViewDayOfWeekLabel" destination="hIy-xn-lhD" id="abp-vN-SWy"/>
                         <outlet property="updateViewUserStateImageView" destination="hQF-Xu-A6h" id="V0E-wC-3Zw"/>
                         <segue destination="2zw-5D-Fjw" kind="unwind" identifier="clickSaveButton" unwindAction="unwindMainViewSegue:" id="Kpw-LJ-ghy"/>
                     </connections>

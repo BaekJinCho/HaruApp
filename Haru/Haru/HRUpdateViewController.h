@@ -10,4 +10,6 @@
 
 @interface HRUpdateViewController : UIViewController
 
+@property (nonatomic) HRPostModel *postModel;
+
 @end
