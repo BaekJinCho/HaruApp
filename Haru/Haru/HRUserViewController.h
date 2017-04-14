@@ -10,6 +10,4 @@
 
 @interface HRUserViewController : UIViewController
 
-+ (UIViewController*)topMostViewController;
-
 @end
