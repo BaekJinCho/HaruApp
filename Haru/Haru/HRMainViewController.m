@@ -37,17 +37,6 @@
    
 }
 
-//alert 알람 띄우기 클래스 메소드
-+ (UIAlertController *)modalWithTitle:(NSString *)title andContent:(NSString *)content andHandler:(void (^)(void))handler {
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *actions = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-    }];
-    [alert addAction:actions];
-    return alert;
-}
-
 //데이터 refresh
 - (void)refreshTableView {
     

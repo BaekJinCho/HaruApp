@@ -10,5 +10,17 @@
         "state"   : "1", 
         "photo"   : "http://cfile1.uf.tistory.com/image/19272E2F4C67E49AB98D32",
     }]
-   
+}
+{
+    "count":"2",
+    "diaryResult2":
+    
+    [{
+     "pk"      : "34",
+     "date"    : "2011-10-20T01:10:50Z",
+     "title"   : "Title 들어가다",
+     "content" : "Content 들어가다",
+     "state"   : "1",
+     "photo"   : "http://blog.jinbo.net/attach/615/200937431.jpg",
+     }]
 }

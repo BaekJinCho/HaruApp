@@ -45,7 +45,6 @@
 - (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
 
 
-
 - (void)updateDiaryContent:(NSIndexPath *)haruContentsAtIndexPath haruContentsData:(HRPostModel *)haruContentsData;
 
 @end
