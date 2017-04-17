@@ -29,6 +29,7 @@ static NSString * const TOKEN_KEY_OF_USERDEFAULTS = @"Token";
 
 //API STATUSCODE
 static NSInteger const STATUSCODE_LOGIN_SUCCESS = 200;
+static NSInteger const STATUSCODE_LOGIN_FAIL = 400;
 static NSInteger const STATUSCODE_JOIN_SUCCESS = 201;
 static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
 static NSInteger const STATUSCODE_SIGNUP_FAIL = 400;

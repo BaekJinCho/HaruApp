@@ -38,7 +38,7 @@
                                                                        error:&error];
                                                     if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
                                                         completion(YES, responseData);
-                                                    } else {
+                                                    } else if (httpResponse.statusCode == STATUSCODE_LOGIN_FAIL){
                                                         completion(NO, responseData);
                                                     }
                                                 }];
@@ -79,6 +79,7 @@
     [task resume];
 }
 
+//로그아웃 요청
 - (void)logoutRequestToServer:(BlockOnCompletion)completion {
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];

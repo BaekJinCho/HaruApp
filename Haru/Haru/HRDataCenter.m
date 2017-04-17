@@ -132,7 +132,11 @@
 - (void)logoutRequestToServer:(BlockOnCompletion)completion {
     
     [self.networkManager logoutRequestToServer:^(BOOL isSuccess, id response) {
-        [self removeToken];
+        if (isSuccess == YES) {
+            [self removeToken];
+            
+        }
+
         completion(isSuccess, response);
         
     }];

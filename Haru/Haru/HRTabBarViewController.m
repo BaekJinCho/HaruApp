@@ -23,9 +23,9 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     [super viewDidAppear:animated];
-//    if (![[HRDataCenter sharedInstance] isAutoLogin]) {
-//        [self showTutorialPage];
-//    }
+    if (![[HRDataCenter sharedInstance] isAutoLogin]) {
+        [self showTutorialPage];
+    }
   
 }
 
