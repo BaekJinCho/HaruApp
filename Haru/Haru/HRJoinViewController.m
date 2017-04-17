@@ -101,14 +101,28 @@
             
             if ([[response objectForKey:@"password"] objectAtIndex:0]) {
                 NSLog(@"회원가입 실패 Error Code : %@", response);
+                NSString *signupFailMessage = @"비밀번호를 입력하세요.";
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self signupFailAlert];
+                    
+                    [self signupFailAlert:signupFailMessage];
                 });
-            } else {
-                NSLog(@"회원가입 실패 Error Code : %@", response);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self signupFailAlert];
-                });
+                
+            } else if ([[response objectForKey:@"email"] objectAtIndex:0]) {
+                
+                if([[[response objectForKey:@"email"] objectAtIndex:0] isEqualToString:@"This field may not be blank."]) {
+                    NSLog(@"회원가입 실패 Error Code : %@", response);
+                    NSString *signupFailMessage = @"email을 입력하세요.";
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self signupFailAlert:signupFailMessage];
+                    });
+                } else {
+                    NSLog(@"회원가입 실패 Error Code : %@", response);
+                    NSString *signupFailMessage = @"동일한 회원정보가 존재합니다.";
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self signupFailAlert:signupFailMessage];
+                    });
+                }
+                
             }
             
             }
@@ -118,7 +132,7 @@
     
 }
 //로그인 성공 alert
-- (void)signupSucessAlert{
+- (void)signupSucessAlert {
     
     UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"성공" message:@"회원가입이 정상적으로 완료되었습니다." preferredStyle:UIAlertControllerStyleAlert];
     
@@ -132,9 +146,9 @@
 }
 
 //로그인 실패 alert
-- (void)signupFailAlert{
+- (void)signupFailAlert:(NSString *)failMessage {
     
-    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"실패" message:@"이메일 또는 비밀번호가 누락되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"실패" message:failMessage preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
