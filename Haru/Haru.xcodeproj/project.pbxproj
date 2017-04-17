@@ -130,8 +130,6 @@
 			children = (
 				18448FD91E8CEFBC00332CFA /* HRCollectionViewController.h */,
 				18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */,
-				1807F8FA1EA0A650008D5713 /* HRRealmData.h */,
-				1807F8FB1EA0A650008D5713 /* HRRealmData.m */,
 				18448FDC1E8CEFF700332CFA /* HRCollectionViewCell.h */,
 				18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */,
 				1878DE8F1E92491700501825 /* AddViewController.h */,
@@ -253,6 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				010460011E9654A000407BD1 /* Common */,
+				1807F8FA1EA0A650008D5713 /* HRRealmData.h */,
+				1807F8FB1EA0A650008D5713 /* HRRealmData.m */,
 				185978921E88D42B00172475 /* HRDataCenter.h */,
 				185978931E88D42B00172475 /* HRDataCenter.m */,
 				185978951E88D43900172475 /* HRNetworkModule.h */,

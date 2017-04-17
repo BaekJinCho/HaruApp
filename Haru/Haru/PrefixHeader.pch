@@ -19,6 +19,7 @@
 #import "HRNetworkModule.h"
 #import "HRDataCenter.h"
 #import "HRPostModel.h"
+#import "HRRealmData.h"
 
 //상수 키 모음
 #import "HRConstantKeys.h"

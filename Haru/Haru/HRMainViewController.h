@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface HRMainViewController : UIViewController
+{
+    RLMResults<HRRealmData*> *tableDataArray;
+}
 
 
 @end

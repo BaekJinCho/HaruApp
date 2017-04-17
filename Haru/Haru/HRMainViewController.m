@@ -34,32 +34,38 @@
     [self.mainTableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
     
-   
+    //date 순으로 정렬 - ascending - NO(최신순)
+    tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
+    [_mainTableView reloadData];
 }
 
 //데이터 refresh
 - (void)refreshTableView {
-    
-    [self.refreshControl endRefreshing];
-    
-    [self getHaruData];
-    [self.mainTableView reloadData];
-}
 
-//데이터 가져오기
-- (void)getHaruData {
+    [self.refreshControl endRefreshing];
+  
+//    [self getHaruData];
+//    [self.mainTableView reloadData];
     
-    [[HRDataCenter sharedInstance] mainViewList:^(BOOL isSuccess, id response) {
-        NSLog(@"response %@", response);
-        if(isSuccess) {
-            
-        } else {
-            
-            
-        }
-    }];
+    tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
+    [_mainTableView reloadData];
     
 }
+//
+////데이터 가져오기
+//- (void)getHaruData {
+//    
+//    [[HRDataCenter sharedInstance] mainViewList:^(BOOL isSuccess, id response) {
+//        NSLog(@"response %@", response);
+//        if(isSuccess) {
+//            
+//        } else {
+//            
+//            
+//        }
+//    }];
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -72,7 +78,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
-    return [[HRDataCenter sharedInstance] numberOfItem];
+//    return [[HRDataCenter sharedInstance] numberOfItem];
+    
+    return [tableDataArray count];
 }
 
 //mainView의 cell을 생성하는 Method
@@ -82,15 +90,14 @@
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
                                                                           forIndexPath:indexPath];
     
-    HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
-    
-    mainViewCell.postTitle.text           = haruData.title;
-    mainViewCell.userStateImageView.image = [UIImage imageNamed:haruData.userStateImage];
-    mainViewCell.yearMonthLabel.text      = [haruData convertWithDate:haruData.totalDate format:@"yyyy년 MM월"];
-    mainViewCell.dateLabel.text           = [haruData convertWithDate:haruData.totalDate format:@"dd"];
-    mainViewCell.dayOfTheWeekLabel.text   = [haruData convertWithDate:haruData.totalDate format:@"E요일"];
-    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.photo]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
-    
+//    HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
+//    
+//    mainViewCell.postTitle.text           = haruData.title;
+//    mainViewCell.userStateImageView.image = [UIImage imageNamed:haruData.userStateImage];
+//    mainViewCell.yearMonthLabel.text      = [haruData convertWithDate:haruData.totalDate format:@"yyyy년 MM월"];
+//    mainViewCell.dateLabel.text           = [haruData convertWithDate:haruData.totalDate format:@"dd"];
+//    mainViewCell.dayOfTheWeekLabel.text   = [haruData convertWithDate:haruData.totalDate format:@"E요일"];
+//    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.photo]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
     
     //arc4random()는 자동으로 초기화 작업을 하여 별도의 초기화 하는 불필요한 작업이 필요없다.
     //default를 랜덤하게 넣어주기 위한 작업
@@ -100,6 +107,13 @@
 //    
 //    //기본 이미지를 넣어주는 것!
 //    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:@"이미지 URL"]                        placeholderImage:randomImage];
+    
+    
+    //realm을 이용하여 데이터 set
+    HRRealmData *realmDatainfo = [tableDataArray objectAtIndex:indexPath.row];
+    
+    mainViewCell.postTitle.text = realmDatainfo.title;
+    mainViewCell.photoImageView.image = [UIImage imageWithData:realmDatainfo.mainImageData];
 
     return mainViewCell;
 }
@@ -152,6 +166,14 @@
 //        self.dataArray = [NSArray arrayWithArray:arrayForRemove];
 //        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
+        //realm data 삭제
+        HRRealmData *realmDatainfo = [tableDataArray objectAtIndex:indexPath.row];
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        [realm deleteObject:realmDatainfo];
+        [realm commitWriteTransaction];
+        
+        [_mainTableView reloadData];
     }
 
 }

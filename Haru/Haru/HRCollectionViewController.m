@@ -105,7 +105,7 @@
 
 - (void)buttonAnimationWhenClicked {
     if (self.addButton.isSelected) {
-        [self.addButton setImage:[UIImage imageNamed:@"addButton"] forState:UIControlStateNormal];
+        [self.addButton setImage:[UIImage imageNamed:@"AddButton"] forState:UIControlStateNormal];
         [UIView animateWithDuration:0.3 animations:^{
             
             [self settingAlphaForButtonAnimation:0 writeBtnAlpha:0 libraryBtnAlpha:0 cameraBtnAlpha:0];
