@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O96-wH-2ic">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="O96-wH-2ic">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="width" constant="45" id="1JC-5B-mFV"/>
                                     <constraint firstAttribute="height" constant="45" id="mX8-6y-1W6"/>
                                 </constraints>
-                                <state key="normal" image="AddButton"/>
+                                <state key="normal" image="addButton"/>
                                 <connections>
                                     <action selector="clickedAddButton:" destination="ovG-Cv-nT4" eventType="touchUpInside" id="Taj-bU-zS0"/>
                                 </connections>
@@ -220,7 +220,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O96-wH-2ic" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Sd0-zt-bpm"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="nRC-A2-EFB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nRC-A2-EFB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.26576459409999997" green="0.28916773200000001" blue="0.34730651969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -240,9 +240,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddButton" width="45" height="45"/>
         <image name="Collection" width="19" height="18"/>
         <image name="CollectionSelected" width="19" height="18"/>
+        <image name="addButton" width="45" height="45"/>
         <image name="addViewButton" width="45" height="45"/>
         <image name="cameraDirectButton" width="45" height="45"/>
         <image name="libraryDirectButton" width="45" height="45"/>
