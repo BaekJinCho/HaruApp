@@ -20,5 +20,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *detailViewContentLabel;
 
 @property (nonatomic) HRPostModel *postModel;
-
+@property (nonatomic) HRRealmData *realmData;
 @end
