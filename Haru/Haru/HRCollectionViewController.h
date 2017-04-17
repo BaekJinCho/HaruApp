@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HRCollectionViewCell.h"
+#import "AddViewController.h"
+#import "HRRealmData.h"
 
 @interface HRCollectionViewController : UIViewController
+{
+    RLMResults *collectionDataArray;
+}
 
 @end

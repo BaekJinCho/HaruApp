@@ -6,7 +6,9 @@
 //  Copyright © 2017년 jcy. All rights reserved.
 //
 
+#import <UITextView_Placeholder/UITextView+Placeholder.h>
 #import "AddViewController.h"
+#import "HRRealmData.h"
 
 static NSInteger TITLE_MAXLENGTH = 30;
 static NSUInteger CONTENT_MAXLENGTH = 150;
@@ -22,6 +24,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 @property (nonatomic) NSArray *emoticonArray;
 @property (nonatomic) NSMutableArray *barButtonArray;
 @property (nonatomic) UIBarButtonItem *emoticonBarButton;
+@property NSDate *currentDate;
 
 
 @end
@@ -45,10 +48,35 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     
     self.titleTextView.tag = 1;
     self.contentTextView.tag = 2;
+    self.titleTextView.placeholder = @"제목을 입력하세요";
+    self.contentTextView.placeholder = @"내용을 입력하세요";
     
+//    데이트 불러오기
+    self.currentDate = [NSDate date];
+
+    NSLocale *koreanLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
+    NSTimeZone *koreanTime = [[NSTimeZone alloc] initWithName:@"KST"];
+    
+    NSDateFormatter *dayFormatter = [[NSDateFormatter alloc] init];
+    [dayFormatter setLocale:koreanLocale];
+    [dayFormatter setTimeZone:koreanTime];
+    [dayFormatter setDateFormat:@"d"];
+    
+    NSDateFormatter *weekDayFormatter = [[NSDateFormatter alloc] init];
+    [weekDayFormatter setLocale:koreanLocale];
+    [weekDayFormatter setTimeZone:koreanTime];
+    [weekDayFormatter setDateFormat:@"EEEE"];
+    
+    NSString *day = [dayFormatter stringFromDate:self.currentDate];
+    NSString *weekDay = [weekDayFormatter stringFromDate:self.currentDate];
+    
+    self.dayLabel.text = day;
+    self.weekOfDayLabel.text = weekDay;
 
     [self createToolBar];
     [self.titleTextView becomeFirstResponder];
+    
+
 }
 
 - (void) createToolBar {
@@ -81,6 +109,13 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     keyboardToolbar.tintColor = [UIColor grayColor];
 }
 
+
+- (IBAction)clickedSaveButton:(id)sender {
+    
+    [self insertDataIntoDataBaseWithTitle:self.titleTextView.text content:self.contentTextView.text mainImage:self.mainImageView.image date:self.currentDate];
+    [self.view endEditing:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 - (IBAction)clickedBackButton:(id)sender {
@@ -161,17 +196,6 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     
     [self.view endEditing:YES];
 }
-
-// 데이터를 realm에 저장하는 메소드
-//- (IBAction)clickedSaveButton:(id)sender {
-//
-//    NSString *title = self.titleTextView.text;
-//    NSString *context = self.contextTextView.text;
-//    UIImage *mainImage = self.mainImgView.image;
-//    UIImage *emoticonImage = self.emoticonImgView.image;
-//
-//    [[HRPostDataCenter sharedPostInstance] insertDataIntoDataBaseWithName:title context:context mainImage:mainImage emoticonImage:emoticonImage];
-//}
 
 
 #pragma mark - camera/photo related methods
@@ -296,6 +320,31 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 //- (void)textViewDidEndEditing:(UITextView *)textView {
 //    [self adjustContentSizeOfTextView:textView];
 //}
+
+#pragma mark - NSDate Methods
+
+
+#pragma mark - Realm Methods 
+
+- (void)insertDataIntoDataBaseWithTitle:(NSString *)title
+                                content:(NSString *)content
+                              mainImage:(UIImage *)mainImage
+                                   date:(NSDate *)date {
+    
+    NSData *imageData = [[NSData alloc] init];
+    imageData = UIImagePNGRepresentation(mainImage);
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    HRRealmData *info = [[HRRealmData alloc] init];
+    info.title = title;
+    info.content = content;
+    info.mainImageData = imageData;
+    info.date = date;
+//    info.emoticonValue = emoticonValue;
+    [realm addObject:info];
+    [realm commitWriteTransaction];
+}
 
 
 

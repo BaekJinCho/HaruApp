@@ -39,23 +39,23 @@
                                                 <rect key="frame" x="10" y="10" width="325" height="72.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="RAe-2f-L7d">
-                                                        <rect key="frame" x="0.0" y="5" width="58.5" height="62.5"/>
+                                                        <rect key="frame" x="0.0" y="4.5" width="58.5" height="63.5"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QbT-mR-pSR">
-                                                                <rect key="frame" x="20" y="0.0" width="19" height="40"/>
-                                                                <fontDescription key="fontDescription" name="NanumBarunGothicOTFLight" family="NanumBarunGothicOTF" pointSize="34"/>
+                                                                <rect key="frame" x="21.5" y="0.0" width="15.5" height="41"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="수요일" textAlignment="center" lineBreakMode="tailTruncation" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2lZ-mF-Stu">
-                                                                <rect key="frame" x="7" y="42" width="44.5" height="20.5"/>
+                                                                <rect key="frame" x="7" y="43" width="44.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" text="안녕하세요 오늘은 정말 즐거운 하루입니다. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iw2-WT-9pH">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iw2-WT-9pH">
                                                         <rect key="frame" x="60.5" y="0.0" width="228" height="72.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
@@ -74,7 +74,7 @@
                                                     <constraint firstItem="RAe-2f-L7d" firstAttribute="width" secondItem="5DA-fP-1of" secondAttribute="width" multiplier="0.18" id="pJa-Fi-MwU"/>
                                                 </constraints>
                                             </stackView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="하루 한 장은 일상의 소소한 기억들을 기록하여 평생의 추억을 남기는 것을 목표로 하고 있습니다. 여러분의 일상을 기록하여 작은 추억들을 하루에 한 장씩만 작성하여 소중한 기록을 완성하세요." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-Dg-oDp" userLabel="contentTextView">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vjm-Dg-oDp" userLabel="contentTextView">
                                                 <rect key="frame" x="10" y="87.5" width="325" height="75"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -167,7 +167,11 @@
                                 <action selector="clickedBackButton:" destination="z6T-aH-9N2" id="69D-8B-7xf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="저장" id="7Za-zO-OkZ"/>
+                        <barButtonItem key="rightBarButtonItem" title="저장" id="7Za-zO-OkZ">
+                            <connections>
+                                <action selector="clickedSaveButton:" destination="z6T-aH-9N2" id="YHf-mj-GZz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="5UF-9N-fYX" id="vk6-yg-aPG"/>
@@ -175,7 +179,7 @@
                         <outlet property="buttonView" destination="qw1-YB-6t8" id="21k-Ll-QCl"/>
                         <outlet property="buttonViewHeight" destination="Ibd-mi-uUh" id="zNF-aM-RqZ"/>
                         <outlet property="contentTextView" destination="Vjm-Dg-oDp" id="AZe-fU-rzC"/>
-                        <outlet property="dayLabel" destination="2lZ-mF-Stu" id="FwN-1Z-rdz"/>
+                        <outlet property="dayLabel" destination="QbT-mR-pSR" id="wOz-0z-nNG"/>
                         <outlet property="emoticonImageView" destination="nrh-Bb-jbP" id="hVw-p5-crl"/>
                         <outlet property="keyboardHeight" destination="WHV-n3-62i" id="nEp-xi-ytL"/>
                         <outlet property="mainImageView" destination="sqL-nH-8Yc" id="9Je-kQ-huL"/>
@@ -197,7 +201,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qIJ-rX-yVW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EgT-pP-LiE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EgT-pP-LiE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

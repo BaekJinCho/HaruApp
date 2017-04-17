@@ -7,12 +7,11 @@
 //
 
 #import "HRCollectionViewController.h"
-#import "HRCollectionViewCell.h"
-#import "AddViewController.h"
 
 @interface HRCollectionViewController ()
-<UICollectionViewDelegate, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate>
+<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIButton *writeButton;
 @property (weak, nonatomic) IBOutlet UIButton *libraryDirectButton;
@@ -30,14 +29,62 @@
 @property UISearchController *searchController;
 @property NSString *searchText;
 @property (strong, nonatomic) UIImage *pickedImage;
+@property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 
 @end
 
 @implementation HRCollectionViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    collectionDataArray = [HRRealmData allObjects];
+    [_collectionView reloadData];
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+}
 
+
+# pragma mark - CollectionView Delegate Methods
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake(self.collectionView.frame.size.width / 2.0, self.collectionView.frame.size.width / 2.0);
+}
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return collectionDataArray.count;
+}
+
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    HRCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    
+//    if (cell == nil) {
+//        cell = (HRCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+//    }
+
+    HRRealmData *info = [collectionDataArray objectAtIndex:indexPath.item];
+    
+    NSData *imgData = info.mainImageData;
+    UIImage *mainImage = [UIImage imageWithData:imgData];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
+    [formatter setDateFormat:@"yyyy년 M월 dd일"];
+    [formatter setLocale:locale];
+    NSString *savedDate = [formatter stringFromDate:info.date];
+    
+    cell.dateTextView.text = savedDate;
+    cell.titleTextView.text = info.title;
+    cell.imageView.image = mainImage;
+                
+    return cell;
 }
 
 # pragma mark - Button Animation
@@ -45,7 +92,7 @@
 - (IBAction)clickedAddButton:(UIButton *)sender {
 
     [self buttonAnimationWhenClicked];
-};
+}
 
 
 - (IBAction)clickedBackgroundButton:(UIButton *)sender {
@@ -93,7 +140,7 @@
         [self presentViewController:libraryPicker animated:YES completion:nil];
         
     } else {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"주의" message:@"사진 라이브러리에 접근할 수 없습니다. 설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"경고" message:@"사진 라이브러리에 접근할 수 없습니다.\n 설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -113,7 +160,7 @@
         [self presentViewController:cameraPicker animated:YES completion:nil];
         
     } else {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"주의" message:@"카메라에 접근할 수 없습니다. 설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"경고" message:@"카메라에 접근할 수 없습니다.\n설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
             [self dismissViewControllerAnimated:YES completion:nil]; 
