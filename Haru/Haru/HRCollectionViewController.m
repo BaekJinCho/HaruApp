@@ -38,12 +38,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     collectionDataArray = [HRRealmData allObjects];
     [_collectionView reloadData];
+    
+//    RLMResults<HRRealmData *> *sortedRealm = [HRRealmData allObjects];
+//    [sortedRealm sortedResultsUsingKeyPath:@"HRRealmData.date" ascending:YES];
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
 }
 
@@ -66,23 +69,13 @@
     
     HRCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
-//    if (cell == nil) {
-//        cell = (HRCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
-//    }
 
     HRRealmData *info = [collectionDataArray objectAtIndex:indexPath.item];
+    HRPostModel *postModel = [[HRPostModel alloc] init];
     
-    NSData *imgData = info.mainImageData;
-    UIImage *mainImage = [UIImage imageWithData:imgData];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ko_KR"];
-    [formatter setDateFormat:@"yyyy년 M월 dd일"];
-    [formatter setLocale:locale];
-    NSString *savedDate = [formatter stringFromDate:info.date];
-    
-    cell.dateTextView.text = savedDate;
+    cell.dateTextView.text = [postModel convertWithDate:info.date format:@"yyyy년 M월 dd일"];
     cell.titleTextView.text = info.title;
-    cell.imageView.image = mainImage;
+    cell.imageView.image = [UIImage imageWithData:info.mainImageData];
                 
     return cell;
 }

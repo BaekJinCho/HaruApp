@@ -69,7 +69,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DP3-Cx-Sl3" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-K7-ZgH">
                                         <rect key="frame" x="0.0" y="-7" width="375" height="375.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5C9-K7-ZgH" secondAttribute="height" multiplier="1:1" id="tq4-s1-Xx4"/>
@@ -204,7 +204,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NAu-gg-b78" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background1" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="26W-xE-Rgp">
                                         <rect key="frame" x="0.0" y="-6.5" width="375" height="375"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="26W-xE-Rgp" secondAttribute="height" multiplier="1:1" id="x4B-Oq-elx"/>
@@ -348,14 +348,14 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7xc-TM-rJk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ilc-N7-IrJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="Ilc-N7-IrJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.26576459407806396" green="0.28916773200035095" blue="0.3473065197467804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.26576459409999997" green="0.28916773200000001" blue="0.34730651969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
-                            <color key="textColor" red="0.26576459407806396" green="0.28916773200035095" blue="0.3473065197467804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
@@ -371,7 +371,6 @@
     </scenes>
     <resources>
         <image name="Arrow" width="19" height="20"/>
-        <image name="Background1" width="375" height="667"/>
         <image name="Main" width="19" height="18"/>
         <image name="MainSelected" width="19" height="18"/>
         <image name="Pencil" width="20" height="20"/>

@@ -239,6 +239,8 @@
 }
 
 
+
+
 //일기의 관한 데이터들을 indexpath.row로 받게하는 Method
 - (HRPostModel *)contentDataAtIndexPath:(NSIndexPath *)haruContentDataAtIndexPath {
     

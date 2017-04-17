@@ -10,10 +10,13 @@
 #import "HRCollectionViewCell.h"
 #import "AddViewController.h"
 #import "HRRealmData.h"
+#import "HRPostModel.h"
 
 @interface HRCollectionViewController : UIViewController
 {
     RLMResults *collectionDataArray;
 }
+
+
 
 @end

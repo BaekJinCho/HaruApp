@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,16 +34,6 @@
                                             <constraint firstAttribute="width" constant="100" id="lyO-eN-czl"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JCY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jd2-Og-xvW">
-                                        <rect key="frame" x="153" y="612" width="70" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="70" id="0Zi-kj-0bd"/>
-                                            <constraint firstAttribute="height" constant="40" id="NsN-Ck-59j"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -52,10 +41,8 @@
                                     <constraint firstItem="vaW-Xs-JUF" firstAttribute="height" secondItem="6Xu-AA-cxn" secondAttribute="height" id="RFa-rm-pQn"/>
                                     <constraint firstItem="vaW-Xs-JUF" firstAttribute="centerX" secondItem="6Xu-AA-cxn" secondAttribute="centerX" id="d6D-am-dGo"/>
                                     <constraint firstItem="vaW-Xs-JUF" firstAttribute="width" secondItem="6Xu-AA-cxn" secondAttribute="width" id="dVc-LO-QnB"/>
-                                    <constraint firstItem="Jd2-Og-xvW" firstAttribute="bottom" secondItem="VDW-Dc-hvz" secondAttribute="bottom" multiplier="1.7" id="sKU-vS-l0c"/>
                                     <constraint firstItem="vaW-Xs-JUF" firstAttribute="centerY" secondItem="6Xu-AA-cxn" secondAttribute="centerY" id="tj0-yZ-8LJ"/>
                                     <constraint firstItem="VDW-Dc-hvz" firstAttribute="centerX" secondItem="6Xu-AA-cxn" secondAttribute="centerX" id="vTR-h5-8dI"/>
-                                    <constraint firstItem="Jd2-Og-xvW" firstAttribute="centerX" secondItem="VDW-Dc-hvz" secondAttribute="centerX" id="zpP-lH-jPF"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -74,7 +61,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Background4" width="750" height="1334"/>
-        <image name="Logo" width="235" height="203"/>
+        <image name="Background4" width="375" height="667"/>
+        <image name="Logo" width="117" height="101"/>
     </resources>
 </document>
