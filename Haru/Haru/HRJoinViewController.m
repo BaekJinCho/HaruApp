@@ -50,6 +50,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 //notification으로 signupScrollView 올리는 Method
 #pragma mark- joinView notification Method
 - (void)didChanedSignupScrollView:(NSNotification *) notification {
@@ -65,11 +66,13 @@
     NSLog(@"%lf", keyboardRect.size.width);
 
 }
+
 //notification dealloc
 #pragma mark- signupView notification dealloc Method
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 //signup storyboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
 #pragma mark- joinView TextField ShouldReturn Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -82,9 +85,11 @@
         [self.joinPasswordCheckTextField resignFirstResponder];
     return YES;
 }
+
 //회원가입 버튼을 눌렀을 때, 불리는 Method
 #pragma mark- joinView signupButtonClick Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
+    
     [self.joinIndicator startAnimating];
     NSString *signUpIDText = self.joinIDTextField.text;
     NSString *signUpPasswordText = self.joinPasswordTextField.text;
@@ -95,46 +100,63 @@
             NSLog(@"로그인 성공 / token:::%@",response);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self signupSucessAlert];
+                [self.joinIndicator stopAnimating];
             });
 
         } else {
             
             if ([[response objectForKey:@"password"] objectAtIndex:0]) {
                 NSLog(@"회원가입 실패 Error Code : %@", response);
+                NSString *signupFailMessage = @"비밀번호를 입력하세요.";
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self signupFailAlert];
+                    
+                    [self signupFailAlert:signupFailMessage];
                 });
-            } else {
-                NSLog(@"회원가입 실패 Error Code : %@", response);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [self signupFailAlert];
-                });
+                
+            } else if ([[response objectForKey:@"email"] objectAtIndex:0]) {
+                
+                if([[[response objectForKey:@"email"] objectAtIndex:0] isEqualToString:@"This field may not be blank."]) {
+                    NSLog(@"회원가입 실패 Error Code : %@", response);
+                    NSString *signupFailMessage = @"email을 입력하세요.";
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self signupFailAlert:signupFailMessage];
+                    });
+                } else {
+                    NSLog(@"회원가입 실패 Error Code : %@", response);
+                    NSString *signupFailMessage = @"동일한 회원정보가 존재합니다.";
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self signupFailAlert:signupFailMessage];
+                    });
+                }
+                
             }
             
             }
         
-        
-        }];
+    
+    }];
+    [self.joinIndicator stopAnimating];
     
 }
-//로그인 성공 alert
-- (void)signupSucessAlert{
+
+//회원가입 성공 alert
+- (void)signupSucessAlert {
     
     UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"성공" message:@"회원가입이 정상적으로 완료되었습니다." preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
-        //PostViewcontroller로 넘어가기
+        [self dismissViewControllerAnimated:YES completion:nil];
         
     }];
     [sucessAlert addAction:ok];
     [self presentViewController:sucessAlert animated:YES completion:nil];
 }
 
-//로그인 실패 alert
-- (void)signupFailAlert{
+//회원가입 실패 alert
+- (void)signupFailAlert:(NSString *)failMessage {
     
-    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"실패" message:@"이메일 또는 비밀번호가 누락되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"실패" message:failMessage preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         

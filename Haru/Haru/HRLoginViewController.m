@@ -45,6 +45,7 @@
     
     
 }
+
 //notification으로 loginScrollView 올리는 Method
 #pragma mark- loginView notification Method
 - (void)didChanedLoginScrollView:(NSNotification *) notification {
@@ -60,6 +61,7 @@
     NSLog(@"%lf", keyboardRect.size.width);
     
 }
+
 //notification dealloc
 #pragma mark- signupView notification dealloc Method
 - (void)dealloc {
@@ -72,6 +74,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 //loginstoryboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
 #pragma mark- loginView TextField delegate Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -82,6 +85,7 @@
     }
     return YES;
 }
+
 //로그인 버튼을 눌렀을 때, 불리는 Method
 #pragma mark- loginView loginButtonClick Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
@@ -92,16 +96,60 @@
     [[HRDataCenter sharedInstance] loginRequestWithUserID:loginIDText password:loginPasswordText completion:^(BOOL isSuccess, id response) {
         
         if (isSuccess == YES) {
+            dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"로그인 성공 / token:::%@",response);
             [self.loginIndicator startAnimating];
+            [self loginSucessAlert];
+            });
+            
+            
         } else {
-            NSLog(@"로그인 실패! token 따위는 없다.");
+            
+            if ([[response objectForKey:@"email"] objectAtIndex:0] || [[response objectForKey:@"password"] objectAtIndex:0]) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"로그인 실패 / token:::%@",response);
+                    NSString *loginFailMessage = @"이메일 또는 비밀번호를 입력해주세요";
+                    [self loginFailAlert:loginFailMessage];
+                });
+
+            }
         }
+        
+        [self.loginIndicator stopAnimating];
         
     }];
     
     
 }
+
+//로그인 성공 alert
+- (void)loginSucessAlert {
+    
+    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"성공" message:@"로그인이 정상적으로 완료되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self dismissViewControllerAnimated:YES completion:nil];
+        
+    }];
+    [sucessAlert addAction:ok];
+    [self presentViewController:sucessAlert animated:YES completion:nil];
+}
+
+//로그인 실패 alert
+- (void)loginFailAlert:(NSString *)failMessage {
+    
+    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"실패" message:failMessage preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        
+    }];
+    [sucessAlert addAction:ok];
+    [self presentViewController:sucessAlert animated:YES completion:nil];
+}
+
 //로그인 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
 #pragma mark- loginVeiwTabGesture Method
 - (IBAction)loginViewTabGesture:(UITapGestureRecognizer *)sender {

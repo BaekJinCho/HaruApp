@@ -41,17 +41,28 @@
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
     [self.dataManager logoutRequestToServer:^(BOOL isSuccess, id response) {
-        if (isSuccess) {
-            UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSLog(@"Logout Alert");
-                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
-                self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController];
-            }];
-            [logoutAlert addAction:okBtn];
-            [self presentViewController:logoutAlert animated:YES completion:nil];
+        if (isSuccess == YES) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self logoutSucessAlert];
+                NSLog(@"%@", response);
+               
+            });
+            
         }
     }];
+}
+
+//회원가입 성공 alert
+- (void)logoutSucessAlert {
+    
+    UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"Logout Alert");
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
+        self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController];
+    }];
+    [logoutAlert addAction:okBtn];
+    [self presentViewController:logoutAlert animated:YES completion:nil];
 }
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입

@@ -38,7 +38,7 @@
                                                                        error:&error];
                                                     if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
                                                         completion(YES, responseData);
-                                                    } else {
+                                                    } else if (httpResponse.statusCode == STATUSCODE_LOGIN_FAIL){
                                                         completion(NO, responseData);
                                                     }
                                                 }];
@@ -63,6 +63,7 @@
                                                          fromData:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                    
                                                     NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
                                                     
                                                     if (httpResponse.statusCode == STATUSCODE_JOIN_SUCCESS) {
@@ -78,6 +79,7 @@
     [task resume];
 }
 
+//로그아웃 요청
 - (void)logoutRequestToServer:(BlockOnCompletion)completion {
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
