@@ -93,12 +93,59 @@
     [[HRDataCenter sharedInstance]joinRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
         if (isSuccess == YES) {
             NSLog(@"로그인 성공 / token:::%@",response);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self signupSucessAlert];
+            });
+
         } else {
-            NSLog(@"로그인 실패! token 따위는 없다.");
-        }
-    }];
+            
+            if ([[response objectForKey:@"password"] objectAtIndex:0]) {
+                NSLog(@"회원가입 실패 Error Code : %@", response);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self signupFailAlert];
+                });
+            } else {
+                NSLog(@"회원가입 실패 Error Code : %@", response);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self signupFailAlert];
+                });
+            }
+            
+            }
+        
+        
+        }];
     
 }
+//로그인 성공 alert
+- (void)signupSucessAlert{
+    
+    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"성공" message:@"회원가입이 정상적으로 완료되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        //PostViewcontroller로 넘어가기
+        
+    }];
+    [sucessAlert addAction:ok];
+    [self presentViewController:sucessAlert animated:YES completion:nil];
+}
+
+//로그인 실패 alert
+- (void)signupFailAlert{
+    
+    UIAlertController *sucessAlert = [UIAlertController alertControllerWithTitle:@"실패" message:@"이메일 또는 비밀번호가 누락되었습니다." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+        //PostViewcontroller로 넘어가기
+        
+    }];
+    [sucessAlert addAction:ok];
+    [self presentViewController:sucessAlert animated:YES completion:nil];
+}
+
+
 //회원가입 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
 #pragma mark- joinTabGesture Method
 - (IBAction)joinViewTabGesture:(UITapGestureRecognizer *)sender {

@@ -10,10 +10,10 @@
 #define HRConstantKeys_h
 
 //API 주소
-static NSString * const BASIC_URL = @"https://fc-ios.lhy.kr/api";
-static NSString * const JOIN_URL = @"/member/signup/";
-static NSString * const LOGIN_URL = @"/member/login/";
-static NSString * const LOGOUT_URL = @"/member/logout/";
+static NSString * const BASIC_URL = @"http://haru-eb.ap-northeast-2.elasticbeanstalk.com";
+static NSString * const JOIN_URL = @"/signup/";
+static NSString * const LOGIN_URL = @"/login/";
+static NSString * const LOGOUT_URL = @"/logout/";
 static NSString * const POST_URL = @"/post/";
 
 //Method 방식
@@ -31,6 +31,8 @@ static NSString * const TOKEN_KEY_OF_USERDEFAULTS = @"Token";
 static NSInteger const STATUSCODE_LOGIN_SUCCESS = 200;
 static NSInteger const STATUSCODE_JOIN_SUCCESS = 201;
 static NSInteger const STATUSCODE_LOGOUT_SUCCESS = 200;
+static NSInteger const STATUSCODE_SIGNUP_FAIL = 400;
+static NSInteger const STATUSCODE_SIGNUP_FAIL2 = 409;
 
 
 //Data Modeling에 필요한 것

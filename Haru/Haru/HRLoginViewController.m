@@ -85,7 +85,21 @@
 //로그인 버튼을 눌렀을 때, 불리는 Method
 #pragma mark- loginView loginButtonClick Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
-    [self.loginIndicator startAnimating];
+    
+    NSString *loginIDText = self.loginIDTextField.text;
+    NSString *loginPasswordText = self.LoginPasswordTextField.text;
+
+    [[HRDataCenter sharedInstance] loginRequestWithUserID:loginIDText password:loginPasswordText completion:^(BOOL isSuccess, id response) {
+        
+        if (isSuccess == YES) {
+            NSLog(@"로그인 성공 / token:::%@",response);
+            [self.loginIndicator startAnimating];
+        } else {
+            NSLog(@"로그인 실패! token 따위는 없다.");
+        }
+        
+    }];
+    
     
 }
 //로그인 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
