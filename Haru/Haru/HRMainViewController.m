@@ -88,7 +88,7 @@
     mainViewCell.userStateImageView.image = [UIImage imageNamed:haruData.userStateImage];
     mainViewCell.yearMonthLabel.text      = [haruData convertWithDate:haruData.totalDate format:@"yyyy년 MM월"];
     mainViewCell.dateLabel.text           = [haruData convertWithDate:haruData.totalDate format:@"dd"];
-    mainViewCell.dayOfTheWeekLabel.text   = [haruData convertWithDate:haruData.totalDate format:@"E"];
+    mainViewCell.dayOfTheWeekLabel.text   = [haruData convertWithDate:haruData.totalDate format:@"E요일"];
     [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.photo]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
     
     
@@ -129,6 +129,8 @@
         HRDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.indexPath = (NSIndexPath *)sender;
         detailViewController.postModel = haruData;
+        
+    
     }
 }
 
