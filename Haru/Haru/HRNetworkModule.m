@@ -38,7 +38,7 @@
                                                                        error:&error];
                                                     if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
                                                         completion(YES, responseData);
-                                                    } else {
+                                                    } else if (httpResponse.statusCode == STATUSCODE_LOGIN_FAIL){
                                                         completion(NO, responseData);
                                                     }
                                                 }];
@@ -63,17 +63,23 @@
                                                          fromData:nil
                                                 completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
                                                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                                                    
                                                     NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
                                                     
                                                     if (httpResponse.statusCode == STATUSCODE_JOIN_SUCCESS) {
                                                         completion (YES, responseData);
-                                                    } else {
-                                                        completion (NO, responseData);
+                                                    } else if(httpResponse.statusCode == STATUSCODE_SIGNUP_FAIL){
+                                                        completion(NO, responseData);
+                                                    } else if(httpResponse.statusCode == STATUSCODE_SIGNUP_FAIL2){
+                                                        completion(NO, responseData);
                                                     }
+                                                    
+
                                                 }];
     [task resume];
 }
 
+//로그아웃 요청
 - (void)logoutRequestToServer:(BlockOnCompletion)completion {
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -119,7 +125,7 @@
 - (NSString *)makeLoginBody:(NSString *)email
                    password:(NSString *)password {
     
-    return [NSString stringWithFormat:@"Email=%@&Password=%@", email, password];
+    return [NSString stringWithFormat:@"email=%@&password=%@", email, password];
 }
 
 //회원가입 form data 메소드화
@@ -127,7 +133,7 @@
                     password:(NSString *)password
                    password2:(NSString *)password2 {
     
-    return [NSString stringWithFormat:@"Email=%@&Password=%@&Password2=%@", email, password, password2];
+    return [NSString stringWithFormat:@"email=%@&password=%@&password2=%@", email, password, password2];
 }
 
 
