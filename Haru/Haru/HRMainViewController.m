@@ -37,7 +37,9 @@
     //date 순으로 정렬 - ascending - NO(최신순)
     tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
     [_mainTableView reloadData];
+    
 }
+
 
 //데이터 refresh
 - (void)refreshTableView {
@@ -90,8 +92,9 @@
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
                                                                           forIndexPath:indexPath];
     
+/***********************************Server 통신할 때, 필요*****************************************/
 //    HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
-//    
+//
 //    mainViewCell.postTitle.text           = haruData.title;
 //    mainViewCell.userStateImageView.image = [UIImage imageNamed:haruData.userStateImage];
 //    mainViewCell.yearMonthLabel.text      = [haruData convertWithDate:haruData.totalDate format:@"yyyy년 MM월"];
@@ -107,13 +110,17 @@
 //    
 //    //기본 이미지를 넣어주는 것!
 //    [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:@"이미지 URL"]                        placeholderImage:randomImage];
-    
+/**********************************************************************************************/
     
     //realm을 이용하여 데이터 set
-    HRRealmData *realmDatainfo = [tableDataArray objectAtIndex:indexPath.row];
+    HRPostModel *haruData               = [[HRPostModel alloc] init];
+    HRRealmData *realmDataInfo          = [tableDataArray objectAtIndex:indexPath.row];
     
-    mainViewCell.postTitle.text = realmDatainfo.title;
-    mainViewCell.photoImageView.image = [UIImage imageWithData:realmDatainfo.mainImageData];
+    mainViewCell.postTitle.text         = realmDataInfo.title;
+    mainViewCell.yearMonthLabel.text    = [haruData convertWithDate:realmDataInfo.date format:@"yyyy년 MM월"];
+    mainViewCell.dateLabel.text         = [haruData convertWithDate:realmDataInfo.date format:@"dd"];
+    mainViewCell.dayOfTheWeekLabel.text = [haruData convertWithDate:realmDataInfo.date format:@"E요일"];
+    mainViewCell.photoImageView.image   = [UIImage imageWithData:realmDataInfo.mainImageData];
 
     return mainViewCell;
 }
@@ -137,16 +144,23 @@
 //    HRDetailViewController *detailViewContent = [HRDetailViewController new];
     
     if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
-        
-        HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:(NSIndexPath *)sender];
-        
+        /***********************************Server 통신할 때, 필요*****************************************/
+//        HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:(NSIndexPath *)sender];
+//        
+//        HRDetailViewController *detailViewController = [segue destinationViewController];
+//        detailViewController.indexPath               = (NSIndexPath *)sender;
+//        detailViewController.postModel               = haruData;
+        /**********************************************************************************************/
+    
+        HRRealmData *realmDataInfomation = tableDataArray;
         HRDetailViewController *detailViewController = [segue destinationViewController];
-        detailViewController.indexPath = (NSIndexPath *)sender;
-        detailViewController.postModel = haruData;
+        detailViewController.indexPath               = (NSIndexPath *)sender;
+        detailViewController.realmData               = tableDataArray;
         
     
     }
 }
+
 
 //tableview를 edit 할 수 있게 해주는 Method
 #pragma mark- mainVeiwController canEditRowAtIndexPath Method
