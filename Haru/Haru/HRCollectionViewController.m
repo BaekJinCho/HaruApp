@@ -38,12 +38,15 @@
 - (void)viewWillAppear:(BOOL)animated {
     collectionDataArray = [HRRealmData allObjects];
     [_collectionView reloadData];
+    
+//    RLMResults<HRRealmData *> *sortedRealm = [HRRealmData allObjects];
+//    [sortedRealm sortedResultsUsingKeyPath:@"HRRealmData.date" ascending:YES];
+    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     
 }
 
