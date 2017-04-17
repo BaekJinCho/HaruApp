@@ -14,6 +14,7 @@
 <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
+@property (nonatomic) UIRefreshControl *refreshControl;
 
 @end
 
@@ -29,24 +30,35 @@
     UINib *nib = [UINib nibWithNibName:@"HRCustomTableViewCell" bundle:nil];
     [self.mainTableView registerNib:nib forCellReuseIdentifier:@"HRCustomTableViewCell"];
     
-    [[HRDataCenter sharedInstance] testList:^(BOOL isSuccess, id response) {
+    self.refreshControl = [[UIRefreshControl alloc]init];
+    [self.mainTableView addSubview:self.refreshControl];
+    [self.refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
+    
+   
+}
+
+//데이터 refresh
+- (void)refreshTableView {
+    
+    [self.refreshControl endRefreshing];
+    
+    [self getHaruData];
+    [self.mainTableView reloadData];
+}
+
+//데이터 가져오기
+- (void)getHaruData {
+    
+    [[HRDataCenter sharedInstance] mainViewList:^(BOOL isSuccess, id response) {
         NSLog(@"response %@", response);
         if(isSuccess) {
             
-            [self.mainTableView reloadData];
+        } else {
+            
+            
         }
     }];
-}
-
-//alert 알람 띄우기 클래스 메소드
-+ (UIAlertController *)modalWithTitle:(NSString *)title andContent:(NSString *)content andHandler:(void (^)(void))handler {
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *actions = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        
-    }];
-    [alert addAction:actions];
-    return alert;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,10 +84,11 @@
     
     HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:indexPath];
     
-    mainViewCell.postTitle.text = haruData.title;
-    mainViewCell.yearMonthLabel.text = haruData.dateFormatYearMonth;
-    mainViewCell.dateLabel.text = haruData.dateFormatDay;
-    mainViewCell.dayOfTheWeekLabel.text = haruData.dateFormatDayOfTheWeek;
+    mainViewCell.postTitle.text           = haruData.title;
+    mainViewCell.userStateImageView.image = [UIImage imageNamed:haruData.userStateImage];
+    mainViewCell.yearMonthLabel.text      = [haruData convertWithDate:haruData.totalDate format:@"yyyy년 MM월"];
+    mainViewCell.dateLabel.text           = [haruData convertWithDate:haruData.totalDate format:@"dd"];
+    mainViewCell.dayOfTheWeekLabel.text   = [haruData convertWithDate:haruData.totalDate format:@"E"];
     [mainViewCell.photoImageView sd_setImageWithURL:[NSURL URLWithString:haruData.photo]                        placeholderImage:[UIImage imageNamed:@"Background4"]];
     
     
@@ -107,17 +120,16 @@
 
 #pragma mark- mainViewController PrepareForSegue Method
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    HRDetailViewController *detailViewContent = [HRDetailViewController new];
-//    if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
-//        
-        HRDetailViewController *detailViewController = [segue destinationViewController];
-//        detailViewController.indexPath = (NSIndexPath *)sender;
-//        
-//        //HRPostModel *mainViewData = //네트워크 데이터 넣어주기
-//        
+//    HRDetailViewController *detailViewContent = [HRDetailViewController new];
     
-       
-//    }
+    if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
+        
+        HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:(NSIndexPath *)sender];
+        
+        HRDetailViewController *detailViewController = [segue destinationViewController];
+        detailViewController.indexPath = (NSIndexPath *)sender;
+        detailViewController.postModel = haruData;
+    }
 }
 
 //tableview를 edit 할 수 있게 해주는 Method

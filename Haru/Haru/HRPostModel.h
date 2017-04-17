@@ -30,10 +30,14 @@ typedef NS_ENUM(NSUInteger, HRDateFormat) {
 @interface HRPostModel : NSObject
 
 @property (nonatomic) HRUserEmotionalState userState;
+@property (nonatomic) NSString        *userStateImage;
+
 @property (nonatomic) NSDate          *totalDate;
+
 @property (nonatomic) NSString        *title;
 @property (nonatomic) NSString        *content;
 @property (nonatomic) NSString        *photo;
+
 
 //totalDate 각각의 View의 보여줄 format으로 변환에 필요한 프로퍼티
 @property (nonatomic) NSString        *dateFormatYear;
@@ -45,5 +49,5 @@ typedef NS_ENUM(NSUInteger, HRDateFormat) {
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (NSString *)convertStringToDate:(NSDate *)haruDate formattedData:(HRDateFormat)formattedData;
-
+- (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format;
 @end

@@ -12,13 +12,16 @@
 @interface HRUpdateViewController ()
 <UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *postUpdateTextView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *postViewContentTextVIewBottomConstant;
 @property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *updateViewUserStateImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *updateViewBackgroundPhoto;
+@property (weak, nonatomic) IBOutlet UILabel *updateViewDayLabel;
+@property (weak, nonatomic) IBOutlet UILabel *updateViewDayOfWeekLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *postViewContentTextVIewBottomConstant;
+
+
 @property (nonatomic) NSArray *userStateEmoticonArrays;
 @property (nonatomic) NSMutableArray *EmoticonArrays;
-
 @property (nonatomic) UIBarButtonItem *userStateEmoticonButton;
 
 @end
@@ -40,6 +43,21 @@
     //UIToolbar 생성 및 Item 넣어주는 작업
     [self inputEmoticonAccessoryView];
     
+    
+    //메인 페이지에 있는 데이터 넘겨주기
+    if (self.postModel == nil) {
+        NSLog(@"Error : 수정화면에 데이터가 없습니다.");
+    } else {
+        
+        self.postTitleTextField.text            = self.postModel.title;
+        self.postUpdateTextView.text            = self.postModel.content;
+        self.updateViewUserStateImageView.image = [UIImage imageNamed:self.postModel.userStateImage];
+        self.updateViewDayLabel.text            = [self.postModel convertWithDate:self.postModel.totalDate format:@"dd"];
+        self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.postModel.totalDate format:@"E"];
+        [self.updateViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:self.postModel.photo]
+                                          placeholderImage:[UIImage imageNamed:@""]];
+        
+    }
     
 }
 
@@ -256,8 +274,13 @@
 #pragma mark- UpdateViewController clickSaveNavigationBarButton Method
 - (IBAction)clickSaveNavigationBarButton:(UIBarButtonItem *)sender {
     
-    //수정한 내용을 서버에 보내주는 작업 필요 & Main, Detail View에도 적용하는 작업 필요
     [self performSegueWithIdentifier:@"clickSaveButton" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    //수정한 내용을 서버에 보내주는 작업 필요 & Main, Detail View에도 적용하는 작업 필요
+//    HRPostModel *test = [HRDataCenter sharedInstance]updateDiaryContent:<#(NSIndexPath *)#> haruContentsData:<#(HRPostModel *)#>
 }
 
 //수정하는 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method

@@ -10,6 +10,5 @@
 
 @interface HRMainViewController : UIViewController
 
-+ (UIAlertController *)modalWithTitle:(NSString *)title andContent:(NSString *)content andHandler:(void (^)(void))handler;
 
 @end

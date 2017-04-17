@@ -33,17 +33,18 @@
 - (void)logoutRequestToServer:(BlockOnCompletion)completion;
 
 
-- (void)testList:(BlockOnCompletion)completion;
+- (void)mainViewList:(BlockOnCompletion)completion;
 
-
-
-- (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
-
-- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
 
 - (HRPostModel *)contentDataAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSUInteger)numberOfItem;
 
+- (void)readDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
+
+- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler;
+
+
+- (void)updateDiaryContent:(NSIndexPath *)haruContentsAtIndexPath haruContentsData:(HRPostModel *)haruContentsData;
 
 @end

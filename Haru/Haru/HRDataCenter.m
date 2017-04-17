@@ -13,6 +13,8 @@
 @property (nonatomic) HRNetworkModule *networkManager;
 @property (nonatomic) NSArray * haruDataArray; //일기의 데이터들이 들어가는 Array
 @property (nonatomic) NSMutableArray * inHaruContentArray;
+@property (nonatomic) NSFileManager *fileManager;
+
 @end
 
 @implementation HRDataCenter
@@ -35,9 +37,34 @@
     self = [super init];
     if (self) {
         self.networkManager     = [[HRNetworkModule alloc] init];
-        
-        self.haruDataArray      = [[NSArray alloc] init];
+//        self.haruDataArray      = [[NSArray alloc] init];
+        //haruData 저장하는 mutableArrays init
         self.inHaruContentArray = [[NSMutableArray alloc] init];
+        
+        self.fileManager = [[NSFileManager alloc] init];
+        
+        //plist에 있는 것 set
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *basePath = [paths objectAtIndex:0];
+        NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
+        
+        
+        NSArray *dataArrays;
+        
+        if ([self.fileManager fileExistsAtPath:docuPath]) {
+            dataArrays = [NSArray arrayWithContentsOfFile:docuPath];
+        
+        } else {
+            
+            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
+            //데이터 array에 bundle 내용 넣음
+            dataArrays = [NSArray arrayWithContentsOfFile:bundlePath];
+        }
+        
+        for (NSDictionary *haruItem in dataArrays) {
+            HRPostModel *haruDataModel = [[HRPostModel alloc] initWithDictionary:haruItem];
+            [self.inHaruContentArray addObject:haruDataModel];
+        }
 
     
     }
@@ -131,8 +158,37 @@
 
 //Post 관련 Method
 
+//plist에서 불러오기
+//- (void)loadData {
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    
+//    NSString *basePath = [paths objectAtIndex:0];
+//    NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
+//    
+//    NSFileManager *fileManger = [NSFileManager defaultManager];
+//    if (![fileManger fileExistsAtPath:docuPath]) {
+//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
+//        [fileManger copyItemAtPath:bundlePath toPath:docuPath error:nil];
+//    }
+//    self.inHaruContentArray = [[NSArray arrayWithContentsOfFile:docuPath] mutableCopy];
+//}
+//
+////plist에 저장
+//- (void)saveData {
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    
+//    NSString *basePath = [paths objectAtIndex:0];
+//    NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
+//    
+//    
+//    if (![self.fileManager fileExistsAtPath:docuPath]) {
+//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
+//        [self.fileManager copyItemAtPath:bundlePath toPath:docuPath error:nil];
+//    }
+//    [self.inHaruContentArray writeToFile:docuPath atomically:NO];
+//}
 
-- (void)testList:(BlockOnCompletion)completion {
+- (void)mainViewList:(BlockOnCompletion)completion {
     
     [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
         
@@ -141,6 +197,7 @@
             NSDictionary *haruDataTemp = (NSDictionary *)response;
             
             NSArray *haruDataArrayToDictionaryTemp = [haruDataTemp objectForKey:@"diaryResult"];
+            
             
             for (NSDictionary *resultData in haruDataArrayToDictionaryTemp) {
                 HRPostModel *haruDataTemp = [[HRPostModel alloc] initWithDictionary:resultData];
@@ -156,6 +213,24 @@
             
             completion(isSuccess, nil);
         }
+        
+//        if (isSuccess) {
+//            
+//            NSDictionary *haruDataTemp = (NSDictionary *)response;
+//            NSArray *haruDataArrayToDictionaryTemp2 = [haruDataTemp objectForKey:@"diaryResult2"];
+//            for (NSDictionary *resultData in haruDataArrayToDictionaryTemp2) {
+//                HRPostModel *haruDataTemp = [[HRPostModel alloc] initWithDictionary:resultData];
+//                
+//                [self.inHaruContentArray addObject:haruDataTemp];
+//            }
+//            completion(isSuccess, response);
+//            
+//        } else {
+//            
+//            completion(isSuccess, nil);
+//        }
+   
+        
     }];
 }
 
@@ -169,26 +244,28 @@
 //일기(일기의 Content)를 추가하는 Method
 - (void)insertDiaryContent:(HRPostModel *)haruContentData {
     
-    self.inHaruContentArray = [self.haruDataArray mutableCopy];
+//    self.inHaruContentArray = [self.haruDataArray mutableCopy];
     [self.inHaruContentArray insertObject:haruContentData atIndex:0];
-    self.haruDataArray = self.inHaruContentArray;
+
+//    self.haruDataArray = self.inHaruContentArray;
     
 }
 
 //일기(일기의 Content)를 삭제하는 Method
 - (void)deleteDiaryContent:(NSIndexPath *)haruContentsDataAtIndexPath {
     
-    self.inHaruContentArray = [self.haruDataArray mutableCopy];
+//    self.inHaruContentArray = [self.haruDataArray mutableCopy];
     [self.inHaruContentArray removeObjectAtIndex:haruContentsDataAtIndexPath.row];
-    self.haruDataArray = self.inHaruContentArray;
+
+//    self.haruDataArray = self.inHaruContentArray;
 
 }
 
 //일기(일기의 Content)를 수정하는 Method
 - (void)updateDiaryContent:(NSIndexPath *)haruContentsAtIndexPath haruContentsData:(HRPostModel *)haruContentsData {
-    self.inHaruContentArray = [self.haruDataArray mutableCopy];
+//    self.inHaruContentArray = [self.haruDataArray mutableCopy];
     [self.inHaruContentArray replaceObjectAtIndex:haruContentsAtIndexPath.row withObject:haruContentsData];
-    self.haruDataArray = self.inHaruContentArray;
+//    self.haruDataArray = self.inHaruContentArray;
 }
 
 //tableview의 numberOfRowsInSection에 들어갈 수
@@ -215,6 +292,8 @@
     
     completionHandler(YES, responseData);
 }
+
+
 
 ////json 파일 쓰는 Method
 //- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {

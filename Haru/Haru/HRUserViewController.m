@@ -8,11 +8,14 @@
 
 #import "HRUserViewController.h"
 #import "HRUserAFNetworkingModule.h"
+#import "FSCalendar.h"
 
 
 @interface HRUserViewController ()
-<UITextFieldDelegate>
+<UITextFieldDelegate,FSCalendarDelegate,FSCalendarDataSource>
 @property HRUserAFNetworkingModule *networkManager;
+@property HRDataCenter *dataManager;
+@property FSCalendar *calendrManager;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
@@ -24,42 +27,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self getPostCountToLabel];
 }
 
 
+//FSCalendar 날짜 아래 표시 글(subtitle)
+-(NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date
+{
+    NSString *subtitle = @"P";
+    return subtitle;
+}
+
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
-//    [self.networkManager logoutRequest:^(BOOL Sucess, NSDictionary *ResponseData)
-//    {
-//        if (Sucess == YES) {
+    [self.dataManager logoutRequestToServer:^(BOOL isSuccess, id response) {
+        if (isSuccess) {
             UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSLog(@"Logout Alert");
                 UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
                 self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController];
-        }];
-    [logoutAlert addAction:okBtn];
-    [self presentViewController:logoutAlert animated:YES completion:nil];
+            }];
+            [logoutAlert addAction:okBtn];
+            [self presentViewController:logoutAlert animated:YES completion:nil];
+        }
+    }];
 }
 
-+ (UIViewController*)topMostViewController {
-    UIViewController *topMostViewController = nil;
-    
-    UIViewController *rootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
-    if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UINavigationController* navigationController = (UINavigationController*)rootViewController;
-        topMostViewController = navigationController.visibleViewController;
-    } else if (rootViewController.presentedViewController) {
-        topMostViewController = rootViewController.presentedViewController;
-    } else if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        UITabBarController* tabBarController = (UITabBarController*)rootViewController;
-        topMostViewController = tabBarController.selectedViewController;
-    } else
-        topMostViewController = rootViewController;
-    
-    return topMostViewController;
+// 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
+-(void)getPostCountToLabel
+{
+    __block NSString *result = [[NSString alloc] init];
+     [self.networkManager postListRequest:^(BOOL Sucess, NSDictionary *ResponseData) {
+        result = [ResponseData objectForKey:@"count"];
+    }];
+    self.count_post.text = result;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
