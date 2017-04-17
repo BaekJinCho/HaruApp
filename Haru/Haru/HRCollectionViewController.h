@@ -16,4 +16,6 @@
     RLMResults *collectionDataArray;
 }
 
+
+
 @end
