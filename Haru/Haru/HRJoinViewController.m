@@ -162,7 +162,6 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
-        //PostViewcontroller로 넘어가기
         
     }];
     [sucessAlert addAction:ok];
