@@ -16,6 +16,7 @@
 @property NSDate    *date;
 @property NSInteger emoticonValue;
 
+
 @end
 
 // This protocol enables typed collections. i.e.:
