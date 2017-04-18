@@ -82,6 +82,7 @@
         [self.LoginPasswordTextField becomeFirstResponder];
     } else {
         [self.LoginPasswordTextField resignFirstResponder];
+        [self clickLoginButton:self.loginButton];
     }
     return YES;
 }
@@ -92,13 +93,14 @@
     
     NSString *loginIDText = self.loginIDTextField.text;
     NSString *loginPasswordText = self.LoginPasswordTextField.text;
+    [self.loginIndicator startAnimating];
 
     [[HRDataCenter sharedInstance] loginRequestWithUserID:loginIDText password:loginPasswordText completion:^(BOOL isSuccess, id response) {
         
         if (isSuccess == YES) {
             dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"로그인 성공 / token:::%@",response);
-            [self.loginIndicator startAnimating];
+            
             [self loginSucessAlert];
             });
             

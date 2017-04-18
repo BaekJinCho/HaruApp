@@ -10,11 +10,12 @@
 
 @interface HRRealmData : RLMObject
 
-@property NSString *title;
-@property NSString *content;
-@property NSData *mainImageData;
+@property NSString  *title;
+@property NSString  *content;
+@property NSData    *mainImageData;
+@property NSDate    *date;
 @property NSInteger emoticonValue;
-@property NSDate *date;
+
 @end
 
 // This protocol enables typed collections. i.e.:

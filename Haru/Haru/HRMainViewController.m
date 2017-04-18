@@ -34,10 +34,16 @@
     [self.mainTableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
     
-    //date 순으로 정렬 - ascending - NO(최신순)
-    tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
-    [_mainTableView reloadData];
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //date 순으로 정렬 - ascending - NO(최신순)
+    realmDataInformation = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
+    //tableview reloadData
+    [self.mainTableView reloadData];
 }
 
 
@@ -48,9 +54,10 @@
   
 //    [self getHaruData];
 //    [self.mainTableView reloadData];
-    
-    tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
-    [_mainTableView reloadData];
+    //date 순으로 정렬 - ascending - NO(최신순)
+    realmDataInformation = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
+    //tableview reloadData
+    [self.mainTableView reloadData];
     
 }
 //
@@ -76,17 +83,17 @@
 
 
 //mainView의 row의 갯수를 생성하는 Method
-#pragma mark- mainViewController numberOfRowsInSection Method
+#pragma mark- MainViewController Tableview Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
 //    return [[HRDataCenter sharedInstance] numberOfItem];
     
-    return [tableDataArray count];
+    return [realmDataInformation count];
 }
 
 //mainView의 cell을 생성하는 Method
-#pragma mark- mainViewController cellForRowAtIndexPath Method
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //storyboard를 사용할 떈, forIndexPath를 사용!!!
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
@@ -114,9 +121,10 @@
     
     //realm을 이용하여 데이터 set
     HRPostModel *haruData               = [[HRPostModel alloc] init];
-    HRRealmData *realmDataInfo          = [tableDataArray objectAtIndex:indexPath.row];
+    HRRealmData *realmDataInfo          = [realmDataInformation objectAtIndex:indexPath.row];
     
     mainViewCell.postTitle.text         = realmDataInfo.title;
+//    mainViewCell.userStateImageView.image = [UIImage imageWithData:realmDataInfo.userStateEmoticon];
     mainViewCell.yearMonthLabel.text    = [haruData convertWithDate:realmDataInfo.date format:@"yyyy년 MM월"];
     mainViewCell.dateLabel.text         = [haruData convertWithDate:realmDataInfo.date format:@"dd"];
     mainViewCell.dayOfTheWeekLabel.text = [haruData convertWithDate:realmDataInfo.date format:@"E요일"];
@@ -126,14 +134,14 @@
 }
 
 //mainView의 cell의 높이를 지정해주는 메소드
-#pragma mark- mainViewController heightForRowAtIndexPath Method
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return self.view.frame.size.width;
 }
 
 //mainView의 cell을 클릭했을 때, 불리는 Method
-#pragma mark- mainViewController didSelectRowAtIndexPath Method
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"DetailViewFromMainView" sender:indexPath];
@@ -152,25 +160,14 @@
 //        detailViewController.postModel               = haruData;
         /**********************************************************************************************/
     
-        HRRealmData *realmDataInfomation = tableDataArray;
         HRDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.indexPath               = (NSIndexPath *)sender;
-        detailViewController.realmData               = tableDataArray;
+        detailViewController.realmData = [realmDataInformation objectAtIndex:((NSIndexPath *)sender).row];
         
-    
     }
 }
 
-
-//tableview를 edit 할 수 있게 해주는 Method
-#pragma mark- mainVeiwController canEditRowAtIndexPath Method
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return YES if you want the specified item to be editable.
-//    return YES;
-//}
-
 //tableview를 edit style를 정해주는 Method
-#pragma mark- mainVeiwController commitEditing Method
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -181,12 +178,11 @@
 //        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         //realm data 삭제
-        HRRealmData *realmDatainfo = [tableDataArray objectAtIndex:indexPath.row];
+        HRRealmData *realmDatainfo = [realmDataInformation objectAtIndex:indexPath.row];
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
         [realm deleteObject:realmDatainfo];
         [realm commitWriteTransaction];
-        
         [_mainTableView reloadData];
     }
 

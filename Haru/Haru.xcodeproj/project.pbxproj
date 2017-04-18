@@ -172,7 +172,6 @@
 			children = (
 				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
 				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
-				01045FF71E9217DF00407BD1 /* UpdateDisplay */,
 			);
 			name = DetailDisplay;
 			sourceTree = "<group>";
@@ -281,6 +280,7 @@
 			children = (
 				01DC47691E97906C00CC858F /* MainTabBar */,
 				01045FF01E8DE92C00407BD1 /* MainDisplay */,
+				01045FF71E9217DF00407BD1 /* UpdateDisplay */,
 				01045FF11E8E29A500407BD1 /* DetailDisplay */,
 				01045FEC1E8DE7BA00407BD1 /* CollectionDisplay */,
 				01045FEB1E8DE79B00407BD1 /* UserInfo */,

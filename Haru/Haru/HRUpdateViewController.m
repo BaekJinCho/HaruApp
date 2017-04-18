@@ -32,6 +32,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.postModel = [[HRPostModel alloc] init];
+    
     //notification으로 modifiedViewController ContentView 올리기 위한 NotificationCenter 구현
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -43,22 +45,34 @@
     //UIToolbar 생성 및 Item 넣어주는 작업
     [self inputEmoticonAccessoryView];
     
-    
-    //메인 페이지에 있는 데이터 넘겨주기
-    if (self.postModel == nil) {
-        NSLog(@"Error : 수정화면에 데이터가 없습니다.");
+    /***************************************Server 통신할 때 적용************************************************/
+//    //메인 페이지에 있는 데이터 넘겨주기
+//    if (self.postModel == nil) {
+//        NSLog(@"Error : 수정화면에 데이터가 없습니다.");
+//    } else {
+//        
+//        self.postTitleTextField.text            = self.postModel.title;
+//        self.postUpdateTextView.text            = self.postModel.content;
+//        self.updateViewUserStateImageView.image = [UIImage imageNamed:self.postModel.userStateImage];
+//        self.updateViewDayLabel.text            = [self.postModel convertWithDate:self.postModel.totalDate format:@"dd"];
+//        self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.postModel.totalDate format:@"E"];
+//        [self.updateViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:self.postModel.photo]
+//                                          placeholderImage:[UIImage imageNamed:@""]];
+//        
+//    }
+    /**********************************************************************************************************/
+    if (self.realmData == nil) {
+        NSLog(@"Error : realm에 데이터가 없습니다.");
     } else {
         
-        self.postTitleTextField.text            = self.postModel.title;
-        self.postUpdateTextView.text            = self.postModel.content;
-        self.updateViewUserStateImageView.image = [UIImage imageNamed:self.postModel.userStateImage];
-        self.updateViewDayLabel.text            = [self.postModel convertWithDate:self.postModel.totalDate format:@"dd"];
-        self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.postModel.totalDate format:@"E"];
-        [self.updateViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:self.postModel.photo]
-                                          placeholderImage:[UIImage imageNamed:@""]];
+        NSLog(@"현재 데이터 : %@", self.realmData);
+        self.postTitleTextField.text = self.realmData.title;
+        self.postUpdateTextView.text = self.realmData.content;
+        self.updateViewDayLabel.text = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
+        self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
+        self.updateViewBackgroundPhoto.image = [UIImage imageWithData:self.realmData.mainImageData];
         
     }
-    
 }
 
 //UIToolbar 생성 및 Item 넣어주는 작업
@@ -150,19 +164,13 @@
 }
 
 //Image의 선택이 끝났을 때, 불리는 Method
-#pragma mark- UpdateViewController didFinishPickingMediaWithInfo Delegate Method
+#pragma mark- UpdateViewController UIImagePicker Delegate Method
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     NSLog(@"info %@", info);
     self.updateViewBackgroundPhoto.image = [info objectForKey:UIImagePickerControllerEditedImage];;
     [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
-
-//UIImage Scale 처리
-//- (UIImage *)category_imageWithData:(NSData *)data {
-//    UIImage *image = [[UIImage alloc] initWithData:data];
-//    return [[UIImage alloc] initWithCGImage:[image CGImage] scale:[UIScreen mainScreen].scale orientation:image.imageOrientation];
-//}
 
 
 //ContentView의 Constraints를 키보드의 높이만큼 올리기 위한 Method
@@ -179,7 +187,7 @@
 }
 
 //ContentView의 Constraints를 키보드의 높이만큼 내리기 위한 Method
-#pragma mark- UpdateViewController NSNotification Method
+
 - (void)keyboardWillHide:(NSNotification *)sender {
     CGFloat bottom = self.postViewContentTextVIewBottomConstant.constant;
     if (bottom != 0) {
@@ -195,7 +203,7 @@
 }
 
 //return button을 클릭했을 때, 불리는 Method
-#pragma mark- UpdateViewController TextFieldShouldReturn Method
+#pragma mark- UpdateViewController TextFieldDelegate Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if (textField.tag == 1) {
@@ -205,14 +213,14 @@
 }
 
 //TextField의 Content를 입력할 때마다 불리는 Method
-#pragma mark- UpdateViewController TextField ShouldChangeTextInRange Delegate Method
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
    
     return !([textField.text length] > MAX_POST_TITLE_CONTENT && [string length] > range.length);
 }
 
 ////TextField의 Content를 변경하고자 할 때, Method
-#pragma mark- UpdateViewController fixPostTitleTextLenth Method
+
 - (void)fixPostTitleTextLength:(UITextField *)titleTextField {
     
     NSString *textFieldContentText = titleTextField.text;
@@ -226,7 +234,7 @@
 }
 
 //TextView의 Content를 입력할 때마다 불리는 Method
-#pragma mark- UpdateViewController TextView ShouldChangeTextInRange Delegate Method
+#pragma mark- UpdateViewController TextView Delegate Method
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     //alert 띄어줄까? 고민중...
     return !([textView.text length] > MAX_POST_CONTENT && [text length] > range.length);
@@ -234,7 +242,7 @@
 
 
 //글 내용을 복사한 내용을 변경했을 때, 불리는 Method
-#pragma mark - UpdateViewController Textview didChange Delegate Method
+
 - (void)textViewDidChange:(UITextView *)textView {
     
     NSString *textViewContentText = textView.text;
@@ -281,16 +289,26 @@
     
     //수정한 내용을 서버에 보내주는 작업 필요 & Main, Detail View에도 적용하는 작업 필요
 //    HRPostModel *test = [HRDataCenter sharedInstance]updateDiaryContent:<#(NSIndexPath *)#> haruContentsData:<#(HRPostModel *)#>
+    
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm transactionWithBlock:^{
+        self.realmData.title = self.postTitleTextField.text;
+        self.realmData.content = self.postUpdateTextView.text;
+        self.realmData.mainImageData = UIImagePNGRepresentation(self.updateViewBackgroundPhoto.image);
+        
+        
+    }];
+    
 }
 
 //수정하는 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
-#pragma mark- UpdateViewController Method
+#pragma mark- UpdateViewController UITabeGesture Method
 - (IBAction)modifiedViewTabGesture:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
 
 //notification dealloc
-#pragma mark- signupView notification dealloc Method
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
