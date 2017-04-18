@@ -32,6 +32,12 @@
                                             <constraint firstAttribute="height" constant="45" id="yXC-9e-jok"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XB3-Xw-qh2">
+                                        <rect key="frame" x="165.5" y="0.0" width="45" height="45"/>
+                                        <connections>
+                                            <action selector="didClickedUserProfileImage:" destination="4M7-9Z-S4r" eventType="touchUpInside" id="ueg-v6-dyR"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQA-ar-W6J">
                                         <rect key="frame" x="101.5" y="72" width="171" height="31.5"/>
                                         <attributedString key="attributedText">
@@ -203,8 +209,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="ktW-bo-bZR" firstAttribute="centerX" secondItem="KB3-cg-EhA" secondAttribute="centerX" id="3lw-0s-IcL"/>
+                                    <constraint firstItem="XB3-Xw-qh2" firstAttribute="leading" secondItem="ktW-bo-bZR" secondAttribute="leading" id="6hb-ZX-CxJ"/>
+                                    <constraint firstItem="XB3-Xw-qh2" firstAttribute="top" secondItem="KB3-cg-EhA" secondAttribute="top" id="7sQ-lO-rIF"/>
+                                    <constraint firstItem="XB3-Xw-qh2" firstAttribute="height" secondItem="ktW-bo-bZR" secondAttribute="height" id="7zB-gU-LeP"/>
                                     <constraint firstItem="ktW-bo-bZR" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="0.2" id="8al-GY-qZA"/>
                                     <constraint firstItem="7at-az-tYS" firstAttribute="width" secondItem="KB3-cg-EhA" secondAttribute="width" multiplier="0.85" id="AT7-4j-oGQ"/>
+                                    <constraint firstItem="XB3-Xw-qh2" firstAttribute="width" secondItem="ktW-bo-bZR" secondAttribute="width" id="Beg-DK-MYP"/>
                                     <constraint firstItem="IQA-ar-W6J" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="0.6" id="KpJ-yg-n0E"/>
                                     <constraint firstItem="FD0-iz-HXp" firstAttribute="leading" secondItem="7at-az-tYS" secondAttribute="leading" id="L2b-Oq-8TE"/>
                                     <constraint firstItem="IQA-ar-W6J" firstAttribute="centerX" secondItem="KB3-cg-EhA" secondAttribute="centerX" id="ZgX-4u-7LU"/>
@@ -253,6 +263,7 @@
                         <outlet property="count_streaks" destination="ohH-TR-fRc" id="LWo-Uu-6Aa"/>
                         <outlet property="date_join" destination="vnk-It-fOo" id="VEB-eO-Gf1"/>
                         <outlet property="logOutBtn" destination="7at-az-tYS" id="ZYI-Df-NMj"/>
+                        <outlet property="userImageBtn" destination="XB3-Xw-qh2" id="2Ad-VT-hSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vM-cz-msY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,7 +12,7 @@
 
 
 @interface HRUserViewController ()
-<UITextFieldDelegate,FSCalendarDelegate,FSCalendarDataSource>
+<UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource>
 @property HRUserAFNetworkingModule *networkManager;
 @property HRDataCenter *dataManager;
 @property FSCalendar *calendrManager;
@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
 @property (weak, nonatomic) IBOutlet UILabel *date_join;
+@property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 
 @end
 
@@ -41,6 +42,41 @@
 }
 
 
+//- (IBAction)didClickedUserProfileImage:(UIButton *)sender
+//{
+//    UIImagePickerController *libController = [[UIImagePickerController alloc] init];
+//    libController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    libController.allowsEditing = NO;
+//    libController.delegate = self;
+//    
+//    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+//    {
+//        UIImagePickerController *camController = [[UIImagePickerController alloc] init];
+//        camController.sourceType = UIImagePickerControllerSourceTypeCamera;
+//        camController.allowsEditing = NO;
+//        camController.mediaTypes
+//        = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypeCamera];
+//        
+//        camController.delegate = self;
+//        
+//        [self presentViewController:camController animated: YES completion: nil];
+//    }
+//    else
+//    {
+//        UIAlertView *view = [[UIAlertView alloc]
+//                             initWithTitle:@"Error"
+//                             message:@"No Camera"
+//                             delegate:nil
+//                             cancelButtonTitle:nil
+//                             otherButtonTitles:@"OK", nil];
+//        
+//        
+//        [view show];
+//        
+//    }
+//}
+
+
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
     [self logoutSucessAlert];
@@ -58,8 +94,9 @@
             UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 NSLog(@"Logout Alert");
-                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
-                self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController];
+//                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
+//                self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController]
+                [self.tabBarController performSegueWithIdentifier:@"showTutorial" sender:nil];
             }];
             [logoutAlert addAction:okBtn];
             [self presentViewController:logoutAlert animated:YES completion:nil];
