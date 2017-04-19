@@ -30,24 +30,25 @@
 @property NSString *searchText;
 @property (strong, nonatomic) UIImage *pickedImage;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
+@property UIButton *trashBtn;
 
 @end
 
 @implementation HRCollectionViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    collectionDataArray = [HRRealmData allObjects];
+    collectionDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO]
+    ;
     [_collectionView reloadData];
-    
-//    RLMResults<HRRealmData *> *sortedRealm = [HRRealmData allObjects];
-//    [sortedRealm sortedResultsUsingKeyPath:@"HRRealmData.date" ascending:YES];
-    
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.collectionView setAllowsMultipleSelection:YES];
     
+
 }
 
 
@@ -78,6 +79,43 @@
     cell.imageView.image = [UIImage imageWithData:info.mainImageData];
                 
     return cell;
+}
+- (IBAction)clickedTrashButton:(UIBarButtonItem *)sender {
+    
+    [self trashButtonWhenClicked];
+}
+
+- (void)trashButtonWhenClicked {
+    
+    self.trashButton = [[UIBarButtonItem alloc] initWithCustomView:self.trashBtn];
+    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
+    
+    if (self.trashBtn.isSelected) {
+        
+        [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
+        cell.checkBox.alpha = 0;
+        [self.trashBtn setSelected:NO];
+        
+    } else {
+        
+        [self.trashBtn setImage:[UIImage imageNamed:@"trashButtonSelected"] forState:UIControlStateSelected];
+        cell.checkBox.alpha = 1;
+        [self.trashBtn setSelected:YES];
+    }
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    BOOL isTrashMode = YES;
+    
+    if (isTrashMode) {
+        
+    } else {
+        
+    }
+    
 }
 
 # pragma mark - Button Animation
@@ -189,9 +227,8 @@
         UIImage *image = (UIImage *)sender;
         
         addViewContent.image = image;
-    }
+    } else if ([segue.identifier isEqualToString:<#(nonnull NSString *)#>])
 }
-
 
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
