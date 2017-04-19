@@ -9,12 +9,29 @@
 #import "HRMainViewController.h"
 #import "HRCustomTableViewCell.h"
 #import "HRDetailViewController.h"
+#import "AddViewController.h"
 
 @interface HRMainViewController ()
-<UITableViewDelegate, UITableViewDataSource>
+<UITableViewDelegate, UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
+
+//여러 버튼이 나오기 위한 Property
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+@property (weak, nonatomic) IBOutlet UIButton *libraryDirectButton;
+@property (weak, nonatomic) IBOutlet UIButton *cameraDirectButton;
+@property (weak, nonatomic) IBOutlet UIButton *writeButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *backgroundButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonTrailing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraButtonTrailing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *libraryButtonTrailing;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *libraryButtonBottom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *writeButtonBottom;
+@property (strong, nonatomic) UIImage *pickedImage;
 
 @end
 
@@ -34,10 +51,16 @@
     [self.mainTableView addSubview:self.refreshControl];
     [self.refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
     
-    //date 순으로 정렬 - ascending - NO(최신순)
-    tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
-    [_mainTableView reloadData];
     
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //date 순으로 정렬 - ascending - NO(최신순)
+    realmDataInformation = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
+    //tableview reloadData
+    [self.mainTableView reloadData];
 }
 
 
@@ -48,9 +71,10 @@
   
 //    [self getHaruData];
 //    [self.mainTableView reloadData];
-    
-    tableDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
-    [_mainTableView reloadData];
+    //date 순으로 정렬 - ascending - NO(최신순)
+    realmDataInformation = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
+    //tableview reloadData
+    [self.mainTableView reloadData];
     
 }
 //
@@ -76,17 +100,17 @@
 
 
 //mainView의 row의 갯수를 생성하는 Method
-#pragma mark- mainViewController numberOfRowsInSection Method
+#pragma mark- MainViewController Tableview Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
 //    return [[HRDataCenter sharedInstance] numberOfItem];
     
-    return [tableDataArray count];
+    return [realmDataInformation count];
 }
 
 //mainView의 cell을 생성하는 Method
-#pragma mark- mainViewController cellForRowAtIndexPath Method
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //storyboard를 사용할 떈, forIndexPath를 사용!!!
     HRCustomTableViewCell *mainViewCell = [tableView dequeueReusableCellWithIdentifier:@"HRCustomTableViewCell"
@@ -114,9 +138,10 @@
     
     //realm을 이용하여 데이터 set
     HRPostModel *haruData               = [[HRPostModel alloc] init];
-    HRRealmData *realmDataInfo          = [tableDataArray objectAtIndex:indexPath.row];
+    HRRealmData *realmDataInfo          = [realmDataInformation objectAtIndex:indexPath.row];
     
     mainViewCell.postTitle.text         = realmDataInfo.title;
+//    mainViewCell.userStateImageView.image = [UIImage imageWithData:realmDataInfo.userStateEmoticon];
     mainViewCell.yearMonthLabel.text    = [haruData convertWithDate:realmDataInfo.date format:@"yyyy년 MM월"];
     mainViewCell.dateLabel.text         = [haruData convertWithDate:realmDataInfo.date format:@"dd"];
     mainViewCell.dayOfTheWeekLabel.text = [haruData convertWithDate:realmDataInfo.date format:@"E요일"];
@@ -126,14 +151,14 @@
 }
 
 //mainView의 cell의 높이를 지정해주는 메소드
-#pragma mark- mainViewController heightForRowAtIndexPath Method
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return self.view.frame.size.width;
 }
 
 //mainView의 cell을 클릭했을 때, 불리는 Method
-#pragma mark- mainViewController didSelectRowAtIndexPath Method
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [self performSegueWithIdentifier:@"DetailViewFromMainView" sender:indexPath];
@@ -143,7 +168,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 //    HRDetailViewController *detailViewContent = [HRDetailViewController new];
     
-    if([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
+    if ([segue.identifier isEqualToString:@"DetailViewFromMainView"]) {
         /***********************************Server 통신할 때, 필요*****************************************/
 //        HRPostModel *haruData = [[HRDataCenter sharedInstance] contentDataAtIndexPath:(NSIndexPath *)sender];
 //        
@@ -152,25 +177,21 @@
 //        detailViewController.postModel               = haruData;
         /**********************************************************************************************/
     
-        HRRealmData *realmDataInfomation = tableDataArray;
         HRDetailViewController *detailViewController = [segue destinationViewController];
         detailViewController.indexPath               = (NSIndexPath *)sender;
-        detailViewController.realmData               = tableDataArray;
+        detailViewController.realmData = [realmDataInformation objectAtIndex:((NSIndexPath *)sender).row];
         
-    
+    } else if ([segue.identifier isEqualToString:@"segueFromLibrary"]) {
+        UINavigationController *navi = (UINavigationController *)[segue destinationViewController];
+        AddViewController *addViewContent = (AddViewController *)[[navi viewControllers] objectAtIndex:0];
+        
+        UIImage *image = (UIImage *)sender;
+        
+        addViewContent.image = image;
     }
 }
 
-
-//tableview를 edit 할 수 있게 해주는 Method
-#pragma mark- mainVeiwController canEditRowAtIndexPath Method
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return YES if you want the specified item to be editable.
-//    return YES;
-//}
-
 //tableview를 edit style를 정해주는 Method
-#pragma mark- mainVeiwController commitEditing Method
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -181,16 +202,149 @@
 //        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
         //realm data 삭제
-        HRRealmData *realmDatainfo = [tableDataArray objectAtIndex:indexPath.row];
+        HRRealmData *realmDatainfo = [realmDataInformation objectAtIndex:indexPath.row];
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
         [realm deleteObject:realmDatainfo];
         [realm commitWriteTransaction];
-        
         [_mainTableView reloadData];
     }
 
 }
+
+
+
+# pragma mark - Button Animation
+
+- (IBAction)clickedAddButton:(UIButton *)sender {
+    
+    [self buttonAnimationWhenClicked];
+}
+
+
+- (IBAction)clickedBackgroundButton:(UIButton *)sender {
+    
+    [self buttonAnimationWhenClicked];
+}
+
+- (void)buttonAnimationWhenClicked {
+    if (self.addButton.isSelected) {
+        [self.addButton setImage:[UIImage imageNamed:@"addButton"] forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            [self settingAlphaForButtonAnimation:0 writeBtnAlpha:0 libraryBtnAlpha:0 cameraBtnAlpha:0];
+            [self settingConstantForButtonAnimation:20 cameraBtnTrailing:20 libraryBtnBottom:self.addButtonBottom.constant libraryBtnTrailing:self.addButtonTrailing.constant];
+            
+            [self.addButton setSelected:NO];
+            [self.view layoutIfNeeded];
+        }];
+    } else {
+        [self.addButton setImage:[UIImage imageNamed:@"addButtonSelected"] forState:UIControlStateNormal];
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            NSUInteger buttonSize = self.addButton.frame.size.width;
+            
+            [self settingAlphaForButtonAnimation:0.3 writeBtnAlpha:1 libraryBtnAlpha:1 cameraBtnAlpha:1];
+            [self settingConstantForButtonAnimation:buttonSize * 2.5 cameraBtnTrailing:buttonSize * 2.5 libraryBtnBottom:buttonSize * 1.8 libraryBtnTrailing:buttonSize * 1.8];
+            
+            [self.addButton setSelected:YES];
+            [self.view layoutIfNeeded];
+        }];
+    }
+};
+
+
+- (IBAction)clickedLibraryDirectButton:(id)sender {
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary == YES]) {
+        
+        UIImagePickerController *libraryPicker = [[UIImagePickerController alloc] init];
+        libraryPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        libraryPicker.delegate = self;
+        libraryPicker.allowsEditing = YES;
+        
+        [self presentViewController:libraryPicker animated:YES completion:nil];
+        
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"경고" message:@"사진 라이브러리에 접근할 수 없습니다.\n 설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:alertAction];
+    };
+};
+
+- (IBAction)clickedCameraDirectButton:(id)sender {
+    if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+        
+        UIImagePickerController *cameraPicker = [[UIImagePickerController alloc] init];
+        cameraPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraPicker.delegate = self;
+        cameraPicker.allowsEditing = YES;
+        
+        [self presentViewController:cameraPicker animated:YES completion:nil];
+        
+    } else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"경고" message:@"카메라에 접근할 수 없습니다.\n설정을 다시 확인해주세요" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [alertController addAction:alertAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    };
+}
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    UIImage *chosenImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    self.pickedImage = chosenImage;
+    
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(self.pickedImage, nil, nil, nil);
+        });
+    } else {
+        NSLog(@"라이브러리 진입");
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self performSegueWithIdentifier:@"segueFromLibrary" sender:chosenImage];
+    
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - SUPPORTING METHODS
+
+#pragma mark - Supporting button animation methods
+
+- (void)settingAlphaForButtonAnimation:(CGFloat)backgroundAlpha
+                          writeBtnAlpha:(CGFloat)writeAlpha
+                        libraryBtnAlpha:(CGFloat)libraryAlpha
+                         cameraBtnAlpha:(CGFloat)cameraAlpha {
+    
+    self.backgroundButton.alpha = backgroundAlpha;
+    self.writeButton.alpha = writeAlpha;
+    self.libraryDirectButton.alpha = libraryAlpha;
+    self.cameraDirectButton.alpha = cameraAlpha;
+}
+
+
+- (void)settingConstantForButtonAnimation:(CGFloat)writeBtnConstant cameraBtnTrailing:(CGFloat)cameraBtnConstant libraryBtnBottom:(CGFloat)libraryBtnBottomConstant libraryBtnTrailing:(CGFloat)libraryBtnTrailingConstant {
+    
+    self.writeButtonBottom.constant = writeBtnConstant;
+    self.cameraButtonTrailing.constant = cameraBtnConstant;
+    self.libraryButtonBottom.constant = libraryBtnBottomConstant;
+    self.libraryButtonTrailing.constant = libraryBtnTrailingConstant;
+}
+
 
 
 

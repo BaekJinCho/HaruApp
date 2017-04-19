@@ -12,4 +12,6 @@
 
 @property (nonatomic) HRPostModel *postModel;
 
+@property (nonatomic) HRRealmData *realmData;
+
 @end

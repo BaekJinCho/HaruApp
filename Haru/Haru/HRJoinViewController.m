@@ -81,8 +81,10 @@
         [self.joinPasswordTextField becomeFirstResponder];
     } else if (textField.tag == 2) {
         [self.joinPasswordCheckTextField becomeFirstResponder];
-    } else
+    } else {
         [self.joinPasswordCheckTextField resignFirstResponder];
+        [self clickSignupButton:self.joinButton];
+    }
     return YES;
 }
 
@@ -146,7 +148,7 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         
     }];
     [sucessAlert addAction:ok];
@@ -160,7 +162,6 @@
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         
-        //PostViewcontroller로 넘어가기
         
     }];
     [sucessAlert addAction:ok];

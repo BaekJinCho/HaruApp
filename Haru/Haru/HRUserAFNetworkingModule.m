@@ -19,31 +19,17 @@
 
 @implementation HRUserAFNetworkingModule
 
-//AFHTTPSessionManager에 manager 메소드 및 serializer초기화 override
-- (instancetype)initWithAFHTTPSessionManager
-{
-    self = [super init];
-    if (self) {
-        self.manager = [AFHTTPSessionManager manager];
-        self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    }
-    return self;
-}
-
-//AFHTTPSession manager 초기화 메소드
-- (id)AFHTTPManager
-{
-    HRUserAFNetworkingModule *manager = [[HRUserAFNetworkingModule alloc]initWithAFHTTPSessionManager];
-    return manager;
-}
 
 //login 메소드
 - (void)loginRequest:(NSString *)username password:(NSString *)password completion:(CompletionBlock)completion
 {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGIN_URL];
     NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:@"username",username,@"password",password, nil];
     
-    [[self AFHTTPManager] POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"LOGIN RESPONSE:%@", responseObject);
         completion(YES,responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -52,32 +38,78 @@
 }
 
 //logout 메소드
-- (void)logoutRequest:(NSString *)token completion:(CompletionBlock)completion
+//- (void)logoutRequest:(NSString *)token completion:(CompletionBlock)completion
+//{
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+//    
+//    
+//    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
+//    NSLog(@"%@",url);
+//    NSString *key = @"Authorization";
+//    NSString *value = [NSString stringWithFormat:@"%@ %@",@"Token",token];
+//    
+//    [manager.requestSerializer setHTTPShouldHandleCookies:NO];
+//    
+//    NSDictionary *parameter = [NSDictionary dictionaryWithObject:value forKey:key];
+//    NSLog(@"%@", parameter);
+//    [manager POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        NSLog(@"LOGOUT RESPONSE:%@", responseObject);
+//        completion(YES, responseObject);
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"LOGOUT ERROR:%@%@", task, error);
+//        completion(NO, nil);
+//    }];
+//}
+
+- (void)logoutRequest:(NSString *)token completion:(ResponseBlock)completion
 {
-    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
-    NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:@"Authorizaion",token, nil];
+    NSString *value = [NSString stringWithFormat:@"%@ %@",@"Token",token];
+    NSDictionary *headers = @{ @"authorization": value,
+                               @"cache-control": @"no-cache"
+                               };
     
-    [[self AFHTTPManager] POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"LOGOUT RESPONSE:%@", responseObject);
-        completion(YES, responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"LOGOUT ERROR:%@", error);
-    }];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://haru-eb.ap-northeast-2.elasticbeanstalk.com/logout/"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"POST"];
+    [request setAllHTTPHeaderFields:headers];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        completion(NO,nil);
+                                                        NSLog(@"%@", error);
+                                                    } else {
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        completion(YES,httpResponse);
+                                                        NSLog(@"%@", httpResponse);
+                                                    }
+                                                }];
+    [dataTask resume];
 }
+
+
 
 //postlist요청하는 메소드
 - (void)postListRequest:(CompletionBlock)completion
 {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
     
     NSInteger pageNumber = 1;
     NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:@"page",[NSString stringWithFormat:@"%@%@?page=%ld",BASIC_URL,POST_URL,pageNumber], nil];
     
-    [[self AFHTTPManager] GET:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"POSTLIST DATA:%@", responseObject);
         completion(YES, responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"POSTLIST ERROR:%@", error);
+        completion(NO,nil);
     }];
 }
 

@@ -20,23 +20,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //HRPostModel 객체화
+    self.postModel = [[HRPostModel alloc] init];
     
-    NSLog(@"%ld", self.indexPath.row);
+    /***************************************Server 통신할 때 적용************************************************/
+//    NSLog(@"%ld", self.indexPath.row);
     
-    if(self.postModel == nil) {
-        
-        NSLog(@"Error : Empty Data");
+//    if(self.postModel == nil) {
+//        
+//        NSLog(@"Error : Empty Data");
+//    } else {
+//        
+//        NSLog(@"%@", self.postModel);
+//        
+//        self.detailViewPostTitle.text           = self.postModel.title;
+//        self.detailViewContentLabel.text        = self.postModel.content;
+//        self.detailViewUserStateImageView.image = [UIImage imageNamed:self.postModel.userStateImage];
+//        self.detailViewDayLabel.text            = [self.postModel convertWithDate:self.postModel.totalDate format:@"dd"];
+//        self.detailViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.postModel.totalDate format:@"E"];
+//        [self.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:self.postModel.photo]
+//                                          placeholderImage:[UIImage imageNamed:@""]];
+    /**********************************************************************************************************/
+    
+    
+    if (self.realmData == nil) {
+        NSLog(@"Error : realm에 데이터가 없습니다.");
     } else {
         
-        NSLog(@"%@", self.postModel);
-        
-        self.detailViewPostTitle.text           = self.postModel.title;
-        self.detailViewContentLabel.text        = self.postModel.content;
-        self.detailViewUserStateImageView.image = [UIImage imageNamed:self.postModel.userStateImage];
-        self.detailViewDayLabel.text            = [self.postModel convertWithDate:self.postModel.totalDate format:@"dd"];
-        self.detailViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.postModel.totalDate format:@"E"];
-        [self.detailViewBackgroundPhoto sd_setImageWithURL:[NSURL URLWithString:self.postModel.photo]
-                                          placeholderImage:[UIImage imageNamed:@""]];
+        NSLog(@"현재 데이터 : %@", self.realmData);
+        self.detailViewPostTitle.text = self.realmData.title;
+        self.detailViewContentLabel.text = self.realmData.content;
+        self.detailViewDayLabel.text = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
+        self.detailViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
+        self.detailViewBackgroundPhoto.image = [UIImage imageWithData:self.realmData.mainImageData];
         
     }
     
@@ -54,7 +70,9 @@
     if([segue.identifier isEqualToString:@"updateViewFromDetailView"]) {
     
         HRUpdateViewController *updateView = [segue destinationViewController];
-        updateView.postModel = self.postModel;
+//        updateView.postModel = self.postModel;
+        
+        updateView.realmData = self.realmData;
     
     }
 }

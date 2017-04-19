@@ -172,7 +172,6 @@
 			children = (
 				01F97D791E8B94FC0059414C /* HRDetailViewController.h */,
 				01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */,
-				01045FF71E9217DF00407BD1 /* UpdateDisplay */,
 			);
 			name = DetailDisplay;
 			sourceTree = "<group>";
@@ -217,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				018DF1DC1E86223500DE51EA /* AppDelegate */,
+				010460011E9654A000407BD1 /* Common */,
 				018DF1DD1E86225100DE51EA /* Model */,
 				018DF1DE1E86225D00DE51EA /* View */,
 				018DF1DF1E86226800DE51EA /* Controller */,
@@ -250,7 +250,6 @@
 		018DF1DD1E86225100DE51EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				010460011E9654A000407BD1 /* Common */,
 				1807F8FA1EA0A650008D5713 /* HRRealmData.h */,
 				1807F8FB1EA0A650008D5713 /* HRRealmData.m */,
 				185978921E88D42B00172475 /* HRDataCenter.h */,
@@ -281,6 +280,7 @@
 			children = (
 				01DC47691E97906C00CC858F /* MainTabBar */,
 				01045FF01E8DE92C00407BD1 /* MainDisplay */,
+				01045FF71E9217DF00407BD1 /* UpdateDisplay */,
 				01045FF11E8E29A500407BD1 /* DetailDisplay */,
 				01045FEC1E8DE7BA00407BD1 /* CollectionDisplay */,
 				01045FEB1E8DE79B00407BD1 /* UserInfo */,

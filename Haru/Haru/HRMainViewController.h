@@ -10,7 +10,7 @@
 
 @interface HRMainViewController : UIViewController
 {
-    RLMResults<HRRealmData*> *tableDataArray;
+    RLMResults<HRRealmData*> *realmDataInformation;
 }
 
 

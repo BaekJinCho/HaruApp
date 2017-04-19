@@ -233,7 +233,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -301,7 +301,7 @@
                                                             <constraint firstAttribute="height" constant="30" id="f5B-v6-xfw"/>
                                                             <constraint firstAttribute="width" constant="200" id="kjy-NR-e20"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
@@ -325,7 +325,7 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9u-fJ-gFJ">
                                                         <rect key="frame" x="113" y="353" width="200" height="30"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
@@ -455,7 +455,7 @@
             </objects>
             <point key="canvasLocation" x="1352" y="634"/>
         </scene>
-        <!--Join-->
+        <!--Sign Up-->
         <scene sceneID="Blt-Mm-2h6">
             <objects>
                 <viewController storyboardIdentifier="HRJoinViewController" id="Ai0-Cu-c2l" customClass="HRJoinViewController" sceneMemberID="viewController">
@@ -500,7 +500,7 @@
                                                             <constraint firstAttribute="height" constant="30" id="1L2-t2-xnB"/>
                                                             <constraint firstAttribute="width" constant="200" id="udZ-XR-v2Z"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
@@ -516,7 +516,7 @@
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAO-YR-TVM">
                                                         <rect key="frame" x="108.5" y="331" width="200" height="30"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
@@ -532,7 +532,7 @@
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MGq-vG-btE">
                                                         <rect key="frame" x="108.5" y="381" width="200" height="30"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                                         <connections>
@@ -665,7 +665,7 @@
                             <outletCollection property="gestureRecognizers" destination="3WB-AL-oxO" appends="YES" id="gyf-VM-l1m"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Join" id="MWY-t5-QWt">
+                    <navigationItem key="navigationItem" title="Sign Up" id="MWY-t5-QWt">
                         <barButtonItem key="leftBarButtonItem" image="Arrow" id="Dhx-Gw-0Ob">
                             <connections>
                                 <segue destination="fu2-2k-riu" kind="unwind" unwindAction="unwindTutorialSegue:" id="d4W-cN-1aA"/>
