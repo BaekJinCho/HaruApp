@@ -227,7 +227,9 @@
         UIImage *image = (UIImage *)sender;
         
         addViewContent.image = image;
-    } else if ([segue.identifier isEqualToString:<#(nonnull NSString *)#>])
+    } else if ([segue.identifier isEqualToString:@"segueToDetailView"]) {
+        
+    }
 }
 
 
