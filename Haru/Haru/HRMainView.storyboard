@@ -31,13 +31,78 @@
                                     <outlet property="delegate" destination="Wz0-mQ-7BY" id="ANw-Qx-AvB"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-sJ-dkJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="clickedBackgroundButton:" destination="Wz0-mQ-7BY" eventType="touchUpInside" id="lka-jh-fVy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sg-2G-ycN">
+                                <rect key="frame" x="310" y="489" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hLG-2L-4PR"/>
+                                    <constraint firstAttribute="width" constant="45" id="laH-Dx-FBu"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="addViewButton"/>
+                                <connections>
+                                    <segue destination="l4c-Ap-6x7" kind="popoverPresentation" popoverAnchorView="9sg-2G-ycN" id="MV9-IJ-p7f">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NrO-bz-lBv">
+                                <rect key="frame" x="309" y="489" width="46" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="WJS-gE-Alx"/>
+                                    <constraint firstAttribute="width" constant="46" id="shS-Mx-kri"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="libraryDirectButton"/>
+                                <connections>
+                                    <action selector="clickedLibraryDirectButton:" destination="Wz0-mQ-7BY" eventType="touchUpInside" id="uoc-g0-NXS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Dy-mD-aeD">
+                                <rect key="frame" x="310" y="489" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="IFl-is-HMk"/>
+                                    <constraint firstAttribute="height" constant="45" id="ocg-uq-1Qa"/>
+                                </constraints>
+                                <state key="normal" image="addButton"/>
+                                <connections>
+                                    <action selector="clickedAddButton:" destination="Wz0-mQ-7BY" eventType="touchUpInside" id="L9D-vM-Enc"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0HP-77-KCL">
+                                <rect key="frame" x="310" y="489" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="FxL-L2-R9b"/>
+                                    <constraint firstAttribute="height" constant="45" id="y0M-aH-wth"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="cameraDirectButton"/>
+                                <connections>
+                                    <action selector="clickedCameraDirectButton:" destination="Wz0-mQ-7BY" eventType="touchUpInside" id="xBQ-lJ-Chp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="NrO-bz-lBv" secondAttribute="bottom" constant="20" id="5Mp-dt-weU"/>
+                            <constraint firstAttribute="trailing" secondItem="5Dy-mD-aeD" secondAttribute="trailing" constant="20" id="80U-Qu-x8n"/>
+                            <constraint firstAttribute="trailing" secondItem="9sg-2G-ycN" secondAttribute="trailing" constant="20" id="96B-FX-P0u"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="height" secondItem="zYp-2H-XtN" secondAttribute="height" id="Duh-je-3k7"/>
+                            <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="qbC-sJ-dkJ" secondAttribute="bottom" id="EUx-OE-39J"/>
+                            <constraint firstAttribute="trailing" secondItem="qbC-sJ-dkJ" secondAttribute="trailing" id="Idl-sq-DX9"/>
+                            <constraint firstItem="qbC-sJ-dkJ" firstAttribute="top" secondItem="21s-KD-fhK" secondAttribute="bottom" id="Lg2-Ng-Ply"/>
+                            <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="9sg-2G-ycN" secondAttribute="bottom" constant="20" id="MMZ-lC-i00"/>
+                            <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="5Dy-mD-aeD" secondAttribute="bottom" constant="20" id="SVl-GW-vQL"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="centerY" secondItem="zYp-2H-XtN" secondAttribute="centerY" id="WlJ-Qw-8yk"/>
+                            <constraint firstItem="qbC-sJ-dkJ" firstAttribute="leading" secondItem="zYp-2H-XtN" secondAttribute="leading" id="iRn-6V-FXA"/>
+                            <constraint firstAttribute="trailing" secondItem="NrO-bz-lBv" secondAttribute="trailing" constant="20" id="mKN-Th-h7U"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="centerX" secondItem="zYp-2H-XtN" secondAttribute="centerX" id="oxM-IS-qwf"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="width" secondItem="zYp-2H-XtN" secondAttribute="width" id="uEj-Vv-Qr4"/>
+                            <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="0HP-77-KCL" secondAttribute="bottom" constant="20" id="w3W-ws-Ive"/>
+                            <constraint firstAttribute="trailing" secondItem="0HP-77-KCL" secondAttribute="trailing" constant="20" id="zwT-yb-lJ9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Main" selectedImage="MainSelected" id="rVk-Cx-PFv">
@@ -46,13 +111,33 @@
                     <navigationItem key="navigationItem" title="HARU" id="Ufl-tf-35D"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="addButton" destination="5Dy-mD-aeD" id="9HL-JP-MN1"/>
+                        <outlet property="addButtonBottom" destination="SVl-GW-vQL" id="tua-gf-O9a"/>
+                        <outlet property="addButtonTrailing" destination="80U-Qu-x8n" id="WLI-ME-hWi"/>
+                        <outlet property="backgroundButton" destination="qbC-sJ-dkJ" id="jcf-0w-Ktj"/>
+                        <outlet property="cameraButtonTrailing" destination="zwT-yb-lJ9" id="MFZ-ej-1Ij"/>
+                        <outlet property="cameraDirectButton" destination="0HP-77-KCL" id="AFs-H1-qWH"/>
+                        <outlet property="libraryButtonBottom" destination="5Mp-dt-weU" id="rOW-Lo-asb"/>
+                        <outlet property="libraryButtonTrailing" destination="mKN-Th-h7U" id="bbF-AK-otT"/>
+                        <outlet property="libraryDirectButton" destination="NrO-bz-lBv" id="0rP-95-Njn"/>
                         <outlet property="mainTableView" destination="KdN-Yt-1tr" id="XNS-zP-oWv"/>
+                        <outlet property="writeButton" destination="9sg-2G-ycN" id="OVb-WY-z2Z"/>
+                        <outlet property="writeButtonBottom" destination="MMZ-lC-i00" id="cQ5-XH-55t"/>
                         <segue destination="fTC-Wd-A6m" kind="show" identifier="DetailViewFromMainView" id="q7W-Z5-PeH"/>
+                        <segue destination="l4c-Ap-6x7" kind="presentation" identifier="segueFromLibrary" id="zXY-QX-bbm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KUe-NK-LnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1037.5999999999999" y="-561.76911544227892"/>
+        </scene>
+        <!--HRAddView-->
+        <scene sceneID="SXv-Zh-hvK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="HRAddView" id="l4c-Ap-6x7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hOj-T5-QD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1037" y="-69"/>
         </scene>
         <!--Detail-->
         <scene sceneID="paC-gD-rjR">
@@ -374,5 +459,12 @@
         <image name="Main" width="19" height="18"/>
         <image name="MainSelected" width="19" height="18"/>
         <image name="Pencil" width="20" height="20"/>
+        <image name="addButton" width="45" height="45"/>
+        <image name="addViewButton" width="45" height="45"/>
+        <image name="cameraDirectButton" width="45" height="45"/>
+        <image name="libraryDirectButton" width="45" height="45"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="MV9-IJ-p7f"/>
+    </inferredMetricsTieBreakers>
 </document>
