@@ -48,11 +48,11 @@
     } else {
         
         NSLog(@"현재 데이터 : %@", self.realmData);
-        self.detailViewPostTitle.text = self.realmData.title;
-        self.detailViewContentLabel.text = self.realmData.content;
-        self.detailViewDayLabel.text = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
+        self.detailViewPostTitle.text           = self.realmData.title;
+        self.detailViewContentLabel.text        = self.realmData.content;
+        self.detailViewDayLabel.text            = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
         self.detailViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
-        self.detailViewBackgroundPhoto.image = [UIImage imageWithData:self.realmData.mainImageData];
+        self.detailViewBackgroundPhoto.image    = [UIImage imageWithData:self.realmData.mainImageData];
         
     }
     
@@ -75,6 +75,10 @@
         updateView.realmData = self.realmData;
     
     }
+}
+- (IBAction)detailViewBackButtonItem:(UIBarButtonItem *)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

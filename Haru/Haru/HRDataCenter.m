@@ -38,6 +38,7 @@
     if (self) {
         self.networkManager     = [[HRNetworkModule alloc] init];
 //        self.haruDataArray      = [[NSArray alloc] init];
+        
         //haruData 저장하는 mutableArrays init
         self.inHaruContentArray = [[NSMutableArray alloc] init];
         

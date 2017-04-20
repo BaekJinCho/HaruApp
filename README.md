@@ -4,7 +4,7 @@
 
 #### - 2017. 03. 27 ~ 2017. 04. 21
 
-<br>
+<br><br><br>
 
 ![기획의도](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/하루%20Header.png?raw=true)
 

@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //loginPasswordTextField *로 표시
+    
+    //LoginPasswordTextField *로 표시
     self.LoginPasswordTextField.secureTextEntry = YES;
     
     // 텍스트 필드 placeholder 컬러
@@ -46,8 +47,8 @@
     
 }
 
-//notification으로 loginScrollView 올리는 Method
-#pragma mark- loginView notification Method
+//Notification으로 LoginScrollView 올리는 Method
+#pragma mark- Login View notification Method
 - (void)didChanedLoginScrollView:(NSNotification *) notification {
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
@@ -62,8 +63,8 @@
     
 }
 
-//notification dealloc
-#pragma mark- signupView notification dealloc Method
+//Notification dealloc
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -75,8 +76,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-//loginstoryboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
-#pragma mark- loginView TextField delegate Method
+//Loginstoryboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
+#pragma mark- Login View TextField delegate Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField.tag == 1) {
         [self.LoginPasswordTextField becomeFirstResponder];
@@ -88,19 +89,19 @@
 }
 
 //로그인 버튼을 눌렀을 때, 불리는 Method
-#pragma mark- loginView loginButtonClick Method
+#pragma mark- Login View login Button Click Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
     
     NSString *loginIDText = self.loginIDTextField.text;
     NSString *loginPasswordText = self.LoginPasswordTextField.text;
-    [self.loginIndicator startAnimating];
+    
 
     [[HRDataCenter sharedInstance] loginRequestWithUserID:loginIDText password:loginPasswordText completion:^(BOOL isSuccess, id response) {
         
         if (isSuccess == YES) {
             dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"로그인 성공 / token:::%@",response);
-            
+            [self.loginIndicator startAnimating];
             [self loginSucessAlert];
             });
             
@@ -153,7 +154,7 @@
 }
 
 //로그인 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
-#pragma mark- loginVeiwTabGesture Method
+#pragma mark- Login Veiw TabGesture Method
 - (IBAction)loginViewTabGesture:(UITapGestureRecognizer *)sender {
     [self.view endEditing:YES];
 }
