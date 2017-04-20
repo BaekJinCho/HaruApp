@@ -12,9 +12,10 @@
 
 @interface HRCollectionViewCell : UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UITextView *dateTextView;
-@property (weak, nonatomic) IBOutlet UITextView *titleTextView;
+@property (weak, nonatomic) IBOutlet UILabel *titleTextView;
+@property (weak, nonatomic) IBOutlet UILabel *dateTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *checkBox;
 
 //- (void) inputDataIntoCell:(HRRealmData *)data;
 

@@ -30,24 +30,41 @@
 @property NSString *searchText;
 @property (strong, nonatomic) UIImage *pickedImage;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
+@property UIButton *trashBtn;
 
 @end
 
 @implementation HRCollectionViewController
 
 - (void)viewWillAppear:(BOOL)animated {
-    collectionDataArray = [HRRealmData allObjects];
+    collectionDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO]
+    ;
     [_collectionView reloadData];
-    
-//    RLMResults<HRRealmData *> *sortedRealm = [HRRealmData allObjects];
-//    [sortedRealm sortedResultsUsingKeyPath:@"HRRealmData.date" ascending:YES];
-    
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.trashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.trashBtn setFrame:CGRectMake(0, 0, 20, 20)];
+    [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
+    [self.trashBtn setImage:[UIImage imageNamed:@"trashButtonSelected"] forState:UIControlStateSelected];
+    [self.trashBtn addTarget:self action:@selector(trashBtnSelected:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.trashButton = [[UIBarButtonItem alloc]initWithCustomView:self.trashBtn];
+    [self.navigationItem setLeftBarButtonItem:self.trashButton];
+}
+
+- (void) trashBtnSelected:(UIButton *)sender {
+//    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
+    if (sender.isSelected) {
+        [sender setSelected:NO];
+//        cell.checkBox.alpha = 0;
+    } else {
+        [sender setSelected:YES];
+//        cell.checkBox.alpha = 1;
+    }
 }
 
 
@@ -76,8 +93,57 @@
     cell.dateTextView.text = [postModel convertWithDate:info.date format:@"yyyy년 M월 dd일"];
     cell.titleTextView.text = info.title;
     cell.imageView.image = [UIImage imageWithData:info.mainImageData];
+    
+    [self.collectionView setAllowsMultipleSelection:YES];
+
+    if (self.trashBtn.isSelected) {
+        cell.checkBox.alpha = 0;
+    } else {
+        cell.checkBox.alpha = 1;
+    }
                 
     return cell;
+}
+
+
+- (IBAction)clickedTrashButton:(UIBarButtonItem *)sender {
+    
+    [self trashButtonWhenClicked];
+}
+
+- (void)trashButtonWhenClicked {
+    
+    self.trashButton = [[UIBarButtonItem alloc] initWithCustomView:self.trashBtn];
+    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
+    
+    if (self.trashBtn.isSelected) {
+        
+        [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
+        cell.checkBox.alpha = 0;
+        [self.trashBtn setSelected:NO];
+        
+    } else {
+        
+        [self.trashBtn setImage:[UIImage imageNamed:@"trashButtonSelected"] forState:UIControlStateSelected];
+        cell.checkBox.alpha = 1;
+        [self.trashBtn setSelected:YES];
+    }
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HRMainView" bundle:nil];
+    HRDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:@"HRDetailViewController"];
+    
+    detailViewController.indexPath = indexPath;
+    detailViewController.realmData = [collectionDataArray objectAtIndex:indexPath.item];
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+//    HRDetailViewController *detailViewContent = [[HRDetailViewController alloc] init];
+//    detailViewContent.indexPath               = (NSIndexPath *)sender;
+//    detailViewContent.realmData = [collectionDataArray objectAtIndex:((NSIndexPath *)sender).item];
+//    [self performSegueWithIdentifier:@"segueToDetailView" sender:indexPath];
 }
 
 # pragma mark - Button Animation
@@ -187,11 +253,15 @@
         AddViewController *addViewContent = (AddViewController *)[[navi viewControllers] objectAtIndex:0];
 //        AddViewController *addViewContent = (AddViewController *)segue.destinationViewController;
         UIImage *image = (UIImage *)sender;
-        
         addViewContent.image = image;
+        
+    } else if ([segue.identifier isEqualToString:@"segueToDetailView"]) {
+        UINavigationController *navi2 = (UINavigationController *)[segue destinationViewController];
+        HRDetailViewController *detailViewContent = (HRDetailViewController *)[[navi2 viewControllers] objectAtIndex:0];
+        detailViewContent.indexPath               = (NSIndexPath *)sender;
+        detailViewContent.realmData = [collectionDataArray objectAtIndex:((NSIndexPath *)sender).item];
     }
 }
-
 
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

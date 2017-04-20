@@ -10,7 +10,7 @@
 #import "AddViewController.h"
 #import "HRRealmData.h"
 
-static NSInteger TITLE_MAXLENGTH = 30;
+static NSInteger TITLE_MAXLENGTH = 20;
 static NSUInteger CONTENT_MAXLENGTH = 150;
 
 @interface AddViewController ()
@@ -111,6 +111,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 
 
 - (IBAction)clickedSaveButton:(id)sender {
+    
     
     [self insertDataIntoDataBaseWithTitle:self.titleTextView.text content:self.contentTextView.text mainImage:self.mainImageView.image date:self.currentDate];
     [self.view endEditing:YES];
@@ -251,7 +252,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 }
 
 
-#pragma mark - text related methods
+#pragma mark - textView Related Methods
 
 // 텍스트 뷰가 수정될 때마
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
@@ -292,7 +293,6 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
         [textView resignFirstResponder];
         return NO;
     }
-    
     return YES;
 }
 
@@ -321,9 +321,6 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 //    [self adjustContentSizeOfTextView:textView];
 //}
 
-#pragma mark - NSDate Methods
-
-
 #pragma mark - Realm Methods 
 
 - (void)insertDataIntoDataBaseWithTitle:(NSString *)title
@@ -346,6 +343,17 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     [realm commitWriteTransaction];
 }
 
+- (void)createAlertControllerWithTitle:(NSString *)title
+                               content:(NSString *)content
+                           actionTitle:(NSString *)actionTitle
+                           actionStyle:(UIAlertActionStyle *)actionStyle {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:*actionStyle handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:alertAction];
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

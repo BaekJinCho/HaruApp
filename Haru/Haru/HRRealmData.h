@@ -15,7 +15,7 @@
 @property NSData    *mainImageData;
 @property NSDate    *date;
 @property NSInteger emoticonValue;
-
+@property NSData *userImage;
 
 @end
 
