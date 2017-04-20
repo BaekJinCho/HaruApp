@@ -38,34 +38,37 @@
     if (self) {
         self.networkManager     = [[HRNetworkModule alloc] init];
 //        self.haruDataArray      = [[NSArray alloc] init];
+        
         //haruData 저장하는 mutableArrays init
         self.inHaruContentArray = [[NSMutableArray alloc] init];
         
         self.fileManager = [[NSFileManager alloc] init];
-        
-        //plist에 있는 것 set
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *basePath = [paths objectAtIndex:0];
-        NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
-        
-        
-        NSArray *dataArrays;
-        
-        if ([self.fileManager fileExistsAtPath:docuPath]) {
-            dataArrays = [NSArray arrayWithContentsOfFile:docuPath];
-        
-        } else {
-            
-            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
-            //데이터 array에 bundle 내용 넣음
-            dataArrays = [NSArray arrayWithContentsOfFile:bundlePath];
-        }
-        
-        for (NSDictionary *haruItem in dataArrays) {
-            HRPostModel *haruDataModel = [[HRPostModel alloc] initWithDictionary:haruItem];
-            [self.inHaruContentArray addObject:haruDataModel];
-        }
 
+        
+/************************************plist로 작업시********************************************/
+        //plist에 있는 것 set
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *basePath = [paths objectAtIndex:0];
+//        NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
+//        
+//        
+//        NSArray *dataArrays;
+//        
+//        if ([self.fileManager fileExistsAtPath:docuPath]) {
+//            dataArrays = [NSArray arrayWithContentsOfFile:docuPath];
+//        
+//        } else {
+//            
+//            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
+//            //데이터 array에 bundle 내용 넣음
+//            dataArrays = [NSArray arrayWithContentsOfFile:bundlePath];
+//        }
+//        
+//        for (NSDictionary *haruItem in dataArrays) {
+//            HRPostModel *haruDataModel = [[HRPostModel alloc] initWithDictionary:haruItem];
+//            [self.inHaruContentArray addObject:haruDataModel];
+//        }
+/************************************plist로 작업시********************************************/
     
     }
     return self;
@@ -105,6 +108,7 @@
                                            [self saveToken:token];
                                        }
                                        completion(isSuccess, response);
+                                       NSLog(@"성공일 때, response : %@",response);
                                    }];
 }
 

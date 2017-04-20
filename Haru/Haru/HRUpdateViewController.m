@@ -11,18 +11,17 @@
 
 @interface HRUpdateViewController ()
 <UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (weak, nonatomic) IBOutlet UITextView *postUpdateTextView;
-@property (weak, nonatomic) IBOutlet UITextField *postTitleTextField;
-@property (weak, nonatomic) IBOutlet UIImageView *updateViewUserStateImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *updateViewBackgroundPhoto;
-@property (weak, nonatomic) IBOutlet UILabel *updateViewDayLabel;
-@property (weak, nonatomic) IBOutlet UILabel *updateViewDayOfWeekLabel;
+@property (weak, nonatomic) IBOutlet UITextView         *postUpdateTextView;
+@property (weak, nonatomic) IBOutlet UITextField        *postTitleTextField;
+@property (weak, nonatomic) IBOutlet UIImageView        *updateViewUserStateImageView;
+@property (weak, nonatomic) IBOutlet UIImageView        *updateViewBackgroundPhoto;
+@property (weak, nonatomic) IBOutlet UILabel            *updateViewDayLabel;
+@property (weak, nonatomic) IBOutlet UILabel            *updateViewDayOfWeekLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *postViewContentTextVIewBottomConstant;
 
-
-@property (nonatomic) NSArray *userStateEmoticonArrays;
-@property (nonatomic) NSMutableArray *EmoticonArrays;
-@property (nonatomic) UIBarButtonItem *userStateEmoticonButton;
+@property (nonatomic) NSArray                           *userStateEmoticonArrays;
+@property (nonatomic) NSMutableArray                    *emoticonArrays;
+@property (nonatomic) UIBarButtonItem                   *userStateEmoticonButton;
 
 @end
 
@@ -66,11 +65,11 @@
     } else {
         
         NSLog(@"현재 데이터 : %@", self.realmData);
-        self.postTitleTextField.text = self.realmData.title;
-        self.postUpdateTextView.text = self.realmData.content;
-        self.updateViewDayLabel.text = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
+        self.postTitleTextField.text            = self.realmData.title;
+        self.postUpdateTextView.text            = self.realmData.content;
+        self.updateViewDayLabel.text            = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
         self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
-        self.updateViewBackgroundPhoto.image = [UIImage imageWithData:self.realmData.mainImageData];
+        self.updateViewBackgroundPhoto.image    = [UIImage imageWithData:self.realmData.mainImageData];
         
     }
 }
@@ -85,7 +84,7 @@
     
     self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraBarButton", @"libraryBarButton"];
     
-    self.EmoticonArrays = [[NSMutableArray alloc] init];
+    self.emoticonArrays = [[NSMutableArray alloc] init];
     
     for (NSInteger i=0 ; i < self.userStateEmoticonArrays.count ; i++) {
         
@@ -98,17 +97,17 @@
                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                           target:nil action:nil];
         
-        [self.EmoticonArrays addObject:self.userStateEmoticonButton];
+        [self.emoticonArrays addObject:self.userStateEmoticonButton];
         if (i==4) {
-            [self.EmoticonArrays addObject:flexBarButton];
+            [self.emoticonArrays addObject:flexBarButton];
             
         }
         
-        [self.EmoticonArrays addObject:flexBarButton];
+        [self.emoticonArrays addObject:flexBarButton];
         self.userStateEmoticonButton.tag = i;
     }
-    [self.EmoticonArrays removeLastObject];
-    keyboardToolbar.items = self.EmoticonArrays;
+    [self.emoticonArrays removeLastObject];
+    keyboardToolbar.items = self.emoticonArrays;
     
     self.postUpdateTextView.inputAccessoryView = keyboardToolbar;
 
@@ -116,7 +115,6 @@
 
 
 //UIBarButtonItem Selector Method (barbutton item을 클릭할 때마다 이모티콘 및 행동이 바뀌는 로직 처리)
-#pragma mark- UIBarButtonItem Selector Method
 - (void)addEmoticon:(UIBarButtonItem *)clickUserStateBarButtonItem {
     
     if (clickUserStateBarButtonItem.tag == 0) {
@@ -262,7 +260,7 @@
 }
 
 //수정화면에서 뒤로가기를 클릭했을 때, 불리는 Method
-#pragma mark- UpdateViewController BackButton Method
+#pragma mark- UpdateViewController UIBarButtonItem Method
 - (IBAction)backDetailViewButton:(UIBarButtonItem *)sender {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"주의" message:@"저장하지 않고 종료하시겠습니까?" preferredStyle:UIAlertControllerStyleAlert];
@@ -279,7 +277,7 @@
 }
 
 //저장 버튼 클릭했을 때 불리는 Method
-#pragma mark- UpdateViewController clickSaveNavigationBarButton Method
+
 - (IBAction)clickSaveNavigationBarButton:(UIBarButtonItem *)sender {
     
     [self performSegueWithIdentifier:@"clickSaveButton" sender:self];

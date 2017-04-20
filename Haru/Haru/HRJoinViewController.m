@@ -26,7 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //signupPasswordTextField *로 표시
+    
+    //SignupPasswordTextField *로 표시
     self.joinPasswordTextField.secureTextEntry = YES;
     self.joinPasswordCheckTextField.secureTextEntry = YES;
     
@@ -51,9 +52,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-//notification으로 signupScrollView 올리는 Method
-#pragma mark- joinView notification Method
+//Notification으로 SignupScrollView 올리는 Method
+#pragma mark- JoinView notification Method
 - (void)didChanedSignupScrollView:(NSNotification *) notification {
+    
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue];
     if ([notification.name isEqualToString:UIKeyboardWillShowNotification]) {
         
@@ -67,14 +69,15 @@
 
 }
 
-//notification dealloc
-#pragma mark- signupView notification dealloc Method
+//Notification dealloc
+
 - (void)dealloc {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-//signup storyboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
-#pragma mark- joinView TextField ShouldReturn Method
+//Signup storyboard 텍스트 필드에서 return 클릭했을 때, 불리는 delegate method
+#pragma mark- JoinView TextField ShouldReturn Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if (textField.tag == 1) {
@@ -89,7 +92,7 @@
 }
 
 //회원가입 버튼을 눌렀을 때, 불리는 Method
-#pragma mark- joinView signupButtonClick Method
+#pragma mark- JoinView Signup Button Click Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
     
     [self.joinIndicator startAnimating];
@@ -170,15 +173,16 @@
 
 
 //회원가입 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
-#pragma mark- joinTabGesture Method
+#pragma mark- JoinTabGesture Method
 - (IBAction)joinViewTabGesture:(UITapGestureRecognizer *)sender {
+    
     [self.view endEditing:YES];
 }
 
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+// In a storyboard-based application, you will often want to do a little prparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

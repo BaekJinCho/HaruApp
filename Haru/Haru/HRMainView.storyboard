@@ -249,7 +249,7 @@
                     <navigationItem key="navigationItem" title="Detail" id="R8C-MV-bD7">
                         <barButtonItem key="leftBarButtonItem" image="Arrow" id="njK-A2-VGf">
                             <connections>
-                                <segue destination="vAV-Pz-FSU" kind="unwind" unwindAction="unwindMainViewSegue:" id="AiO-PU-BoF"/>
+                                <action selector="detailViewBackButtonItem:" destination="fTC-Wd-A6m" id="i8b-ew-syq"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Pencil" id="RMv-Gq-JGF">
@@ -270,7 +270,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnf-Ha-Bzs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="vAV-Pz-FSU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1940" y="-562.66866566716647"/>
         </scene>

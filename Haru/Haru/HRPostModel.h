@@ -48,6 +48,5 @@ typedef NS_ENUM(NSUInteger, HRDateFormat) {
 @property (nonatomic) NSString        *dateFormatTime;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
-- (NSString *)convertStringToDate:(NSDate *)haruDate formattedData:(HRDateFormat)formattedData;
 - (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format;
 @end

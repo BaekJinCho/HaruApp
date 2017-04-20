@@ -22,9 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *libraryDirectButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraDirectButton;
 @property (weak, nonatomic) IBOutlet UIButton *writeButton;
-
 @property (weak, nonatomic) IBOutlet UIButton *backgroundButton;
 
+//Button의 Constraint 값 Property
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonTrailing;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonBottom;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *cameraButtonTrailing;
@@ -103,7 +103,7 @@
 #pragma mark- MainViewController Tableview Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"Section에 들어가는 Row의 수 : %ld", section);
+    NSLog(@"Section에 들어가는 Row의 수 : %ld", [realmDataInformation count]);
 //    return [[HRDataCenter sharedInstance] numberOfItem];
     
     return [realmDataInformation count];
@@ -214,8 +214,7 @@
 
 
 
-# pragma mark - Button Animation
-
+# pragma mark- Button Method
 - (IBAction)clickedAddButton:(UIButton *)sender {
     
     [self buttonAnimationWhenClicked];
@@ -324,7 +323,6 @@
 #pragma mark - SUPPORTING METHODS
 
 #pragma mark - Supporting button animation methods
-
 - (void)settingAlphaForButtonAnimation:(CGFloat)backgroundAlpha
                           writeBtnAlpha:(CGFloat)writeAlpha
                         libraryBtnAlpha:(CGFloat)libraryAlpha
