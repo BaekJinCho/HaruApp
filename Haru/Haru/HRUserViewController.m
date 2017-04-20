@@ -38,12 +38,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getPostCountToLabel];
-    self.camThumbnail.layer.cornerRadius = self.camThumbnail.frame.size.height/2;
-    self.camThumbnail.clipsToBounds = YES;
+    [self setEntityStyle];
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
     
     
 //    HRRealmData *result = nil;
+}
+
+-(void)setEntityStyle
+{
+    self.logOutBtn.layer.cornerRadius = self.logOutBtn.frame.size.height/2;     //로그아웃버튼 코너둥글기
+    self.camThumbnail.layer.cornerRadius = self.camThumbnail.frame.size.height/2;       //프로파일사진 위 카메라섬네일 코너둥글기
+    self.camThumbnail.clipsToBounds = YES;      //프로파일 사진 위 카메라섬네일 코너둥글기에 맞춰 테두리 자르기
 }
 
 
@@ -91,6 +97,8 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self.avatar setImage:image];
+    self.avatar.layer.cornerRadius = self.avatar.frame.size.height/2;
+    self.avatar.clipsToBounds = YES;
     
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
