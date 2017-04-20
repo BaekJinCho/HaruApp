@@ -11,6 +11,7 @@
 #import "AddViewController.h"
 #import "HRRealmData.h"
 #import "HRPostModel.h"
+#import "HRDetailViewController.h"
 
 @interface HRCollectionViewController : UIViewController
 {

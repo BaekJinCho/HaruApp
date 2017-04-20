@@ -269,7 +269,6 @@
 				01045FEE1E8DE84300407BD1 /* UserInfo */,
 				01045FED1E8DE82400407BD1 /* CollectionDisplay */,
 				018DF1E91E86240E00DE51EA /* Tutorial */,
-				018DF1E41E86237300DE51EA /* Members */,
 				01DE68691E8918A0004678FA /* MainDisplay */,
 			);
 			name = View;
@@ -303,6 +302,7 @@
 		018DF1E91E86240E00DE51EA /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				018DF1E41E86237300DE51EA /* Members */,
 				018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */,
 			);
 			name = Tutorial;

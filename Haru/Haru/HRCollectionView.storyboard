@@ -9,14 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--HRMainView-->
-        <scene sceneID="UiF-3K-WiT">
-            <objects>
-                <viewControllerPlaceholder storyboardName="HRMainView" id="rtO-m9-c76" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w7I-0D-1Tq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2840" y="287"/>
-        </scene>
         <!--PHOTOS-->
         <scene sceneID="mmR-x6-fYo">
             <objects>
@@ -197,7 +189,7 @@
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="PHOTOS" id="4f7-np-4oS">
-                        <barButtonItem key="leftBarButtonItem" image="trashButton" id="sHo-Ki-RS5">
+                        <barButtonItem key="leftBarButtonItem" id="sHo-Ki-RS5">
                             <connections>
                                 <action selector="clickedTrashButton:" destination="ovG-Cv-nT4" id="KfN-7X-QDc"/>
                             </connections>
@@ -220,7 +212,6 @@
                         <outlet property="writeButton" destination="6L1-E3-e3R" id="Btn-uZ-end"/>
                         <outlet property="writeButtonBottom" destination="ABX-0Q-1zS" id="vqF-D5-Gbt"/>
                         <segue destination="SIC-af-Hzk" kind="presentation" identifier="segueFromLibrary" id="3c0-Wj-TcB"/>
-                        <segue destination="rtO-m9-c76" kind="show" id="gtZ-MW-xvQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WN-sg-b2t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -271,7 +262,6 @@
         <image name="cameraDirectButton" width="45" height="45"/>
         <image name="checkBox" width="25" height="25"/>
         <image name="libraryDirectButton" width="45" height="45"/>
-        <image name="trashButton" width="17" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="3c0-Wj-TcB"/>
