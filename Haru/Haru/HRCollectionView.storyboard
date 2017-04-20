@@ -174,6 +174,7 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.26873984932899475" green="0.60088348388671875" blue="0.644866943359375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iQV-Fy-DfE" firstAttribute="top" secondItem="6L1-E3-e3R" secondAttribute="bottom" constant="20" id="ABX-0Q-1zS"/>
                             <constraint firstItem="iQV-Fy-DfE" firstAttribute="top" secondItem="SZr-82-gz4" secondAttribute="bottom" constant="20" id="KCy-wu-q0W"/>
@@ -255,8 +256,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Collection" width="19" height="18"/>
-        <image name="CollectionSelected" width="19" height="18"/>
+        <image name="Collection" width="25" height="25"/>
+        <image name="CollectionSelected" width="25" height="25"/>
         <image name="addButton" width="45" height="45"/>
         <image name="addViewButton" width="45" height="45"/>
         <image name="cameraDirectButton" width="45" height="45"/>
