@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7xc-TM-rJk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7xc-TM-rJk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -105,9 +105,7 @@
                             <constraint firstAttribute="trailing" secondItem="0HP-77-KCL" secondAttribute="trailing" constant="20" id="zwT-yb-lJ9"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Main" selectedImage="MainSelected" id="rVk-Cx-PFv">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="홈" image="Main" selectedImage="MainSelected" id="rVk-Cx-PFv"/>
                     <navigationItem key="navigationItem" title="HARU" id="Ufl-tf-35D"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -455,8 +453,8 @@
     </scenes>
     <resources>
         <image name="Arrow" width="19" height="20"/>
-        <image name="Main" width="19" height="18"/>
-        <image name="MainSelected" width="19" height="18"/>
+        <image name="Main" width="25" height="25"/>
+        <image name="MainSelected" width="25" height="25"/>
         <image name="Pencil" width="20" height="20"/>
         <image name="addButton" width="45" height="45"/>
         <image name="addViewButton" width="45" height="45"/>

@@ -186,9 +186,7 @@
                             <constraint firstAttribute="trailing" secondItem="ic2-FB-AkM" secondAttribute="trailing" constant="20" id="whn-pf-Zgb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="Collection" selectedImage="CollectionSelected" id="qCr-go-pNM">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="모아보기" image="Collection" selectedImage="CollectionSelected" id="qCr-go-pNM"/>
                     <navigationItem key="navigationItem" title="PHOTOS" id="4f7-np-4oS">
                         <barButtonItem key="leftBarButtonItem" id="sHo-Ki-RS5">
                             <connections>
