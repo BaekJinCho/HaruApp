@@ -252,10 +252,10 @@
     [self.networkManager getUserProfile:^(BOOL Sucess, NSDictionary *ResponseData) {
         if (Sucess) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"result: %@",[ResponseData objectForKey:@"results"]);
-                NSLog(@"result2: %@", [[ResponseData objectForKey:@"results"] objectAtIndex:0]);
-                NSLog(@"result3: %@", [[[ResponseData objectForKey:@"results"] objectForKey:0] objectForKey:@"email"]);
-            self.userLabel.text = [[[ResponseData objectForKey:@"results"] objectAtIndex:0] objectForKey:@"email"];
+//                NSLog(@"result: %@",[ResponseData objectForKey:@"results"]);
+//                NSLog(@"result2: %@", [[ResponseData objectForKey:@"results"] objectAtIndex:0]);
+//                NSLog(@"result3: %@", [[[ResponseData objectForKey:@"results"] objectForKey:0] objectForKey:@"email"]);
+//            self.userLabel.text = [[[ResponseData objectForKey:@"results"] objectAtIndex:0] objectForKey:@"email"];
             
              });
         } else {
