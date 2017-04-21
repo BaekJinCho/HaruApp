@@ -18,6 +18,7 @@
 @property HRDataCenter *dataManager;
 @property HRPostModel *postManager;
 @property HRRealmData *realmManager;
+@property RLMResults <HRRealmData *> *result;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
@@ -33,20 +34,18 @@
 @implementation HRUserViewController
 
 - (void)viewDidAppear:(BOOL)animated {
-    RLMResults <HRRealmData *> *result = [HRRealmData allObjects];
-    
-    NSLog(@"%@", [result lastObject]);
+    self.networkManager = [[HRUserAFNetworkingModule alloc] init];
+    self.result = [HRRealmData allObjects];
+    NSLog(@"%@", [self.result lastObject]);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self showPostCount];
+    [self loadRealmProfileImage];
     [self setEntityStyle];
+    [self showPostCount];
     
-    self.networkManager = [[HRUserAFNetworkingModule alloc] init];
     
-    
-//    HRRealmData *result = nil;
 }
 
 -(void)setEntityStyle
@@ -58,20 +57,31 @@
 
 
 //FSCalendar 날짜 아래 표시 글(subtitle)
--(NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date
-{
-//    self.realmManager = [_dataArray objectAtIndex:1];
+//-(NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date
+//{
 //    self.postManager = [[HRPostModel alloc] init];
-//    NSLog(@"realm date : %@,",self.realmManager.date);
-//    NSString *realmDate = [self.postManager convertWithDate:self.realmManager.date format:@"dd"];
-//    NSString *paramDate = [self.postManager convertWithDate:date format:@"dd"];
-//    NSLog(@"realmDate = %@,paramDate = %@",realmDate, paramDate);
-    
-    RLMResults <HRRealmData *> *result = [HRRealmData allObjects];
+//    
+//    NSString *start = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 00:00:00"];
+//    NSString *end   = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 23:59:59"];
+//
+//    NSDateFormatter * dateFormatter = [NSDateFormatter new];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//    
+//    NSDate *startDate = [dateFormatter dateFromString:start];
+//    NSDate *endDate   = [dateFormatter dateFromString:end];
+//    
+//    RLMResults<HRRealmData *> *array = [self.result objectsWhere:@"date between {%@, %@}", startDate, endDate];
+//    
+//    if([array count] > 0)
+//    {
+//        return @"P";
+//    } else {
+//        return @"";
+//    }
+//}
 
-//    NSString *realmDate = [self.postManager convertWithDate:self.realmManager.date format:@"dd"];
-//    NSString *paramDate = [self.postManager convertWithDate:date format:@"dd"];
-    
+-(BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
+{
     self.postManager = [[HRPostModel alloc] init];
     
     NSString *start = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 00:00:00"];
@@ -83,21 +93,14 @@
     NSDate *startDate = [dateFormatter dateFromString:start];
     NSDate *endDate   = [dateFormatter dateFromString:end];
     
-    RLMResults<HRRealmData *> *array = [result objectsWhere:@"date between {%@, %@}", startDate, endDate];
+    RLMResults<HRRealmData *> *array = [self.result objectsWhere:@"date between {%@, %@}", startDate, endDate];
     
-    if([array count] > 0) {
-        
-        return @"P";
+    if([array count] > 0)
+    {
+        return YES;
     } else {
-        return @"";
+        return NO;
     }
-    
-//    if (paramDate == realmDate) {
-//        NSString *subTitle = @"P";
-//        return subTitle;
-//    } else {
-//        return @"";
-//    }
 }
 
 
@@ -112,8 +115,8 @@
         UIImagePickerController *camController = [[UIImagePickerController alloc] init];
         camController.sourceType = UIImagePickerControllerSourceTypeCamera;
         camController.allowsEditing = YES;
-        camController.mediaTypes
-        = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypeCamera];
+//        camController.mediaTypes
+//        = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypeCamera];
         
         camController.delegate = self;
         
@@ -134,8 +137,8 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self.avatar setImage:image];
     self.avatar.layer.cornerRadius = self.avatar.frame.size.height/2;
@@ -153,7 +156,7 @@
     RLMRealm *realm = [RLMRealm defaultRealm];
     
     [realm transactionWithBlock:^{
-        
+        self.realmManager.userImage = imageData;
     }];
     
 //    [realm beginWriteTransaction];
@@ -164,7 +167,13 @@
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
-
+- (void)loadRealmProfileImage
+{
+    RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
+    NSData *imgData = (NSData *)[profileImg lastObject];
+    UIImage *userImage = [[UIImage alloc] initWithData:imgData];
+    self.avatar.image = userImage;
+}
 
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
@@ -216,12 +225,18 @@
 //    }];
 //    NSLog(@"result = %@",result);
 //    self.count_post.text = result;
-    RLMResults <HRRealmData *> *result = [HRRealmData allObjects];
     
+    self.postManager = [[HRPostModel alloc] init];
+    
+    RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
+    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
 }
 
-
-
+- (void)setUserIDLabel
+{
+    [self.networkManager getUserProfile];
+}
+                                             
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
