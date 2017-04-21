@@ -15,9 +15,9 @@
 @interface HRUserViewController ()
 <UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate>
 @property HRUserAFNetworkingModule *networkManager;
-@property HRNetworkModule *network;
 @property HRDataCenter *dataManager;
-@property FSCalendar *calendrManager;
+@property HRPostModel *postManager;
+@property HRRealmData *realmManager;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
+@property RLMResults *dataArray;
+
 
 @end
 
@@ -38,8 +40,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getPostCountToLabel];
+    [self showPostCount];
     [self setEntityStyle];
+    
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
     
     
@@ -57,9 +60,46 @@
 //FSCalendar 날짜 아래 표시 글(subtitle)
 -(NSString *)calendar:(FSCalendar *)calendar subtitleForDate:(NSDate *)date
 {
-    NSString *subtitle = @"P";
-    return subtitle;
+//    self.realmManager = [_dataArray objectAtIndex:1];
+//    self.postManager = [[HRPostModel alloc] init];
+//    NSLog(@"realm date : %@,",self.realmManager.date);
+//    NSString *realmDate = [self.postManager convertWithDate:self.realmManager.date format:@"dd"];
+//    NSString *paramDate = [self.postManager convertWithDate:date format:@"dd"];
+//    NSLog(@"realmDate = %@,paramDate = %@",realmDate, paramDate);
+    
+    RLMResults <HRRealmData *> *result = [HRRealmData allObjects];
+
+//    NSString *realmDate = [self.postManager convertWithDate:self.realmManager.date format:@"dd"];
+//    NSString *paramDate = [self.postManager convertWithDate:date format:@"dd"];
+    
+    self.postManager = [[HRPostModel alloc] init];
+    
+    NSString *start = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 00:00:00"];
+    NSString *end   = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 23:59:59"];
+    
+    NSDateFormatter * dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *startDate = [dateFormatter dateFromString:start];
+    NSDate *endDate   = [dateFormatter dateFromString:end];
+    
+    RLMResults<HRRealmData *> *array = [result objectsWhere:@"date between {%@, %@}", startDate, endDate];
+    
+    if([array count] > 0) {
+        
+        return @"P";
+    } else {
+        return @"";
+    }
+    
+//    if (paramDate == realmDate) {
+//        NSString *subTitle = @"P";
+//        return subTitle;
+//    } else {
+//        return @"";
+//    }
 }
+
 
 //프로필 이미지 클릭시 alert 띄워서 imagePicker 띄우는 메소드
 - (IBAction)didClickedUserProfileImage:(UIButton *)sender
@@ -79,7 +119,7 @@
         
         [self presentViewController:camController animated: YES completion: nil];
     }];
-    UIAlertAction *libAction = [UIAlertAction actionWithTitle:@"라이브러리" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *libAction = [UIAlertAction actionWithTitle:@"앨범" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UIImagePickerController *libraryController = [[UIImagePickerController alloc] init];
         libraryController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         libraryController.allowsEditing = YES;
@@ -164,13 +204,20 @@
 }
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
--(void)getPostCountToLabel
+
+- (void)showPostCount
 {
-    __block NSString *result = [[NSString alloc] init];
-     [self.networkManager postListRequest:^(BOOL Sucess, NSDictionary *ResponseData) {
-        result = [ResponseData objectForKey:@"count"];
-    }];
-    self.count_post.text = result;
+//    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+//    __block NSString *result = [[NSString alloc] init];
+//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
+//    NSLog(@"token = %@",token);
+//    [self.networkManager postListRequest:token completion:^(BOOL Sucess, NSDictionary *ResponseData) {
+//        result = [ResponseData objectForKey:@"count"];
+//    }];
+//    NSLog(@"result = %@",result);
+//    self.count_post.text = result;
+    RLMResults <HRRealmData *> *result = [HRRealmData allObjects];
+    
 }
 
 

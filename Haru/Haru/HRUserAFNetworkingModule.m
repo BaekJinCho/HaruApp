@@ -91,20 +91,43 @@
     [dataTask resume];
 }
 
+///*NSURLSessionConfiguration 설정*/
+//NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//
+///*AFHTTPSessionManager 설정*/
+//self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+//
+//self.afhttpSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+//NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
+//
+//[self.afhttpSessionManager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+//
+//[self.afhttpSessionManager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//    
+//    completion(YES,responseObject);
+//    NSLog(@"LOGOUT RESPONSE:%@", responseObject);
+//} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//    NSLog(@"LOGOUT ERROR:%@", error);
+//}];
 
 
 //postlist요청하는 메소드
-- (void)postListRequest:(CompletionBlock)completion
+- (void)postListRequest:(NSString *)token completion
+                       :(CompletionBlock)completion
 {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
+    self.manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
-    NSInteger pageNumber = 1;
-    NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:@"page",[NSString stringWithFormat:@"%@%@?page=%ld",BASIC_URL,POST_URL,pageNumber], nil];
+//    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
+    NSString *url = [NSString stringWithFormat:@"https://haru.ycsinabro.com/post/"];
     
-    [manager GET:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+    NSString *tokenValue = [NSString stringWithFormat:@"%@",[HRDataCenter sharedInstance].userToken];
+    NSLog(@"tokenValue = %@",tokenValue);
+    
+    [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"POSTLIST DATA:%@", responseObject);
         completion(YES, responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

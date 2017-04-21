@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4M7-9Z-S4r">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4M7-9Z-S4r">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--달력-->
+        <!--Data Source-->
         <scene sceneID="xrQ-z2-56M">
             <objects>
                 <viewController storyboardIdentifier="HRUserViewController" id="4M7-9Z-S4r" customClass="HRUserViewController" sceneMemberID="viewController">
@@ -19,30 +19,30 @@
                         <viewControllerLayoutGuide type="bottom" id="iKN-l4-i0Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Say-SF-2J3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KB3-cg-EhA">
-                                <rect key="frame" x="0.0" y="20" width="375" height="293.5"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="227"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar" translatesAutoresizingMaskIntoConstraints="NO" id="ktW-bo-bZR">
-                                        <rect key="frame" x="155.5" y="11.5" width="65" height="65"/>
+                                        <rect key="frame" x="128" y="-0.5" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="Zg0-Bi-2bh"/>
                                             <constraint firstAttribute="height" constant="65" id="yXC-9e-jok"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cameraButton" translatesAutoresizingMaskIntoConstraints="NO" id="8j0-dc-Fwy">
-                                        <rect key="frame" x="201" y="57" width="19.5" height="19.5"/>
+                                        <rect key="frame" x="173.5" y="45" width="19.5" height="19.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XB3-Xw-qh2">
-                                        <rect key="frame" x="155.5" y="11.5" width="65" height="65"/>
+                                        <rect key="frame" x="128" y="-0.5" width="65" height="65"/>
                                         <connections>
                                             <action selector="didClickedUserProfileImage:" destination="4M7-9Z-S4r" eventType="touchUpInside" id="ueg-v6-dyR"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQA-ar-W6J">
-                                        <rect key="frame" x="108" y="88" width="158.5" height="29.5"/>
+                                        <rect key="frame" x="80.5" y="65" width="158.5" height="29.5"/>
                                         <attributedString key="attributedText">
                                             <fragment content="Rachel Gilbert">
                                                 <attributes>
@@ -55,8 +55,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7at-az-tYS">
-                                        <rect key="frame" x="28" y="240.5" width="319" height="40"/>
-                                        <color key="backgroundColor" red="0.20392156862745098" green="0.46666666666666667" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <rect key="frame" x="24" y="183" width="272" height="31"/>
+                                        <color key="backgroundColor" red="0.22352941179999999" green="0.52156862749999999" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="LOG OUT">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -65,20 +65,20 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FD0-iz-HXp">
-                                        <rect key="frame" x="28" y="145.5" width="319" height="76"/>
+                                        <rect key="frame" x="24" y="98.5" width="272" height="76"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pxd-wv-Z21">
-                                                <rect key="frame" x="0.0" y="0.0" width="96.5" height="76"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="80.5" height="76"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pencil" translatesAutoresizingMaskIntoConstraints="NO" id="Nu9-df-ez5">
-                                                        <rect key="frame" x="38" y="0.0" width="20" height="20"/>
+                                                        <rect key="frame" x="30.5" y="0.0" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="HwG-qi-EzP"/>
                                                             <constraint firstAttribute="width" constant="20" id="s0c-Pm-4Am"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Od-b9-w2H">
-                                                        <rect key="frame" x="37.5" y="28" width="21.5" height="20"/>
+                                                        <rect key="frame" x="29.5" y="28" width="21.5" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="101">
                                                                 <attributes>
@@ -90,13 +90,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dq2-xz-RDr">
-                                                        <rect key="frame" x="34" y="56" width="28" height="20"/>
+                                                        <rect key="frame" x="26.5" y="56" width="28" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="쓴 글">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                         </attributedString>
@@ -105,17 +105,17 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TrS-ZC-J5V">
-                                                <rect key="frame" x="111.5" y="0.0" width="96" height="76"/>
+                                                <rect key="frame" x="95.5" y="0.0" width="81" height="76"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Streaks" translatesAutoresizingMaskIntoConstraints="NO" id="lnO-I8-GZ4">
-                                                        <rect key="frame" x="38" y="0.0" width="20" height="20"/>
+                                                        <rect key="frame" x="30.5" y="0.0" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="IO2-mD-stX"/>
                                                             <constraint firstAttribute="height" constant="20" id="oSz-3o-hpV"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-TR-fRc">
-                                                        <rect key="frame" x="37.5" y="28" width="21.5" height="20"/>
+                                                        <rect key="frame" x="30" y="28" width="21.5" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="101">
                                                                 <attributes>
@@ -127,7 +127,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92L-iC-d1w">
-                                                        <rect key="frame" x="22" y="56" width="52.5" height="20"/>
+                                                        <rect key="frame" x="14.5" y="56" width="52.5" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="이어쓴">
                                                                 <attributes>
@@ -156,17 +156,17 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="i4J-Td-U09">
-                                                <rect key="frame" x="222.5" y="0.0" width="96.5" height="76"/>
+                                                <rect key="frame" x="191.5" y="0.0" width="80.5" height="76"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="User" translatesAutoresizingMaskIntoConstraints="NO" id="YMf-sL-cSJ">
-                                                        <rect key="frame" x="38.5" y="0.0" width="20" height="20"/>
+                                                        <rect key="frame" x="30" y="0.0" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="PMD-jk-JOi"/>
                                                             <constraint firstAttribute="height" constant="20" id="zla-t8-swm"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnk-It-fOo">
-                                                        <rect key="frame" x="13" y="28" width="70.5" height="20"/>
+                                                        <rect key="frame" x="5" y="28" width="70.5" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="2017.03.05">
                                                                 <attributes>
@@ -178,7 +178,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AiZ-hf-li8">
-                                                        <rect key="frame" x="22" y="56" width="52.5" height="20"/>
+                                                        <rect key="frame" x="14" y="56" width="52.5" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="가입한">
                                                                 <attributes>
@@ -214,7 +214,7 @@
                                     <constraint firstItem="8j0-dc-Fwy" firstAttribute="height" secondItem="ktW-bo-bZR" secondAttribute="height" multiplier="0.3" id="0M9-bR-3CP"/>
                                     <constraint firstItem="ktW-bo-bZR" firstAttribute="centerX" secondItem="KB3-cg-EhA" secondAttribute="centerX" id="3lw-0s-IcL"/>
                                     <constraint firstItem="XB3-Xw-qh2" firstAttribute="leading" secondItem="ktW-bo-bZR" secondAttribute="leading" id="6hb-ZX-CxJ"/>
-                                    <constraint firstItem="ktW-bo-bZR" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="0.3" id="8al-GY-qZA"/>
+                                    <constraint firstItem="ktW-bo-bZR" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="0.28" id="8al-GY-qZA"/>
                                     <constraint firstItem="7at-az-tYS" firstAttribute="width" secondItem="KB3-cg-EhA" secondAttribute="width" multiplier="0.85" id="AT7-4j-oGQ"/>
                                     <constraint firstItem="XB3-Xw-qh2" firstAttribute="width" secondItem="ktW-bo-bZR" secondAttribute="width" id="Beg-DK-MYP"/>
                                     <constraint firstItem="IQA-ar-W6J" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="0.7" id="KpJ-yg-n0E"/>
@@ -224,7 +224,7 @@
                                     <constraint firstItem="IQA-ar-W6J" firstAttribute="centerX" secondItem="KB3-cg-EhA" secondAttribute="centerX" id="ZgX-4u-7LU"/>
                                     <constraint firstItem="7at-az-tYS" firstAttribute="height" secondItem="KB3-cg-EhA" secondAttribute="height" multiplier="0.134" id="aZ2-jP-vOI"/>
                                     <constraint firstItem="XB3-Xw-qh2" firstAttribute="height" secondItem="ktW-bo-bZR" secondAttribute="height" id="bxe-fj-ss9"/>
-                                    <constraint firstItem="FD0-iz-HXp" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="1.25" id="c8z-P0-rDz"/>
+                                    <constraint firstItem="FD0-iz-HXp" firstAttribute="centerY" secondItem="KB3-cg-EhA" secondAttribute="centerY" multiplier="1.2" id="c8z-P0-rDz"/>
                                     <constraint firstItem="8j0-dc-Fwy" firstAttribute="width" secondItem="ktW-bo-bZR" secondAttribute="width" multiplier="0.3" id="dcQ-f8-5mr"/>
                                     <constraint firstItem="7at-az-tYS" firstAttribute="centerX" secondItem="KB3-cg-EhA" secondAttribute="centerX" id="jRn-CD-5yP"/>
                                     <constraint firstItem="FD0-iz-HXp" firstAttribute="trailing" secondItem="7at-az-tYS" secondAttribute="trailing" id="l3I-tj-bq6"/>
@@ -232,31 +232,32 @@
                                     <constraint firstAttribute="bottom" secondItem="7at-az-tYS" secondAttribute="bottom" constant="13" id="zoR-Fk-PMV"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="TDi-rl-J5f" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="315.5" width="375" height="302.5"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-af-QVL" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="249" width="320" height="268"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="MMMM"/>
                                     <userDefinedRuntimeAttribute type="color" keyPath="subtitleDefaultColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="subtitlePlaceholderColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="4M7-9Z-S4r" id="aLN-dh-h5O"/>
+                                    <outlet property="delegate" destination="4M7-9Z-S4r" id="uF7-vw-apD"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="top" secondItem="gxt-Wy-hAh" secondAttribute="bottom" id="8HX-GG-QIs"/>
-                            <constraint firstItem="TDi-rl-J5f" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="G0w-22-YfC"/>
-                            <constraint firstItem="TDi-rl-J5f" firstAttribute="top" secondItem="KB3-cg-EhA" secondAttribute="bottom" constant="2" id="Nhb-f0-ZS6"/>
-                            <constraint firstItem="KB3-cg-EhA" firstAttribute="height" secondItem="Say-SF-2J3" secondAttribute="height" multiplier="0.44" id="ekU-O0-cSq"/>
-                            <constraint firstAttribute="trailing" secondItem="TDi-rl-J5f" secondAttribute="trailing" id="nBc-2q-IYo"/>
-                            <constraint firstItem="iKN-l4-i0Z" firstAttribute="top" secondItem="TDi-rl-J5f" secondAttribute="bottom" id="ocD-S9-WMn"/>
+                            <constraint firstItem="iKN-l4-i0Z" firstAttribute="top" secondItem="P3b-af-QVL" secondAttribute="bottom" constant="2" id="Haj-ZX-VsY"/>
+                            <constraint firstItem="P3b-af-QVL" firstAttribute="top" secondItem="KB3-cg-EhA" secondAttribute="bottom" constant="2" id="MUI-Qn-Gge"/>
+                            <constraint firstItem="P3b-af-QVL" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="Sr7-0y-czc"/>
+                            <constraint firstItem="KB3-cg-EhA" firstAttribute="height" secondItem="Say-SF-2J3" secondAttribute="height" multiplier="0.4" id="ekU-O0-cSq"/>
+                            <constraint firstAttribute="trailing" secondItem="P3b-af-QVL" secondAttribute="trailing" id="hWe-Cg-SgJ"/>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="rG1-8G-zXY"/>
                             <constraint firstAttribute="trailing" secondItem="KB3-cg-EhA" secondAttribute="trailing" id="thk-4w-IBo"/>
                         </constraints>
@@ -280,8 +281,8 @@
     </scenes>
     <resources>
         <image name="Avatar" width="45" height="45"/>
-        <image name="Pencil" width="20" height="20"/>
-        <image name="Streaks" width="19" height="21"/>
+        <image name="Pencil" width="19" height="23"/>
+        <image name="Streaks" width="18" height="25"/>
         <image name="User" width="25" height="25"/>
         <image name="UserSelected" width="25" height="25"/>
         <image name="cameraButton" width="45" height="45"/>

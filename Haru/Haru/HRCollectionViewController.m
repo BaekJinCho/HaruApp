@@ -54,8 +54,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-
-    
     self.trashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.trashBtn setFrame:CGRectMake(0, 0, 20, 20)];
     [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];

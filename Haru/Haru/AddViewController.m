@@ -25,6 +25,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 @property (nonatomic) NSMutableArray *barButtonArray;
 @property (nonatomic) UIBarButtonItem *emoticonBarButton;
 @property NSDate *currentDate;
+@property NSInteger tagNumber;
 
 
 @end
@@ -116,8 +117,8 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 
 - (IBAction)clickedSaveButton:(id)sender {
     
+    [self insertDataIntoDataBaseWithTitle:self.titleTextView.text content:self.contentTextView.text mainImage:self.mainImageView.image emoticonValue:self.tagNumber date:self.currentDate];
     
-    [self insertDataIntoDataBaseWithTitle:self.titleTextView.text content:self.contentTextView.text mainImage:self.mainImageView.image date:self.currentDate];
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -143,18 +144,23 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     switch (emoticonBarButtonItem.tag) {
         case 0:
             [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            self.tagNumber = emoticonBarButtonItem.tag;
             break;
         case 1:
             [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            self.tagNumber = emoticonBarButtonItem.tag;
             break;
         case 2:
             [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            self.tagNumber = emoticonBarButtonItem.tag;
             break;
         case 3:
             [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            self.tagNumber = emoticonBarButtonItem.tag;
             break;
         case 4:
             [self.emoticonImageView setImage:emoticonBarButtonItem.image];
+            self.tagNumber = emoticonBarButtonItem.tag;
             break;
         default:
             break;
@@ -330,6 +336,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 - (void)insertDataIntoDataBaseWithTitle:(NSString *)title
                                 content:(NSString *)content
                               mainImage:(UIImage *)mainImage
+                          emoticonValue:(NSInteger)emoticonValue
                                    date:(NSDate *)date {
     
     NSData *imageData = [[NSData alloc] init];
@@ -342,7 +349,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     info.content = content;
     info.mainImageData = imageData;
     info.date = date;
-//    info.emoticonValue = emoticonValue;
+    info.emoticonValue = emoticonValue;
     [realm addObject:info];
     [realm commitWriteTransaction];
 }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^ResponseBlock)(BOOL Sucess, NSHTTPURLResponse *ResponseData);
-typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
+typedef void (^CompletionBlock)(BOOL Sucess, id ResponseData);
 
 @interface HRUserAFNetworkingModule : NSObject
 
@@ -17,6 +17,7 @@ typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
 
 - (void)logoutRequest:(NSString *)token completion:(ResponseBlock)completion;
 
-- (void)postListRequest:(CompletionBlock)completion;
+- (void)postListRequest:(NSString *)token completion
+                       :(CompletionBlock)completion;
 
 @end
