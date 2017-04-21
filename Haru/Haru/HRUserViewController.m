@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *date_join;
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
 
 @end
 
@@ -37,11 +38,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getPostCountToLabel];
-    
+    [self setEntityStyle];
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
     
     
-    HRRealmData *result = nil;
+//    HRRealmData *result = nil;
+}
+
+-(void)setEntityStyle
+{
+    self.logOutBtn.layer.cornerRadius = self.logOutBtn.frame.size.height/2;     //로그아웃버튼 코너둥글기
+    self.camThumbnail.layer.cornerRadius = self.camThumbnail.frame.size.height/2;       //프로파일사진 위 카메라섬네일 코너둥글기
+    self.camThumbnail.clipsToBounds = YES;      //프로파일 사진 위 카메라섬네일 코너둥글기에 맞춰 테두리 자르기
 }
 
 
@@ -52,11 +60,14 @@
     return subtitle;
 }
 
-
+//프로필 이미지 클릭시 alert 띄워서 imagePicker 띄우는 메소드
 - (IBAction)didClickedUserProfileImage:(UIButton *)sender
-{   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"프로필 사진 선택" message:@"마음에 드는 사진을 선택하세요" preferredStyle:UIAlertControllerStyleActionSheet];
+{   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"카메라" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *alertCancel = [UIAlertAction actionWithTitle:@"취소" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    
+    UIAlertAction *camAction = [UIAlertAction actionWithTitle:@"카메라" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UIImagePickerController *camController = [[UIImagePickerController alloc] init];
         camController.sourceType = UIImagePickerControllerSourceTypeCamera;
         camController.allowsEditing = YES;
@@ -67,8 +78,7 @@
         
         [self presentViewController:camController animated: YES completion: nil];
     }];
-    
-    UIAlertAction *alertAction2 = [UIAlertAction actionWithTitle:@"라이브러리" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *libAction = [UIAlertAction actionWithTitle:@"라이브러리" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UIImagePickerController *libraryController = [[UIImagePickerController alloc] init];
         libraryController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         libraryController.allowsEditing = YES;
@@ -76,9 +86,10 @@
         
         [self presentViewController:libraryController animated:YES completion:nil];
     }];
-    
-    [alertController addAction:alertAction];
-    [alertController addAction:alertAction2];
+
+    [alertController addAction:alertCancel];
+    [alertController addAction:camAction];
+    [alertController addAction:libAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -86,6 +97,8 @@
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     [self.avatar setImage:image];
+    self.avatar.layer.cornerRadius = self.avatar.frame.size.height/2;
+    self.avatar.clipsToBounds = YES;
     
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
