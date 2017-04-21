@@ -102,8 +102,6 @@
     
     [[HRDataCenter sharedInstance]joinRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
         
-        NSInteger reponseStatusCode = ((NSHTTPURLResponse *)response).statusCode; //response를 statusCode로 가져오는 것
-        
         if (isSuccess == YES) {
             
             NSLog(@"로그인 성공 / token:::%@",response);
@@ -114,6 +112,7 @@
 
         } else {
             
+            NSInteger reponseStatusCode = ((NSHTTPURLResponse *)response).statusCode; //response를 statusCode로 가져오는 것
             if (reponseStatusCode == 400) {
                 
                 NSLog(@"회원가입 실패 Error Code : %@", response);
