@@ -16,13 +16,13 @@
 
 @implementation HRCollectionViewCell
 
-- (void) setSelected:(BOOL)selected {
-    [super setSelected:selected];
-    
-    if (selected) {
-        [self.checkBox setImage:[UIImage imageNamed:@"checkBox"] forState:UIControlStateNormal];
-    } else {
-        [self.checkBox setImage:[UIImage imageNamed:@"checkBoxSelected"] forState:UIControlStateNormal];
-    }
-}
+//- (void) setSelected:(BOOL)selected {
+//    [super setSelected:selected];
+//    
+//    if (selected) {
+//        [self.checkBox setImage:[UIImage imageNamed:@"checkBox"] forState:UIControlStateNormal];
+//    } else {
+//        [self.checkBox setImage:[UIImage imageNamed:@"checkBoxSelected"] forState:UIControlStateNormal];
+//    }
+//}
 @end

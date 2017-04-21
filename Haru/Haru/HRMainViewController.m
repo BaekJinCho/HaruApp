@@ -105,6 +105,34 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (UIImage *)retrieveUserState:(NSInteger)userState {
+    
+    UIImage *userStateImage;
+    
+    switch (userState) {
+        case 0:
+            userStateImage = [UIImage imageNamed:@"Happy"];
+            return userStateImage;
+            break;
+        case 1:
+            userStateImage = [UIImage imageNamed:@"Sad"];
+            return userStateImage;
+        case 2:
+            userStateImage = [UIImage imageNamed:@"Angry"];
+            return userStateImage;
+        case 3:
+            userStateImage = [UIImage imageNamed:@"Upset"];
+            return userStateImage;
+        case 4:
+            userStateImage = [UIImage imageNamed:@"Soso"];
+            return userStateImage;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
 
 //mainView의 row의 갯수를 생성하는 Method
 #pragma mark- MainViewController Tableview Delegate Method
@@ -153,7 +181,7 @@
     mainViewCell.dateLabel.text         = [haruData convertWithDate:realmDataInfo.date format:@"dd"];
     mainViewCell.dayOfTheWeekLabel.text = [haruData convertWithDate:realmDataInfo.date format:@"E요일"];
     mainViewCell.photoImageView.image   = [UIImage imageWithData:realmDataInfo.mainImageData];
-
+    mainViewCell.userStateImageView.image = [self retrieveUserState:realmDataInfo.emoticonValue];
     return mainViewCell;
 }
 
