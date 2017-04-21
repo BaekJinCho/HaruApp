@@ -116,11 +116,15 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 
 
 - (IBAction)clickedSaveButton:(id)sender {
-    
-    [self insertDataIntoDataBaseWithTitle:self.titleTextView.text content:self.contentTextView.text mainImage:self.mainImageView.image emoticonValue:self.tagNumber date:self.currentDate];
-    
-    [self.view endEditing:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.titleTextView.text length] == 0 || [self.contentTextView.text length] == 0 || self.mainImageView.image == [UIImage imageNamed:@"defaultImage"]) {
+        [self createAlertControllerWithTitle:@"경고" content:@"제목과 내용, 이미지 모두를 입력해 주세요." actionTitle:@"확인"];
+        
+    } else {
+        [self insertDataIntoDataBaseWithTitle:self.titleTextView.text content:self.contentTextView.text mainImage:self.mainImageView.image emoticonValue:self.tagNumber date:self.currentDate];
+        
+        [self.view endEditing:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 
@@ -356,14 +360,13 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 
 - (void)createAlertControllerWithTitle:(NSString *)title
                                content:(NSString *)content
-                           actionTitle:(NSString *)actionTitle
-                           actionStyle:(UIAlertActionStyle *)actionStyle {
+                           actionTitle:(NSString *)actionTitle {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:*actionStyle handler:^(UIAlertAction * _Nonnull action) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     [alertController addAction:alertAction];
-    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 

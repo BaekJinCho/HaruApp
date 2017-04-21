@@ -110,6 +110,54 @@
 //    NSLog(@"LOGOUT ERROR:%@", error);
 //}];
 
+- (void)getUserProfile
+{
+    
+    NSDictionary *headers = @{ @"content-type": @"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
+                               @"authorization": @"Token 1211486370dd43350fe4fa9eb6da93bdadcba35a",
+                               @"cache-control": @"no-cache",
+                               @"postman-token": @"f249d835-928a-2d2b-8c32-2af4e58a6eaf" };
+    NSArray *parameters = @[  ];
+    NSString *boundary = @"----WebKitFormBoundary7MA4YWxkTrZu0gW";
+    
+    NSError *error;
+    NSMutableString *body = [NSMutableString string];
+    for (NSDictionary *param in parameters) {
+        [body appendFormat:@"--%@\r\n", boundary];
+        if (param[@"fileName"]) {
+            [body appendFormat:@"Content-Disposition:form-data; name=\"%@\"; filename=\"%@\"\r\n", param[@"name"], param[@"fileName"]];
+            [body appendFormat:@"Content-Type: %@\r\n\r\n", param[@"contentType"]];
+            [body appendFormat:@"%@", [NSString stringWithContentsOfFile:param[@"fileName"] encoding:NSUTF8StringEncoding error:&error]];
+            if (error) {
+                NSLog(@"%@", error);
+            }
+        } else {
+            [body appendFormat:@"Content-Disposition:form-data; name=\"%@\"\r\n\r\n", param[@"name"]];
+            [body appendFormat:@"%@", param[@"value"]];
+        }
+    }
+    [body appendFormat:@"\r\n--%@--\r\n", boundary];
+    NSData *postData = [body dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://haru.ycsinabro.com/user/"]
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:10.0];
+    [request setHTTPMethod:@"GET"];
+    [request setAllHTTPHeaderFields:headers];
+    [request setHTTPBody:postData];
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
+                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                    if (error) {
+                                                        NSLog(@"%@", error);
+                                                    } else {
+                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                                                        NSLog(@"%@", httpResponse);
+                                                    }
+                                                }];
+    [dataTask resume];
+}
 
 //postlist요청하는 메소드
 - (void)postListRequest:(NSString *)token completion
