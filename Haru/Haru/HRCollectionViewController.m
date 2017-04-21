@@ -65,13 +65,13 @@
 }
 
 - (void) trashBtnSelected:(UIButton *)sender {
-//    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
+    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
     if (sender.isSelected) {
         [sender setSelected:NO];
-//        cell.checkBox.alpha = 0;
+        cell.checkBox.alpha = 0;
     } else {
         [sender setSelected:YES];
-//        cell.checkBox.alpha = 1;
+        cell.checkBox.alpha = 1;
     }
 }
 
@@ -104,7 +104,7 @@
     
     [self.collectionView setAllowsMultipleSelection:YES];
 
-    if (self.trashBtn.isSelected) {
+    if (self.trashBtn.isSelected == NO) {
         cell.checkBox.alpha = 0;
     } else {
         cell.checkBox.alpha = 1;
@@ -116,7 +116,7 @@
 
 - (IBAction)clickedTrashButton:(UIBarButtonItem *)sender {
     
-    [self trashButtonWhenClicked];
+//    [self trashButtonWhenClicked];
 }
 
 - (void)trashButtonWhenClicked {
@@ -125,33 +125,36 @@
     HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
     
     if (self.trashBtn.isSelected) {
-        
-        [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
-        cell.checkBox.alpha = 0;
-        [self.trashBtn setSelected:NO];
-        
-    } else {
-        
-        [self.trashBtn setImage:[UIImage imageNamed:@"trashButtonSelected"] forState:UIControlStateSelected];
-        cell.checkBox.alpha = 1;
-        [self.trashBtn setSelected:YES];
+//
+//        [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
+//        cell.checkBox.alpha = 0;
+//        [self.trashBtn setSelected:NO];
+//        
+//    } else {
+//        
+//        [self.trashBtn setImage:[UIImage imageNamed:@"trashButtonSelected"] forState:UIControlStateSelected];
+//        cell.checkBox.alpha = 1;
+//        [self.trashBtn setSelected:YES];
     }
 }
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HRMainView" bundle:nil];
-    HRDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:@"HRDetailViewController"];
+    if (self.trashBtn.selected == NO) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HRMainView" bundle:nil];
+        HRDetailViewController *detailViewController = [storyboard instantiateViewControllerWithIdentifier:@"HRDetailViewController"];
+        
+        detailViewController.indexPath = indexPath;
+        detailViewController.realmData = [collectionDataArray objectAtIndex:indexPath.item];
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    } else if (self.trashBtn.selected == YES) {
+        HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
+        cell.checkBox.alpha = 1;
+    }
+
     
-    detailViewController.indexPath = indexPath;
-    detailViewController.realmData = [collectionDataArray objectAtIndex:indexPath.item];
-    [self.navigationController pushViewController:detailViewController animated:YES];
-    
-//    HRDetailViewController *detailViewContent = [[HRDetailViewController alloc] init];
-//    detailViewContent.indexPath               = (NSIndexPath *)sender;
-//    detailViewContent.realmData = [collectionDataArray objectAtIndex:((NSIndexPath *)sender).item];
-//    [self performSegueWithIdentifier:@"segueToDetailView" sender:indexPath];
+
 }
 
 # pragma mark - Button Animation
