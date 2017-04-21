@@ -31,6 +31,9 @@
                                     <outlet property="delegate" destination="Wz0-mQ-7BY" id="ANw-Qx-AvB"/>
                                 </connections>
                             </tableView>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPageView" translatesAutoresizingMaskIntoConstraints="NO" id="TtI-Ru-gdr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                            </imageView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbC-sJ-dkJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -97,11 +100,15 @@
                             <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="9sg-2G-ycN" secondAttribute="bottom" constant="20" id="MMZ-lC-i00"/>
                             <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="5Dy-mD-aeD" secondAttribute="bottom" constant="20" id="SVl-GW-vQL"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="centerY" secondItem="zYp-2H-XtN" secondAttribute="centerY" id="WlJ-Qw-8yk"/>
+                            <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="TtI-Ru-gdr" secondAttribute="bottom" id="bnu-5x-NSf"/>
+                            <constraint firstItem="TtI-Ru-gdr" firstAttribute="leading" secondItem="zYp-2H-XtN" secondAttribute="leading" id="cnV-GN-RHq"/>
                             <constraint firstItem="qbC-sJ-dkJ" firstAttribute="leading" secondItem="zYp-2H-XtN" secondAttribute="leading" id="iRn-6V-FXA"/>
                             <constraint firstAttribute="trailing" secondItem="NrO-bz-lBv" secondAttribute="trailing" constant="20" id="mKN-Th-h7U"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="centerX" secondItem="zYp-2H-XtN" secondAttribute="centerX" id="oxM-IS-qwf"/>
+                            <constraint firstItem="TtI-Ru-gdr" firstAttribute="top" secondItem="21s-KD-fhK" secondAttribute="bottom" id="q19-uZ-sCT"/>
                             <constraint firstItem="KdN-Yt-1tr" firstAttribute="width" secondItem="zYp-2H-XtN" secondAttribute="width" id="uEj-Vv-Qr4"/>
                             <constraint firstItem="NNX-4k-BAG" firstAttribute="top" secondItem="0HP-77-KCL" secondAttribute="bottom" constant="20" id="w3W-ws-Ive"/>
+                            <constraint firstAttribute="trailing" secondItem="TtI-Ru-gdr" secondAttribute="trailing" id="yYl-ga-MHN"/>
                             <constraint firstAttribute="trailing" secondItem="0HP-77-KCL" secondAttribute="trailing" constant="20" id="zwT-yb-lJ9"/>
                         </constraints>
                     </view>
@@ -115,6 +122,7 @@
                         <outlet property="backgroundButton" destination="qbC-sJ-dkJ" id="jcf-0w-Ktj"/>
                         <outlet property="cameraButtonTrailing" destination="zwT-yb-lJ9" id="MFZ-ej-1Ij"/>
                         <outlet property="cameraDirectButton" destination="0HP-77-KCL" id="AFs-H1-qWH"/>
+                        <outlet property="defaultImageView" destination="TtI-Ru-gdr" id="tlo-b8-27o"/>
                         <outlet property="libraryButtonBottom" destination="5Mp-dt-weU" id="rOW-Lo-asb"/>
                         <outlet property="libraryButtonTrailing" destination="mKN-Th-h7U" id="bbF-AK-otT"/>
                         <outlet property="libraryDirectButton" destination="NrO-bz-lBv" id="0rP-95-Njn"/>
@@ -434,7 +442,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.26576459409999997" green="0.28916773200000001" blue="0.34730651969999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.043137254901960784" green="0.52941176470588236" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -452,13 +460,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Arrow" width="19" height="20"/>
+        <image name="Arrow" width="14" height="24"/>
         <image name="Main" width="25" height="25"/>
         <image name="MainSelected" width="25" height="25"/>
-        <image name="Pencil" width="20" height="20"/>
+        <image name="Pencil" width="19" height="23"/>
         <image name="addButton" width="45" height="45"/>
         <image name="addViewButton" width="45" height="45"/>
         <image name="cameraDirectButton" width="45" height="45"/>
+        <image name="defaultPageView" width="375" height="554"/>
         <image name="libraryDirectButton" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>

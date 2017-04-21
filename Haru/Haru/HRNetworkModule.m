@@ -13,36 +13,63 @@
 
 #pragma mark - Account Request
 
-// 로그인 요청
+// 로그인 요청(AFNetwork)
 - (void)loginRequestToServer:(NSString *)userID
                    password:(NSString *)password
                  completion:(BlockOnCompletion)completion {
-    
-    // session 생성
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+/***********************************************기본 Network 로직*********************************************/
+//    // session 생성
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//
+//    // request 생성
+//    NSMutableURLRequest *request = [self mutableURLRequest:LOGIN_URL];
+//    request.HTTPMethod = POST_METHOD;
+//    
+//    // request data 생성 및 인코딩
+//    NSString *requestData = [self makeLoginBody:userID password:password];
+//    request.HTTPBody = [requestData dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    // task 생성하여 session 업로드
+//    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
+//                                                         fromData:nil
+//                                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
+//                                                                     options:NSJSONReadingMutableLeaves
+//                                                                       error:&error];
+//                                                    if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
+//                                                        completion(YES, responseData);
+//                                                    } else if (httpResponse.statusCode == STATUSCODE_LOGIN_FAIL){
+//                                                        completion(NO, responseData);
+//                                                    }
+//                                                }];
+//    [task resume];
+/***********************************************기본 Network 로직*********************************************/
 
-    // request 생성
-    NSMutableURLRequest *request = [self mutableURLRequest:LOGIN_URL];
-    request.HTTPMethod = POST_METHOD;
+    /*NSURLSessionConfiguration 설정*/
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    // request data 생성 및 인코딩
-    NSString *requestData = [self makeLoginBody:userID password:password];
-    request.HTTPBody = [requestData dataUsingEncoding:NSUTF8StringEncoding];
+    /*AFHTTPSessionManager 설정*/
+    self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
     
-    // task 생성하여 session 업로드
-    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
-                                                         fromData:nil
-                                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data
-                                                                     options:NSJSONReadingMutableLeaves
-                                                                       error:&error];
-                                                    if (httpResponse.statusCode == STATUSCODE_LOGIN_SUCCESS) {
-                                                        completion(YES, responseData);
-                                                    } else if (httpResponse.statusCode == STATUSCODE_LOGIN_FAIL){
-                                                        completion(NO, responseData);
-                                                    }
-                                                }];
-    [task resume];
+    
+    /*url 설정*/
+    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGIN_URL];
+    
+    /*parameters 설정*/
+    NSDictionary *parameters = @{@"email":userID, @"password":password};
+    
+    
+    /* */
+    [self.afhttpSessionManager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(YES,responseObject);
+        
+//        completion(YES,((NSHTTPURLResponse *)task.response).statusCode);
+        NSLog(@"LOGIN RESPONSE:%@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"LOGIN ERROR:%@", error);
+    }];
+    
     
 
 /*******************************AFNetwork*******************************/
@@ -65,63 +92,91 @@
     
 }
 
-// 회원가입 요청
+// 회원가입 요청(AFNetwork)
 - (void)joinRequestToServer:(NSString *)userID
                     password:(NSString *)password
                    password2:(NSString *)password2
                   completion:(BlockOnCompletion)completion {
-    
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
-    NSMutableURLRequest *request = [self mutableURLRequest:JOIN_URL];
-    request.HTTPMethod = POST_METHOD;
-    
-    NSString *requestData = [self makeSignupBody:userID password:password password2:password2];
-    request.HTTPBody = [requestData dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
-                                                         fromData:nil
-                                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-                                                    
-                                                    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
-                                                    
-                                                    if (httpResponse.statusCode == STATUSCODE_JOIN_SUCCESS) {
-                                                        completion (YES, responseData);
-                                                    } else if(httpResponse.statusCode == STATUSCODE_SIGNUP_FAIL){
-                                                        completion(NO, responseData);
-                                                    } else if(httpResponse.statusCode == STATUSCODE_SIGNUP_FAIL2){
-                                                        completion(NO, responseData);
-                                                    }
-                                                    
 
-                                                }];
-    [task resume];
+/***********************************************기본 Network 로직*********************************************/
+    
+//    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+//    
+//    NSMutableURLRequest *request = [self mutableURLRequest:JOIN_URL];
+//    request.HTTPMethod = POST_METHOD;
+//    
+//    NSString *requestData = [self makeSignupBody:userID password:password password2:password2];
+//    request.HTTPBody = [requestData dataUsingEncoding:NSUTF8StringEncoding];
+//    
+//    NSURLSessionUploadTask *task = [session uploadTaskWithRequest:request
+//                                                         fromData:nil
+//                                                completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//                                                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+//                                                    
+//                                                    NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+//                                                    
+//                                                    if (httpResponse.statusCode == STATUSCODE_JOIN_SUCCESS) {
+//                                                        completion (YES, responseData);
+//                                                    } else if(httpResponse.statusCode == STATUSCODE_SIGNUP_FAIL){
+//                                                        completion(NO, responseData);
+//                                                    } else if(httpResponse.statusCode == STATUSCODE_SIGNUP_FAIL2){
+//                                                        completion(NO, responseData);
+//                                                    }
+//                                                    
+//
+//                                                }];
+//    [task resume];
+    
+/***********************************************기본 Network 로직*********************************************/
+    
+    /*NSURLSessionConfiguration 설정*/
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    /*AFHTTPSessionManager 설정*/
+    self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+    
+    /*url 설정*/
+    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, JOIN_URL];
+    
+    /*parameters 설정*/
+    NSDictionary *parameters = @{@"email":userID, @"password":password};
+
+    
+    /* */
+    [self.afhttpSessionManager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(YES,responseObject);
+        NSLog(@"LOGIN RESPONSE:%@", responseObject);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"LOGIN ERROR:%@", error);
+    }];
+    
+    
 }
 
 //로그아웃 요청
 - (void)logoutRequestToServer:(BlockOnCompletion)completion {
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    /*NSURLSessionConfiguration 설정*/
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    NSMutableURLRequest *request = [self mutableURLRequest:LOGOUT_URL];
-    request.HTTPMethod = POST_METHOD;
+    /*AFHTTPSessionManager 설정*/
+    self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
     
-    [request setValue:[self tokenValue] forHTTPHeaderField:TOKEN_KEY];
+    self.afhttpSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
     
-    NSURLSessionUploadTask *logoutTask = [session uploadTaskWithRequest:request
-                                                               fromData:nil
-                                                      completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-                                                          NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;NSDictionary *responseData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves
-                                                                       error:&error];
-                                                          
-                                                          if (httpResponse.statusCode == STATUSCODE_LOGOUT_SUCCESS) {
-                                                              completion (YES, responseData);
-                                                          } else {
-                                                              completion (NO, responseData);
-                                                          }
-                                                      }];
-    [logoutTask resume];
+    [self.afhttpSessionManager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+    
+    [self.afhttpSessionManager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        completion(YES,responseObject);
+        NSLog(@"LOGOUT RESPONSE:%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"LOGOUT ERROR:%@", error);
+    }];
+    
+    
 }
 
 #pragma mark- Private Method

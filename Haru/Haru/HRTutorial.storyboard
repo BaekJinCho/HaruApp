@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vFO-WG-KO2">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -157,7 +157,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WFP-dS-RqV">
                                 <rect key="frame" x="32" y="433" width="256" height="45"/>
-                                <color key="backgroundColor" red="0.086274509803921567" green="0.46666666666666667" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.043137254901960784" green="0.52941176470588236" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="rSx-I4-EPc"/>
                                 </constraints>
@@ -171,7 +171,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br5-NH-bpA">
                                 <rect key="frame" x="32" y="488" width="256" height="45"/>
-                                <color key="backgroundColor" red="0.86274509803921573" green="0.72941176470588232" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.21176470588235294" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="suX-wy-XwF"/>
                                 </constraints>
@@ -247,7 +247,7 @@
             </objects>
             <point key="canvasLocation" x="-236" y="-147"/>
         </scene>
-        <!--Log In-->
+        <!--LOG IN-->
         <scene sceneID="nN4-A7-R9h">
             <objects>
                 <viewController storyboardIdentifier="HRLoginViewController" id="sFy-El-iQY" customClass="HRLoginViewController" sceneMemberID="viewController">
@@ -348,7 +348,7 @@
                                                     </view>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-ob-d9a">
                                                         <rect key="frame" x="0.5" y="523" width="320" height="45.5"/>
-                                                        <color key="backgroundColor" red="0.086274509803921567" green="0.46666666666666667" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.043137254901960784" green="0.52941176470588236" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="LogIn">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
@@ -429,7 +429,7 @@
                             <outletCollection property="gestureRecognizers" destination="RH0-8E-MAm" appends="YES" id="Ayy-J5-oRO"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Log In" id="Ngr-Ms-kEp">
+                    <navigationItem key="navigationItem" title="LOG IN" id="Ngr-Ms-kEp">
                         <barButtonItem key="leftBarButtonItem" image="Arrow" id="pHB-mx-vKd">
                             <connections>
                                 <segue destination="MAl-My-re2" kind="unwind" unwindAction="unwindTutorialSegue:" id="jPr-gY-yfU"/>
@@ -455,7 +455,7 @@
             </objects>
             <point key="canvasLocation" x="1352" y="634"/>
         </scene>
-        <!--Sign Up-->
+        <!--SIGN UP-->
         <scene sceneID="Blt-Mm-2h6">
             <objects>
                 <viewController storyboardIdentifier="HRJoinViewController" id="Ai0-Cu-c2l" customClass="HRJoinViewController" sceneMemberID="viewController">
@@ -575,7 +575,7 @@
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmL-FT-APu">
                                                         <rect key="frame" x="0.0" y="522.5" width="320" height="45.5"/>
-                                                        <color key="backgroundColor" red="0.86274509803921573" green="0.72941176470588232" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.21176470588235294" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="SignUp">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -665,7 +665,7 @@
                             <outletCollection property="gestureRecognizers" destination="3WB-AL-oxO" appends="YES" id="gyf-VM-l1m"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="MWY-t5-QWt">
+                    <navigationItem key="navigationItem" title="SIGN UP" id="MWY-t5-QWt">
                         <barButtonItem key="leftBarButtonItem" image="Arrow" id="Dhx-Gw-0Ob">
                             <connections>
                                 <segue destination="fu2-2k-riu" kind="unwind" unwindAction="unwindTutorialSegue:" id="d4W-cN-1aA"/>
@@ -694,15 +694,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Arrow" width="19" height="20"/>
+        <image name="Arrow" width="14" height="24"/>
         <image name="Background1" width="375" height="667"/>
         <image name="Background2" width="375" height="667"/>
         <image name="Background3" width="375" height="667"/>
         <image name="Background4" width="375" height="667"/>
         <image name="Background5" width="373" height="667"/>
-        <image name="LogIn" width="345" height="45"/>
+        <image name="LogIn" width="346" height="45"/>
         <image name="Logo" width="117" height="101"/>
         <image name="Plus" width="79" height="79"/>
-        <image name="SignUp" width="345" height="45"/>
+        <image name="SignUp" width="346" height="45"/>
     </resources>
 </document>
