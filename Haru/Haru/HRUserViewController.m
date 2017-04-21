@@ -42,8 +42,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadRealmProfileImage];
+    
     [self setEntityStyle];
     [self showPostCount];
+    
     
     
 }
@@ -80,6 +82,7 @@
 //    }
 //}
 
+//FSCalendar 날짜 아래 점 표시
 -(BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
 {
     self.postManager = [[HRPostModel alloc] init];
@@ -169,10 +172,16 @@
 }
 - (void)loadRealmProfileImage
 {
-    RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
-    NSData *imgData = (NSData *)[profileImg lastObject];
-    UIImage *userImage = [[UIImage alloc] initWithData:imgData];
-    self.avatar.image = userImage;
+    if (self.realmManager.userImage == nil) {
+        RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
+        NSData *imgData = (NSData *)[profileImg lastObject];
+        UIImage *userImage = [[UIImage alloc] initWithData:imgData];
+        self.avatar.image = userImage;
+    } else {
+        UIImage *defaultUserImg = [UIImage imageNamed:@"Avatar"];
+        [self.avatar setImage:defaultUserImg];
+    }
+    
 }
 
 - (IBAction)didClickedLogoutBtn:(id)sender
@@ -228,13 +237,19 @@
     
     self.postManager = [[HRPostModel alloc] init];
     
+    
     RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
     self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
 }
 
-- (void)setUserIDLabel
+- (void)setUserIDLabel:(CompletionBlock)completion
 {
-    [self.networkManager getUserProfile];
+    [self.networkManager getUserProfile:^(BOOL Sucess, NSDictionary *ResponseData) {
+        if (Sucess) {
+            NSLog(@"%@",[ResponseData objectForKey:@"results"]);
+        }
+        completion(Sucess,ResponseData);
+    }];
 }
                                              
 - (void)didReceiveMemoryWarning {
