@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^ResponseBlock)(BOOL Sucess, NSHTTPURLResponse *ResponseData);
-typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
+typedef void (^CompletionBlock)(BOOL Sucess, id ResponseData);
 
 @interface HRUserAFNetworkingModule : NSObject
 
