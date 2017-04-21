@@ -79,16 +79,16 @@
     
     [self.postUpdateTextView becomeFirstResponder];
     
-    UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+    UIToolbar *keyboardToolbar   = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     
     self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraBarButton", @"libraryBarButton"];
     
-    self.emoticonArrays = [[NSMutableArray alloc] init];
+    self.emoticonArrays          = [[NSMutableArray alloc] init];
     
     for (NSInteger i=0 ; i < self.userStateEmoticonArrays.count ; i++) {
         
-        self.userStateEmoticonButton = [[UIBarButtonItem alloc]
+        self.userStateEmoticonButton   = [[UIBarButtonItem alloc]
                                         initWithImage:[UIImage imageNamed:self.userStateEmoticonArrays[i]]
                                         style:UIBarButtonItemStylePlain
                                         target:self action:@selector(addEmoticon:)];
@@ -107,8 +107,7 @@
         self.userStateEmoticonButton.tag = i;
     }
     [self.emoticonArrays removeLastObject];
-    keyboardToolbar.items = self.emoticonArrays;
-    
+    keyboardToolbar.items                      = self.emoticonArrays;
     self.postUpdateTextView.inputAccessoryView = keyboardToolbar;
 
 }
@@ -145,17 +144,17 @@
     } else if (clickUserStateBarButtonItem.tag == 5) {
         
         UIImagePickerController *cameraController = [[UIImagePickerController alloc] init];
-        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraController.sourceType    = UIImagePickerControllerSourceTypeCamera;
         cameraController.allowsEditing = YES;
-        cameraController.delegate = self;
+        cameraController.delegate      = self;
         [self presentViewController:cameraController animated:YES completion:nil];
         
     } else if (clickUserStateBarButtonItem.tag == 6) {
         
         UIImagePickerController *photoLibraryController = [[UIImagePickerController alloc] init];
-        photoLibraryController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        photoLibraryController.sourceType    = UIImagePickerControllerSourceTypePhotoLibrary;
         photoLibraryController.allowsEditing = YES;
-        photoLibraryController.delegate = self;
+        photoLibraryController.delegate      = self;
         [self presentViewController:photoLibraryController animated:YES completion:nil];
        
     }
@@ -174,6 +173,7 @@
 //ContentView의 Constraints를 키보드의 높이만큼 올리기 위한 Method
 #pragma mark- UpdateViewController NSNotification Method
 - (void)keyboardDidShow:(NSNotification *)sender {
+    
     CGRect frame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGRect newFrame = [self.view convertRect:frame fromView:[[UIApplication sharedApplication] delegate].window];
     
@@ -187,6 +187,7 @@
 //ContentView의 Constraints를 키보드의 높이만큼 내리기 위한 Method
 
 - (void)keyboardWillHide:(NSNotification *)sender {
+    
     CGFloat bottom = self.postViewContentTextVIewBottomConstant.constant;
     if (bottom != 0) {
     self.postViewContentTextVIewBottomConstant.constant = 0;
@@ -302,12 +303,14 @@
 //수정하는 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
 #pragma mark- UpdateViewController UITabeGesture Method
 - (IBAction)modifiedViewTabGesture:(UITapGestureRecognizer *)sender {
+    
     [self.view endEditing:YES];
 }
 
 //notification dealloc
 
 - (void)dealloc {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

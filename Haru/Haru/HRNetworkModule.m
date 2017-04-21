@@ -60,14 +60,17 @@
     
     
     /* */
-    [self.afhttpSessionManager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.afhttpSessionManager POST:url parameters:parameters progress:nil
+                            success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
         completion(YES,responseObject);
         
-//        completion(YES,((NSHTTPURLResponse *)task.response).statusCode);
         NSLog(@"LOGIN RESPONSE:%@", responseObject);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"LOGIN ERROR:%@", error);
+        
+        completion(NO,(NSHTTPURLResponse *)task.response);
     }];
     
     
@@ -149,6 +152,7 @@
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"LOGIN ERROR:%@", error);
+        completion(NO,(NSHTTPURLResponse *)task.response);
     }];
     
     

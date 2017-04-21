@@ -103,6 +103,7 @@
     [self.networkManager loginRequestToServer:userID
                                      password:password
                                    completion:^(BOOL isSuccess, id response) {
+                                       
                                        if (isSuccess == YES) {
                                            NSString *token = [(NSDictionary *)response objectForKey:ACCOUNT_KEY_OF_SERVER];
                                            [self saveToken:token];
