@@ -28,17 +28,17 @@
     // Do any additional setup after loading the view.
     
     //SignupPasswordTextField *로 표시
-    self.joinPasswordTextField.secureTextEntry = YES;
+    self.joinPasswordTextField.secureTextEntry      = YES;
     self.joinPasswordCheckTextField.secureTextEntry = YES;
     
     // 텍스트 필드 placeholder 컬러
     UIColor *color = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:0.7];
-    self.joinIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
-    self.joinPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호(8자 이상)" attributes:@{NSForegroundColorAttributeName:color}];
+    self.joinIDTextField.attributedPlaceholder            = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
+    self.joinPasswordTextField.attributedPlaceholder      = [[NSAttributedString alloc] initWithString:@"비밀번호(8자 이상)" attributes:@{NSForegroundColorAttributeName:color}];
     self.joinPasswordCheckTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호 확인" attributes:@{NSForegroundColorAttributeName:color}];
     
     //UIView 투명 만들어주기!
-    self.joinContentView.opaque = NO;
+    self.joinContentView.opaque          = NO;
     self.joinContentView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
     //notification으로 signupScrollView 올리기!
@@ -101,7 +101,11 @@
     NSString *signUpPasswordCheckText = self.joinPasswordCheckTextField.text;
     
     [[HRDataCenter sharedInstance]joinRequestWithUserID:signUpIDText password:signUpPasswordText password2:signUpPasswordCheckText completion:^(BOOL isSuccess, id response) {
+        
+        NSInteger reponseStatusCode = ((NSHTTPURLResponse *)response).statusCode; //response를 statusCode로 가져오는 것
+        
         if (isSuccess == YES) {
+            
             NSLog(@"로그인 성공 / token:::%@",response);
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self signupSucessAlert];
@@ -110,35 +114,19 @@
 
         } else {
             
-            if ([[response objectForKey:@"password"] objectAtIndex:0]) {
+            if (reponseStatusCode == 400) {
+                
                 NSLog(@"회원가입 실패 Error Code : %@", response);
-                NSString *signupFailMessage = @"비밀번호를 입력하세요.";
+                NSString *signupFailMessage = @"이메일 또는 비밀번호를 입력하세요. \n 또는 이미 등록된 사용자가 있습니다.";
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     [self signupFailAlert:signupFailMessage];
                 });
-                
-            } else if ([[response objectForKey:@"email"] objectAtIndex:0]) {
-                
-                if([[[response objectForKey:@"email"] objectAtIndex:0] isEqualToString:@"This field may not be blank."]) {
-                    NSLog(@"회원가입 실패 Error Code : %@", response);
-                    NSString *signupFailMessage = @"email을 입력하세요.";
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self signupFailAlert:signupFailMessage];
-                    });
-                } else {
-                    NSLog(@"회원가입 실패 Error Code : %@", response);
-                    NSString *signupFailMessage = @"동일한 회원정보가 존재합니다.";
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        [self signupFailAlert:signupFailMessage];
-                    });
-                }
-                
+            
             }
             
             }
-        
-    
+       
     }];
     [self.joinIndicator stopAnimating];
     

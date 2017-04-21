@@ -29,13 +29,13 @@
     self.LoginPasswordTextField.secureTextEntry = YES;
     
     // 텍스트 필드 placeholder 컬러
-    UIColor *color = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:0.7];
-    self.loginIDTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
+    UIColor *color                                    = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:0.7];
+    self.loginIDTextField.attributedPlaceholder       = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
     self.LoginPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
     
     
     //UIView 투명 만들어주기!
-    self.loginContentView.opaque = NO;
+    self.loginContentView.opaque          = NO;
     self.loginContentView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
     //notification으로 loginScrollView 올리기!
@@ -95,9 +95,11 @@
     NSString *loginIDText = self.loginIDTextField.text;
     NSString *loginPasswordText = self.LoginPasswordTextField.text;
     
-
     [[HRDataCenter sharedInstance] loginRequestWithUserID:loginIDText password:loginPasswordText completion:^(BOOL isSuccess, id response) {
         
+        NSInteger reponseStatusCode = ((NSHTTPURLResponse *)response).statusCode; //response를 statusCode로 가져오는 것
+        
+        NSLog(@"%ld", reponseStatusCode);
         if (isSuccess == YES) {
             dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"로그인 성공 / token:::%@",response);
@@ -108,7 +110,7 @@
             
         } else {
             
-            if ([[response objectForKey:@"email"] objectAtIndex:0] || [[response objectForKey:@"password"] objectAtIndex:0]) {
+            if (reponseStatusCode == 400) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     NSLog(@"로그인 실패 / token:::%@",response);
