@@ -53,10 +53,12 @@
         self.detailViewDayLabel.text            = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
         self.detailViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
         self.detailViewBackgroundPhoto.image    = [UIImage imageWithData:self.realmData.mainImageData];
+        self.detailViewUserState.image          = [self.postModel retrieveUserState:self.realmData.emoticonValue];
         
     }
     
 }
+                                                   
 
 //연필 버튼을 클릭했을 떄, 불리는 Method
 - (IBAction)clickUpdateButton:(UIBarButtonItem *)sender {

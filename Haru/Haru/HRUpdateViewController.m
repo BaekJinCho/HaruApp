@@ -22,6 +22,7 @@
 @property (nonatomic) NSArray                           *userStateEmoticonArrays;
 @property (nonatomic) NSMutableArray                    *emoticonArrays;
 @property (nonatomic) UIBarButtonItem                   *userStateEmoticonButton;
+@property (nonatomic) NSInteger tagNum;
 
 @end
 
@@ -70,6 +71,7 @@
         self.updateViewDayLabel.text            = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
         self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
         self.updateViewBackgroundPhoto.image    = [UIImage imageWithData:self.realmData.mainImageData];
+        self.updateViewUserStateImageView.image = [self.postModel retrieveUserState:self.realmData.emoticonValue];
         
     }
 }
@@ -120,26 +122,35 @@
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Happy"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
         
     } else if (clickUserStateBarButtonItem.tag == 1) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Sad"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 2) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Angry"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 3) {
         
-        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Soso"]];
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Upset"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 4) {
         
-        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Upset"]];
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Soso"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 5) {
         
@@ -294,6 +305,7 @@
         self.realmData.title = self.postTitleTextField.text;
         self.realmData.content = self.postUpdateTextView.text;
         self.realmData.mainImageData = UIImagePNGRepresentation(self.updateViewBackgroundPhoto.image);
+        self.realmData.emoticonValue = self.tagNum;
         
         
     }];
