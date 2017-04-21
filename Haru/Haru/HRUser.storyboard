@@ -243,6 +243,9 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="subtitlePlaceholderColor">
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                        <color key="value" red="0.36630434000000001" green="0.96548902989999996" blue="0.71284865129999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="4M7-9Z-S4r" id="aLN-dh-h5O"/>

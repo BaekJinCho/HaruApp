@@ -19,5 +19,6 @@ typedef void (^CompletionBlock)(BOOL Sucess, id ResponseData);
 
 - (void)postListRequest:(NSString *)token completion
                        :(CompletionBlock)completion;
+- (void)getUserProfile;
 
 @end
