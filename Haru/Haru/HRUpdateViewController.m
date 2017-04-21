@@ -22,6 +22,7 @@
 @property (nonatomic) NSArray                           *userStateEmoticonArrays;
 @property (nonatomic) NSMutableArray                    *emoticonArrays;
 @property (nonatomic) UIBarButtonItem                   *userStateEmoticonButton;
+@property (nonatomic) NSInteger tagNum;
 
 @end
 
@@ -70,6 +71,7 @@
         self.updateViewDayLabel.text            = [self.postModel convertWithDate:self.realmData.date format:@"dd"];
         self.updateViewDayOfWeekLabel.text      = [self.postModel convertWithDate:self.realmData.date format:@"E요일"];
         self.updateViewBackgroundPhoto.image    = [UIImage imageWithData:self.realmData.mainImageData];
+        self.updateViewUserStateImageView.image = [self.postModel retrieveUserState:self.realmData.emoticonValue];
         
     }
 }
@@ -79,16 +81,16 @@
     
     [self.postUpdateTextView becomeFirstResponder];
     
-    UIToolbar *keyboardToolbar = [[UIToolbar alloc] init];
+    UIToolbar *keyboardToolbar   = [[UIToolbar alloc] init];
     [keyboardToolbar sizeToFit];
     
     self.userStateEmoticonArrays = @[@"Happy", @"Sad", @"Angry", @"Soso", @"Upset", @"cameraBarButton", @"libraryBarButton"];
     
-    self.emoticonArrays = [[NSMutableArray alloc] init];
+    self.emoticonArrays          = [[NSMutableArray alloc] init];
     
     for (NSInteger i=0 ; i < self.userStateEmoticonArrays.count ; i++) {
         
-        self.userStateEmoticonButton = [[UIBarButtonItem alloc]
+        self.userStateEmoticonButton   = [[UIBarButtonItem alloc]
                                         initWithImage:[UIImage imageNamed:self.userStateEmoticonArrays[i]]
                                         style:UIBarButtonItemStylePlain
                                         target:self action:@selector(addEmoticon:)];
@@ -107,8 +109,7 @@
         self.userStateEmoticonButton.tag = i;
     }
     [self.emoticonArrays removeLastObject];
-    keyboardToolbar.items = self.emoticonArrays;
-    
+    keyboardToolbar.items                      = self.emoticonArrays;
     self.postUpdateTextView.inputAccessoryView = keyboardToolbar;
 
 }
@@ -121,41 +122,50 @@
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Happy"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
         
     } else if (clickUserStateBarButtonItem.tag == 1) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Sad"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 2) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Angry"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 3) {
         
-        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Soso"]];
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Upset"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 4) {
         
-        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Upset"]];
+        [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Soso"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
+        self.tagNum = clickUserStateBarButtonItem.tag;
+
     
     } else if (clickUserStateBarButtonItem.tag == 5) {
         
         UIImagePickerController *cameraController = [[UIImagePickerController alloc] init];
-        cameraController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraController.sourceType    = UIImagePickerControllerSourceTypeCamera;
         cameraController.allowsEditing = YES;
-        cameraController.delegate = self;
+        cameraController.delegate      = self;
         [self presentViewController:cameraController animated:YES completion:nil];
         
     } else if (clickUserStateBarButtonItem.tag == 6) {
         
         UIImagePickerController *photoLibraryController = [[UIImagePickerController alloc] init];
-        photoLibraryController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        photoLibraryController.sourceType    = UIImagePickerControllerSourceTypePhotoLibrary;
         photoLibraryController.allowsEditing = YES;
-        photoLibraryController.delegate = self;
+        photoLibraryController.delegate      = self;
         [self presentViewController:photoLibraryController animated:YES completion:nil];
        
     }
@@ -174,6 +184,7 @@
 //ContentView의 Constraints를 키보드의 높이만큼 올리기 위한 Method
 #pragma mark- UpdateViewController NSNotification Method
 - (void)keyboardDidShow:(NSNotification *)sender {
+    
     CGRect frame = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGRect newFrame = [self.view convertRect:frame fromView:[[UIApplication sharedApplication] delegate].window];
     
@@ -187,6 +198,7 @@
 //ContentView의 Constraints를 키보드의 높이만큼 내리기 위한 Method
 
 - (void)keyboardWillHide:(NSNotification *)sender {
+    
     CGFloat bottom = self.postViewContentTextVIewBottomConstant.constant;
     if (bottom != 0) {
     self.postViewContentTextVIewBottomConstant.constant = 0;
@@ -293,6 +305,7 @@
         self.realmData.title = self.postTitleTextField.text;
         self.realmData.content = self.postUpdateTextView.text;
         self.realmData.mainImageData = UIImagePNGRepresentation(self.updateViewBackgroundPhoto.image);
+        self.realmData.emoticonValue = self.tagNum;
         
         
     }];
@@ -302,12 +315,14 @@
 //수정하는 페이지 뷰의 어느곳을 클릭해도 키보드 내리는 Method
 #pragma mark- UpdateViewController UITabeGesture Method
 - (IBAction)modifiedViewTabGesture:(UITapGestureRecognizer *)sender {
+    
     [self.view endEditing:YES];
 }
 
 //notification dealloc
 
 - (void)dealloc {
+    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

@@ -49,4 +49,5 @@ typedef NS_ENUM(NSUInteger, HRDateFormat) {
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format;
+- (UIImage *)retrieveUserState:(NSInteger)userState;
 @end

@@ -104,6 +104,34 @@
     return [dateFormatter stringFromDate:date];
 }
 
+- (UIImage *)retrieveUserState:(NSInteger)userState {
+    
+    UIImage *userStateImage;
+    
+    switch (userState) {
+        case 0:
+            userStateImage = [UIImage imageNamed:@"Happy"];
+            return userStateImage;
+            break;
+        case 1:
+            userStateImage = [UIImage imageNamed:@"Sad"];
+            return userStateImage;
+        case 2:
+            userStateImage = [UIImage imageNamed:@"Angry"];
+            return userStateImage;
+        case 3:
+            userStateImage = [UIImage imageNamed:@"Upset"];
+            return userStateImage;
+        case 4:
+            userStateImage = [UIImage imageNamed:@"Soso"];
+            return userStateImage;
+            
+        default:
+            return nil;
+            break;
+    }
+}
+
 //NSDate로 오는 형식을 원하는 형식을 쓰기위한 Method
 //- (NSString *)convertStringToDate:(NSDate *)haruDate formattedData:(HRDateFormat)formattedData {
 //    
