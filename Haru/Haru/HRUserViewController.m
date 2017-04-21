@@ -22,8 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
 @property (weak, nonatomic) IBOutlet UILabel *date_join;
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
+@property (weak, nonatomic) IBOutlet UIButton *count_post_Btn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
+
 
 @end
 
@@ -37,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getPostCountToLabel];
+
     [self setEntityStyle];
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
     
@@ -154,12 +156,18 @@
 }
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
--(void)getPostCountToLabel
+
+
+- (IBAction)didClickPostCountBtn:(UIButton *)sender
 {
+    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
     __block NSString *result = [[NSString alloc] init];
-     [self.networkManager postListRequest:^(BOOL Sucess, NSDictionary *ResponseData) {
+    NSString *token = [self.dataManager getUserToken];
+    NSLog(@"token = %@",token);
+    [self.networkManager postListRequest:token completion:^(BOOL Sucess, NSDictionary *ResponseData) {
         result = [ResponseData objectForKey:@"count"];
     }];
+    NSLog(@"result = %@",result);
     self.count_post.text = result;
 }
 

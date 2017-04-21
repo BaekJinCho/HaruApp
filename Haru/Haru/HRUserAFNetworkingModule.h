@@ -17,6 +17,7 @@ typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
 
 - (void)logoutRequest:(NSString *)token completion:(ResponseBlock)completion;
 
-- (void)postListRequest:(CompletionBlock)completion;
+- (void)postListRequest:(NSString *)token completion
+                       :(CompletionBlock)completion;
 
 @end

@@ -94,15 +94,19 @@
 
 
 //postlist요청하는 메소드
-- (void)postListRequest:(CompletionBlock)completion
+- (void)postListRequest:(NSString *)token completion
+                       :(CompletionBlock)completion
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
+//    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
+    NSString *url = [NSString stringWithFormat:@"https://haru.ycsinabro.com/post/"];
     
-    NSInteger pageNumber = 1;
-    NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:@"page",[NSString stringWithFormat:@"%@%@?page=%ld",BASIC_URL,POST_URL,pageNumber], nil];
+    NSString *key = @"Authorization";
+    NSString *value = [NSString stringWithFormat:@"%@ %@",@"Token", token];
+    
+    NSDictionary *parameter = [NSDictionary dictionaryWithObjectsAndKeys:key,value, nil];
     
     [manager GET:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"POSTLIST DATA:%@", responseObject);
