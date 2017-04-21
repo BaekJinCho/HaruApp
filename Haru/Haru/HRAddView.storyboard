@@ -203,7 +203,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qIJ-rX-yVW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EgT-pP-LiE">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="EgT-pP-LiE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.043137254899999998" green="0.52941176469999995" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,7 +223,7 @@
     </scenes>
     <resources>
         <image name="Angry" width="19" height="21"/>
-        <image name="Arrow" width="19" height="20"/>
+        <image name="Arrow" width="14" height="24"/>
         <image name="cameraButton" width="45" height="45"/>
         <image name="libraryButton" width="45" height="45"/>
     </resources>

@@ -11,6 +11,7 @@
 @interface HRCollectionViewController ()
 <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate>
 
+@property (weak, nonatomic) IBOutlet UIImageView *defaultPageImageView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIButton *writeButton;
@@ -41,10 +42,19 @@
     collectionDataArray = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO]
     ;
     [_collectionView reloadData];
+    
+    if (collectionDataArray.count == 0) {
+        self.defaultPageImageView.alpha = 1;
+    } else {
+        self.defaultPageImageView.alpha = 0;
+    }
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
     
     self.trashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.trashBtn setFrame:CGRectMake(0, 0, 20, 20)];

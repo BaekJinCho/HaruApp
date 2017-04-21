@@ -36,6 +36,10 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     // Do any additional setup after loading the view.
     
     self.mainImageView.image = self.image;
+    
+    if (self.mainImageView.image == nil) {
+        self.mainImageView.image = [UIImage imageNamed:@"defaultImage"];
+    }
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -74,7 +78,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     self.weekOfDayLabel.text = weekDay;
 
     [self createToolBar];
-    [self.titleTextView becomeFirstResponder];
+//    [self.titleTextView becomeFirstResponder];
     
 
 }
