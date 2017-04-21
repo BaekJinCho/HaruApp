@@ -110,7 +110,7 @@
 //    NSLog(@"LOGOUT ERROR:%@", error);
 //}];
 
-- (void)getUserProfile:(CompletionBlock)completion
+- (void)getUserProfile:(CompletionBlock)completion 
 {
 //{
 //    
@@ -159,16 +159,20 @@
 //                                                }];
 //    [dataTask resume];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
     self.manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+    
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL2, USER_URL];
     
-    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
-    [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken],TOKEN_KEY, nil];
+    
+    [self.manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completion(YES, responseObject);
-        NSLog(@"LOGOUT RESPONSE:%@", responseObject);
+        NSLog(@"UserID RESPONSE:%@", responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"LOGOUT ERROR:%@", error);
+        NSLog(@"UserID ERROR:%@", error);
     }];
 
 }

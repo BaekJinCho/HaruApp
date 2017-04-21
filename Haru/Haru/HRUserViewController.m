@@ -14,6 +14,7 @@
 
 @interface HRUserViewController ()
 <UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate>
+
 @property HRUserAFNetworkingModule *networkManager;
 @property HRDataCenter *dataManager;
 @property HRPostModel *postManager;
@@ -23,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
 @property (weak, nonatomic) IBOutlet UILabel *date_join;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
@@ -42,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadRealmProfileImage];
-    
+    [self setUserIDLabel];
     [self setEntityStyle];
     [self showPostCount];
     
@@ -242,13 +244,28 @@
     self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
 }
 
-- (void)setUserIDLabel:(CompletionBlock)completion
+
+
+- (void)setUserIDLabel
 {
+    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
     [self.networkManager getUserProfile:^(BOOL Sucess, NSDictionary *ResponseData) {
         if (Sucess) {
-            NSLog(@"%@",[ResponseData objectForKey:@"results"]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSLog(@"result: %@",[ResponseData objectForKey:@"results"]);
+                NSLog(@"result2: %@", [[ResponseData objectForKey:@"results"] objectAtIndex:0]);
+                NSLog(@"result3: %@", [[[ResponseData objectForKey:@"results"] objectForKey:0] objectForKey:@"email"]);
+            self.userLabel.text = [[[ResponseData objectForKey:@"results"] objectAtIndex:0] objectForKey:@"email"];
+            
+             });
+        } else {
+            NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;
+            if (responseStatusCode == 401) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"토큰이 없거나 토큰값이 잘못됨/token: %@",ResponseData);
+                });
+            }
         }
-        completion(Sucess,ResponseData);
     }];
 }
                                              
