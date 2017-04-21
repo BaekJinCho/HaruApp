@@ -163,11 +163,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="글쓰기" id="MZx-IO-W9L">
                         <barButtonItem key="leftBarButtonItem" image="Arrow" id="5UF-9N-fYX">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="clickedBackButton:" destination="z6T-aH-9N2" id="69D-8B-7xf"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="저장" id="7Za-zO-OkZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="clickedSaveButton:" destination="z6T-aH-9N2" id="YHf-mj-GZz"/>
                             </connections>
@@ -204,6 +206,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="EgT-pP-LiE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.043137254899999998" green="0.52941176469999995" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
