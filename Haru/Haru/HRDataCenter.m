@@ -124,6 +124,7 @@
                                     completion:^(BOOL isSuccess, id response) {
                                         
                                         if (isSuccess == YES) {
+                                            NSLog(@"성공 response : %@",response);
                     
                                             NSString *token = [(NSDictionary *)response objectForKey:ACCOUNT_KEY_OF_SERVER];
                                             [self saveToken:token];
@@ -146,8 +147,6 @@
     }];
     
 }
-
-
 
 #pragma mark - Private Method
 //token 저장 Method

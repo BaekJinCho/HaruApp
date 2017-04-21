@@ -13,6 +13,7 @@ typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
 @interface HRNetworkModule : NSObject
 
 @property (nonatomic) NSMutableArray * diaryDataArray;
+@property (nonatomic) AFHTTPSessionManager *afhttpSessionManager;
 
 - (void)loginRequestToServer:(NSString *)userID
                    password:(NSString *)password

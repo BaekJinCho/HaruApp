@@ -15,6 +15,7 @@
 @interface HRUserViewController ()
 <UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate>
 @property HRUserAFNetworkingModule *networkManager;
+@property HRNetworkModule *network;
 @property HRDataCenter *dataManager;
 @property FSCalendar *calendrManager;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
@@ -114,30 +115,39 @@
 
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
-    [self logoutSucessAlert];
+    [self logoutSucess];
     
 }
 
 //로그아웃 후 alert
-- (void)logoutSucessAlert {
+- (void)logoutSucess {
+    
     NSString *tokenValue = [[NSUserDefaults standardUserDefaults] stringForKey:TOKEN_KEY_OF_USERDEFAULTS];
     NSLog(@"%@",tokenValue);
     
-    
-    [self.networkManager logoutRequest:tokenValue completion:^(BOOL Sucess, NSHTTPURLResponse *ResponseData) {
-        if (Sucess) {
-            UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                NSLog(@"Logout Alert");
-//                UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"HRTutorial" bundle:nil];
-//                self.view.window.rootViewController = [mainStoryboard instantiateInitialViewController]
-                [self.tabBarController performSegueWithIdentifier:@"showTutorial" sender:nil];
-            }];
-            [logoutAlert addAction:okBtn];
-            [self presentViewController:logoutAlert animated:YES completion:nil];
-            [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
+    [[HRDataCenter sharedInstance]logoutRequestToServer:^(BOOL isSuccess, id response) {
+        if (isSuccess == YES) {
+            NSLog(@"%@", response);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self sucessLogoutAlert];
+            });
         }
     }];
+    
+}
+
+//로그아웃 성공 Alert
+- (void)sucessLogoutAlert {
+   
+    UIAlertController *logoutAlert = [UIAlertController alertControllerWithTitle:@"로그아웃" message:@"정상적으로 로그아웃 되었습니다" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okBtn = [UIAlertAction actionWithTitle:@"확인" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.tabBarController performSegueWithIdentifier:@"showTutorial" sender:nil];
+    }];
+    [logoutAlert addAction:okBtn];
+    [self presentViewController:logoutAlert animated:YES completion:nil];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
+    
+    
 }
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
