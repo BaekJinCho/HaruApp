@@ -28,6 +28,7 @@
 
 @implementation HRUpdateViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -292,7 +293,12 @@
 
 - (IBAction)clickSaveNavigationBarButton:(UIBarButtonItem *)sender {
     
-    [self performSegueWithIdentifier:@"clickSaveButton" sender:self];
+    if ([self.postTitleTextField.text length] == 0 || [self.postUpdateTextView.text length] == 0 || self.updateViewBackgroundPhoto.image == nil) {
+        [self createAlertControllerWithTitle:@"경고" content:@"제목과 내용, 이미지 모두를 입력해 주세요." actionTitle:@"확인"];
+    }
+        [self.view endEditing:YES];
+//        [self dismissViewControllerAnimated:YES completion:nil];
+        [self performSegueWithIdentifier:@"clickSaveButton" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -307,7 +313,6 @@
         self.realmData.mainImageData = UIImagePNGRepresentation(self.updateViewBackgroundPhoto.image);
         self.realmData.emoticonValue = self.tagNum;
         
-        
     }];
     
 }
@@ -317,6 +322,16 @@
 - (IBAction)modifiedViewTabGesture:(UITapGestureRecognizer *)sender {
     
     [self.view endEditing:YES];
+}
+
+- (void)createAlertControllerWithTitle:(NSString *)title
+                               content:(NSString *)content
+                           actionTitle:(NSString *)actionTitle {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:alertAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 //notification dealloc
