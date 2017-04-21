@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UIImageView *defaultImageView;
 
 //여러 버튼이 나오기 위한 Property
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
@@ -61,6 +62,12 @@
     realmDataInformation = [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:NO];
     //tableview reloadData
     [self.mainTableView reloadData];
+    
+    if (realmDataInformation.count == 0) {
+        self.defaultImageView.alpha = 1;
+    } else {
+        self.defaultImageView.alpha = 0;
+    }
 }
 
 
