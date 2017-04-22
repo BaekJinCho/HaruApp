@@ -38,7 +38,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
     self.result = [HRRealmData allObjects];
-    NSLog(@"%@", [self.result lastObject]);
+    NSLog(@"realmLastObject = %@", [self.result lastObject]);
 }
 
 - (void)viewDidLoad {
@@ -174,8 +174,10 @@
 }
 - (void)loadRealmProfileImage
 {
-    if (self.realmManager.userImage == nil) {
-        RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
+    RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
+    if (profileImg != nil) {
+        NSLog(@"userImage = %@", profileImg);
+        NSLog(@"lastobject = %@",[profileImg lastObject]);
         NSData *imgData = (NSData *)[profileImg lastObject];
         UIImage *userImage = [[UIImage alloc] initWithData:imgData];
         self.avatar.image = userImage;
@@ -252,11 +254,7 @@
     [self.networkManager getUserProfile:^(BOOL Sucess, NSDictionary *ResponseData) {
         if (Sucess) {
             dispatch_async(dispatch_get_main_queue(), ^{
-//                NSLog(@"result: %@",[ResponseData objectForKey:@"results"]);
-//                NSLog(@"result2: %@", [[ResponseData objectForKey:@"results"] objectAtIndex:0]);
-//                NSLog(@"result3: %@", [[[ResponseData objectForKey:@"results"] objectForKey:0] objectForKey:@"email"]);
-//            self.userLabel.text = [[[ResponseData objectForKey:@"results"] objectAtIndex:0] objectForKey:@"email"];
-            
+            self.userLabel.text = [[[ResponseData objectForKey:@"results"] objectAtIndex:0] objectForKey:@"email"];
              });
         } else {
             NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;

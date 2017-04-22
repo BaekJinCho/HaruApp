@@ -165,10 +165,9 @@
     self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL2, USER_URL];
     
-//    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
-    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken],TOKEN_KEY, nil];
-    
-    [self.manager GET:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+    NSLog(@"url = %@",url);    
+    [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completion(YES, responseObject);
         NSLog(@"UserID RESPONSE:%@", responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
