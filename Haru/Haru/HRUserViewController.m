@@ -13,13 +13,13 @@
 
 
 @interface HRUserViewController ()
-<UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate>
+<UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate,UITabBarDelegate>
 
 @property HRUserAFNetworkingModule *networkManager;
 @property HRDataCenter *dataManager;
 @property HRPostModel *postManager;
-@property HRRealmData *realmManager;
 @property RLMResults <HRRealmData *> *result;
+@property HRRealmUser *realmUser;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
 @property (weak, nonatomic) IBOutlet UILabel *count_streaks;
@@ -28,17 +28,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
-@property RLMResults *dataArray;
-
 
 @end
 
 @implementation HRUserViewController
 
+RLMRealm  *realm;
+
 - (void)viewDidAppear:(BOOL)animated {
+
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
-    self.result = [HRRealmData allObjects];
-    NSLog(@"realmLastObject = %@", [self.result lastObject]);
 }
 
 - (void)viewDidLoad {
@@ -47,9 +46,6 @@
     [self setUserIDLabel];
     [self setEntityStyle];
     [self showPostCount];
-    
-    
-    
 }
 
 -(void)setEntityStyle
@@ -157,41 +153,48 @@
         NSLog(@"라이브러리 진입");
     }
     NSData *imageData = UIImagePNGRepresentation(image);
+    if (imageData) {
+        NSLog(@"imageData = %@",imageData);
+    }
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    [realm transactionWithBlock:^{
-        self.realmManager.userImage = imageData;
-    }];
-    
-//    [realm beginWriteTransaction];
-//    
-//    self.userInfo.photoData = imageData;
-//    
-//    [realm commitWriteTransaction];
-    
+    //선택한 imageData를 파라메터로 받아 realmUser.userImage에 저장하는 메소드
+    [self insertUserImageData:imageData];
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+//realmUser타입 user객체를 realm에 추가
+- (void)insertUserImageData:(NSData *)image
+{
+    HRRealmUser *user = [[HRRealmUser alloc] init];
+    user.userImage = image;
+    user.userID = self.userLabel.text;
+    
+    //realm에 user객체추가
+    [realm beginWriteTransaction];
+    [realm addObject:user];
+    [realm commitWriteTransaction];
+}
+
+//HRUser 탭바가 선택될때 userImage를 불러오는 메소드
 - (void)loadRealmProfileImage
 {
-    RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
-    if (profileImg != nil) {
-        NSLog(@"userImage = %@", profileImg);
-        NSLog(@"lastobject = %@",[profileImg lastObject]);
-        NSData *imgData = (NSData *)[profileImg lastObject];
-        UIImage *userImage = [[UIImage alloc] initWithData:imgData];
-        self.avatar.image = userImage;
+    self.avatar.image = [[UIImage alloc] init];
+    NSData *userImgData = self.realmUser.userImage;
+    if (userImgData != nil) {
+        NSLog(@"userImagedata = %@", userImgData);
+        UIImage *userImg = [UIImage imageWithData:userImgData];
+        [self.avatar setImage:userImg];
     } else {
         UIImage *defaultUserImg = [UIImage imageNamed:@"Avatar"];
         [self.avatar setImage:defaultUserImg];
     }
-    
 }
 
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
     [self logoutSucess];
-    
+
 }
 
 //로그아웃 후 alert
@@ -221,14 +224,20 @@
     [logoutAlert addAction:okBtn];
     [self presentViewController:logoutAlert animated:YES completion:nil];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
-    
-    
+}
+
+- (void)removeUserData
+{
+    self.avatar.image = [[UIImage alloc] init];
+    self.userLabel.text = [[NSString alloc] init];
+    self.count_post.text = [[NSString alloc] init];
 }
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
 
 - (void)showPostCount
 {
+    //네트워크 이용
 //    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
 //    __block NSString *result = [[NSString alloc] init];
 //    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
@@ -238,11 +247,12 @@
 //    }];
 //    NSLog(@"result = %@",result);
 //    self.count_post.text = result;
-    
+
+    //realm이용
+    self.userLabel.text = [[NSString alloc] init];
     self.postManager = [[HRPostModel alloc] init];
-    
-    
     RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
+    NSLog(@"dateArray = %@",postday);
     self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
 }
 
