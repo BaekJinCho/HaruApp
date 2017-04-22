@@ -50,9 +50,8 @@
     
     self.refreshControl = [[UIRefreshControl alloc]init];
     [self.mainTableView addSubview:self.refreshControl];
+    self.refreshControl.tintColor = [UIColor colorWithRed:0x44/255.0 green:0x4A/255.0 blue:0x59/255.0 alpha:1];
     [self.refreshControl addTarget:self action:@selector(refreshTableView) forControlEvents:UIControlEventValueChanged];
-    
-    
     
 }
 
