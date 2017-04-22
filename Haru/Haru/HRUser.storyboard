@@ -275,6 +275,7 @@
                         <outlet property="date_join" destination="vnk-It-fOo" id="VEB-eO-Gf1"/>
                         <outlet property="logOutBtn" destination="7at-az-tYS" id="ZYI-Df-NMj"/>
                         <outlet property="userImageBtn" destination="XB3-Xw-qh2" id="2Ad-VT-hSr"/>
+                        <outlet property="userLabel" destination="IQA-ar-W6J" id="hAm-Di-qqg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vM-cz-msY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,9 @@
 #import "AddViewController.h"
 #import "HRRealmData.h"
 
+#define DEFAULT_IMAGE_TAG 0
+#define SET_IMAGE_TAG 1
+
 static NSInteger TITLE_MAXLENGTH = 20;
 static NSUInteger CONTENT_MAXLENGTH = 150;
 
@@ -26,6 +29,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 @property (nonatomic) UIBarButtonItem *emoticonBarButton;
 @property NSDate *currentDate;
 @property NSInteger tagNumber;
+@property (nonatomic) UIImage *defaultImage;
 
 
 @end
@@ -37,9 +41,11 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     // Do any additional setup after loading the view.
     
     self.mainImageView.image = self.image;
+    self.defaultImage = [UIImage imageNamed:@"defaultImage"];
     
     if (self.mainImageView.image == nil) {
         self.mainImageView.image = [UIImage imageNamed:@"defaultImage"];
+        self.mainImageView.tag = DEFAULT_IMAGE_TAG;
     }
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -116,7 +122,8 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
 
 
 - (IBAction)clickedSaveButton:(id)sender {
-    if ([self.titleTextView.text length] == 0 || [self.contentTextView.text length] == 0 || self.mainImageView.image == [UIImage imageNamed:@"defaultImage"]) {
+    
+    if ([self.titleTextView.text length] == 0 || [self.contentTextView.text length] == 0 || self.mainImageView.tag == DEFAULT_IMAGE_TAG) {
         [self createAlertControllerWithTitle:@"경고" content:@"제목과 내용, 이미지 모두를 입력해 주세요." actionTitle:@"확인"];
         
     } else {
@@ -248,6 +255,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     self.mainImageView.image = image;
+    self.mainImageView.tag = SET_IMAGE_TAG;
     
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -363,7 +371,6 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
                            actionTitle:(NSString *)actionTitle {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//        [self dismissViewControllerAnimated:YES completion:nil];
     }];
     [alertController addAction:alertAction];
     [self presentViewController:alertController animated:YES completion:nil];
