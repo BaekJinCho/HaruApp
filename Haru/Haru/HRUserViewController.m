@@ -41,6 +41,8 @@ RLMRealm  *realm;
 
 - (void)viewDidAppear:(BOOL)animated {
     
+    result = [HRRealmData allObjects];
+
     self.userLabel.text = [[NSString alloc] init];
     self.date_join.text = [[NSString alloc] init];
     self.date_firstPost.text = [[NSString alloc] init];
@@ -221,7 +223,7 @@ RLMRealm  *realm;
 {
     NSString *firstDate = [[NSString alloc] init];
     HRRealmData *firstObject = [result firstObject];
-    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
+//    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"MMMM dd"];
@@ -283,10 +285,13 @@ RLMRealm  *realm;
 //    NSLog(@"dateArray = %@",postday);
 //    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
     
-    RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
-    NSLog(@"realmDateCount = %ld",[postday count]);
-    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
-    NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
+//    RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
+//    NSLog(@"realmDateCount = %ld",[postday count]);
+//    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+//    NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
+    
+    self.count_post.text = [NSString stringWithFormat:@"%ld", [result count]];
+    NSLog(@"result count = %ld", [result count]);
 }
 
 
