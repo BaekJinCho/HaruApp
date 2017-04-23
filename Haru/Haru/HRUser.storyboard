@@ -131,7 +131,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92L-iC-d1w">
                                                         <rect key="frame" x="12.5" y="56" width="56" height="20"/>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="처음 쓴 글">
+                                                            <fragment content="처음 쓴 날">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <font key="NSFont" size="14" name=".AppleSDGothicNeoI-Regular"/>
