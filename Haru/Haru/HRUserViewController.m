@@ -10,19 +10,23 @@
 #import "HRUserAFNetworkingModule.h"
 #import "FSCalendar.h"
 #import "HRRealmData.h"
-
+#import "HRJoinViewController.h"
 
 @interface HRUserViewController ()
 <UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate,UITabBarDelegate>
 
+{
+    RLMResults <HRRealmData *> *result;
+    RLMResults <HRRealmUser *> *userResult;
+}
 @property HRUserAFNetworkingModule *networkManager;
 @property HRDataCenter *dataManager;
 @property HRPostModel *postManager;
-@property RLMResults <HRRealmData *> *result;
 @property HRRealmUser *realmUser;
+@property HRRealmData *realmData;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
-@property (weak, nonatomic) IBOutlet UILabel *count_streaks;
+@property (weak, nonatomic) IBOutlet UILabel *date_firstPost;
 @property (weak, nonatomic) IBOutlet UILabel *date_join;
 @property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
@@ -36,16 +40,24 @@
 RLMRealm  *realm;
 
 - (void)viewDidAppear:(BOOL)animated {
-
+    
+    self.userLabel.text = [[NSString alloc] init];
+    self.date_join.text = [[NSString alloc] init];
+    self.date_firstPost.text = [[NSString alloc] init];
+    [self showSignDateLabel];
+    [self setUserIDLabel];
+    [self showPostCount];
+    [self showFirstPostLabel];
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     [self loadRealmProfileImage];
-    [self setUserIDLabel];
     [self setEntityStyle];
-    [self showPostCount];
+    
 }
 
 -(void)setEntityStyle
@@ -94,8 +106,8 @@ RLMRealm  *realm;
     NSDate *startDate = [dateFormatter dateFromString:start];
     NSDate *endDate   = [dateFormatter dateFromString:end];
     
-    RLMResults<HRRealmData *> *array = [self.result objectsWhere:@"date between {%@, %@}", startDate, endDate];
-    
+    RLMResults<HRRealmData *> *array = [result objectsWhere:@"date between {%@, %@}", startDate, endDate];
+    NSLog(@"arraycount = %ld",[array count]);
     if([array count] > 0)
     {
         return YES;
@@ -154,7 +166,7 @@ RLMRealm  *realm;
     }
     NSData *imageData = UIImagePNGRepresentation(image);
     if (imageData) {
-        NSLog(@"imageData = %@",imageData);
+//        NSLog(@"imageData = %@",imageData);
     }
     
     //선택한 imageData를 파라메터로 받아 realmUser.userImage에 저장하는 메소드
@@ -166,12 +178,11 @@ RLMRealm  *realm;
 //realmUser타입 user객체를 realm에 추가
 - (void)insertUserImageData:(NSData *)image
 {
+    //realm에 user객체추가
+    [realm beginWriteTransaction];
     HRRealmUser *user = [[HRRealmUser alloc] init];
     user.userImage = image;
     user.userID = self.userLabel.text;
-    
-    //realm에 user객체추가
-    [realm beginWriteTransaction];
     [realm addObject:user];
     [realm commitWriteTransaction];
 }
@@ -180,9 +191,11 @@ RLMRealm  *realm;
 - (void)loadRealmProfileImage
 {
     self.avatar.image = [[UIImage alloc] init];
-    NSData *userImgData = self.realmUser.userImage;
+    HRRealmUser *user = [[HRRealmUser alloc] init];
+    user = [userResult lastObject];
+    NSData *userImgData = user.userImage;
+    NSLog(@"userImageData = %@", userImgData);
     if (userImgData != nil) {
-        NSLog(@"userImagedata = %@", userImgData);
         UIImage *userImg = [UIImage imageWithData:userImgData];
         [self.avatar setImage:userImg];
     } else {
@@ -191,11 +204,32 @@ RLMRealm  *realm;
     }
 }
 
+- (void)showSignDateLabel
+{
+    NSString *date = [[NSUserDefaults standardUserDefaults] objectForKey:@"signUpDate"];
+    NSLog(@"signdate = %@", date);
+    self.date_join.text = date;
+    NSLog(@"signdateconfirm = %@", self.date_join.text);
+}
+
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
     [self logoutSucess];
-
 }
+
+- (void)showFirstPostLabel
+{
+    NSString *firstDate = [[NSString alloc] init];
+    HRRealmData *firstObject = [result firstObject];
+    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"MMMM dd"];
+    firstDate = [formatter stringFromDate:firstObject.date];
+    
+    self.date_firstPost.text = firstDate;
+}
+
 
 //로그아웃 후 alert
 - (void)logoutSucess {
@@ -226,12 +260,6 @@ RLMRealm  *realm;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
 }
 
-- (void)removeUserData
-{
-    self.avatar.image = [[UIImage alloc] init];
-    self.userLabel.text = [[NSString alloc] init];
-    self.count_post.text = [[NSString alloc] init];
-}
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
 
@@ -249,11 +277,16 @@ RLMRealm  *realm;
 //    self.count_post.text = result;
 
     //realm이용
-    self.userLabel.text = [[NSString alloc] init];
-    self.postManager = [[HRPostModel alloc] init];
-    RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
-    NSLog(@"dateArray = %@",postday);
+//    self.userLabel.text = [[NSString alloc] init];
+//    self.postManager = [[HRPostModel alloc] init];
+//    RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
+//    NSLog(@"dateArray = %@",postday);
+//    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+    
+    RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
+    NSLog(@"realmDateCount = %ld",[postday count]);
     self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+    NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
 }
 
 
@@ -276,7 +309,8 @@ RLMRealm  *realm;
         }
     }];
 }
-                                             
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

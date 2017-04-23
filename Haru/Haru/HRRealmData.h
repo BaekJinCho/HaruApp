@@ -25,6 +25,7 @@ RLM_ARRAY_TYPE(HRRealmData)
 
 @property NSString *userID;
 @property NSData *userImage;
+@property NSString *signUpDate;
 @end
 
 

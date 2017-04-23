@@ -10,4 +10,5 @@
 
 @interface HRJoinViewController : UIViewController
 
+
 @end
