@@ -56,7 +56,6 @@
         self.detailViewUserState.image          = [self.postModel retrieveUserState:self.realmData.emoticonValue];
         
     }
-    
 }
                                                    
 

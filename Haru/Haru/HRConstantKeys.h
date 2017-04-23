@@ -11,10 +11,12 @@
 
 //API 주소
 static NSString * const BASIC_URL = @"http://haru-eb.ap-northeast-2.elasticbeanstalk.com";
+static NSString * const BASIC_URL2 = @"https://haru.ycsinabro.com";
 static NSString * const JOIN_URL = @"/signup/";
 static NSString * const LOGIN_URL = @"/login/";
 static NSString * const LOGOUT_URL = @"/logout/";
 static NSString * const POST_URL = @"/post/";
+static NSString * const USER_URL = @"/user/";
 
 //Method 방식
 static NSString * const POST_METHOD = @"POST";

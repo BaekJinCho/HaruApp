@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^ResponseBlock)(BOOL Sucess, NSHTTPURLResponse *ResponseData);
-typedef void (^CompletionBlock)(BOOL Sucess, id ResponseData);
+typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
+
 
 @interface HRUserAFNetworkingModule : NSObject
 
@@ -19,6 +20,6 @@ typedef void (^CompletionBlock)(BOOL Sucess, id ResponseData);
 
 - (void)postListRequest:(NSString *)token completion
                        :(CompletionBlock)completion;
-- (void)getUserProfile;
+- (void)getUserProfile:(CompletionBlock)completion;
 
 @end

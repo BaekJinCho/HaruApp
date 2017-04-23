@@ -15,10 +15,17 @@
 @property NSData    *mainImageData;
 @property NSDate    *date;
 @property NSInteger emoticonValue;
-@property NSData *userImage;
-
 @end
-
 // This protocol enables typed collections. i.e.:
 // RLMArray<HRRealmData *><HRRealmData>
 RLM_ARRAY_TYPE(HRRealmData)
+
+
+@interface HRRealmUser : RLMObject
+
+@property NSString *userID;
+@property NSData *userImage;
+@property NSString *signUpDate;
+@end
+
+

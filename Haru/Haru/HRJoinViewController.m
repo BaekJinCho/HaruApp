@@ -8,6 +8,7 @@
 
 #import "HRJoinViewController.h"
 #import "HRDataCenter.h"
+#import "HRRealmData.h"
 
 @interface HRJoinViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
@@ -108,6 +109,8 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self signupSucessAlert];
                 [self.joinIndicator stopAnimating];
+                [self saveTodayDate];
+                
             });
 
         } else {
@@ -156,6 +159,23 @@
     }];
     [sucessAlert addAction:ok];
     [self presentViewController:sucessAlert animated:YES completion:nil];
+}
+
+//오늘 날짜를 "April 07" 형식으로 반환하는 메소드
+- (void)saveTodayDate
+{
+    NSDateFormatter *date = [[NSDateFormatter alloc] init];
+    [date setDateFormat:@"MMMM dd"];
+    NSString *today = [date stringFromDate:[NSDate date]];
+//    RLMRealm *realm = [RLMRealm defaultRealm];
+//    HRRealmUser *user = [[HRRealmUser alloc] init];
+//    user.signUpDate = today;
+//    [realm beginWriteTransaction];
+//    [realm addObject:user];
+//    [realm commitWriteTransaction];
+    [[NSUserDefaults standardUserDefaults] setValue:today forKey:@"signUpDate"];
+    NSString * signUpDate = [[NSUserDefaults standardUserDefaults] objectForKey:@"signUpDate"];
+    NSLog(@"today = %@, signUpDate = %@",today, signUpDate);
 }
 
 

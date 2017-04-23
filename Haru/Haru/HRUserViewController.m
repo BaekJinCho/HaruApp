@@ -10,41 +10,53 @@
 #import "HRUserAFNetworkingModule.h"
 #import "FSCalendar.h"
 #import "HRRealmData.h"
-
+#import "HRJoinViewController.h"
 
 @interface HRUserViewController ()
-<UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate>
+<UITextFieldDelegate,UIImagePickerControllerDelegate,FSCalendarDelegate,FSCalendarDataSource, UINavigationControllerDelegate,UITabBarDelegate>
+
+{
+    RLMResults <HRRealmData *> *result;
+    RLMResults <HRRealmUser *> *userResult;
+}
 @property HRUserAFNetworkingModule *networkManager;
 @property HRDataCenter *dataManager;
 @property HRPostModel *postManager;
-@property HRRealmData *realmManager;
-@property RLMResults <HRRealmData *> *result;
+@property HRRealmUser *realmUser;
+@property HRRealmData *realmData;
 @property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
 @property (weak, nonatomic) IBOutlet UILabel *count_post;
-@property (weak, nonatomic) IBOutlet UILabel *count_streaks;
+@property (weak, nonatomic) IBOutlet UILabel *date_firstPost;
 @property (weak, nonatomic) IBOutlet UILabel *date_join;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
-@property RLMResults *dataArray;
-
 
 @end
 
 @implementation HRUserViewController
 
+RLMRealm  *realm;
+
 - (void)viewDidAppear:(BOOL)animated {
+    
+    self.userLabel.text = [[NSString alloc] init];
+    self.date_join.text = [[NSString alloc] init];
+    self.date_firstPost.text = [[NSString alloc] init];
+    [self showSignDateLabel];
+    [self setUserIDLabel];
+    [self showPostCount];
+    [self showFirstPostLabel];
     self.networkManager = [[HRUserAFNetworkingModule alloc] init];
-    self.result = [HRRealmData allObjects];
-    NSLog(@"%@", [self.result lastObject]);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     [self loadRealmProfileImage];
     [self setEntityStyle];
-    [self showPostCount];
-    
     
 }
 
@@ -80,6 +92,7 @@
 //    }
 //}
 
+//FSCalendar 날짜 아래 점 표시
 -(BOOL)calendar:(FSCalendar *)calendar hasEventForDate:(NSDate *)date
 {
     self.postManager = [[HRPostModel alloc] init];
@@ -93,8 +106,8 @@
     NSDate *startDate = [dateFormatter dateFromString:start];
     NSDate *endDate   = [dateFormatter dateFromString:end];
     
-    RLMResults<HRRealmData *> *array = [self.result objectsWhere:@"date between {%@, %@}", startDate, endDate];
-    
+    RLMResults<HRRealmData *> *array = [result objectsWhere:@"date between {%@, %@}", startDate, endDate];
+    NSLog(@"arraycount = %ld",[array count]);
     if([array count] > 0)
     {
         return YES;
@@ -152,34 +165,71 @@
         NSLog(@"라이브러리 진입");
     }
     NSData *imageData = UIImagePNGRepresentation(image);
+    if (imageData) {
+//        NSLog(@"imageData = %@",imageData);
+    }
     
-    RLMRealm *realm = [RLMRealm defaultRealm];
-    
-    [realm transactionWithBlock:^{
-        self.realmManager.userImage = imageData;
-    }];
-    
-//    [realm beginWriteTransaction];
-//    
-//    self.userInfo.photoData = imageData;
-//    
-//    [realm commitWriteTransaction];
-    
+    //선택한 imageData를 파라메터로 받아 realmUser.userImage에 저장하는 메소드
+    [self insertUserImageData:imageData];
+
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
+
+//realmUser타입 user객체를 realm에 추가
+- (void)insertUserImageData:(NSData *)image
+{
+    //realm에 user객체추가
+    [realm beginWriteTransaction];
+    HRRealmUser *user = [[HRRealmUser alloc] init];
+    user.userImage = image;
+    user.userID = self.userLabel.text;
+    [realm addObject:user];
+    [realm commitWriteTransaction];
+}
+
+//HRUser 탭바가 선택될때 userImage를 불러오는 메소드
 - (void)loadRealmProfileImage
 {
-    RLMResults<HRRealmData *> *profileImg = [self.result objectsWhere:@"userImage"];
-    NSData *imgData = (NSData *)[profileImg lastObject];
-    UIImage *userImage = [[UIImage alloc] initWithData:imgData];
-    self.avatar.image = userImage;
+    self.avatar.image = [[UIImage alloc] init];
+    HRRealmUser *user = [[HRRealmUser alloc] init];
+    user = [userResult lastObject];
+    NSData *userImgData = user.userImage;
+    NSLog(@"userImageData = %@", userImgData);
+    if (userImgData != nil) {
+        UIImage *userImg = [UIImage imageWithData:userImgData];
+        [self.avatar setImage:userImg];
+    } else {
+        UIImage *defaultUserImg = [UIImage imageNamed:@"Avatar"];
+        [self.avatar setImage:defaultUserImg];
+    }
+}
+
+- (void)showSignDateLabel
+{
+    NSString *date = [[NSUserDefaults standardUserDefaults] objectForKey:@"signUpDate"];
+    NSLog(@"signdate = %@", date);
+    self.date_join.text = date;
+    NSLog(@"signdateconfirm = %@", self.date_join.text);
 }
 
 - (IBAction)didClickedLogoutBtn:(id)sender
 {
     [self logoutSucess];
-    
 }
+
+- (void)showFirstPostLabel
+{
+    NSString *firstDate = [[NSString alloc] init];
+    HRRealmData *firstObject = [result firstObject];
+    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"MMMM dd"];
+    firstDate = [formatter stringFromDate:firstObject.date];
+    
+    self.date_firstPost.text = firstDate;
+}
+
 
 //로그아웃 후 alert
 - (void)logoutSucess {
@@ -208,14 +258,14 @@
     [logoutAlert addAction:okBtn];
     [self presentViewController:logoutAlert animated:YES completion:nil];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
-    
-    
 }
+
 
 // 쓴글 표시를 위해 postlistRequest메소드 호출하여 count키값만 추출하여 count_post.text에 삽입
 
 - (void)showPostCount
 {
+    //네트워크 이용
 //    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
 //    __block NSString *result = [[NSString alloc] init];
 //    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
@@ -225,18 +275,42 @@
 //    }];
 //    NSLog(@"result = %@",result);
 //    self.count_post.text = result;
+
+    //realm이용
+//    self.userLabel.text = [[NSString alloc] init];
+//    self.postManager = [[HRPostModel alloc] init];
+//    RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
+//    NSLog(@"dateArray = %@",postday);
+//    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
     
-    self.postManager = [[HRPostModel alloc] init];
-    
-    RLMResults<HRRealmData *> *postday = [self.result objectsWhere:@"date"];
+    RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
+    NSLog(@"realmDateCount = %ld",[postday count]);
     self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+    NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
 }
+
+
 
 - (void)setUserIDLabel
 {
-    [self.networkManager getUserProfile];
+    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+    [self.networkManager getUserProfile:^(BOOL Sucess, NSDictionary *ResponseData) {
+        if (Sucess) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            self.userLabel.text = [[[ResponseData objectForKey:@"results"] objectAtIndex:0] objectForKey:@"email"];
+             });
+        } else {
+            NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;
+            if (responseStatusCode == 401) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    NSLog(@"토큰이 없거나 토큰값이 잘못됨/token: %@",ResponseData);
+                });
+            }
+        }
+    }];
 }
-                                             
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

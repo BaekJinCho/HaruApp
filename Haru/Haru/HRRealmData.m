@@ -23,5 +23,13 @@
 //{
 //    return @[];
 //}
+@end
+
+@implementation HRRealmUser
+
++ (NSString *)primaryKey
+{
+    return @"userID";
+}
 
 @end

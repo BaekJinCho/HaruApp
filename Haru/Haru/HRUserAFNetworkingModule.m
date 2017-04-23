@@ -38,31 +38,6 @@
 }
 
 //logout 메소드
-//- (void)logoutRequest:(NSString *)token completion:(CompletionBlock)completion
-//{
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer = [AFJSONResponseSerializer serializer];
-//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    
-//    
-//    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
-//    NSLog(@"%@",url);
-//    NSString *key = @"Authorization";
-//    NSString *value = [NSString stringWithFormat:@"%@ %@",@"Token",token];
-//    
-//    [manager.requestSerializer setHTTPShouldHandleCookies:NO];
-//    
-//    NSDictionary *parameter = [NSDictionary dictionaryWithObject:value forKey:key];
-//    NSLog(@"%@", parameter);
-//    [manager POST:url parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSLog(@"LOGOUT RESPONSE:%@", responseObject);
-//        completion(YES, responseObject);
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"LOGOUT ERROR:%@%@", task, error);
-//        completion(NO, nil);
-//    }];
-//}
-
 - (void)logoutRequest:(NSString *)token completion:(ResponseBlock)completion
 {
     NSString *value = [NSString stringWithFormat:@"%@ %@",@"Token",token];
@@ -89,74 +64,47 @@
                                                     }
                                                 }];
     [dataTask resume];
+    
+    ///*NSURLSessionConfiguration 설정*/
+    //NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    //
+    ///*AFHTTPSessionManager 설정*/
+    //self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+    //
+    //self.afhttpSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+    //NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
+    //
+    //[self.afhttpSessionManager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+    //
+    //[self.afhttpSessionManager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    //
+    //    completion(YES,responseObject);
+    //    NSLog(@"LOGOUT RESPONSE:%@", responseObject);
+    //} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    //    NSLog(@"LOGOUT ERROR:%@", error);
+    //}];
 }
 
-///*NSURLSessionConfiguration 설정*/
-//NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//
-///*AFHTTPSessionManager 설정*/
-//self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
-//
-//self.afhttpSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
-//NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, LOGOUT_URL];
-//
-//[self.afhttpSessionManager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
-//
-//[self.afhttpSessionManager POST:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//    
-//    completion(YES,responseObject);
-//    NSLog(@"LOGOUT RESPONSE:%@", responseObject);
-//} failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//    NSLog(@"LOGOUT ERROR:%@", error);
-//}];
 
-- (void)getUserProfile
+
+//UserID요청하는 메소드
+- (void)getUserProfile:(CompletionBlock)completion 
 {
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    NSDictionary *headers = @{ @"content-type": @"multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-                               @"authorization": @"Token 1211486370dd43350fe4fa9eb6da93bdadcba35a",
-                               @"cache-control": @"no-cache",
-                               @"postman-token": @"f249d835-928a-2d2b-8c32-2af4e58a6eaf" };
-    NSArray *parameters = @[  ];
-    NSString *boundary = @"----WebKitFormBoundary7MA4YWxkTrZu0gW";
+    self.manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
     
-    NSError *error;
-    NSMutableString *body = [NSMutableString string];
-    for (NSDictionary *param in parameters) {
-        [body appendFormat:@"--%@\r\n", boundary];
-        if (param[@"fileName"]) {
-            [body appendFormat:@"Content-Disposition:form-data; name=\"%@\"; filename=\"%@\"\r\n", param[@"name"], param[@"fileName"]];
-            [body appendFormat:@"Content-Type: %@\r\n\r\n", param[@"contentType"]];
-            [body appendFormat:@"%@", [NSString stringWithContentsOfFile:param[@"fileName"] encoding:NSUTF8StringEncoding error:&error]];
-            if (error) {
-                NSLog(@"%@", error);
-            }
-        } else {
-            [body appendFormat:@"Content-Disposition:form-data; name=\"%@\"\r\n\r\n", param[@"name"]];
-            [body appendFormat:@"%@", param[@"value"]];
-        }
-    }
-    [body appendFormat:@"\r\n--%@--\r\n", boundary];
-    NSData *postData = [body dataUsingEncoding:NSUTF8StringEncoding];
+    self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL2, USER_URL];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://haru.ycsinabro.com/user/"]
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:10.0];
-    [request setHTTPMethod:@"GET"];
-    [request setAllHTTPHeaderFields:headers];
-    [request setHTTPBody:postData];
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request
-                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                    if (error) {
-                                                        NSLog(@"%@", error);
-                                                    } else {
-                                                        NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-                                                        NSLog(@"%@", httpResponse);
-                                                    }
-                                                }];
-    [dataTask resume];
+    [self.manager.requestSerializer setValue:[@"Token " stringByAppendingString:[HRDataCenter sharedInstance].userToken] forHTTPHeaderField:TOKEN_KEY];
+    NSLog(@"url = %@",url);    
+    [self.manager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completion(YES, responseObject);
+        NSLog(@"UserID RESPONSE:%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"UserID ERROR:%@", error);
+    }];
 }
 
 //postlist요청하는 메소드
