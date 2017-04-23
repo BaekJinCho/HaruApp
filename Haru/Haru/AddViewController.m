@@ -367,10 +367,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     info.emoticonValue = emoticonValue;
     [realm addObject:info];
     [realm commitWriteTransaction];
-    
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HRCollectionView" bundle:nil];
-    HRCollectionViewController *collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HRCollectionViewController"];
-    [collectionViewController.collectionView reloadData];
+
 }
 
 - (void)createAlertControllerWithTitle:(NSString *)title

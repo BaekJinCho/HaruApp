@@ -57,9 +57,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.collectionView setAllowsMultipleSelection:YES];
-
-    
 //    barButtonItem에 customView를 올려서 그 위에 UIButton을 올림
     self.trashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.trashBtn setFrame:CGRectMake(0, 0, 20, 20)];
@@ -82,7 +79,7 @@
         
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
-        for (NSInteger i = 0 ; i <= self.indexPaths.count ; i++) {
+        for (NSInteger i=0 ; i < self.indexPaths.count ; i++) {
             HRRealmData *info = [collectionDataArray objectAtIndex:self.indexPaths[i].item];
             [realm deleteObject:info];
         }
@@ -152,6 +149,7 @@
         detailViewController.realmData = [collectionDataArray objectAtIndex:indexPath.item];
         [self.navigationController pushViewController:detailViewController animated:YES];
     } else if (self.trashBtn.selected == YES) {
+        [self.collectionView setAllowsMultipleSelection:YES];
         HRCollectionViewCell *cell = (HRCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
         if (cell.checkBox.selected) {
             [cell.checkBox setSelected:NO];
