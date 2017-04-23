@@ -12,7 +12,6 @@
 <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *defaultPageImageView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIButton *writeButton;
 @property (weak, nonatomic) IBOutlet UIButton *libraryDirectButton;
@@ -33,6 +32,10 @@
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 @property UIButton *trashBtn;
+@property NSArray<NSIndexPath *> *indexPaths;
+@property NSMutableArray *indexMutableArray;
+
+@property (nonatomic) BOOL isDeleteMode;
 
 @end
 
@@ -54,6 +57,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self.collectionView setAllowsMultipleSelection:YES];
+
+    
+//    barButtonItem에 customView를 올려서 그 위에 UIButton을 올림
     self.trashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.trashBtn setFrame:CGRectMake(0, 0, 20, 20)];
     [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
@@ -65,13 +72,33 @@
 }
 
 - (void) trashBtnSelected:(UIButton *)sender {
-    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
-    if (sender.isSelected) {
+    if (sender.isSelected == YES) {
+        
         [sender setSelected:NO];
-        cell.checkBox.alpha = 0;
+        self.isDeleteMode = NO;
+        [self.collectionView reloadData];
+        
+        NSLog(@"indexPaths : %@", self.indexPaths);
+        
+        RLMRealm *realm = [RLMRealm defaultRealm];
+        [realm beginWriteTransaction];
+        for (NSInteger i = 0 ; i <= self.indexPaths.count ; i++) {
+            HRRealmData *info = [collectionDataArray objectAtIndex:self.indexPaths[i].item];
+            [realm deleteObject:info];
+        }
+//        HRRealmData *info = [collectionDataArray objectAtIndex:self.indexPaths]
+        [realm commitWriteTransaction];
+        [self.collectionView reloadData];
+//        [self.collectionView deleteItemsAtIndexPaths:self.indexPaths];
+        
     } else {
-        [sender setSelected:YES];
-        cell.checkBox.alpha = 1;
+        if (collectionDataArray.count == 0) {
+            [self createAlertControllerWithTitle:@"주의" content:@"삭제할 데이터가 존재하지 않습니다" actionTitle:@"확인"];
+        } else {
+            [sender setSelected:YES];
+            self.isDeleteMode = YES;
+            [self.collectionView reloadData];
+        }
     }
 }
 
@@ -102,41 +129,17 @@
     cell.titleTextView.text = info.title;
     cell.imageView.image = [UIImage imageWithData:info.mainImageData];
     
-    [self.collectionView setAllowsMultipleSelection:YES];
-
-    if (self.trashBtn.isSelected == NO) {
-        cell.checkBox.alpha = 0;
-    } else {
+    if (self.isDeleteMode == YES) {
         cell.checkBox.alpha = 1;
+    } else {
+        cell.checkBox.alpha = 0;
     }
-                
+    
     return cell;
 }
 
 
-- (IBAction)clickedTrashButton:(UIBarButtonItem *)sender {
-    
-//    [self trashButtonWhenClicked];
-}
 
-- (void)trashButtonWhenClicked {
-    
-    self.trashButton = [[UIBarButtonItem alloc] initWithCustomView:self.trashBtn];
-    HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] init];
-    
-    if (self.trashBtn.isSelected) {
-//
-//        [self.trashBtn setImage:[UIImage imageNamed:@"trashButton"] forState:UIControlStateNormal];
-//        cell.checkBox.alpha = 0;
-//        [self.trashBtn setSelected:NO];
-//        
-//    } else {
-//        
-//        [self.trashBtn setImage:[UIImage imageNamed:@"trashButtonSelected"] forState:UIControlStateSelected];
-//        cell.checkBox.alpha = 1;
-//        [self.trashBtn setSelected:YES];
-    }
-}
 
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,8 +152,14 @@
         detailViewController.realmData = [collectionDataArray objectAtIndex:indexPath.item];
         [self.navigationController pushViewController:detailViewController animated:YES];
     } else if (self.trashBtn.selected == YES) {
-        HRCollectionViewCell *cell = [[HRCollectionViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width)];
-        cell.checkBox.alpha = 1;
+        HRCollectionViewCell *cell = (HRCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+        if (cell.checkBox.selected) {
+            [cell.checkBox setSelected:NO];
+        } else {
+            [cell.checkBox setSelected:YES];
+            self.indexPaths = [collectionView indexPathsForSelectedItems];
+        }
+//        cell.checkBox.selected = cell.checkBox.selected ? NO : YES;
     }
 
     
@@ -313,6 +322,15 @@
     self.libraryButtonTrailing.constant = libraryBtnTrailingConstant;
 }
 
+- (void)createAlertControllerWithTitle:(NSString *)title
+                               content:(NSString *)content
+                           actionTitle:(NSString *)actionTitle {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *alertAction = [UIAlertAction actionWithTitle:actionTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    [alertController addAction:alertAction];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
 
 
 

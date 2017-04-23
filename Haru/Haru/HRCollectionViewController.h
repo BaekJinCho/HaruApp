@@ -18,6 +18,7 @@
     RLMResults *collectionDataArray;
 }
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 
 @end

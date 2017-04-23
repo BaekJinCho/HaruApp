@@ -9,6 +9,7 @@
 #import <UITextView_Placeholder/UITextView+Placeholder.h>
 #import "AddViewController.h"
 #import "HRRealmData.h"
+#import "HRCollectionViewController.h"
 
 #define DEFAULT_IMAGE_TAG 0
 #define SET_IMAGE_TAG 1
@@ -46,6 +47,8 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     if (self.mainImageView.image == nil) {
         self.mainImageView.image = [UIImage imageNamed:@"defaultImage"];
         self.mainImageView.tag = DEFAULT_IMAGE_TAG;
+    } else if (self.mainImageView.image == self.image) {
+        self.mainImageView.tag = SET_IMAGE_TAG;
     }
         
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -187,7 +190,7 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     CGRect keyboardFrame = [keyboardFrameValue CGRectValue];
     CGFloat height = keyboardFrame.size.height;
     
-    self.keyboardHeight.constant = +height + 30;
+    self.keyboardHeight.constant = +height + 40;
     self.buttonViewHeight.constant = +height;
     [self.backgroundView setNeedsUpdateConstraints];
     [self.buttonView setNeedsUpdateConstraints];
@@ -364,6 +367,10 @@ static NSUInteger CONTENT_MAXLENGTH = 150;
     info.emoticonValue = emoticonValue;
     [realm addObject:info];
     [realm commitWriteTransaction];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"HRCollectionView" bundle:nil];
+    HRCollectionViewController *collectionViewController = [storyboard instantiateViewControllerWithIdentifier:@"HRCollectionViewController"];
+    [collectionViewController.collectionView reloadData];
 }
 
 - (void)createAlertControllerWithTitle:(NSString *)title
