@@ -226,7 +226,7 @@ RLMRealm  *realm;
 //    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
     
     NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"MMMM dd"];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
     firstDate = [formatter stringFromDate:firstObject.date];
     
     self.date_firstPost.text = firstDate;

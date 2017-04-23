@@ -165,7 +165,7 @@
 - (void)saveTodayDate
 {
     NSDateFormatter *date = [[NSDateFormatter alloc] init];
-    [date setDateFormat:@"MMMM dd"];
+    [date setDateFormat:@"YYYY-MM-dd"];
     NSString *today = [date stringFromDate:[NSDate date]];
 //    RLMRealm *realm = [RLMRealm defaultRealm];
 //    HRRealmUser *user = [[HRRealmUser alloc] init];
