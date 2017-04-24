@@ -221,42 +221,55 @@
                                     <constraint firstAttribute="bottom" secondItem="7at-az-tYS" secondAttribute="bottom" constant="13" id="zoR-Fk-PMV"/>
                                 </constraints>
                             </view>
-                            <view clipsSubviews="YES" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-af-QVL" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="249" width="320" height="270"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2k4-lz-zBh">
+                                <rect key="frame" x="0.0" y="249" width="320" height="268"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-af-QVL" customClass="FSCalendar">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="MMMM"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="subtitleDefaultColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="subtitlePlaceholderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
+                                                <color key="value" red="0.36630434000000001" green="0.96548902989999996" blue="0.71284865129999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="pagingEnabled" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="4M7-9Z-S4r" id="aLN-dh-h5O"/>
+                                            <outlet property="delegate" destination="4M7-9Z-S4r" id="uF7-vw-apD"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="MMMM"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="subtitleDefaultColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="subtitlePlaceholderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                        <color key="value" red="0.36630434000000001" green="0.96548902989999996" blue="0.71284865129999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <outlet property="dataSource" destination="4M7-9Z-S4r" id="aLN-dh-h5O"/>
-                                    <outlet property="delegate" destination="4M7-9Z-S4r" id="uF7-vw-apD"/>
-                                </connections>
+                                <constraints>
+                                    <constraint firstItem="P3b-af-QVL" firstAttribute="leading" secondItem="2k4-lz-zBh" secondAttribute="leading" id="CtF-HO-4DO"/>
+                                    <constraint firstItem="P3b-af-QVL" firstAttribute="height" secondItem="2k4-lz-zBh" secondAttribute="height" id="W32-e1-pu6"/>
+                                    <constraint firstItem="P3b-af-QVL" firstAttribute="width" secondItem="2k4-lz-zBh" secondAttribute="width" id="Xir-rt-6HB"/>
+                                    <constraint firstItem="P3b-af-QVL" firstAttribute="top" secondItem="2k4-lz-zBh" secondAttribute="top" id="aKv-us-6A4"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="top" secondItem="gxt-Wy-hAh" secondAttribute="bottom" id="8HX-GG-QIs"/>
-                            <constraint firstItem="iKN-l4-i0Z" firstAttribute="top" secondItem="P3b-af-QVL" secondAttribute="bottom" id="Haj-ZX-VsY"/>
-                            <constraint firstItem="P3b-af-QVL" firstAttribute="top" secondItem="KB3-cg-EhA" secondAttribute="bottom" constant="2" id="MUI-Qn-Gge"/>
-                            <constraint firstItem="P3b-af-QVL" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="Sr7-0y-czc"/>
+                            <constraint firstAttribute="trailing" secondItem="2k4-lz-zBh" secondAttribute="trailing" id="9Jy-0F-wmY"/>
+                            <constraint firstItem="2k4-lz-zBh" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="LKl-h7-nlA"/>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="height" secondItem="Say-SF-2J3" secondAttribute="height" multiplier="0.4" id="ekU-O0-cSq"/>
-                            <constraint firstAttribute="trailing" secondItem="P3b-af-QVL" secondAttribute="trailing" id="hWe-Cg-SgJ"/>
+                            <constraint firstItem="2k4-lz-zBh" firstAttribute="top" secondItem="KB3-cg-EhA" secondAttribute="bottom" constant="2" id="pEl-gH-hPH"/>
                             <constraint firstItem="KB3-cg-EhA" firstAttribute="leading" secondItem="Say-SF-2J3" secondAttribute="leading" id="rG1-8G-zXY"/>
+                            <constraint firstItem="iKN-l4-i0Z" firstAttribute="top" secondItem="2k4-lz-zBh" secondAttribute="bottom" constant="2" id="sWP-bN-trc"/>
                             <constraint firstAttribute="trailing" secondItem="KB3-cg-EhA" secondAttribute="trailing" id="thk-4w-IBo"/>
                         </constraints>
                     </view>
