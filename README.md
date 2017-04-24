@@ -4,6 +4,8 @@
 
 #### - 2017. 03. 27 ~ 2017. 04. 21
 
+📸 [Haru 영상 보기]()
+
 <br><br><br>
 
 ![기획의도](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/하루%20Header.png?raw=true)
@@ -25,16 +27,23 @@
 
 <br>
 
-## - Haru App Technicque
+## - 사용 기술
 
 - Realm Database를 이용하여 Data 저장 및 파일 업로드
 
-
 - AFNetwork를 이용하여 네트워크 통신
 
-
-
 - SDWebimage를 이용하여 이미지 Set
+
+<br>
+
+## - 사용 Tool & 호환성
+
+- iOS 9.0 이상
+
+- Xcode / Git / Github / Zeplin
+
+
 
 <br>
 
