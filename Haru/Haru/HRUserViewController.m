@@ -188,7 +188,7 @@ RLMRealm  *realm;
 #pragma mark - Show Three Label Method
 - (void)showPostCountLabel
 {
-    //네트워크 이용
+//네트워크 이용
     self.networkManager = [[HRUserAFNetworkingModule alloc]init];
     __block NSString *countNum;
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
@@ -214,18 +214,17 @@ RLMRealm  *realm;
             }
         }
     }];
-    
-    //realm이용
-    //    RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
-    //    NSLog(@"realmDateCount = %ld",[postday count]);
-    //    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
-    //    NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
-    
+//realm이용
+//   
+//        RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
+//        NSLog(@"realmDateCount = %ld",[postday count]);
+//        self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+//        NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
 }
 
 - (void)showFirstPostLabel
 {
-    //네트워크 버전
+//네트워크 이용
     self.networkManager = [[HRUserAFNetworkingModule alloc]init];
     __block NSString *firstDate;
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
@@ -239,6 +238,8 @@ RLMRealm  *realm;
                     if (firstDate != nil) {
                         self.date_firstPost.text = firstDate;
                         NSLog(@"firstDateConfirm = %@",firstDate);
+                    } else {
+                        self.date_firstPost.text = @"0";
                     }
                 });
             });
@@ -252,7 +253,7 @@ RLMRealm  *realm;
         }
     }];
     
-    //Realm버전
+//Realm 이용
 //    NSString *firstDate = [[NSString alloc] init];
 //    HRRealmData *firstObject = [result firstObject];
 //    //    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
@@ -306,6 +307,7 @@ RLMRealm  *realm;
     }];
     [logoutAlert addAction:okBtn];
     [self presentViewController:logoutAlert animated:YES completion:nil];
+    self.dataManager.userToken = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
 }
 
