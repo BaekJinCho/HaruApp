@@ -20,6 +20,8 @@
 
 - (BOOL)isAutoLogin;
 
+- (void)removeToken;
+
 //회원가입 & 로그인 메소드
 - (void)joinRequestWithUserID:(NSString *)userID
                        password:(NSString *)password

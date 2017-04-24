@@ -159,7 +159,7 @@
 
 //token 제거 Method
 - (void)removeToken {
-    
+    self.userToken = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
 }
 

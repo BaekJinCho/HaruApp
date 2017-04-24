@@ -307,8 +307,7 @@ RLMRealm  *realm;
     }];
     [logoutAlert addAction:okBtn];
     [self presentViewController:logoutAlert animated:YES completion:nil];
-    self.dataManager.userToken = nil;
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
+    [self.dataManager removeToken];
 }
 
 
