@@ -4,7 +4,7 @@
 
 #### - 2017. 03. 27 ~ 2017. 04. 21
 
-📸 [Haru 영상 보기]()
+📸 [Haru 영상 보기](https://www.youtube.com/watch?v=MB6ivcurqOM)
 
 <br><br><br>
 

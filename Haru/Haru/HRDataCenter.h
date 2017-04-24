@@ -13,6 +13,7 @@
 @interface HRDataCenter : NSObject
 
 @property NSString *userToken;
+@property NSString *userID;
 
 + (instancetype)sharedInstance;
 
