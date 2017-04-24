@@ -189,80 +189,80 @@ RLMRealm  *realm;
 - (void)showPostCountLabel
 {
 //네트워크 이용
-    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
-    __block NSString *countNum;
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
-    NSLog(@"token = %@",token);
-    [self.networkManager postListRequest:token completion:^(BOOL Sucess, NSDictionary *ResponseData) {
-        if (Sucess) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-                countNum = [NSString stringWithFormat:@"%@", [ResponseData objectForKey:@"count"]];
-                NSLog(@"countNum = %@",countNum);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (countNum != nil) {
-                        self.count_post.text = countNum;
-                        NSLog(@"countNumConfirm = %@",countNum);
-                    }
-                });
-            });
-        } else {
-            NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;
-            if (responseStatusCode == 401) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"토큰이 없거나 토큰값이 잘못됨/token: %@",ResponseData);
-                });
-            }
-        }
-    }];
+//    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+//    __block NSString *countNum;
+//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
+//    NSLog(@"token = %@",token);
+//    [self.networkManager postListRequest:token completion:^(BOOL Sucess, NSDictionary *ResponseData) {
+//        if (Sucess) {
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+//                countNum = [NSString stringWithFormat:@"%@", [ResponseData objectForKey:@"count"]];
+//                NSLog(@"countNum = %@",countNum);
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    if (countNum != nil) {
+//                        self.count_post.text = countNum;
+//                        NSLog(@"countNumConfirm = %@",countNum);
+//                    }
+//                });
+//            });
+//        } else {
+//            NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;
+//            if (responseStatusCode == 401) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    NSLog(@"토큰이 없거나 토큰값이 잘못됨/token: %@",ResponseData);
+//                });
+//            }
+//        }
+//    }];
 //realm이용
 //   
-//        RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
-//        NSLog(@"realmDateCount = %ld",[postday count]);
-//        self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
-//        NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
+        RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
+        NSLog(@"realmDateCount = %ld",[postday count]);
+        self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+        NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
 }
 
 - (void)showFirstPostLabel
 {
 //네트워크 이용
-    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
-    __block NSString *firstDate;
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
-    NSLog(@"token = %@",token);
-    [self.networkManager postListRequest:token completion:^(BOOL Sucess, NSDictionary *ResponseData) {
-        if (Sucess) {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
-                firstDate = (NSString *)[[[ResponseData objectForKey:@"results"] firstObject] objectForKey:@"day"];
-                NSLog(@"firstDate = %@",firstDate);
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (firstDate != nil) {
-                        self.date_firstPost.text = firstDate;
-                        NSLog(@"firstDateConfirm = %@",firstDate);
-                    } else {
-                        self.date_firstPost.text = @"0";
-                    }
-                });
-            });
-        } else {
-            NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;
-            if (responseStatusCode == 401) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    NSLog(@"토큰이 없거나 토큰값이 잘못됨/token: %@",ResponseData);
-                });
-            }
-        }
-    }];
+//    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+//    __block NSString *firstDate;
+//    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
+//    NSLog(@"token = %@",token);
+//    [self.networkManager postListRequest:token completion:^(BOOL Sucess, NSDictionary *ResponseData) {
+//        if (Sucess) {
+//            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT,0), ^{
+//                firstDate = (NSString *)[[[ResponseData objectForKey:@"results"] firstObject] objectForKey:@"day"];
+//                NSLog(@"firstDate = %@",firstDate);
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    if (firstDate != nil) {
+//                        self.date_firstPost.text = firstDate;
+//                        NSLog(@"firstDateConfirm = %@",firstDate);
+//                    } else {
+//                        self.date_firstPost.text = @"0";
+//                    }
+//                });
+//            });
+//        } else {
+//            NSInteger responseStatusCode = ((NSHTTPURLResponse *)ResponseData).statusCode;
+//            if (responseStatusCode == 401) {
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    NSLog(@"토큰이 없거나 토큰값이 잘못됨/token: %@",ResponseData);
+//                });
+//            }
+//        }
+//    }];
     
 //Realm 이용
-//    NSString *firstDate = [[NSString alloc] init];
-//    HRRealmData *firstObject = [result firstObject];
-//    //    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
-//    
-//    NSDateFormatter *formatter = [NSDateFormatter new];
-//    [formatter setDateFormat:@"YYYY-MM-dd"];
-//    firstDate = [formatter stringFromDate:firstObject.date];
-//    
-//    self.date_firstPost.text = firstDate;
+    NSString *firstDate = [[NSString alloc] init];
+    HRRealmData *firstObject = [result firstObject];
+    //    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    firstDate = [formatter stringFromDate:firstObject.date];
+    
+    self.date_firstPost.text = firstDate;
 }
 
 - (void)showSignDateLabel
