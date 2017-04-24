@@ -33,7 +33,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *trashButton;
 @property UIButton *trashBtn;
 @property NSArray<NSIndexPath *> *indexPaths;
-@property NSMutableArray *indexMutableArray;
+@property NSArray *sortedIndexPaths;
 
 @property (nonatomic) BOOL isDeleteMode;
 
@@ -52,7 +52,27 @@
         self.defaultPageImageView.alpha = 0;
     }
     
+//   self.sortedIndexPaths = [self.indexPaths sortedArrayUsingSelector:@selector(compare:)];
+    
 }
+
+//- (void) compare {
+//    [self.indexPaths sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+//        
+//        NSInteger i1;
+//        NSInteger i2;
+//        obj1 = [self.indexPaths objectAtIndex:i1];
+//        obj2 = [self.indexPaths objectAtIndex:i2];
+//        
+//        if (obj1 > obj2) {
+//            return (NSComparisonResult)NSOrderedDescending;
+//        }
+//        if (obj1 < obj2) {
+//            return (NSComparisonResult)NSOrderedAscending;
+//        }
+//        return (NSComparisonResult)NSOrderedSame;
+//    }];
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,14 +99,20 @@
         
         RLMRealm *realm = [RLMRealm defaultRealm];
         [realm beginWriteTransaction];
-        for (NSInteger i=0 ; i < self.indexPaths.count ; i++) {
+        
+        for (NSInteger i = self.indexPaths.count-1 ; i >= 0  ; i--) {
             HRRealmData *info = [collectionDataArray objectAtIndex:self.indexPaths[i].item];
             [realm deleteObject:info];
         }
-//        HRRealmData *info = [collectionDataArray objectAtIndex:self.indexPaths]
         [realm commitWriteTransaction];
+        
+//        [realm transactionWithBlock:^{
+//            for (NSInteger i=self.indexPaths.count ; i == 0 ; i--) {
+//                HRRealmData *info = [collectionDataArray objectAtIndex:self.indexPaths[i].item];
+//                [realm deleteObject:info];
+//            }}];
+        
         [self.collectionView reloadData];
-//        [self.collectionView deleteItemsAtIndexPaths:self.indexPaths];
         
     } else {
         if (collectionDataArray.count == 0) {
@@ -137,8 +163,6 @@
 
 
 
-
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
     if (self.trashBtn.selected == NO) {
@@ -155,13 +179,24 @@
             [cell.checkBox setSelected:NO];
         } else {
             [cell.checkBox setSelected:YES];
-            self.indexPaths = [collectionView indexPathsForSelectedItems];
+//            self.indexPaths = [collectionView indexPathsForSelectedItems];
         }
+        self.indexPaths = [[collectionView indexPathsForSelectedItems] sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+            if ([obj1 row] > [obj2 row]) {
+                return NSOrderedDescending;
+            } else if ([obj1 row] < [obj2 row]) {
+                return NSOrderedAscending;
+            } else {
+                return NSOrderedSame;
+            }
+        }];
 //        cell.checkBox.selected = cell.checkBox.selected ? NO : YES;
     }
+}
 
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-
+    self.indexPaths = [collectionView indexPathsForSelectedItems];
 }
 
 # pragma mark - Button Animation
