@@ -22,7 +22,7 @@
 
 ## - 기능 및 특징 
 ![로그인 기능](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/로그인.png?raw=true)
-![달력 기능](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/달력.png?raw=true)
+![달력 기능](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/사용자와%20달력.png?raw=true)
 ![특징](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/특징.png?raw=true)
 
 <br>
