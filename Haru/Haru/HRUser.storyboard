@@ -78,12 +78,12 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Od-b9-w2H">
-                                                        <rect key="frame" x="36.5" y="28" width="8" height="20"/>
+                                                        <rect key="frame" x="36" y="28" width="9" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="0">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <font key="NSFont" size="14" name="OpenSans"/>
+                                                                    <font key="NSFont" metaFont="system" size="14"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -116,12 +116,12 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohH-TR-fRc">
-                                                        <rect key="frame" x="36.5" y="28" width="8" height="20"/>
+                                                        <rect key="frame" x="36" y="28" width="9" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="0">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <font key="NSFont" size="14" name="OpenSans"/>
+                                                                    <font key="NSFont" metaFont="system" size="14"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -154,12 +154,12 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnk-It-fOo">
-                                                        <rect key="frame" x="36" y="28" width="8" height="20"/>
+                                                        <rect key="frame" x="35.5" y="28" width="9" height="20"/>
                                                         <attributedString key="attributedText">
                                                             <fragment content="0">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.41568627450980389" green="0.43529411764705883" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                    <font key="NSFont" size="14" name="OpenSans"/>
+                                                                    <font key="NSFont" metaFont="system" size="14"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -231,7 +231,7 @@
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="MMMM"/>
                                             <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
-                                                <color key="value" red="0.36630434000000001" green="0.96548902989999996" blue="0.71284865129999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="value" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="NO"/>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
