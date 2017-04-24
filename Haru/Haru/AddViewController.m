@@ -14,8 +14,8 @@
 #define DEFAULT_IMAGE_TAG 0
 #define SET_IMAGE_TAG 1
 
-static NSInteger TITLE_MAXLENGTH = 20;
-static NSUInteger CONTENT_MAXLENGTH = 150;
+static NSInteger TITLE_MAXLENGTH = 13;
+static NSUInteger CONTENT_MAXLENGTH = 110;
 
 @interface AddViewController ()
 <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>

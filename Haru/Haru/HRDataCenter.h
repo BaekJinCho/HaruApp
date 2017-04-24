@@ -13,12 +13,15 @@
 @interface HRDataCenter : NSObject
 
 @property NSString *userToken;
+@property NSString *userID;
 
 + (instancetype)sharedInstance;
 
 - (NSString *)getUserToken;
 
 - (BOOL)isAutoLogin;
+
+- (void)removeToken;
 
 //회원가입 & 로그인 메소드
 - (void)joinRequestWithUserID:(NSString *)userID

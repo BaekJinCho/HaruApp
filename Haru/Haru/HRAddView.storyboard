@@ -64,8 +64,8 @@
                                                             <outlet property="delegate" destination="z6T-aH-9N2" id="Rci-6G-e01"/>
                                                         </connections>
                                                     </textView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Angry" translatesAutoresizingMaskIntoConstraints="NO" id="nrh-Bb-jbP">
-                                                        <rect key="frame" x="290.5" y="26" width="34.5" height="21"/>
+                                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Happy" translatesAutoresizingMaskIntoConstraints="NO" id="nrh-Bb-jbP">
+                                                        <rect key="frame" x="290.5" y="27.5" width="34.5" height="18"/>
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
@@ -222,8 +222,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Angry" width="19" height="21"/>
         <image name="Arrow" width="14" height="24"/>
+        <image name="Happy" width="20" height="18"/>
         <image name="cameraButton" width="45" height="45"/>
         <image name="libraryButton" width="45" height="45"/>
     </resources>

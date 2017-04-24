@@ -267,7 +267,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZfP-T0-wtu" userLabel="Logo Image View">
-                                        <rect key="frame" x="109.5" y="64" width="100" height="100"/>
+                                        <rect key="frame" x="109.5" y="92" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="BFU-ug-jWw"/>
                                             <constraint firstAttribute="height" constant="100" id="wGN-te-iwx"/>
@@ -407,7 +407,7 @@
                                     <constraint firstItem="aR3-hg-kOi" firstAttribute="centerY" secondItem="tp8-0I-qyX" secondAttribute="centerY" id="aO5-vs-Hoq"/>
                                     <constraint firstAttribute="bottom" secondItem="0ag-ob-d9a" secondAttribute="bottom" id="eIh-Rh-zy1"/>
                                     <constraint firstItem="UPd-GB-RnX" firstAttribute="width" secondItem="tp8-0I-qyX" secondAttribute="width" id="ffH-EG-Yro"/>
-                                    <constraint firstItem="ZfP-T0-wtu" firstAttribute="centerY" secondItem="tp8-0I-qyX" secondAttribute="centerY" multiplier="0.4" id="ufy-ss-lHN"/>
+                                    <constraint firstItem="ZfP-T0-wtu" firstAttribute="centerY" secondItem="tp8-0I-qyX" secondAttribute="centerY" multiplier="0.5" id="ufy-ss-lHN"/>
                                     <constraint firstItem="UPd-GB-RnX" firstAttribute="centerY" secondItem="tp8-0I-qyX" secondAttribute="centerY" id="x3B-PU-Yap"/>
                                 </constraints>
                             </view>
@@ -475,7 +475,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-UA-GhB" userLabel="Logo Image View">
-                                        <rect key="frame" x="109.5" y="35" width="100" height="100"/>
+                                        <rect key="frame" x="109.5" y="63.5" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Wj8-eJ-7q2"/>
                                             <constraint firstAttribute="width" constant="100" id="ZJh-1O-YMd"/>
@@ -495,7 +495,7 @@
                                                         </constraints>
                                                     </imageView>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qxf-4v-1RH">
-                                                        <rect key="frame" x="108.5" y="281" width="200" height="30"/>
+                                                        <rect key="frame" x="108" y="281" width="200" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="1L2-t2-xnB"/>
                                                             <constraint firstAttribute="width" constant="200" id="udZ-XR-v2Z"/>
@@ -508,14 +508,14 @@
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPv-a2-U6T" userLabel="SignupIDView">
-                                                        <rect key="frame" x="108.5" y="312" width="200" height="1"/>
+                                                        <rect key="frame" x="108" y="312" width="200" height="1"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="eLP-C5-lb7"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAO-YR-TVM">
-                                                        <rect key="frame" x="108.5" y="331" width="200" height="30"/>
+                                                        <rect key="frame" x="108" y="331" width="200" height="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -524,14 +524,14 @@
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVT-G8-OhW" userLabel="SignupPasswordView">
-                                                        <rect key="frame" x="108.5" y="362" width="200" height="1"/>
+                                                        <rect key="frame" x="108" y="362" width="200" height="1"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="P5b-VS-pPV"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MGq-vG-btE">
-                                                        <rect key="frame" x="108.5" y="381" width="200" height="30"/>
+                                                        <rect key="frame" x="108" y="381" width="200" height="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -540,7 +540,7 @@
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6b2-SQ-Nq5" userLabel="SignupPasswordCheckView">
-                                                        <rect key="frame" x="108.5" y="412" width="200" height="1"/>
+                                                        <rect key="frame" x="108" y="412" width="200" height="1"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="VhA-iz-zt2"/>
@@ -642,7 +642,7 @@
                                     <constraint firstItem="DmL-FT-APu" firstAttribute="height" secondItem="Hv2-iS-jGV" secondAttribute="height" multiplier="8/100" id="Zwe-Bo-JQv"/>
                                     <constraint firstItem="DmL-FT-APu" firstAttribute="width" secondItem="Hv2-iS-jGV" secondAttribute="width" id="dnX-k0-IkU"/>
                                     <constraint firstItem="8pg-NP-Sld" firstAttribute="centerY" secondItem="Hv2-iS-jGV" secondAttribute="centerY" id="he3-q1-vAJ"/>
-                                    <constraint firstItem="fMI-UA-GhB" firstAttribute="centerY" secondItem="Hv2-iS-jGV" secondAttribute="centerY" multiplier="0.3" id="ocl-Hz-UWL"/>
+                                    <constraint firstItem="fMI-UA-GhB" firstAttribute="centerY" secondItem="Hv2-iS-jGV" secondAttribute="centerY" multiplier="0.4" id="ocl-Hz-UWL"/>
                                     <constraint firstItem="jaO-Yv-cKL" firstAttribute="centerY" secondItem="Hv2-iS-jGV" secondAttribute="centerY" id="q3t-Kd-jbS"/>
                                     <constraint firstItem="8pg-NP-Sld" firstAttribute="width" secondItem="Hv2-iS-jGV" secondAttribute="width" id="uIi-BQ-W9V"/>
                                 </constraints>

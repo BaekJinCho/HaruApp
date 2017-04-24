@@ -224,23 +224,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2k4-lz-zBh">
                                 <rect key="frame" x="0.0" y="249" width="320" height="268"/>
                                 <subviews>
-                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-af-QVL" customClass="FSCalendar">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P3b-af-QVL" customClass="FSCalendar">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="268"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <edgeInsets key="layoutMargins" top="0.0" left="8" bottom="0.0" right="8"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="headerDateFormat" value="MMMM"/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="subtitleDefaultColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="subtitlePlaceholderColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="eventDefaultColor">
                                                 <color key="value" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="NO"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="useVeryShortWeekdaySymbols" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
                                                 <real key="value" value="0.0"/>
                                             </userDefinedRuntimeAttribute>

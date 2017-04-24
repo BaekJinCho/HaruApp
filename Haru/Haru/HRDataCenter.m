@@ -74,6 +74,14 @@
     return self;
 }
 
+// NSUserDefault에서 userID를 userID프로퍼티로 불러옴.
+- (NSString *)getUserID
+{
+    if (self.userID == nil) {
+        self.userID = [[NSUserDefaults standardUserDefaults] stringForKey:@"userID"];
+    }
+    return self.userID;
+}
 //유저의 token 값 저장
 - (NSString *)getUserToken
 {
@@ -159,7 +167,7 @@
 
 //token 제거 Method
 - (void)removeToken {
-    
+    self.userToken = nil;
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:TOKEN_KEY_OF_USERDEFAULTS];
 }
 
