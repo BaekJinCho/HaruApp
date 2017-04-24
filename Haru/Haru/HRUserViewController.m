@@ -215,7 +215,6 @@ RLMRealm  *realm;
         }
     }];
     
-    
     //realm이용
     //    RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
     //    NSLog(@"realmDateCount = %ld",[postday count]);
@@ -256,10 +255,10 @@ RLMRealm  *realm;
     //Realm버전
 //    NSString *firstDate = [[NSString alloc] init];
 //    HRRealmData *firstObject = [result firstObject];
-//    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
+//    //    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
 //    
 //    NSDateFormatter *formatter = [NSDateFormatter new];
-//    [formatter setDateFormat:@"MMMM dd"];
+//    [formatter setDateFormat:@"YYYY-MM-dd"];
 //    firstDate = [formatter stringFromDate:firstObject.date];
 //    
 //    self.date_firstPost.text = firstDate;
@@ -280,18 +279,6 @@ RLMRealm  *realm;
     [self logoutSucess];
 }
 
-- (void)showFirstPostLabel
-{
-    NSString *firstDate = [[NSString alloc] init];
-    HRRealmData *firstObject = [result firstObject];
-//    [[HRRealmData allObjects] sortedResultsUsingKeyPath:@"date" ascending:YES];
-    
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"YYYY-MM-dd"];
-    firstDate = [formatter stringFromDate:firstObject.date];
-    
-    self.date_firstPost.text = firstDate;
-}
 
 //로그아웃 후 alert
 - (void)logoutSucess {

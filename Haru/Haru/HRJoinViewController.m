@@ -161,7 +161,7 @@
     [self presentViewController:sucessAlert animated:YES completion:nil];
 }
 
-//오늘 날짜를 "April 07" 형식으로 반환하는 메소드
+//오늘 날짜를 "YYYY-MM-dd" 형식으로 반환하는 메소드
 - (void)saveTodayDate
 {
     NSDateFormatter *date = [[NSDateFormatter alloc] init];
