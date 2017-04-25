@@ -59,7 +59,6 @@
 		018DF1CF1E86221D00DE51EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		018DF1D11E86221D00DE51EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		018DF1D41E86221D00DE51EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		018DF1D61E86221D00DE51EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		018DF1E51E8623E700DE51EA /* HRLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRLogin.storyboard; sourceTree = "<group>"; };
 		018DF1E71E8623F500DE51EA /* HRJoin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRJoin.storyboard; sourceTree = "<group>"; };
 		018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRTutorial.storyboard; sourceTree = "<group>"; };
@@ -222,7 +221,6 @@
 				018DF1DF1E86226800DE51EA /* Controller */,
 				018DF1D11E86221D00DE51EA /* Assets.xcassets */,
 				018DF1D31E86221D00DE51EA /* LaunchScreen.storyboard */,
-				018DF1D61E86221D00DE51EA /* Info.plist */,
 				01DC476A1E9A006F00CC858F /* inHaru.json */,
 				01B46DF81EA0DC39009F15EE /* haruData.plist */,
 				018DF1C51E86221D00DE51EA /* Supporting Files */,

@@ -11,14 +11,14 @@
 #import "HRLoginViewController.h"
 
 @interface HRTutorialViewController ()
-@property (weak, nonatomic) IBOutlet UIScrollView *tutorialScrollView;
-@property (weak, nonatomic) IBOutlet UIView *tutorialContentView;
+@property (weak, nonatomic) IBOutlet UIScrollView  *tutorialScrollView;
+@property (weak, nonatomic) IBOutlet UIView        *tutorialContentView;
 @property (weak, nonatomic) IBOutlet UIPageControl *tutorialPageControl;
-@property (weak, nonatomic) IBOutlet UIImageView *tutorialImage1;
-@property (weak, nonatomic) IBOutlet UIImageView *tutorialImage2;
-@property (weak, nonatomic) IBOutlet UIImageView *tutorialImage3;
-@property (weak, nonatomic) IBOutlet UIButton *tutorialLoginButton;
-@property (weak, nonatomic) IBOutlet UIButton *tutorialJoinButton;
+@property (weak, nonatomic) IBOutlet UIImageView   *tutorialImage1;
+@property (weak, nonatomic) IBOutlet UIImageView   *tutorialImage2;
+@property (weak, nonatomic) IBOutlet UIImageView   *tutorialImage3;
+@property (weak, nonatomic) IBOutlet UIButton      *tutorialLoginButton;
+@property (weak, nonatomic) IBOutlet UIButton      *tutorialJoinButton;
 
 @end
 

@@ -10,11 +10,11 @@
 
 @interface HRLoginViewController ()
 <UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *loginScrollView;
-@property (weak, nonatomic) IBOutlet UIView *loginContentView;
-@property (weak, nonatomic) IBOutlet UITextField *loginIDTextField;
-@property (weak, nonatomic) IBOutlet UITextField *LoginPasswordTextField;
-@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIScrollView            *loginScrollView;
+@property (weak, nonatomic) IBOutlet UIView                  *loginContentView;
+@property (weak, nonatomic) IBOutlet UITextField             *loginIDTextField;
+@property (weak, nonatomic) IBOutlet UITextField             *loginPasswordTextField;
+@property (weak, nonatomic) IBOutlet UIButton                *loginButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginIndicator;
 
 @end
@@ -26,12 +26,12 @@
     // Do any additional setup after loading the view.
     
     //LoginPasswordTextField *로 표시
-    self.LoginPasswordTextField.secureTextEntry = YES;
+    self.loginPasswordTextField.secureTextEntry = YES;
     
     // 텍스트 필드 placeholder 컬러
     UIColor *color                                    = [UIColor colorWithRed:255.0 green:255.0 blue:255.0 alpha:0.7];
     self.loginIDTextField.attributedPlaceholder       = [[NSAttributedString alloc] initWithString:@"haru@haru.com" attributes:@{NSForegroundColorAttributeName:color}];
-    self.LoginPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
+    self.loginPasswordTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"비밀번호" attributes:@{NSForegroundColorAttributeName:color}];
     
     
     //UIView 투명 만들어주기!
@@ -80,9 +80,9 @@
 #pragma mark- Login View TextField delegate Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField.tag == 1) {
-        [self.LoginPasswordTextField becomeFirstResponder];
+        [self.loginPasswordTextField becomeFirstResponder];
     } else {
-        [self.LoginPasswordTextField resignFirstResponder];
+        [self.loginPasswordTextField resignFirstResponder];
         [self clickLoginButton:self.loginButton];
     }
     return YES;
@@ -93,7 +93,7 @@
 - (IBAction)clickLoginButton:(UIButton *)sender {
     
     NSString *loginIDText = self.loginIDTextField.text;
-    NSString *loginPasswordText = self.LoginPasswordTextField.text;
+    NSString *loginPasswordText = self.loginPasswordTextField.text;
     
     [[HRDataCenter sharedInstance] loginRequestWithUserID:loginIDText password:loginPasswordText completion:^(BOOL isSuccess, id response) {
         

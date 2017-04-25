@@ -22,7 +22,7 @@
 @property (nonatomic) NSArray                           *userStateEmoticonArrays;
 @property (nonatomic) NSMutableArray                    *emoticonArrays;
 @property (nonatomic) UIBarButtonItem                   *userStateEmoticonButton;
-@property (nonatomic) NSInteger tagNum;
+@property (nonatomic) NSInteger                          tagNumber;
 
 @end
 
@@ -123,34 +123,34 @@
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Happy"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
-        self.tagNum = clickUserStateBarButtonItem.tag;
+        self.tagNumber = clickUserStateBarButtonItem.tag;
         
     } else if (clickUserStateBarButtonItem.tag == 1) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Sad"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
-        self.tagNum = clickUserStateBarButtonItem.tag;
+        self.tagNumber = clickUserStateBarButtonItem.tag;
 
     
     } else if (clickUserStateBarButtonItem.tag == 2) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Angry"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
-        self.tagNum = clickUserStateBarButtonItem.tag;
+        self.tagNumber = clickUserStateBarButtonItem.tag;
 
     
     } else if (clickUserStateBarButtonItem.tag == 3) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Upset"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
-        self.tagNum = clickUserStateBarButtonItem.tag;
+        self.tagNumber = clickUserStateBarButtonItem.tag;
 
     
     } else if (clickUserStateBarButtonItem.tag == 4) {
         
         [self.updateViewUserStateImageView setImage:[UIImage imageNamed:@"Soso"]];
         NSLog(@"%@", self.updateViewUserStateImageView.image);
-        self.tagNum = clickUserStateBarButtonItem.tag;
+        self.tagNumber = clickUserStateBarButtonItem.tag;
 
     
     } else if (clickUserStateBarButtonItem.tag == 5) {
@@ -234,7 +234,7 @@
 
 - (void)fixPostTitleTextLength:(UITextField *)titleTextField {
     
-    NSString *textFieldContentText = titleTextField.text;
+    NSString *textFieldContentText   = titleTextField.text;
     NSInteger textFieldContentLength = titleTextField.text.length;
     
     if (textFieldContentLength > MAX_POST_TITLE_CONTENT) {
@@ -308,10 +308,10 @@
     
     RLMRealm *realm = [RLMRealm defaultRealm];
     [realm transactionWithBlock:^{
-        self.realmData.title = self.postTitleTextField.text;
-        self.realmData.content = self.postUpdateTextView.text;
+        self.realmData.title         = self.postTitleTextField.text;
+        self.realmData.content       = self.postUpdateTextView.text;
         self.realmData.mainImageData = UIImagePNGRepresentation(self.updateViewBackgroundPhoto.image);
-        self.realmData.emoticonValue = self.tagNum;
+        self.realmData.emoticonValue = self.tagNumber;
         
     }];
     

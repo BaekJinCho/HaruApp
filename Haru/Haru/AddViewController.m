@@ -21,16 +21,16 @@ static NSUInteger CONTENT_MAXLENGTH = 110;
 <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
-@property (weak, nonatomic) IBOutlet UIView *backgroundView;
-@property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (weak, nonatomic) IBOutlet UIView          *backgroundView;
+@property (weak, nonatomic) IBOutlet UIView          *buttonView;
 
-@property (nonatomic) UIBarButtonItem *happyBarButton;
-@property (nonatomic) NSArray *emoticonArray;
-@property (nonatomic) NSMutableArray *barButtonArray;
-@property (nonatomic) UIBarButtonItem *emoticonBarButton;
-@property NSDate *currentDate;
-@property NSInteger tagNumber;
-@property (nonatomic) UIImage *defaultImage;
+@property (nonatomic) UIBarButtonItem                *happyBarButton;
+@property (nonatomic) NSArray                        *emoticonArray;
+@property (nonatomic) NSMutableArray                 *barButtonArray;
+@property (nonatomic) UIBarButtonItem                *emoticonBarButton;
+@property NSDate                                     *currentDate;
+@property (nonatomic) UIImage                        *defaultImage;
+@property NSInteger                                   tagNumber;
 
 
 @end

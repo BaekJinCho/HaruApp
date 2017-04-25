@@ -12,12 +12,12 @@
 
 @interface HRJoinViewController ()
 <UITextFieldDelegate, UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *joinContentView;
-@property (weak, nonatomic) IBOutlet UIScrollView *joinScrollView;
-@property (weak, nonatomic) IBOutlet UITextField *joinIDTextField;
-@property (weak, nonatomic) IBOutlet UITextField *joinPasswordTextField;
-@property (weak, nonatomic) IBOutlet UITextField *joinPasswordCheckTextField;
-@property (weak, nonatomic) IBOutlet UIButton *joinButton;
+@property (weak, nonatomic) IBOutlet UIView                  *joinContentView;
+@property (weak, nonatomic) IBOutlet UIScrollView            *joinScrollView;
+@property (weak, nonatomic) IBOutlet UITextField             *joinIDTextField;
+@property (weak, nonatomic) IBOutlet UITextField             *joinPasswordTextField;
+@property (weak, nonatomic) IBOutlet UITextField             *joinPasswordCheckTextField;
+@property (weak, nonatomic) IBOutlet UIButton                *joinButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *joinIndicator;
 
 @end

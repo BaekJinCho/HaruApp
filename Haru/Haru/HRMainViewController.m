@@ -15,15 +15,15 @@
 <UITableViewDelegate, UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
-@property (nonatomic) UIRefreshControl *refreshControl;
+@property (nonatomic) UIRefreshControl           *refreshControl;
 @property (weak, nonatomic) IBOutlet UIImageView *defaultImageView;
 
 //여러 버튼이 나오기 위한 Property
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIButton *libraryDirectButton;
-@property (weak, nonatomic) IBOutlet UIButton *cameraDirectButton;
-@property (weak, nonatomic) IBOutlet UIButton *writeButton;
-@property (weak, nonatomic) IBOutlet UIButton *backgroundButton;
+@property (weak, nonatomic) IBOutlet UIButton    *addButton;
+@property (weak, nonatomic) IBOutlet UIButton    *libraryDirectButton;
+@property (weak, nonatomic) IBOutlet UIButton    *cameraDirectButton;
+@property (weak, nonatomic) IBOutlet UIButton    *writeButton;
+@property (weak, nonatomic) IBOutlet UIButton    *backgroundButton;
 
 //Button의 Constraint 값 Property
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *addButtonTrailing;
@@ -348,10 +348,6 @@
     self.libraryButtonBottom.constant = libraryBtnBottomConstant;
     self.libraryButtonTrailing.constant = libraryBtnTrailingConstant;
 }
-
-
-
-
 
 #pragma mark- mainViewController unwindSegut Method
 - (IBAction)unwindMainViewSegue:(UIStoryboardSegue *)sender {

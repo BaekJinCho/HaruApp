@@ -25,7 +25,6 @@
         self.userState                 = [[dictionary objectForKey:USERSTATE_KEY] integerValue];
         self.userStateImage            = [self convertStringToUserState];
         
-
         //totalDate format set
 //        self.dateFormatYear            = [self convertStringToDate:self.totalDate formattedData:HRDateFormatYear];
 //        self.dateFormatMonth           = [self convertStringToDate:self.totalDate formattedData:HRDateFormatMonth];
@@ -61,39 +60,6 @@
     }
     return self.userStateImage;
 }
-
-//date의 format을 받기위한 Method
-//- (NSString *)convertStringToFormatDate:(NSDate *)haruDate {
-//    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    
-//    self.dateFormatString = @" ";
-//    
-//    [formatter setDateStyle:NSDateFormatterShortStyle];
-//    
-//    switch (self.dateFormat) {
-//            
-//        case 0:
-//            self.dateFormatString = @"yyyy";
-//        case 1:
-//            self.dateFormatString = @"MM";
-//        case 2:
-//            self.dateFormatString = @"yyyy년 MM월";
-//        case 3:
-//            self.dateFormatString = @"HH:mm:ss";
-//        case 4:
-//            self.dateFormatString = @"E";
-//            
-//        default:
-//            break;
-//    }
-//    
-//    [formatter setDateFormat:self.dateFormatString];
-//    
-//    return [formatter stringFromDate:haruDate];
-//    
-//}
-
 
 - (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format {
     
@@ -131,52 +97,5 @@
             break;
     }
 }
-
-//NSDate로 오는 형식을 원하는 형식을 쓰기위한 Method
-//- (NSString *)convertStringToDate:(NSDate *)haruDate formattedData:(HRDateFormat)formattedData {
-//    
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    
-//    NSString *formatChangedString = @" ";
-//    
-//    [formatter setDateFormat:formatChangedString];
-//    
-//    
-//    
-//    [formatter setDateStyle:NSDateFormatterShortStyle];
-//    
-//    switch (formattedData) {
-//        
-//        case HRDateFormatYear:
-//            NSLog(@"%@",self.totalDate);
-//            formatChangedString = @"yyyy";
-//        
-//        case HRDateFormatMonth:
-//            NSLog(@"%@",self.totalDate);
-//            formatChangedString = @"MM";
-//            
-//        case HRDateFormatYearMonth:
-//            NSLog(@"%@",self.totalDate);
-//            formatChangedString = @"yyyy년 MM월";
-//            
-//        case HRDateFormatDay:
-//            NSLog(@"%@",self.totalDate);
-//            formatChangedString = @"dd";
-//            
-//        case HRDateFormatTime:
-//            NSLog(@"%@",self.totalDate);
-//            formatChangedString = @"HH:mm:ss";
-//        
-//        case HRDateFormatDayOfTheWeek:
-//            NSLog(@"%@",self.totalDate);
-//            formatChangedString = @"E";
-//    
-//        default:
-//            break;
-//    }
-//    
-//    return [formatter stringFromDate:haruDate];
-//    
-//}
 
 @end
