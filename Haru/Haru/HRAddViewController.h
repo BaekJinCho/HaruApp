@@ -1,5 +1,5 @@
 //
-//  AddViewController.h
+//  HRAddViewController.h
 //  Haru
 //
 //  Created by Won Suk Choi on 2017. 4. 3..
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface AddViewController : UIViewController
+@interface HRAddViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *keyboardHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonViewHeight;

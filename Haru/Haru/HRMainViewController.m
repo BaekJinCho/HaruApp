@@ -9,7 +9,7 @@
 #import "HRMainViewController.h"
 #import "HRCustomTableViewCell.h"
 #import "HRDetailViewController.h"
-#import "AddViewController.h"
+#import "HRAddViewController.h"
 
 @interface HRMainViewController ()
 <UITableViewDelegate, UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
@@ -189,7 +189,7 @@
         
     } else if ([segue.identifier isEqualToString:@"segueFromLibrary"]) {
         UINavigationController *navi = (UINavigationController *)[segue destinationViewController];
-        AddViewController *addViewContent = (AddViewController *)[[navi viewControllers] objectAtIndex:0];
+        HRAddViewController *addViewContent = (HRAddViewController *)[[navi viewControllers] objectAtIndex:0];
         
         UIImage *image = (UIImage *)sender;
         

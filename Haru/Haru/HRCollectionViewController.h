@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HRCollectionViewCell.h"
-#import "AddViewController.h"
+#import "HRAddViewController.h"
 #import "HRRealmData.h"
 #import "HRPostModel.h"
 #import "HRDetailViewController.h"

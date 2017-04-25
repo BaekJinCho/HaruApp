@@ -28,7 +28,7 @@
 		01F97D781E8B78270059414C /* HRMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97D771E8B78270059414C /* HRMainViewController.m */; };
 		01F97D7B1E8B94FC0059414C /* HRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01F97D7A1E8B94FC0059414C /* HRDetailViewController.m */; };
 		1807F8FC1EA0A650008D5713 /* HRRealmData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1807F8FB1EA0A650008D5713 /* HRRealmData.m */; };
-		1818DBC31EAA1681005DBB9A /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DE901E92491700501825 /* AddViewController.m */; };
+		1818DBC31EAA1681005DBB9A /* HRAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1878DE901E92491700501825 /* HRAddViewController.m */; };
 		18448FD81E8CEF9700332CFA /* HRCollectionView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18448FD71E8CEF9700332CFA /* HRCollectionView.storyboard */; };
 		18448FDB1E8CEFBC00332CFA /* HRCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */; };
 		18448FDE1E8CEFF700332CFA /* HRCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */; };
@@ -90,8 +90,8 @@
 		185978981E88D46C00172475 /* HRPostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRPostModel.h; sourceTree = "<group>"; };
 		185978991E88D46C00172475 /* HRPostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRPostModel.m; sourceTree = "<group>"; };
 		1878DE8D1E9248FC00501825 /* HRAddView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HRAddView.storyboard; sourceTree = "<group>"; };
-		1878DE8F1E92491700501825 /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
-		1878DE901E92491700501825 /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
+		1878DE8F1E92491700501825 /* HRAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRAddViewController.h; sourceTree = "<group>"; };
+		1878DE901E92491700501825 /* HRAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRAddViewController.m; sourceTree = "<group>"; };
 		658A1884FC039E851A80FF23 /* Pods-Haru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Haru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Haru/Pods-Haru.release.xcconfig"; sourceTree = "<group>"; };
 		A64AC1E4EA904E4F4A536C24 /* Pods_Haru.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Haru.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA436C791E8CCEFC004A5564 /* HRUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRUserViewController.h; sourceTree = "<group>"; };
@@ -131,8 +131,8 @@
 				18448FDA1E8CEFBC00332CFA /* HRCollectionViewController.m */,
 				18448FDC1E8CEFF700332CFA /* HRCollectionViewCell.h */,
 				18448FDD1E8CEFF700332CFA /* HRCollectionViewCell.m */,
-				1878DE8F1E92491700501825 /* AddViewController.h */,
-				1878DE901E92491700501825 /* AddViewController.m */,
+				1878DE8F1E92491700501825 /* HRAddViewController.h */,
+				1878DE901E92491700501825 /* HRAddViewController.m */,
 			);
 			name = CollectionDisplay;
 			sourceTree = "<group>";
@@ -507,7 +507,7 @@
 				01DE68711E8919D7004678FA /* HRJoinViewController.m in Sources */,
 				01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */,
 				01F97D781E8B78270059414C /* HRMainViewController.m in Sources */,
-				1818DBC31EAA1681005DBB9A /* AddViewController.m in Sources */,
+				1818DBC31EAA1681005DBB9A /* HRAddViewController.m in Sources */,
 				185978971E88D43900172475 /* HRNetworkModule.m in Sources */,
 				01045FF61E9217D800407BD1 /* HRUpdateViewController.m in Sources */,
 				1859789A1E88D46C00172475 /* HRPostModel.m in Sources */,

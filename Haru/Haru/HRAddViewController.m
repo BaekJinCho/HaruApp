@@ -1,5 +1,5 @@
 //
-//  AddViewController.m
+//  HRAddViewController.m
 //  Haru
 //
 //  Created by Won Suk Choi on 2017. 4. 3..
@@ -7,7 +7,7 @@
 //
 
 #import <UITextView_Placeholder/UITextView+Placeholder.h>
-#import "AddViewController.h"
+#import "HRAddViewController.h"
 #import "HRRealmData.h"
 #import "HRCollectionViewController.h"
 
@@ -17,7 +17,7 @@
 static NSInteger TITLE_MAXLENGTH = 13;
 static NSUInteger CONTENT_MAXLENGTH = 110;
 
-@interface AddViewController ()
+@interface HRAddViewController ()
 <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
@@ -35,7 +35,7 @@ static NSUInteger CONTENT_MAXLENGTH = 110;
 
 @end
 
-@implementation AddViewController
+@implementation HRAddViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
