@@ -42,7 +42,7 @@ RLMRealm  *realm;
 - (void)viewDidAppear:(BOOL)animated {
     
     result = [HRRealmData allObjects];
-
+    NSLog(@"result = %@",result);
     self.userLabel.text = [[NSString alloc] init];
     self.date_join.text = [[NSString alloc] init];
     self.date_firstPost.text = [[NSString alloc] init];
