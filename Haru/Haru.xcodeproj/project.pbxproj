@@ -19,7 +19,6 @@
 		018DF1E61E8623E700DE51EA /* HRLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1E51E8623E700DE51EA /* HRLogin.storyboard */; };
 		018DF1E81E8623F500DE51EA /* HRJoin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1E71E8623F500DE51EA /* HRJoin.storyboard */; };
 		018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 018DF1EA1E8624D500DE51EA /* HRTutorial.storyboard */; };
-		01CA074A1EAF0E8300D981B8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01CA07491EAF0E8300D981B8 /* Info.plist */; };
 		01CB50B21E8A28810024CC4C /* HRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01CB50B11E8A28810024CC4C /* HRLoginViewController.m */; };
 		01DC47681E9780E300CC858F /* HRTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01DC47671E9780E300CC858F /* HRTabBarViewController.m */; };
 		01DC476B1E9A006F00CC858F /* inHaru.json in Resources */ = {isa = PBXBuildFile; fileRef = 01DC476A1E9A006F00CC858F /* inHaru.json */; };
@@ -434,7 +433,6 @@
 				018DF1EB1E8624D500DE51EA /* HRTutorial.storyboard in Resources */,
 				01045FE71E8BE4EC00407BD1 /* HRCustomTableViewCell.xib in Resources */,
 				018DF1D21E86221D00DE51EA /* Assets.xcassets in Resources */,
-				01CA074A1EAF0E8300D981B8 /* Info.plist in Resources */,
 				1878DE8E1E9248FC00501825 /* HRAddView.storyboard in Resources */,
 				018DF1D01E86221D00DE51EA /* Main.storyboard in Resources */,
 				01DE686D1E89190F004678FA /* HRMainView.storyboard in Resources */,
@@ -584,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -625,7 +623,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
