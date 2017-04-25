@@ -190,7 +190,7 @@ static NSUInteger CONTENT_MAXLENGTH = 110;
     CGRect keyboardFrame = [keyboardFrameValue CGRectValue];
     CGFloat height = keyboardFrame.size.height;
     
-    self.keyboardHeight.constant = +height + 40;
+    self.keyboardHeight.constant = +height + 50;
     self.buttonViewHeight.constant = +height;
     [self.backgroundView setNeedsUpdateConstraints];
     [self.buttonView setNeedsUpdateConstraints];
