@@ -23,7 +23,6 @@
         self.content                   = [dictionary objectForKey:CONTENT_KEY];
         self.photo                     = [dictionary objectForKey:PHOTO_KEY];
         self.userState                 = [[dictionary objectForKey:USERSTATE_KEY] integerValue];
-        self.userStateImage            = [self convertStringToUserState];
         
         //totalDate format set
 //        self.dateFormatYear            = [self convertStringToDate:self.totalDate formattedData:HRDateFormatYear];
@@ -36,31 +35,7 @@
     return self;
 }
 
-//user의 감정상태를 받기위한 Method
-- (NSString *)convertStringToUserState {
-    
-    
-    self.userStateImage = @" ";
-    
-    switch (self.userState) {
-        
-        case 0:
-            self.userStateImage = @"Angry";
-        case 1:
-            self.userStateImage = @"Happy";
-        case 2:
-            self.userStateImage = @"Sad";
-        case 3:
-            self.userStateImage = @"Soso";
-        case 4:
-            self.userStateImage = @"Upset";
-            
-        default:
-            break;
-    }
-    return self.userStateImage;
-}
-
+//NSDate를 원하는 형태로 사용하기 위한 Method
 - (NSString *)convertWithDate:(NSDate *)date format:(NSString *)format {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -70,6 +45,7 @@
     return [dateFormatter stringFromDate:date];
 }
 
+//0,1,2,3,4로 오는 유저 감정상태를 위한 Method
 - (UIImage *)retrieveUserState:(NSInteger)userState {
     
     UIImage *userStateImage;

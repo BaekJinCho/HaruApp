@@ -14,10 +14,6 @@ typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
 
 @interface HRUserAFNetworkingModule : NSObject
 
-- (void)loginRequest:(NSString *)username password:(NSString *)password completion:(CompletionBlock)completion;
-
-- (void)logoutRequest:(NSString *)token completion:(ResponseBlock)completion;
-
 - (void)postListRequest:(NSString *)token completion
                        :(CompletionBlock)completion;
 - (void)getUserProfile:(CompletionBlock)completion;

@@ -217,13 +217,38 @@
 
 
 //Post form 메소드화
-- (void)postRequestTilte:(NSString *)title
-                 content:(NSString *)content
+- (void)postRequest:(NSInteger)author
+                 title:(NSString *)title
                    image:(NSData *)image
                     date:(NSDate *)date
-               userState:(NSUInteger)userState
+               userState:(NSInteger)userState
               completion:(BlockOnCompletion)completion {
     
+    /*NSURLSessionConfiguration 설정*/
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    
+    /*AFHTTPSessionManager 설정*/
+    self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+    
+    /*url 설정*/
+    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
+    
+    
+    
+//    /*parameters 설정*/
+//    NSDictionary *parameters = @{@"author":author, @"title":title, @"status":userState};
+//    
+//    
+//    /* */
+//    [self.afhttpSessionManager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        completion(YES,responseObject);
+//        NSLog(@"LOGIN RESPONSE:%@", responseObject);
+//        
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"LOGIN ERROR:%@", error);
+//        completion(NO,(NSHTTPURLResponse *)task.response);
+//    }];
+//    
     
     
     
@@ -232,6 +257,7 @@
 //Server에서 page 단위로 받는것 메소드화
 - (void)postListRequestWithPage:(NSNumber *)requestPage
                      completion:(BlockOnCompletion)completion {
+    
 
 
 }
