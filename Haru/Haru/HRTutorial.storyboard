@@ -38,7 +38,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3A-ke-9BQ" userLabel="소박한 일상부터 특별한 경험까지  여러분의 하루를 기록하세요.">
-                                                                <rect key="frame" x="48.5" y="350.5" width="224" height="57.5"/>
+                                                                <rect key="frame" x="49" y="351" width="224" height="58"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="소박한 일상부터 특별한 경험까지  여러분의 하루를 기록하세요.">
                                                                         <attributes>
@@ -67,7 +67,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLW-aO-3aI">
-                                                                <rect key="frame" x="44" y="350.5" width="233" height="54"/>
+                                                                <rect key="frame" x="44" y="351" width="233" height="54"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="하루에 한 장씩 기록하여 평생 기억될  추억을 소장하세요.">
                                                                         <attributes>
@@ -96,7 +96,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UxK-On-A5g">
-                                                                <rect key="frame" x="44" y="350.5" width="232.5" height="54"/>
+                                                                <rect key="frame" x="44" y="351" width="233" height="54"/>
                                                                 <attributedString key="attributedText">
                                                                     <fragment content="과거, 공존하는 공간,  하루 한 장으로  여러분을 초대합니다.">
                                                                         <attributes>
@@ -143,13 +143,13 @@
                                 </connections>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="hpY-Qh-y9X">
-                                <rect key="frame" x="140.5" y="531" width="39" height="37"/>
+                                <rect key="frame" x="141" y="531" width="39" height="37"/>
                                 <connections>
                                     <action selector="changePage:" destination="0ev-2O-LNe" eventType="valueChanged" id="afD-AS-POw"/>
                                 </connections>
                             </pageControl>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="fbK-Mg-iUe">
-                                <rect key="frame" x="91.5" y="92" width="137" height="100"/>
+                                <rect key="frame" x="92" y="92" width="137" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="137" id="4Yc-NP-L7P"/>
                                     <constraint firstAttribute="height" constant="100" id="jAr-KT-AnT"/>
@@ -267,27 +267,27 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="ZfP-T0-wtu" userLabel="Logo Image View">
-                                        <rect key="frame" x="109.5" y="92" width="100" height="100"/>
+                                        <rect key="frame" x="110" y="92" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="BFU-ug-jWw"/>
                                             <constraint firstAttribute="height" constant="100" id="wGN-te-iwx"/>
                                         </constraints>
                                     </imageView>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPd-GB-RnX">
-                                        <rect key="frame" x="0.0" y="-0.5" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="-1" width="320" height="569"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KJF-OT-vaY" userLabel="Content View">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="569"/>
                                                 <subviews>
                                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ksY-0y-av5" userLabel="Standard Image View">
-                                                        <rect key="frame" x="40" y="167" width="240" height="120"/>
+                                                        <rect key="frame" x="40" y="168" width="240" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="240" id="eX8-ph-SNH"/>
                                                             <constraint firstAttribute="height" constant="120" id="wVu-12-5NJ"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfL-sw-Uln">
-                                                        <rect key="frame" x="12" y="303" width="50" height="30"/>
+                                                        <rect key="frame" x="12" y="304" width="50" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="50" id="m4G-3M-Bmc"/>
                                                         </constraints>
@@ -296,7 +296,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2gO-YT-kDA">
-                                                        <rect key="frame" x="113" y="303" width="200" height="30"/>
+                                                        <rect key="frame" x="113" y="304" width="200" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="f5B-v6-xfw"/>
                                                             <constraint firstAttribute="width" constant="200" id="kjy-NR-e20"/>
@@ -309,7 +309,7 @@
                                                         </connections>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEh-AQ-bHs">
-                                                        <rect key="frame" x="12" y="353" width="75" height="30"/>
+                                                        <rect key="frame" x="12" y="354" width="75" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="pjQ-Z3-d5I"/>
                                                         </constraints>
@@ -324,7 +324,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9u-fJ-gFJ">
-                                                        <rect key="frame" x="113" y="353" width="200" height="30"/>
+                                                        <rect key="frame" x="113" y="354" width="200" height="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -333,21 +333,21 @@
                                                         </connections>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EaF-yQ-s9d" userLabel="LoginIDView">
-                                                        <rect key="frame" x="113" y="336" width="200" height="1"/>
+                                                        <rect key="frame" x="113" y="337" width="200" height="1"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="gVJ-nI-roz"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfP-F9-7wN" userLabel="LoginPasswordView">
-                                                        <rect key="frame" x="113" y="386" width="200" height="1"/>
+                                                        <rect key="frame" x="113" y="387" width="200" height="1"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="wXj-UT-ds3"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ag-ob-d9a">
-                                                        <rect key="frame" x="0.5" y="523" width="320" height="45.5"/>
+                                                        <rect key="frame" x="1" y="524" width="320" height="45"/>
                                                         <color key="backgroundColor" red="0.043137254901960784" green="0.52941176470588236" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="LogIn">
                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -475,7 +475,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="fMI-UA-GhB" userLabel="Logo Image View">
-                                        <rect key="frame" x="109.5" y="63.5" width="100" height="100"/>
+                                        <rect key="frame" x="110" y="64" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Wj8-eJ-7q2"/>
                                             <constraint firstAttribute="width" constant="100" id="ZJh-1O-YMd"/>
@@ -574,7 +574,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmL-FT-APu">
-                                                        <rect key="frame" x="0.0" y="522.5" width="320" height="45.5"/>
+                                                        <rect key="frame" x="0.0" y="523" width="320" height="45"/>
                                                         <color key="backgroundColor" red="0.21176470588235294" green="0.0" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" image="SignUp">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -694,7 +694,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Arrow" width="14" height="24"/>
+        <image name="Arrow" width="12" height="20"/>
         <image name="Background1" width="375" height="667"/>
         <image name="Background2" width="375" height="667"/>
         <image name="Background3" width="375" height="667"/>

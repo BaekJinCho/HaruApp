@@ -304,8 +304,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segueFromLibrary"]) {
         UINavigationController *navi = (UINavigationController *)[segue destinationViewController];
-        AddViewController *addViewContent = (AddViewController *)[[navi viewControllers] objectAtIndex:0];
-//        AddViewController *addViewContent = (AddViewController *)segue.destinationViewController;
+        HRAddViewController *addViewContent = (HRAddViewController *)[[navi viewControllers] objectAtIndex:0];
+//        HRAddViewController *addViewContent = (HRAddViewController *)segue.destinationViewController;
         UIImage *image = (UIImage *)sender;
         addViewContent.image = image;
         

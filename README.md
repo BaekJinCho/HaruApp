@@ -1,14 +1,14 @@
+![기획의도](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/하루%20Header.png?raw=true)
+
 # - HaruApp
 
 #### - FastCampus Team Project
 
 #### - 2017. 03. 27 ~ 2017. 04. 21
 
-📸 [Haru 영상 보기]()
+📸 [Haru 영상 보기](https://www.youtube.com/watch?v=MB6ivcurqOM)  
 
-<br><br><br>
-
-![기획의도](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/하루%20Header.png?raw=true)
+<br>
 
 ![Pages](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/샘플%20Pages.png?raw=true)
 
@@ -22,7 +22,7 @@
 
 ## - 기능 및 특징 
 ![로그인 기능](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/로그인.png?raw=true)
-![달력 기능](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/달력.png?raw=true)
+![달력 기능](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/사용자와%20달력.png?raw=true)
 ![특징](https://github.com/projectlife724/i.wonsuk.choi/blob/master/하루%20한%20장/특징.png?raw=true)
 
 <br>

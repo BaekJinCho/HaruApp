@@ -19,17 +19,19 @@
     RLMResults <HRRealmData *> *result;
     RLMResults <HRRealmUser *> *userResult;
 }
+
 @property HRUserAFNetworkingModule *networkManager;
-@property HRDataCenter *dataManager;
-@property HRPostModel *postManager;
-@property HRRealmUser *realmUser;
-@property HRRealmData *realmData;
-@property (weak, nonatomic) IBOutlet UIButton *logOutBtn;
-@property (weak, nonatomic) IBOutlet UILabel *count_post;
-@property (weak, nonatomic) IBOutlet UILabel *date_firstPost;
-@property (weak, nonatomic) IBOutlet UILabel *date_join;
-@property (weak, nonatomic) IBOutlet UILabel *userLabel;
-@property (weak, nonatomic) IBOutlet UIButton *userImageBtn;
+@property HRDataCenter             *dataManager;
+@property HRPostModel              *postManager;
+@property HRRealmUser              *realmUser;
+@property HRRealmData              *realmData;
+
+@property (weak, nonatomic) IBOutlet UIButton    *logOutBtn;
+@property (weak, nonatomic) IBOutlet UILabel     *count_post;
+@property (weak, nonatomic) IBOutlet UILabel     *date_firstPost;
+@property (weak, nonatomic) IBOutlet UILabel     *date_join;
+@property (weak, nonatomic) IBOutlet UILabel     *userLabel;
+@property (weak, nonatomic) IBOutlet UIButton    *userImageBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UIImageView *camThumbnail;
 
@@ -41,16 +43,19 @@ RLMRealm  *realm;
 
 - (void)viewDidAppear:(BOOL)animated {
     
+
     result = [HRRealmData allObjects];
     NSLog(@"result = %@",result);
     self.userLabel.text = [[NSString alloc] init];
     self.date_join.text = [[NSString alloc] init];
     self.date_firstPost.text = [[NSString alloc] init];
+    self.networkManager      = [[HRUserAFNetworkingModule alloc] init];
+    
     [self setUserIDLabel];
     [self showSignDateLabel];
     [self showFirstPostLabel];
     [self showPostCountLabel];
-    self.networkManager = [[HRUserAFNetworkingModule alloc] init];
+    
 }
 
 - (void)viewDidLoad {
@@ -64,9 +69,9 @@ RLMRealm  *realm;
 #pragma mark - layout arguments
 -(void)setEntityStyle
 {
-    self.logOutBtn.layer.cornerRadius = self.logOutBtn.frame.size.height/2;     //로그아웃버튼 코너둥글기
+    self.logOutBtn.layer.cornerRadius    = self.logOutBtn.frame.size.height/2;     //로그아웃버튼 코너둥글기
     self.camThumbnail.layer.cornerRadius = self.camThumbnail.frame.size.height/2;       //프로파일사진 위 카메라섬네일 코너둥글기
-    self.camThumbnail.clipsToBounds = YES;      //프로파일 사진 위 카메라섬네일 코너둥글기에 맞춰 테두리 자르기
+    self.camThumbnail.clipsToBounds      = YES;      //프로파일 사진 위 카메라섬네일 코너둥글기에 맞춰 테두리 자르기
 }
 
 #pragma mark - Calendar View
@@ -75,8 +80,8 @@ RLMRealm  *realm;
 {
     self.postManager = [[HRPostModel alloc] init];
     
-    NSString *start = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 00:00:00"];
-    NSString *end   = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 23:59:59"];
+    NSString *start  = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 00:00:00"];
+    NSString *end    = [[self.postManager convertWithDate:date format:@"yyyy-MM-dd"] stringByAppendingString:@" 23:59:59"];
     
     NSDateFormatter * dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

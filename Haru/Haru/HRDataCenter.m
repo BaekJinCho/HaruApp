@@ -37,39 +37,10 @@
     self = [super init];
     if (self) {
         self.networkManager     = [[HRNetworkModule alloc] init];
-//        self.haruDataArray      = [[NSArray alloc] init];
         
         //haruData 저장하는 mutableArrays init
         self.inHaruContentArray = [[NSMutableArray alloc] init];
         
-        self.fileManager = [[NSFileManager alloc] init];
-
-        
-/************************************plist로 작업시********************************************/
-        //plist에 있는 것 set
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString *basePath = [paths objectAtIndex:0];
-//        NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
-//        
-//        
-//        NSArray *dataArrays;
-//        
-//        if ([self.fileManager fileExistsAtPath:docuPath]) {
-//            dataArrays = [NSArray arrayWithContentsOfFile:docuPath];
-//        
-//        } else {
-//            
-//            NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
-//            //데이터 array에 bundle 내용 넣음
-//            dataArrays = [NSArray arrayWithContentsOfFile:bundlePath];
-//        }
-//        
-//        for (NSDictionary *haruItem in dataArrays) {
-//            HRPostModel *haruDataModel = [[HRPostModel alloc] initWithDictionary:haruItem];
-//            [self.inHaruContentArray addObject:haruDataModel];
-//        }
-/************************************plist로 작업시********************************************/
-    
     }
     return self;
 }
@@ -173,36 +144,6 @@
 
 
 //Post 관련 Method
-
-//plist에서 불러오기
-//- (void)loadData {
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    
-//    NSString *basePath = [paths objectAtIndex:0];
-//    NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
-//    
-//    NSFileManager *fileManger = [NSFileManager defaultManager];
-//    if (![fileManger fileExistsAtPath:docuPath]) {
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
-//        [fileManger copyItemAtPath:bundlePath toPath:docuPath error:nil];
-//    }
-//    self.inHaruContentArray = [[NSArray arrayWithContentsOfFile:docuPath] mutableCopy];
-//}
-//
-////plist에 저장
-//- (void)saveData {
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    
-//    NSString *basePath = [paths objectAtIndex:0];
-//    NSString *docuPath = [basePath stringByAppendingPathComponent:@"harData.plist"];
-//    
-//    
-//    if (![self.fileManager fileExistsAtPath:docuPath]) {
-//        NSString *bundlePath = [[NSBundle mainBundle] pathForResource:@"harData" ofType:@"plist"];
-//        [self.fileManager copyItemAtPath:bundlePath toPath:docuPath error:nil];
-//    }
-//    [self.inHaruContentArray writeToFile:docuPath atomically:NO];
-//}
 
 - (void)mainViewList:(BlockOnCompletion)completion {
     
@@ -310,85 +251,6 @@
     
     completionHandler(YES, responseData);
 }
-
-
-
-////json 파일 쓰는 Method
-//- (void)writeDictionaryFromWithFilepath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-//    
-//    for (HRPostModel *diary in self.haruDataArray) {
-//        
-//        NSDictionary *dic = @{@"Date":diary.totalDate, @"Title":diary.title
-//                              , @"Content":diary.content, @"Image":@"http://www.city.kr/files/attach/images/1326/542/186/010/9bbd68054422876eb730b296963d0e82.jpg"
-//                              };
-//        
-//        [self.inHaruContentArray addObject:dic];
-//    }
-//    
-//    NSDictionary *temp = @{
-//                           @"count":@"1",
-//                           @"results":self.inHaruContentArray
-//                           };
-//    
-//    NSData *data       = [NSJSONSerialization dataWithJSONObject:temp options:kNilOptions error:nil];
-//    
-//    NSString *filePath = [[NSBundle mainBundle] pathForResource:filePathString ofType:@"json"];
-//    
-//    [data writeToFile:filePath atomically:YES];
-//    
-//    completionHandler(YES, nil);
-//}
-//
-//#pragma mark- Diary Add Method
-////다이어리 추가했을 때 Method
-//- (void)insertDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-//    
-//    
-//    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-//        
-//        [self readDictionaryFromWithFilepath:@"inHarun" completionHanlder:^(BOOL isSuccess, id response) {
-//            
-//            completionHandler(YES, response);
-//        }];
-//        
-//    }];
-//    
-//}
-//
-//#pragma mark- Diary Update Method
-////json 파일 수정 Method
-//- (void)updateDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-//    
-//    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-//        
-//        [self readDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-//            
-//            completionHandler(YES, response);
-//        
-//        }];
-//        
-//    }];
-//    
-//    
-//    
-//}
-//
-//
-//#pragma mark- Diary Delete Method
-////json 파일 삭제 Method
-//- (void)deleteDictionaryFromFilePath:(NSString *)filePathString completionHanlder:(BlockOnCompletion)completionHandler {
-//    
-//    [self writeDictionaryFromWithFilepath:@"inHaru" completionHanlder:^(BOOL isSuccess, id response) {
-//        
-//        [self readDictionaryFromWithFilepath:@"inHarun" completionHanlder:^(BOOL isSuccess, id response) {
-//            
-//            completionHandler(YES, response);
-//        }];
-//        
-//    }];
-//    
-//    
-//}
 
 
 

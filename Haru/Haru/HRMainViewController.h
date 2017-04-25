@@ -13,5 +13,4 @@
     RLMResults<HRRealmData*> *realmDataInformation;
 }
 
-
 @end

@@ -16,7 +16,7 @@
     // Initialization code
     
     //mainTableViewCellSectionView 투명 만들어주기!
-    self.mainTableViewCellSectionView.opaque = NO;
+    self.mainTableViewCellSectionView.opaque          = NO;
     self.mainTableViewCellSectionView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     
 }

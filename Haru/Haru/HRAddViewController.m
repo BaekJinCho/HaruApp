@@ -1,5 +1,5 @@
 //
-//  AddViewController.m
+//  HRAddViewController.m
 //  Haru
 //
 //  Created by Won Suk Choi on 2017. 4. 3..
@@ -7,7 +7,7 @@
 //
 
 #import <UITextView_Placeholder/UITextView+Placeholder.h>
-#import "AddViewController.h"
+#import "HRAddViewController.h"
 #import "HRRealmData.h"
 #import "HRCollectionViewController.h"
 
@@ -17,25 +17,25 @@
 static NSInteger TITLE_MAXLENGTH = 13;
 static NSUInteger CONTENT_MAXLENGTH = 110;
 
-@interface AddViewController ()
+@interface HRAddViewController ()
 <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
-@property (weak, nonatomic) IBOutlet UIView *backgroundView;
-@property (weak, nonatomic) IBOutlet UIView *buttonView;
+@property (weak, nonatomic) IBOutlet UIView          *backgroundView;
+@property (weak, nonatomic) IBOutlet UIView          *buttonView;
 
-@property (nonatomic) UIBarButtonItem *happyBarButton;
-@property (nonatomic) NSArray *emoticonArray;
-@property (nonatomic) NSMutableArray *barButtonArray;
-@property (nonatomic) UIBarButtonItem *emoticonBarButton;
-@property NSDate *currentDate;
-@property NSInteger tagNumber;
-@property (nonatomic) UIImage *defaultImage;
+@property (nonatomic) UIBarButtonItem                *happyBarButton;
+@property (nonatomic) NSArray                        *emoticonArray;
+@property (nonatomic) NSMutableArray                 *barButtonArray;
+@property (nonatomic) UIBarButtonItem                *emoticonBarButton;
+@property NSDate                                     *currentDate;
+@property (nonatomic) UIImage                        *defaultImage;
+@property NSInteger                                   tagNumber;
 
 
 @end
 
-@implementation AddViewController
+@implementation HRAddViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -190,7 +190,7 @@ static NSUInteger CONTENT_MAXLENGTH = 110;
     CGRect keyboardFrame = [keyboardFrameValue CGRectValue];
     CGFloat height = keyboardFrame.size.height;
     
-    self.keyboardHeight.constant = +height + 40;
+    self.keyboardHeight.constant = +height + 50;
     self.buttonViewHeight.constant = +height;
     [self.backgroundView setNeedsUpdateConstraints];
     [self.buttonView setNeedsUpdateConstraints];
