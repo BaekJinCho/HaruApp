@@ -72,20 +72,10 @@
 #pragma mark- tutorialViewController Signup Button Method
 - (IBAction)clickSignupButton:(UIButton *)sender {
     
-//    UIStoryboard *signupStoryboard = [UIStoryboard storyboardWithName:@"HRJoin" bundle:nil];
-//    HRJoinViewController *signupView = [signupStoryboard instantiateViewControllerWithIdentifier:@"HRJoinViewController"];
-//    [self.navigationController pushViewController:signupView animated:YES];
-    
 }
 //로그인 버튼 클릭했을 때, 행동하는 Method
 #pragma mark- tutorialViewController Login Button Method
 - (IBAction)clickLoginButton:(UIButton *)sender {
-    
-    /*
-    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"HRLogin" bundle:nil];
-    HRLoginViewController *loginView = [loginStoryboard instantiateViewControllerWithIdentifier:@"HRLoginViewController"];
-    [self.navigationController pushViewController:loginView animated:YES];
-     */
     
 }
 
