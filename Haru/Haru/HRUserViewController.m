@@ -7,7 +7,6 @@
 //
 
 #import "HRUserViewController.h"
-#import "HRUserAFNetworkingModule.h"
 #import "FSCalendar.h"
 #import "HRRealmData.h"
 #import "HRJoinViewController.h"
@@ -20,7 +19,7 @@
     RLMResults <HRRealmUser *> *userResult;
 }
 
-@property HRUserAFNetworkingModule *networkManager;
+@property HRNetworkModule          *networkManager;
 @property HRDataCenter             *dataManager;
 @property HRPostModel              *postManager;
 @property HRRealmUser              *realmUser;
@@ -49,7 +48,7 @@ RLMRealm  *realm;
     self.userLabel.text = [[NSString alloc] init];
     self.date_join.text = [[NSString alloc] init];
     self.date_firstPost.text = [[NSString alloc] init];
-    self.networkManager      = [[HRUserAFNetworkingModule alloc] init];
+    self.networkManager      = [[HRNetworkModule alloc] init];
     
     [self setUserIDLabel];
     [self showSignDateLabel];
@@ -194,7 +193,7 @@ RLMRealm  *realm;
 - (void)showPostCountLabel
 {
 //네트워크 이용
-//    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+    self.networkManager = [[HRNetworkModule alloc]init];
 //    __block NSString *countNum;
 //    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
 //    NSLog(@"token = %@",token);
@@ -230,7 +229,7 @@ RLMRealm  *realm;
 - (void)showFirstPostLabel
 {
 //네트워크 이용
-//    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+//    self.networkManager = [[HRNetworkModule alloc]init];
 //    __block NSString *firstDate;
 //    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
 //    NSLog(@"token = %@",token);
@@ -322,7 +321,7 @@ RLMRealm  *realm;
 - (void)showPostCount
 {
     //네트워크 이용
-//    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+//    self.networkManager = [[HRNetworkModule alloc]init];
 //    __block NSString *result = [[NSString alloc] init];
 //    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
 //    NSLog(@"token = %@",token);
@@ -351,7 +350,7 @@ RLMRealm  *realm;
 
 - (void)setUserIDLabel
 {
-    self.networkManager = [[HRUserAFNetworkingModule alloc]init];
+    self.networkManager = [[HRNetworkModule alloc]init];
     [self.networkManager getUserProfile:^(BOOL Sucess, NSDictionary *ResponseData) {
         if (Sucess) {
             dispatch_async(dispatch_get_main_queue(), ^{

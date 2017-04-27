@@ -9,11 +9,20 @@
 #import <Foundation/Foundation.h>
 
 typedef void (^BlockOnCompletion)(BOOL isSuccess, id response);
+typedef void (^ResponseBlock)(BOOL Sucess, NSHTTPURLResponse *ResponseData);
+typedef void (^CompletionBlock)(BOOL Sucess, NSDictionary *ResponseData);
 
 @interface HRNetworkModule : NSObject
 
 @property (nonatomic) NSMutableArray * diaryDataArray;
 @property (nonatomic) AFHTTPSessionManager *afhttpSessionManager;
+
+
+//@interface HRUserAFNetworkingModule : NSObject
+
+- (void)postListRequest:(NSString *)token completion
+                       :(CompletionBlock)completion;
+- (void)getUserProfile:(CompletionBlock)completion;
 
 - (void)loginRequestToServer:(NSString *)userID
                    password:(NSString *)password
