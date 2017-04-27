@@ -235,16 +235,15 @@
                userState:(NSInteger)userState
               completion:(BlockOnCompletion)completion {
     
-    /*NSURLSessionConfiguration 설정*/
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    
-    /*AFHTTPSessionManager 설정*/
-    self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
-    
-    /*url 설정*/
-    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
-    
-    
+//    /*NSURLSessionConfiguration 설정*/
+//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+//    
+//    /*AFHTTPSessionManager 설정*/
+//    self.afhttpSessionManager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
+//    
+//    /*url 설정*/
+//    NSString *url = [NSString stringWithFormat:@"%@%@", BASIC_URL, POST_URL];
+//    
     
 //    /*parameters 설정*/
 //    NSDictionary *parameters = @{@"author":author, @"title":title, @"status":userState};

@@ -109,7 +109,7 @@
 #pragma mark- MainViewController Tableview Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    NSLog(@"Section에 들어가는 Row의 수 : %ld", [realmDataInformation count]);
+    NSLog(@"Section에 들어가는 Row의 수 : %tu", [realmDataInformation count]);
 //    return [[HRDataCenter sharedInstance] numberOfItem];
     
     return [realmDataInformation count];

@@ -89,7 +89,7 @@ RLMRealm  *realm;
     NSDate *endDate   = [dateFormatter dateFromString:end];
     
     RLMResults<HRRealmData *> *array = [result objectsWhere:@"date between {%@, %@}", startDate, endDate];
-    NSLog(@"arraycount = %ld",[array count]);
+    NSLog(@"arraycount = %tu",[array count]);
     if([array count] > 0)
     {
         return YES;
@@ -221,8 +221,8 @@ RLMRealm  *realm;
 //realm이용
 //   
         RLMResults<HRRealmData *> *postday = [result objectsWhere:@"date != nil"];
-        NSLog(@"realmDateCount = %ld",[postday count]);
-        self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
+        NSLog(@"realmDateCount = %tu",[postday count]);
+        self.count_post.text = [NSString stringWithFormat:@"%tu",[postday count]];
         NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
 }
 
@@ -343,8 +343,8 @@ RLMRealm  *realm;
 //    self.count_post.text = [NSString stringWithFormat:@"%ld",[postday count]];
 //    NSLog(@"realmDateCountToLabel = %@",self.count_post.text);
     
-    self.count_post.text = [NSString stringWithFormat:@"%ld", [result count]];
-    NSLog(@"result count = %ld", [result count]);
+    self.count_post.text = [NSString stringWithFormat:@"%tu", [result count]];
+    NSLog(@"result count = %tu", [result count]);
 }
 
 
